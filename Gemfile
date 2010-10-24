@@ -2,32 +2,38 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.1'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+# MySQL gem to connect to MySQL
+gem 'mysql', '2.8.1'
 
-gem 'sqlite3-ruby', :require => 'sqlite3'
+# Devise for Authentication layer
+# http://github.com/plataformatec/devise
 gem 'devise'
+gem 'hpricot'
+gem 'ruby_parser'
+
+# Omniauth for easy auth against 3rd party services 
+# http://github.com/intridea/omniauth
 gem 'omniauth'
+
+# Twitter gem for reading/writing
+# http://github.com/jnunemaker/twitter
 gem 'twitter'
 
-# Use unicorn as the web server
-# gem 'unicorn'
+# Deployment with Capistrano
+# http://github.com/capistrano/capistrano
+# http://github.com/capistrano/capistrano-ext
+gem 'capistrano'
+gem 'capistrano-ext'
 
-# Deploy with Capistrano
-# gem 'capistrano'
+# Resque for queuing tasks
+gem 'resque'
 
-# To use debugger
-# gem 'ruby-debug'
+# Resque scheduler for scheduled tasks
+# http://github.com/bvandenbos/resque-scheduler
+gem 'resque-scheduler'
 
-# Bundle the extra gems:
-# gem 'bj'
-# gem 'nokogiri'
-# gem 'sqlite3-ruby', :require => 'sqlite3'
-# gem 'aws-s3', :require => 'aws/s3'
+# Haml for templates
+# http://github.com/nex3/haml
+gem 'haml'
 
-# Bundle gems for the local environment. Make sure to
-# put test-only gems in this group so their generators
-# and rake tasks are available in development mode:
-# group :development, :test do
-#   gem 'webrat'
-# end
+gem 'faker'

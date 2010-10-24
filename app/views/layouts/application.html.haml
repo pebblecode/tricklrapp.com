@@ -1,0 +1,26 @@
+!!!
+%html
+  %head
+    %title iPebble 
+    = stylesheet_link_tag 'screen'
+    = stylesheet_link_tag('print', :media => :print)
+    = csrf_meta_tag
+  %body
+    %ul#skip-links
+      %li 
+        Skip to main content
+      %li 
+        Skip to navigation
+    %section#wrapper
+      =render :partial => 'layouts/shared/header'
+      %section#content-wrapper
+        %section#content
+          - if flash[:notice]
+            %p.flash-notice 
+              = flash[:notice]
+          - elsif flash[:error]
+            %p.flash-error 
+              = flash[:error]
+          =yield
+      =render :partial => 'layouts/shared/footer'
+      = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js", "application.js"

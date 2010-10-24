@@ -6,10 +6,7 @@ class AuthenticationsController < ActionController::Base
 
   def create
     auth = request.env["rack.auth"]
-    oauth = Twitter::OAuth.new("jTogT14Qg3JVoSUTY8aMg", "8iIUvM66i3PGrzxl0cGXGTqSmXkHp1Y1mDtf6PyaRE")
-    oauth.authorize_from_access(auth['credentials']['token'], auth['credentials']['secret'])
-    client = Twitter::Base.new(oauth)
-    client.update('We made it!')
+    Resque.enqueue_at(1.minute.from_now, SendTweet, auth['credentials']['token'], auth['credentials']['secret'], "in da house forca!")
     render :text => auth.to_yaml
   end
 

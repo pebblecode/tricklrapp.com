@@ -33,26 +33,47 @@ GEM
       activesupport (~> 3.0.0)
     bcrypt-ruby (2.1.2)
     builder (2.1.2)
+    capistrano (2.5.19)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.0.0)
+    capistrano-ext (1.2.1)
+      capistrano (>= 1.0.0)
     crack (0.1.8)
     devise (1.1.3)
       bcrypt-ruby (~> 2.1.2)
       warden (~> 0.10.7)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    faker (0.3.1)
     faraday (0.4.6)
       addressable (>= 2.1.1)
       rack (>= 1.0.1)
+    haml (3.0.22)
     hashie (0.4.0)
+    highline (1.6.1)
+    hpricot (0.8.2)
     httparty (0.6.1)
       crack (= 0.1.8)
     i18n (0.4.1)
+    json (1.4.6)
     mail (2.2.7)
       activesupport (>= 2.3.6)
       mime-types
       treetop (>= 1.4.5)
     mime-types (1.16)
     multi_json (0.0.4)
+    mysql (2.8.1)
     net-ldap (0.1.1)
+    net-scp (1.0.4)
+      net-ssh (>= 1.99.1)
+    net-sftp (2.0.5)
+      net-ssh (>= 2.0.9)
+    net-ssh (2.0.23)
+    net-ssh-gateway (1.0.1)
+      net-ssh (>= 1.99.1)
     nokogiri (1.4.3.1)
     oa-basic (0.1.5)
       multi_json (~> 0.0.2)
@@ -111,13 +132,30 @@ GEM
       rake (>= 0.8.4)
       thor (~> 0.14.0)
     rake (0.8.7)
+    redis (2.0.11)
+    redis-namespace (0.8.0)
+      redis (< 3.0.0)
+    resque (1.10.0)
+      json (~> 1.4.6)
+      redis-namespace (~> 0.8.0)
+      sinatra (>= 0.9.2)
+      vegas (~> 0.1.2)
+    resque-scheduler (1.9.6)
+      redis (>= 2.0.1)
+      resque (>= 1.8.0)
+      rufus-scheduler
     rest-client (1.6.1)
       mime-types (>= 1.16)
     ruby-openid (2.1.8)
     ruby-openid-apps-discovery (1.2.0)
       ruby-openid (>= 2.1.7)
+    ruby_parser (2.0.5)
+      sexp_processor (~> 3.0)
     rubyntlm (0.1.1)
-    sqlite3-ruby (1.3.1)
+    rufus-scheduler (2.0.6)
+    sexp_processor (3.0.5)
+    sinatra (1.0)
+      rack (>= 1.0)
     thor (0.14.3)
     treetop (1.4.8)
       polyglot (>= 0.3.1)
@@ -127,6 +165,8 @@ GEM
       multi_json (~> 0.0.4)
       oauth (~> 0.4.3)
     tzinfo (0.3.23)
+    vegas (0.1.8)
+      rack (>= 1.0.0)
     warden (0.10.7)
       rack (>= 1.0.0)
 
@@ -134,8 +174,16 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  capistrano
+  capistrano-ext
   devise
+  faker
+  haml
+  hpricot
+  mysql (= 2.8.1)
   omniauth
   rails (= 3.0.1)
-  sqlite3-ruby
+  resque
+  resque-scheduler
+  ruby_parser
   twitter
