@@ -6,4 +6,4 @@ require 'rake'
 require 'resque/tasks'
 require 'resque_scheduler/tasks'
 
-Tweethopper::Application.load_tasks
+Tricklr::Application.load_tasks

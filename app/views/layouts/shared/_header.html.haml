@@ -1,2 +1,21 @@
 %section#header
   %nav
+    %ul
+      -if current_user
+        %li.avatar
+          Signed in as 
+          =image_tag(current_user.profile_image_url)
+          =current_user.screen_name
+        
+      %li
+        =link_to "Settings", "#", :class => "settings"
+      %li
+        =link_to "Help", "#", :class => "help"
+      %li
+        -if current_user
+          =link_to "Logout", "/users/sign_out", :class => "logout"
+        -else
+          =link_to "Login", "/auth/twitter", :class => "logout"
+  %h1 
+    Tricklr
+

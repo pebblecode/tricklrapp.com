@@ -36,4 +36,24 @@ gem 'resque-scheduler'
 # http://github.com/nex3/haml
 gem 'haml'
 
-gem 'faker'
+# Compass for CSS 
+gem 'compass'
+
+
+group :test, :development do
+  gem 'rspec-rails'
+  gem 'shoulda'
+  gem 'factory_girl_rails'
+  gem 'faker'
+end
+
+group :cucumber do
+  gem 'capybara'   
+  gem 'database_cleaner'
+  gem 'cucumber-rails'
+  gem 'cucumber'
+  gem 'rspec-rails'
+  gem 'spork'
+  gem 'launchy'
+  gem 'factory_girl_rails'
+end

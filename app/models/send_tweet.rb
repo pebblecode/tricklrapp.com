@@ -1,12 +1,21 @@
 class SendTweet < ActiveRecord::Base
-  @queue = :tweet
-  @token = "36670724-itwLyz641g76JitN9CTIpEw5Dtqg7NLU7uzZ7aPXO"
-  @secret = "OcKQ907H0KUjV7qzbWNGNYZEBDsjjB5rPXtyTzi6c"
+
+  @queue = :send_tweet
+
   def self.perform(token, secret, tweet)
-    #puts tweet
+    # Construct OAuth request
     oauth = Twitter::OAuth.new(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET)
     oauth.authorize_from_access(token, secret)
     client = Twitter::Base.new(oauth)
-    client.update(tweet)
+
+    # We need some error handling here if Twitter is down etc...
+    response = client.update(tweet['tweet']['status'])
+    #logger.info(response)
+    @tweet = Tweet.find(tweet['tweet']['id'])
+    @tweet.update_attributes(
+      :twitter_id => response.id,
+      :published_at => response.created_at
+    )
   end
+
 end

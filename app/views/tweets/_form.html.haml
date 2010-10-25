@@ -1,0 +1,9 @@
+=form_for @tweet do |f|
+  =render :partial => '/partials/error_messages', :locals => { :object => @tweet }
+  = field_set_tag 'Tweet', :class => 'input-form' do
+    =f.label :status
+    =f.text_area :status
+    =f.submit 'Trickle it!', :class => "awesome magenta"
+    
+
+  

@@ -1,0 +1,17 @@
+=render :partial => 'form'
+-if current_user.tweets
+  %ul#tweets-list
+    -current_user.tweets.each do |t|
+      %li
+        =#image_tag(current_user.profile_image_url)
+        =current_user.screen_name
+        =t.status
+        %br/
+        %span{ :class => cycle("orange", "blue", "green") }
+          -if t.published_at
+            =link_to time_ago_in_words_with_word(t.published_at), "http://twitter.com/growingshed/status/" + t.twitter_id.to_s
+          -else 
+            will be published in
+            =distance_of_time_in_words(Time.now, t.scheduled_at)
+
+
