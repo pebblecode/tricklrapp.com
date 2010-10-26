@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe Tweet do
 
-  it { should validate_presence_of   :status }
+  it { should validate_presence_of(:status) }
+
   before(:all) do
-    # This is run once and only once, before all of the examples
-    # and before any before(:each) blocks.
+
   end
 
   before(:each) do
@@ -33,8 +33,6 @@ describe Tweet do
   end
 
   after(:all) do
-    # this is run once and only once after all of the examples
-    # and after any after(:each) blocks
   end
   
 end

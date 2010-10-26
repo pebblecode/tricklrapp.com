@@ -13,7 +13,7 @@
         =link_to "Help", "#", :class => "help"
       %li
         -if current_user
-          =link_to "Logout", "/users/sign_out", :class => "logout"
+          =link_to "Logout", destroy_user_session_path, :class => "logout"
         -else
           =link_to "Login", "/auth/twitter", :class => "logout"
   %h1 

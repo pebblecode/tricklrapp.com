@@ -8,12 +8,15 @@ gem 'mysql', '2.8.1'
 # Devise for Authentication layer
 # http://github.com/plataformatec/devise
 gem 'devise'
+# gem 'devise', :git => 'git://github.com/plataformatec/devise.git', :branch => 'omniauth'
 gem 'hpricot'
 gem 'ruby_parser'
 
 # Omniauth for easy auth against 3rd party services 
 # http://github.com/intridea/omniauth
 gem 'omniauth'
+
+gem "will_paginate", "~> 3.0.pre2"
 
 # Twitter gem for reading/writing
 # http://github.com/jnunemaker/twitter
@@ -39,6 +42,8 @@ gem 'haml'
 # Compass for CSS 
 gem 'compass'
 
+gem 'jquery-rails'
+gem "oa-oauth", :require => "omniauth/oauth"
 
 gem 'shoulda'
 gem 'capybara'   
