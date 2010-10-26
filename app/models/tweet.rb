@@ -2,6 +2,7 @@ class Tweet < ActiveRecord::Base
   belongs_to :user
   after_create :queue_tweet
 
+  validates_presence_of :status
 
   # Queues a tweet up for delivery via Resque Scheduler
   # This references the perform method in the SendTweet class
