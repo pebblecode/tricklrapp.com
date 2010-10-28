@@ -4,8 +4,8 @@ Tricklr::Application.routes.draw do
 
   match '/auth/:provider/callback' => 'authentications#create'
 
-  root :to => "tweets#index"
-  resources :tweets
+  root :to => "statuses#index"
+  resources :statuses
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

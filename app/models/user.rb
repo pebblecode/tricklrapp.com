@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   has_many :authentications
-  has_many :tweets, :order => 'scheduled_at DESC'
-
+  has_many :statuses, :order => 'scheduled_at DESC'
+  has_many :unpublished_statuses, :class_name => "Tweet", :order => 'scheduled_at DESC', :conditions => ['published_at IS NULL']
+  has_many :published_statues, :class_name => "Tweet", :order => 'scheduled_at DESC', :conditions => ['published_at IS NOT NULL']
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
   devise :database_authenticatable, :omniauthable

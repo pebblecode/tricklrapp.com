@@ -1,0 +1,19 @@
+=render :partial => 'form'
+-if current_user.statuses
+  %ul#tweets-list
+    -@statuses.each do |t|
+      %li
+        =#image_tag(current_user.profile_image_url)
+        =#current_user.screen_name
+        =parse_tweet(t.status)
+        %br/
+        %span{ :class => cycle("orange", "blue", "green") }
+          -if t.published_at
+            =link_to time_ago_in_words_with_word(t.published_at), "http://twitter.com/growingshed/status/" + t.twitter_id.to_s
+          -else 
+            will be published in
+            =distance_of_time_in_words(Time.now, t.scheduled_at)
+            = link_to 'Edit', edit_tweet_path(t)
+            = link_to 'Destroy', t, :confirm => 'Are you sure?', :method => :delete
+
+

@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20101025104510) do
     t.datetime "updated_at"
   end
 
-  create_table "tweets", :force => true do |t|
+  create_table "statuses", :force => true do |t|
     t.integer  "user_id"
     t.string   "status",        :limit => 140, :null => false
     t.string   "twitter_id"

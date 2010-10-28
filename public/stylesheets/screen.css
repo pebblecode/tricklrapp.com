@@ -255,16 +255,16 @@ footer {
 /* Forms
 -----------------------------------------------------------------------------*/
 /* line 205, sass/screen.scss */
-#new_tweet fieldset {
+#new_status fieldset {
   width: 620px;
   margin-left: 160px;
 }
 /* line 209, sass/screen.scss */
-#new_tweet legend, #new_tweet label {
+#new_status legend, #new_status label {
   display: none;
 }
 /* line 212, sass/screen.scss */
-#new_tweet textarea {
+#new_status textarea {
   width: 600px;
   height: 80px;
   border: 0;
@@ -278,7 +278,7 @@ footer {
   font-size: 2em;
 }
 /* line 220, sass/screen.scss */
-#new_tweet input[type=submit] {
+#new_status input[type=submit] {
   border: 0;
   float: right;
 }
