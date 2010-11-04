@@ -9,13 +9,17 @@ gem 'mysql', '2.8.1'
 # http://github.com/plataformatec/devise
 gem 'devise'
 # gem 'devise', :git => 'git://github.com/plataformatec/devise.git', :branch => 'omniauth'
-gem 'hpricot'
-gem 'ruby_parser'
+
+# Omniauth for easy authentication against third parties
+# https://github.com/intridea/omniauth
+gem "oa-oauth", :require => "omniauth/oauth"
 
 # Omniauth for easy auth against 3rd party services 
 # http://github.com/intridea/omniauth
 gem 'omniauth'
 
+# Will paginate for pagination
+# https://github.com/mislav/will_paginate/wiki
 gem "will_paginate", "~> 3.0.pre2"
 
 # Twitter gem for reading/writing
@@ -40,17 +44,23 @@ gem 'resque-scheduler'
 gem 'haml'
 
 # Compass for CSS 
+# https://github.com/chriseppstein/compass
 gem 'compass'
 
+# Automates using jQuery with Rails3
+# https://github.com/indirect/jquery-rails
 gem 'jquery-rails'
-gem "oa-oauth", :require => "omniauth/oauth"
 
-gem 'shoulda'
-gem 'capybara'   
-gem 'database_cleaner'
-gem 'cucumber-rails'
-gem 'cucumber'
-gem 'rspec-rails'
-gem 'spork'
-gem 'launchy'
-gem 'factory_girl_rails'
+# Testing goodness!
+group :test do
+  gem 'shoulda'
+  gem 'capybara'   
+  gem 'database_cleaner'
+  gem 'cucumber-rails'
+  gem 'cucumber'
+  gem 'rspec-rails'
+  gem 'spork'
+  gem 'launchy'
+  gem 'factory_girl_rails'
+  gem 'webrat'
+end

@@ -13,8 +13,10 @@ end
 Spork.each_run do
 end
 
+
 RSpec.configure do |config|
   config.mock_with :rspec
+  config.include Devise::TestHelpers, :type => :controller
 
   config.use_transactional_fixtures = true
 end

@@ -1,36 +1,6 @@
+// This import applies a global reset to any page that imports this stylesheet.
+@import "blueprint/reset";
 @import "compass/css3";
-/*-----------------------------------------------------------------------------
-Tricklr Screen Stylesheet
-
-version:   1.0
-date:      25/10/1025/10/10
-author:    George Ornbo
-email:     george at pebbleit dot com
-website:   http://pebbleit.com
-
------------------------------------------------------------------------------*/
-
-/* Reset
-Based on http://meyerweb.com/eric/thoughts/2008/01/15/resetting-again/
-Removed elements not supported in HTML5
------------------------------------------------------------------------------*/
-html, body, div, span, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, address, cite, code,
-del, dfn, em, img, ins, kbd, q, samp,
-small, strike, strong, sub, sup, var,
-b, i,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	outline: 0;
-	font-size: 100%;
-	vertical-align: baseline;
-	background: transparent;
-}
 
 /* 
 Trigger the new block level elements in to the correct content flow
@@ -38,144 +8,81 @@ Trigger the new block level elements in to the correct content flow
 article, aside, dialog, figure, 
 footer, header, hgroup, menu, 
 nav, section { 
-	display: block; 
+  display: block; 
 }
 
-/* Set up the document
------------------------------------------------------------------------------*/
-body
-	{
-	font: 75%/1.5  Helvetica, Arial, "Lucida Grande", "Lucida Sans", Tahoma, Verdana, sans-serif;
-	background: #000;
-	color: #fff;	
-	text-align:center;
-}
-#wrapper
-	{ 
-	width: 940px; /* Set page width here - you can also use percentage */
-	text-align:left;  
-	margin-left:auto; 
-	margin-right:auto; 
-	margin-top: .75em;
-	margin-bottom: 1.5em;
-	padding: 10px;
-	//background: #333 url(/images/dev/960_grid_12_col.png) top left repeat;
-    background: #333;
-    @include border-radius(10px);
-    //@include box-shadow(#333, 3px, 3px, 5px);
-}
-/* Typography
------------------------------------------------------------------------------*/
-/* 
-This sets up a vertical rhythm for the page typography 
-Image replacement technique for the logo 
-Change the dimensions on the H1 to the dimensions of your logo
-*/
-h1
-	{
-	font-size: 2em;
-    span.blue {
-      color: #2daebf;
-    }
-    span.green {
-      color: #91bd09;
-    }
-    span.orange {
-      color: #ff5c00;
-    }
-}	
-h2 {
-	font-size: 1.6666666666666667em; /* 20 pt */
-	line-height: 0.9em; /* 20 * line-height = 18pt */
-	margin-bottom: 0.9em; /* 20 * margin-bottom = 18pt */
-}
-h3 {
-	clear: left;
-	font-size: 1.5em; /* 18 pt */
-	line-height: 1em; /* 18 * line-height = 18pt */
-	margin-bottom: 1em; /* 18 * margin-bottom = 18pt */
-}
-h4 {
-	font-size: 1.3333333333333333em; /* 16 pt */
-	line-height: 1.125em; /* 18 * line-height = 18pt */
-	margin-bottom: 1.125em; /* 18 * margin-bottom = 18pt */
-}
-h5 {
-	font-size: 1.1666666666666667em; /* 14 pt */
-	line-height: 1.2857142857142858em; /* 18 * line-height = 18pt */
-	margin-bottom: 1.2857142857142858em; /* 18 * margin-bottom = 18pt */
-}
-h6 {
-	font-size:1em; /* 12 pt */
-	line-height: 1.5em; /* 18 * line-height = 18pt */
-	margin-bottom: 1.5em; /* 18 * margin-bottom = 18pt */
-}	
-p, q, cite, address
-	{
-	font-size:1em; /* 12 pt */
-	line-height: 1.5em; /* 18 * line-height = 18pt */
-	margin-bottom: 1.5em; /* 18 * margin-bottom = 18pt */
-}
-ul, ol, dl
-	{
-	font-size: 1em; /* Equivalent to 12pt */
-	margin-bottom: 1.5em; /* margin-bottom = 18pt */
-}
-li, dd, dt
-	{
-	font-size: 1em; /* Equivalent to 12pt */	
-}
-a
-	{
-	text-decoration: none;
-	color: #3333cc;
-	outline:none;
-}
-a:hover
-	{
-	text-decoration: none;
-}
-code, samp, dfn, kbd, var, acronym, ins, del
-	{
 
-}
-abbr {
-	speak: spell-out;
-}
 
-acronym {
-	speak: normal;
-}
-/* Header / Navigation
------------------------------------------------------------------------------*/
+// To configure blueprint, edit the partials/base.sass file.
+@import "partials/base";
+
+// Import all the default blueprint modules so that we can access their mixins.
+@import "blueprint";
+
+// Import the non-default scaffolding module.
+@import "blueprint/scaffolding";
+
+// To generate css equivalent to the blueprint css but with your
+// configuration applied, uncomment:
+// @include blueprint
+
+// But Compass recommends that you scope your blueprint styles
+// So that you can better control what pages use blueprint
+// when stylesheets are concatenated together.
+@include blueprint-scaffolding("body.bp");
 #skip-links {
-	height: 0;
-	width: 0;
-	display: none;
+  display: none;
 }
 
-nav
-	{
-	clear: both;
-    float: right;
-    margin-bottom: 1.5em;
-    ul
-      {
-        list-style: none;	
-      li{
-        display: inline;
+body.bp {
+  @include blueprint-typography(true);
+  @include blueprint-utilities;
+  @include blueprint-debug;
+  @include blueprint-interaction;
+  // Remove the scaffolding when you're ready to start doing visual design.
+  // Or leave it in if you're happy with how blueprint looks out-of-the-box
+}
+
+// Page layout can be done using mixins applied to your semantic classes and IDs:
+body {
+  //background : #434654 url('/images/bg/gradient.png') repeat-x;
+  #container {
+    background: #f4eded;
+    @include box-shadow; 
+    @include border-radius(10px);
+    //background: url('/images/dev/960_grid_12_col.png'), url('/images/dev/vertical_rythmn_18px.png');
+    padding-left: 10px;
+    @include container; 
+    margin-top: 18px;
+    a { text-decoration: none; }
+    header {
+      width: 940px;
+      h1 {
         float: left;
-        font-size: 1.2em;
-        @include border-radius(10px);
-        text-shadow:0 1px 1px #000;
-        margin-right: 0.75em;
-        padding: 5px;
-        background: #666;
-        &.avatar {
-          img {
-            width: 20px;
-            padding-right: 5px;
+      }
+      nav
+      {
+        float: right;
+        text-align: right;
+        margin-top: 1em;
+        ul
+        {
+          list-style: none; 
+          margin-right: 0;
+          li{
+            display: inline;
+            text-align: center;
             float: left;
+            @include border-radius(5px);
+            margin-left: 20px;
+            width: 60px;
+            background: #666;
+            &.avatar {
+              width: 120px;
+              img {
+                width: 18px;
+                padding-right: 5px;
+                float: left;
           }
         }
         a.settings {
@@ -187,154 +94,46 @@ nav
         a.logout {
           color: #ff5c00;
         }
-        }
-    }
-}
-
-
-/* Footer
------------------------------------------------------------------------------*/
-footer{
-	clear:both;
-}
-
-/* Forms
------------------------------------------------------------------------------*/
-#new_status
-  {
-  fieldset {
-    width: 620px;
-    margin-left: 160px;
-  }
-  legend, label {
-    display: none;
-  }
-  textarea {
-    width: 600px;
-    height: 80px;
-    border: 0;
-    @include border-radius(10px);
-    padding: 10px;
-    font-size: 2em;
-  }
-  input[type=submit]{
-    border: 0;
-    float: right;
-  }
-
-}
-
-/* Tables 
------------------------------------------------------------------------------*/
-table
-	{ 
-	width: 100%;
-  	border-spacing: 0;
-	border-collapse: collapse;
-	border: 1px solid #ccc;
-}
-caption
-	{
-	text-align: left;	
-	font-size:1em; /* 12 pt */
-	line-height: 1.5em; /* 18 * line-height = 18pt */
-}
-
-th 
-	{
-  	text-align: left;
-	font-weight: bold;
-	border: 1px solid #ccc;
-	padding: .25em; /* 3px */
-	background: #ccc;
-}
-
-
-
-td 
-	{
-  	text-align: left;
-	font-weight: normal;
-	border: 1px solid #ccc;
-	padding: .25em; /* 3px */
-}
-
-
-
-
-
-
-ul#tweets-list
-  {
-  margin-top: 10px;
-  background: #fff;
-  color: #000;
-  margin-left: 240px;
-  width: 460px;
-  list-style: none;
-  li
-    {
-    @include linear-gradient(color-stops(rgb(189,179,185), rgb(224,217,221)), bottom);
-
-    font-size: 1.4em;
-    text-shadow:0 1px 1px #FFFFFF;
-    padding: 18px;
-    border-bottom: 1px solid #ccc;
-    span {
-      color: #2daebf;
-      text-shadow: none;
-      font-size: .8em;
-      text-decoration: none;
-      font-style: italic;
-      &.blue {
-        color: #2daebf;
-        a {
-          color: #2daebf;
-        }
-      }
-      &.green
-        {
-        color: #91bd09;
-        a {
-          color: #91bd09;
-        } 
-      }
-      &.orange
-        {
-        color: #ff5c00;
-        a {
-          color: #ff5c00;
-        }
-      }
-      a {
-        color: #ff5c00;
-        text-shadow: none;
-        text-decoration: none;
-        font-style: italic;
       }
     }
-
   }
 }
-
-
-
-/* Flash Notices
------------------------------------------------------------------------------*/
-p.flash-notice {
-  color: #b8f5cf;  
-  font-weight: bold;
-  width: 602px;
-  padding: 9px;
+#new_status {
   margin-left: 160px;
-  background: #2db25f;
-  @include border-radius(5px);
+  fieldset {
+    border: 0;
+    legend, label {
+      display: none;
+      }
+      textarea {
+        width: 620px;
+        height: 108px;
+        @include border-radius(10px);
+        border: 0;
+        padding: 0
+      }
+    }
+    input[type=submit]{
+      border: 0;
+      float: right;
+      margin: .5em 0;
+    }
+  }
+}
+header, footer {
+  @include column($blueprint-grid-columns); 
 }
 
+#content {
+  // Two thirds of the grid columns, rounding up.
+  // With 24 cols, this is 16.
+  $content-columns: ceil(2 * $blueprint-grid-columns / 3);
+  // true means it's the last column in the row
+  @include column($content-columns, true); } }
 .awesome, .awesome:visited {
   background: #222 url(http://www.zurb.com/images/alert-overlay.png) repeat-x; 
   display: inline-block; 
-  padding: 5px 10px 6px; 
+  //padding: 5px 10px 6px; 
   color: #fff; 
   text-decoration: none;
   -moz-border-radius: 5px; 
@@ -365,3 +164,87 @@ p.flash-notice {
 .orange.awesome:hover             { background-color: #d45500; }
 .yellow.awesome, .yellow.awesome:visited    { background-color: #ffb515; }
 .yellow.awesome:hover             { background-color: #fc9200; }
+
+/* Flash Notices
+-----------------------------------------------------------------------------*/
+p.flash-notice {
+  color: #b8f5cf;  
+  font-weight: bold;
+  width: 602px;
+  padding: 9px;
+  margin-left: 160px;
+  background: #2db25f;
+  @include border-radius(5px);
+}
+
+/* View links
+-----------------------------------------------------------------------------*/
+ul#view-links{
+  background: #ccc;
+  width: 200px;
+  margin-left: 360px;
+  padding: 9px;
+  list-style: none;
+  float: left;
+  li {
+    display: block;
+    width: 100px;
+    display: inline;
+    float: left;
+    a {
+      display: block;
+    }
+  }
+}
+
+/* List of statuses
+-----------------------------------------------------------------------------*/
+ul#status-list
+{
+  clear: both;
+  padding-left: 0;
+  background: #fff;
+  color: #000;
+  margin-left: 240px;
+  width: 460px;
+  list-style: none;
+  li
+  {
+    @include linear-gradient(color-stops(rgb(189,179,185), rgb(224,217,221)), bottom);
+    text-shadow:0 1px 1px #FFFFFF;
+    padding: 18px;
+    border-bottom: 1px solid #ccc;
+    span {
+      color: #2daebf;
+      text-shadow: none;
+      font-size: .8em;
+      text-decoration: none;
+      font-style: italic;
+      &.blue {
+        color: #2daebf;
+        a {
+          color: #2daebf;
+        }
+      }
+      &.green {
+        color: #91bd09;
+        a {
+          color: #91bd09;
+        } 
+      }
+      &.orange {
+        color: #ff5c00;
+        a {
+          color: #ff5c00;
+        }
+      }
+      a {
+        color: #ff5c00;
+        text-shadow: none;
+        text-decoration: none;
+        font-style: italic;
+      }
+    }
+  }
+}
+

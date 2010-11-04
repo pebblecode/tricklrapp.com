@@ -1,11 +1,24 @@
 class StatusesController < ApplicationController
 
-  before_filter :authenticate_user!
-  before_filter :current_status, :except => [:index, :new, :index]
-  before_filter :new_status, :only => [:index, :new]
+  before_filter :authenticate_user!, :except => :index
+  before_filter :current_status, :except => [:index, :new, :create, :published]
+  before_filter :new_status, :only => [:index, :new, :published]
 
   def index
-    @statuses = current_user.statuses
+    if current_user.present?
+      @statuses = current_user.unpublished_statuses
+    else
+      render :action => "pages/index"
+    end
+  end
+
+  def published
+    if current_user.present?
+      @statuses = current_user.published_statuses
+      render :index
+    else
+      render :action => "pages/index"
+    end
   end
 
   def new

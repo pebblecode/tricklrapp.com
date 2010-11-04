@@ -9,10 +9,15 @@ class Status < ActiveRecord::Base
   before_destroy :dequeue
 
   validates_presence_of :status
+  validates_length_of :status, :maximum => 140
 
   # Set a default for sheduled_at
   def set_scheduled_at
-    self.scheduled_at = 2.hours.from_now unless self.scheduled_at?
+    if self.user.unpublished_statuses.first.present?
+      self.scheduled_at = self.user.unpublished_statuses.first.scheduled_at + 2.hours
+    else
+      self.scheduled_at = 2.hours.from_now unless self.scheduled_at?
+    end
   end
 
   # Check if the scheduled at attribute has changed

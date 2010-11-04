@@ -1,11 +1,17 @@
 =render :partial => 'form'
--if current_user.statuses
-  %ul#tweets-list
+-if @statuses
+  %ul#view-links
+    %li 
+      =link_to "Queue", root_path
+    %li
+      =link_to "Published", published_path
+  
+  %ul#status-list
     -@statuses.each do |t|
       %li
         =#image_tag(current_user.profile_image_url)
         =#current_user.screen_name
-        =parse_tweet(t.status)
+        =t.status
         %br/
         %span{ :class => cycle("orange", "blue", "green") }
           -if t.published_at
@@ -13,7 +19,7 @@
           -else 
             will be published in
             =distance_of_time_in_words(Time.now, t.scheduled_at)
-            = link_to 'Edit', edit_tweet_path(t)
+            = link_to 'Edit', edit_status_path(t)
             = link_to 'Destroy', t, :confirm => 'Are you sure?', :method => :delete
 
 
