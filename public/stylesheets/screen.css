@@ -456,9 +456,13 @@ body.bp .removed {
   color: white;
 }
 
+/* line 47, sass/screen.scss */
+body {
+  background: #272727;
+}
 /* line 49, sass/screen.scss */
 body #container {
-  background: #f4eded;
+  background: #d2d2d2;
   -moz-box-shadow: #333333 1px 1px 5px 0;
   -webkit-box-shadow: #333333 1px 1px 5px 0;
   -o-box-shadow: #333333 1px 1px 5px 0;
@@ -469,6 +473,7 @@ body #container {
   -ms-border-radius: 10px;
   -khtml-border-radius: 10px;
   border-radius: 10px;
+  background: url("/images/dev/960_grid_12_col.png"), url("/images/dev/vertical_rythmn_18px.png");
   padding-left: 10px;
   width: 950px;
   margin: 0 auto;
@@ -476,30 +481,30 @@ body #container {
   *zoom: 1;
   margin-top: 18px;
 }
-/* line 57, sass/screen.scss */
+/* line 58, sass/screen.scss */
 body #container a {
   text-decoration: none;
 }
-/* line 58, sass/screen.scss */
+/* line 59, sass/screen.scss */
 body #container header {
   width: 940px;
 }
-/* line 60, sass/screen.scss */
+/* line 61, sass/screen.scss */
 body #container header h1 {
   float: left;
 }
-/* line 64, sass/screen.scss */
+/* line 65, sass/screen.scss */
 body #container header nav {
   float: right;
   text-align: right;
   margin-top: 1em;
 }
-/* line 69, sass/screen.scss */
+/* line 70, sass/screen.scss */
 body #container header nav ul {
   list-style: none;
   margin-right: 0;
 }
-/* line 72, sass/screen.scss */
+/* line 73, sass/screen.scss */
 body #container header nav ul li {
   display: inline;
   text-align: center;
@@ -514,41 +519,41 @@ body #container header nav ul li {
   width: 60px;
   background: #666;
 }
-/* line 80, sass/screen.scss */
+/* line 81, sass/screen.scss */
 body #container header nav ul li.avatar {
   width: 120px;
 }
-/* line 82, sass/screen.scss */
+/* line 83, sass/screen.scss */
 body #container header nav ul li.avatar img {
   width: 18px;
   padding-right: 5px;
   float: left;
 }
-/* line 88, sass/screen.scss */
+/* line 89, sass/screen.scss */
 body #container header nav ul li a.settings {
   color: #2daebf;
 }
-/* line 91, sass/screen.scss */
+/* line 92, sass/screen.scss */
 body #container header nav ul li a.help {
   color: #91bd09;
 }
-/* line 94, sass/screen.scss */
+/* line 95, sass/screen.scss */
 body #container header nav ul li a.logout {
   color: #ff5c00;
 }
-/* line 101, sass/screen.scss */
+/* line 102, sass/screen.scss */
 body #container #new_status {
   margin-left: 160px;
 }
-/* line 103, sass/screen.scss */
+/* line 104, sass/screen.scss */
 body #container #new_status fieldset {
   border: 0;
 }
-/* line 105, sass/screen.scss */
+/* line 106, sass/screen.scss */
 body #container #new_status fieldset legend, body #container #new_status fieldset label {
   display: none;
 }
-/* line 108, sass/screen.scss */
+/* line 109, sass/screen.scss */
 body #container #new_status fieldset textarea {
   width: 620px;
   height: 108px;
@@ -561,13 +566,13 @@ body #container #new_status fieldset textarea {
   border: 0;
   padding: 0;
 }
-/* line 116, sass/screen.scss */
+/* line 117, sass/screen.scss */
 body #container #new_status input[type=submit] {
   border: 0;
   float: right;
   margin: .5em 0;
 }
-/* line 123, sass/screen.scss */
+/* line 124, sass/screen.scss */
 body header, body footer {
   display: inline;
   float: left;
@@ -578,7 +583,7 @@ body header, body footer {
 * html body header, * html body footer {
   overflow-x: hidden;
 }
-/* line 127, sass/screen.scss */
+/* line 128, sass/screen.scss */
 body #content {
   display: inline;
   float: left;
@@ -590,7 +595,7 @@ body #content {
   overflow-x: hidden;
 }
 
-/* line 133, sass/screen.scss */
+/* line 134, sass/screen.scss */
 .awesome, .awesome:visited {
   background: #222222 url(http://www.zurb.com/images/alert-overlay.png) repeat-x;
   display: inline-block;
@@ -606,18 +611,18 @@ body #content {
   cursor: pointer;
 }
 
-/* line 149, sass/screen.scss */
+/* line 150, sass/screen.scss */
 .awesome:hover {
   background-color: #111;
   color: #fff;
 }
 
-/* line 150, sass/screen.scss */
+/* line 151, sass/screen.scss */
 .awesome:active {
   top: 1px;
 }
 
-/* line 152, sass/screen.scss */
+/* line 153, sass/screen.scss */
 .awesome, .awesome:visited,
 .medium.awesome, .medium.awesome:visited {
   font-size: 13px;
@@ -626,75 +631,75 @@ body #content {
   text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
 }
 
-/* line 153, sass/screen.scss */
+/* line 154, sass/screen.scss */
 .large.awesome, .large.awesome:visited {
   font-size: 14px;
   padding: 8px 14px 9px;
 }
 
-/* line 155, sass/screen.scss */
+/* line 156, sass/screen.scss */
 .green.awesome, .green.awesome:visited {
   background-color: #91bd09;
 }
 
-/* line 156, sass/screen.scss */
+/* line 157, sass/screen.scss */
 .green.awesome:hover {
   background-color: #749a02;
 }
 
-/* line 157, sass/screen.scss */
+/* line 158, sass/screen.scss */
 .blue.awesome, .blue.awesome:visited {
   background-color: #2daebf;
 }
 
-/* line 158, sass/screen.scss */
+/* line 159, sass/screen.scss */
 .blue.awesome:hover {
   background-color: #007d9a;
 }
 
-/* line 159, sass/screen.scss */
+/* line 160, sass/screen.scss */
 .red.awesome, .red.awesome:visited {
   background-color: #e33100;
 }
 
-/* line 160, sass/screen.scss */
+/* line 161, sass/screen.scss */
 .red.awesome:hover {
   background-color: #872300;
 }
 
-/* line 161, sass/screen.scss */
+/* line 162, sass/screen.scss */
 .magenta.awesome, .magenta.awesome:visited {
   background-color: #a9014b;
 }
 
-/* line 162, sass/screen.scss */
+/* line 163, sass/screen.scss */
 .magenta.awesome:hover {
   background-color: #630030;
 }
 
-/* line 163, sass/screen.scss */
+/* line 164, sass/screen.scss */
 .orange.awesome, .orange.awesome:visited {
   background-color: #ff5c00;
 }
 
-/* line 164, sass/screen.scss */
+/* line 165, sass/screen.scss */
 .orange.awesome:hover {
   background-color: #d45500;
 }
 
-/* line 165, sass/screen.scss */
+/* line 166, sass/screen.scss */
 .yellow.awesome, .yellow.awesome:visited {
   background-color: #ffb515;
 }
 
-/* line 166, sass/screen.scss */
+/* line 167, sass/screen.scss */
 .yellow.awesome:hover {
   background-color: #fc9200;
 }
 
 /* Flash Notices
 -----------------------------------------------------------------------------*/
-/* line 170, sass/screen.scss */
+/* line 171, sass/screen.scss */
 p.flash-notice {
   color: #b8f5cf;
   font-weight: bold;
@@ -712,7 +717,7 @@ p.flash-notice {
 
 /* View links
 -----------------------------------------------------------------------------*/
-/* line 182, sass/screen.scss */
+/* line 183, sass/screen.scss */
 ul#view-links {
   background: #ccc;
   width: 200px;
@@ -721,25 +726,24 @@ ul#view-links {
   list-style: none;
   float: left;
 }
-/* line 189, sass/screen.scss */
+/* line 190, sass/screen.scss */
 ul#view-links li {
   display: block;
   width: 100px;
   display: inline;
   float: left;
 }
-/* line 194, sass/screen.scss */
+/* line 195, sass/screen.scss */
 ul#view-links li a {
   display: block;
 }
 
 /* List of statuses
 -----------------------------------------------------------------------------*/
-/* line 203, sass/screen.scss */
+/* line 204, sass/screen.scss */
 ul#status-list {
   clear: both;
   padding-left: 0;
-  background: #fff;
   color: #000;
   margin-left: 240px;
   width: 460px;
@@ -747,14 +751,25 @@ ul#status-list {
 }
 /* line 212, sass/screen.scss */
 ul#status-list li {
-  background-image: -webkit-gradient(linear, 0% 100%, 0% 0%, color-stop(0%, #bdb3b9), color-stop(100%, #e0d9dd));
-  background-image: -moz-linear-gradient(bottom, #bdb3b9 0%, #e0d9dd 100%);
-  background-image: linear-gradient(bottom, #bdb3b9 0%, #e0d9dd 100%);
+  background-image: -webkit-gradient(linear, 0% 100%, 0% 0%, color-stop(0%, #ebebeb), color-stop(100%, #fafafa));
+  background-image: -moz-linear-gradient(bottom, #ebebeb 0%, #fafafa 100%);
+  background-image: linear-gradient(bottom, #ebebeb 0%, #fafafa 100%);
+  -moz-box-shadow: #7f7f7f 1px 1px 5px 0;
+  -webkit-box-shadow: #7f7f7f 1px 1px 5px 0;
+  -o-box-shadow: #7f7f7f 1px 1px 5px 0;
+  box-shadow: #7f7f7f 1px 1px 5px 0;
+  margin-bottom: .5em;
   text-shadow: 0 1px 1px #FFFFFF;
   padding: 18px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #b6b6b6;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
 }
-/* line 217, sass/screen.scss */
+/* line 220, sass/screen.scss */
 ul#status-list li span {
   color: #2daebf;
   text-shadow: none;
@@ -762,31 +777,31 @@ ul#status-list li span {
   text-decoration: none;
   font-style: italic;
 }
-/* line 223, sass/screen.scss */
+/* line 226, sass/screen.scss */
 ul#status-list li span.blue {
   color: #2daebf;
 }
-/* line 225, sass/screen.scss */
+/* line 228, sass/screen.scss */
 ul#status-list li span.blue a {
   color: #2daebf;
 }
-/* line 229, sass/screen.scss */
+/* line 232, sass/screen.scss */
 ul#status-list li span.green {
   color: #91bd09;
 }
-/* line 231, sass/screen.scss */
+/* line 234, sass/screen.scss */
 ul#status-list li span.green a {
   color: #91bd09;
 }
-/* line 235, sass/screen.scss */
+/* line 238, sass/screen.scss */
 ul#status-list li span.orange {
   color: #ff5c00;
 }
-/* line 237, sass/screen.scss */
+/* line 240, sass/screen.scss */
 ul#status-list li span.orange a {
   color: #ff5c00;
 }
-/* line 241, sass/screen.scss */
+/* line 244, sass/screen.scss */
 ul#status-list li span a {
   color: #ff5c00;
   text-shadow: none;

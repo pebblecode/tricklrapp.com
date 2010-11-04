@@ -45,12 +45,13 @@ body.bp {
 
 // Page layout can be done using mixins applied to your semantic classes and IDs:
 body {
-  //background : #434654 url('/images/bg/gradient.png') repeat-x;
+  background : #272727;
   #container {
-    background: #f4eded;
+    //@include linear-gradient(color-stops(#ebebeb, #fafafa), bottom);
+    background: #d2d2d2;
     @include box-shadow; 
     @include border-radius(10px);
-    //background: url('/images/dev/960_grid_12_col.png'), url('/images/dev/vertical_rythmn_18px.png');
+    background: url('/images/dev/960_grid_12_col.png'), url('/images/dev/vertical_rythmn_18px.png');
     padding-left: 10px;
     @include container; 
     margin-top: 18px;
@@ -203,17 +204,19 @@ ul#status-list
 {
   clear: both;
   padding-left: 0;
-  background: #fff;
   color: #000;
   margin-left: 240px;
   width: 460px;
   list-style: none;
   li
   {
-    @include linear-gradient(color-stops(rgb(189,179,185), rgb(224,217,221)), bottom);
+    @include linear-gradient(color-stops(#ebebeb, #fafafa), bottom);
+    @include box-shadow(#7f7f7f);
+    margin-bottom: .5em;
     text-shadow:0 1px 1px #FFFFFF;
     padding: 18px;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #b6b6b6;
+    @include border-radius(5px);
     span {
       color: #2daebf;
       text-shadow: none;
