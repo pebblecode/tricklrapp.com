@@ -473,7 +473,6 @@ body #container {
   -ms-border-radius: 10px;
   -khtml-border-radius: 10px;
   border-radius: 10px;
-  background: url("/images/dev/960_grid_12_col.png"), url("/images/dev/vertical_rythmn_18px.png");
   padding-left: 10px;
   width: 950px;
   margin: 0 auto;
@@ -758,10 +757,8 @@ ul#status-list li {
   -webkit-box-shadow: #7f7f7f 1px 1px 5px 0;
   -o-box-shadow: #7f7f7f 1px 1px 5px 0;
   box-shadow: #7f7f7f 1px 1px 5px 0;
-  margin-bottom: .5em;
-  text-shadow: 0 1px 1px #FFFFFF;
+  margin-bottom: 9px;
   padding: 18px;
-  border-bottom: 1px solid #b6b6b6;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -769,39 +766,38 @@ ul#status-list li {
   -khtml-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 220, sass/screen.scss */
+/* line 218, sass/screen.scss */
 ul#status-list li span {
   color: #2daebf;
   text-shadow: none;
-  font-size: .8em;
   text-decoration: none;
   font-style: italic;
 }
-/* line 226, sass/screen.scss */
+/* line 223, sass/screen.scss */
 ul#status-list li span.blue {
   color: #2daebf;
 }
-/* line 228, sass/screen.scss */
+/* line 225, sass/screen.scss */
 ul#status-list li span.blue a {
   color: #2daebf;
 }
-/* line 232, sass/screen.scss */
+/* line 229, sass/screen.scss */
 ul#status-list li span.green {
   color: #91bd09;
 }
-/* line 234, sass/screen.scss */
+/* line 231, sass/screen.scss */
 ul#status-list li span.green a {
   color: #91bd09;
 }
-/* line 238, sass/screen.scss */
+/* line 235, sass/screen.scss */
 ul#status-list li span.orange {
   color: #ff5c00;
 }
-/* line 240, sass/screen.scss */
+/* line 237, sass/screen.scss */
 ul#status-list li span.orange a {
   color: #ff5c00;
 }
-/* line 244, sass/screen.scss */
+/* line 241, sass/screen.scss */
 ul#status-list li span a {
   color: #ff5c00;
   text-shadow: none;

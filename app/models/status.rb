@@ -13,10 +13,12 @@ class Status < ActiveRecord::Base
 
   # Set a default for sheduled_at
   def set_scheduled_at
-    if self.user.unpublished_statuses.first.present?
-      self.scheduled_at = self.user.unpublished_statuses.first.scheduled_at + 2.hours
-    else
-      self.scheduled_at = 2.hours.from_now unless self.scheduled_at?
+    unless self.scheduled_at?
+      if self.user.unpublished_statuses.first.present?
+        self.scheduled_at = self.user.unpublished_statuses.first.scheduled_at + 2.hours
+      else
+        self.scheduled_at = 2.hours.from_now 
+      end
     end
   end
 
