@@ -38,11 +38,7 @@ gem 'resque'
 # Resque scheduler for scheduled tasks
 # http://github.com/bvandenbos/resque-scheduler
 gem 'resque-scheduler'
-
-group :staging do
-  # Redis is know to have issues on 1.8.7 so use this
-  gem 'SystemTimer'
-end
+gem 'SystemTimer'
 
 # Haml for templates
 # http://github.com/nex3/haml
