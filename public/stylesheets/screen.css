@@ -487,23 +487,37 @@ body #container a {
 /* line 59, sass/screen.scss */
 body #container header {
   width: 940px;
+  /* Image replacement technique */
 }
-/* line 61, sass/screen.scss */
+/* line 63, sass/screen.scss */
 body #container header h1 {
   float: left;
+  width: 200px;
+  height: 56px;
+  text-indent: -9999px;
+  font-size: 1em;
 }
-/* line 65, sass/screen.scss */
+/* line 71, sass/screen.scss */
+body #container header h1 a {
+  width: 200px;
+  height: 56px;
+  background: url(/images/bg/logo.png) 0 0 no-repeat;
+  float: left;
+  text-decoration: none;
+  border-bottom: none;
+}
+/* line 80, sass/screen.scss */
 body #container header nav {
   float: right;
   text-align: right;
   margin-top: 1em;
 }
-/* line 70, sass/screen.scss */
+/* line 85, sass/screen.scss */
 body #container header nav ul {
   list-style: none;
   margin-right: 0;
 }
-/* line 73, sass/screen.scss */
+/* line 88, sass/screen.scss */
 body #container header nav ul li {
   display: inline;
   text-align: center;
@@ -518,41 +532,41 @@ body #container header nav ul li {
   width: 60px;
   background: #666;
 }
-/* line 81, sass/screen.scss */
+/* line 96, sass/screen.scss */
 body #container header nav ul li.avatar {
   width: 120px;
 }
-/* line 83, sass/screen.scss */
+/* line 98, sass/screen.scss */
 body #container header nav ul li.avatar img {
   width: 18px;
   padding-right: 5px;
   float: left;
 }
-/* line 89, sass/screen.scss */
+/* line 104, sass/screen.scss */
 body #container header nav ul li a.settings {
   color: #2daebf;
 }
-/* line 92, sass/screen.scss */
+/* line 107, sass/screen.scss */
 body #container header nav ul li a.help {
   color: #91bd09;
 }
-/* line 95, sass/screen.scss */
+/* line 110, sass/screen.scss */
 body #container header nav ul li a.logout {
   color: #ff5c00;
 }
-/* line 102, sass/screen.scss */
+/* line 117, sass/screen.scss */
 body #container #new_status {
   margin-left: 160px;
 }
-/* line 104, sass/screen.scss */
+/* line 119, sass/screen.scss */
 body #container #new_status fieldset {
   border: 0;
 }
-/* line 106, sass/screen.scss */
+/* line 121, sass/screen.scss */
 body #container #new_status fieldset legend, body #container #new_status fieldset label {
   display: none;
 }
-/* line 109, sass/screen.scss */
+/* line 124, sass/screen.scss */
 body #container #new_status fieldset textarea {
   width: 620px;
   height: 108px;
@@ -565,13 +579,13 @@ body #container #new_status fieldset textarea {
   border: 0;
   padding: 0;
 }
-/* line 117, sass/screen.scss */
+/* line 132, sass/screen.scss */
 body #container #new_status input[type=submit] {
   border: 0;
   float: right;
   margin: .5em 0;
 }
-/* line 124, sass/screen.scss */
+/* line 139, sass/screen.scss */
 body header, body footer {
   display: inline;
   float: left;
@@ -582,7 +596,7 @@ body header, body footer {
 * html body header, * html body footer {
   overflow-x: hidden;
 }
-/* line 128, sass/screen.scss */
+/* line 143, sass/screen.scss */
 body #content {
   display: inline;
   float: left;
@@ -594,7 +608,7 @@ body #content {
   overflow-x: hidden;
 }
 
-/* line 134, sass/screen.scss */
+/* line 149, sass/screen.scss */
 .awesome, .awesome:visited {
   background: #222222 url(http://www.zurb.com/images/alert-overlay.png) repeat-x;
   display: inline-block;
@@ -610,18 +624,18 @@ body #content {
   cursor: pointer;
 }
 
-/* line 150, sass/screen.scss */
+/* line 165, sass/screen.scss */
 .awesome:hover {
   background-color: #111;
   color: #fff;
 }
 
-/* line 151, sass/screen.scss */
+/* line 166, sass/screen.scss */
 .awesome:active {
   top: 1px;
 }
 
-/* line 153, sass/screen.scss */
+/* line 168, sass/screen.scss */
 .awesome, .awesome:visited,
 .medium.awesome, .medium.awesome:visited {
   font-size: 13px;
@@ -630,75 +644,75 @@ body #content {
   text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
 }
 
-/* line 154, sass/screen.scss */
+/* line 169, sass/screen.scss */
 .large.awesome, .large.awesome:visited {
   font-size: 14px;
   padding: 8px 14px 9px;
 }
 
-/* line 156, sass/screen.scss */
+/* line 171, sass/screen.scss */
 .green.awesome, .green.awesome:visited {
   background-color: #91bd09;
 }
 
-/* line 157, sass/screen.scss */
+/* line 172, sass/screen.scss */
 .green.awesome:hover {
   background-color: #749a02;
 }
 
-/* line 158, sass/screen.scss */
+/* line 173, sass/screen.scss */
 .blue.awesome, .blue.awesome:visited {
   background-color: #2daebf;
 }
 
-/* line 159, sass/screen.scss */
+/* line 174, sass/screen.scss */
 .blue.awesome:hover {
   background-color: #007d9a;
 }
 
-/* line 160, sass/screen.scss */
+/* line 175, sass/screen.scss */
 .red.awesome, .red.awesome:visited {
   background-color: #e33100;
 }
 
-/* line 161, sass/screen.scss */
+/* line 176, sass/screen.scss */
 .red.awesome:hover {
   background-color: #872300;
 }
 
-/* line 162, sass/screen.scss */
+/* line 177, sass/screen.scss */
 .magenta.awesome, .magenta.awesome:visited {
   background-color: #a9014b;
 }
 
-/* line 163, sass/screen.scss */
+/* line 178, sass/screen.scss */
 .magenta.awesome:hover {
   background-color: #630030;
 }
 
-/* line 164, sass/screen.scss */
+/* line 179, sass/screen.scss */
 .orange.awesome, .orange.awesome:visited {
   background-color: #ff5c00;
 }
 
-/* line 165, sass/screen.scss */
+/* line 180, sass/screen.scss */
 .orange.awesome:hover {
   background-color: #d45500;
 }
 
-/* line 166, sass/screen.scss */
+/* line 181, sass/screen.scss */
 .yellow.awesome, .yellow.awesome:visited {
   background-color: #ffb515;
 }
 
-/* line 167, sass/screen.scss */
+/* line 182, sass/screen.scss */
 .yellow.awesome:hover {
   background-color: #fc9200;
 }
 
 /* Flash Notices
 -----------------------------------------------------------------------------*/
-/* line 171, sass/screen.scss */
+/* line 186, sass/screen.scss */
 p.flash-notice {
   color: #b8f5cf;
   font-weight: bold;
@@ -716,7 +730,7 @@ p.flash-notice {
 
 /* View links
 -----------------------------------------------------------------------------*/
-/* line 183, sass/screen.scss */
+/* line 198, sass/screen.scss */
 ul#view-links {
   background: #ccc;
   width: 200px;
@@ -725,21 +739,21 @@ ul#view-links {
   list-style: none;
   float: left;
 }
-/* line 190, sass/screen.scss */
+/* line 205, sass/screen.scss */
 ul#view-links li {
   display: block;
   width: 100px;
   display: inline;
   float: left;
 }
-/* line 195, sass/screen.scss */
+/* line 210, sass/screen.scss */
 ul#view-links li a {
   display: block;
 }
 
 /* List of statuses
 -----------------------------------------------------------------------------*/
-/* line 204, sass/screen.scss */
+/* line 219, sass/screen.scss */
 ul#status-list {
   clear: both;
   padding-left: 0;
@@ -748,7 +762,7 @@ ul#status-list {
   width: 460px;
   list-style: none;
 }
-/* line 212, sass/screen.scss */
+/* line 227, sass/screen.scss */
 ul#status-list li {
   background-image: -webkit-gradient(linear, 0% 100%, 0% 0%, color-stop(0%, #ebebeb), color-stop(100%, #fafafa));
   background-image: -moz-linear-gradient(bottom, #ebebeb 0%, #fafafa 100%);
@@ -759,6 +773,7 @@ ul#status-list li {
   box-shadow: #7f7f7f 1px 1px 5px 0;
   margin-bottom: 9px;
   padding: 18px;
+  position: relative;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
@@ -766,38 +781,95 @@ ul#status-list li {
   -khtml-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 218, sass/screen.scss */
+/* line 234, sass/screen.scss */
+ul#status-list li p {
+  width: 350px;
+  margin-bottom: 0;
+}
+/* line 238, sass/screen.scss */
+ul#status-list li a.delete-status {
+  width: 16px;
+  height: 16px;
+  text-indent: -9999px;
+  outline: 0;
+  position: absolute;
+  top: 40%;
+  background: url("/images/icons/16x16/sprite.png") -16px 0 no-repeat;
+  right: 10px;
+}
+/* line 247, sass/screen.scss */
+ul#status-list li a.delete-status:hover {
+  background-position: -16px -16px;
+}
+/* line 251, sass/screen.scss */
+ul#status-list li a.reorder-statuses {
+  width: 16px;
+  height: 16px;
+  text-indent: -9999px;
+  outline: 0;
+  position: absolute;
+  top: 40%;
+  right: 40px;
+  background: url("/images/icons/16x16/sprite.png") 0 0 no-repeat;
+}
+/* line 260, sass/screen.scss */
+ul#status-list li a.reorder-statuses:hover {
+  cursor: move;
+  background-position: 0 -16px;
+}
+/* line 267, sass/screen.scss */
+ul#status-list li a.confirm-delete-status {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: bold;
+  position: absolute;
+  right: -80px;
+  top: 39%;
+  width: 50px;
+  padding: 2px 20px 2px 10px;
+  background-color: #232323;
+  background-image: url("/images/icons/16x16/delete_confirm.png"), url("/images/bg/delete_confirm_chevron.png");
+  background-repeat: no-repeat, no-repeat;
+  background-position: 60px 2px, -10px 0;
+  margin-left: 10px;
+}
+/* line 285, sass/screen.scss */
 ul#status-list li span {
   color: #2daebf;
   text-shadow: none;
   text-decoration: none;
   font-style: italic;
 }
-/* line 223, sass/screen.scss */
+/* line 290, sass/screen.scss */
 ul#status-list li span.blue {
   color: #2daebf;
 }
-/* line 225, sass/screen.scss */
+/* line 292, sass/screen.scss */
 ul#status-list li span.blue a {
   color: #2daebf;
 }
-/* line 229, sass/screen.scss */
+/* line 296, sass/screen.scss */
 ul#status-list li span.green {
   color: #91bd09;
 }
-/* line 231, sass/screen.scss */
+/* line 298, sass/screen.scss */
 ul#status-list li span.green a {
   color: #91bd09;
 }
-/* line 235, sass/screen.scss */
+/* line 302, sass/screen.scss */
 ul#status-list li span.orange {
   color: #ff5c00;
 }
-/* line 237, sass/screen.scss */
+/* line 304, sass/screen.scss */
 ul#status-list li span.orange a {
   color: #ff5c00;
 }
-/* line 241, sass/screen.scss */
+/* line 308, sass/screen.scss */
 ul#status-list li span a {
   color: #ff5c00;
   text-shadow: none;

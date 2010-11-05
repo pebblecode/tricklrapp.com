@@ -184,6 +184,9 @@ GEM
       redis (>= 2.0.1)
       resque (>= 1.8.0)
       rufus-scheduler
+    resque_spec (0.4.0)
+      resque (>= 1.6.0)
+      rspec (>= 2.0.0.beta.12)
     rest-client (1.6.1)
       mime-types (>= 1.16)
     rspec (2.0.1)
@@ -244,7 +247,6 @@ DEPENDENCIES
   capistrano-ext
   capybara
   compass
-  cucumber
   cucumber-rails
   database_cleaner
   devise
@@ -258,6 +260,7 @@ DEPENDENCIES
   rails (= 3.0.1)
   resque
   resque-scheduler
+  resque_spec
   rspec-rails
   shoulda
   spork

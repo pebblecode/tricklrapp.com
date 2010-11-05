@@ -20,4 +20,23 @@ $(document).ready(function() {
   * Fade flash notices
   */
   $(".flash-notice").flashNotice();  
+
+  /*
+  * Make tweet list sortable
+  */
+  $("#status-list").sortable({ handle: '.reorder-statuses' });
+
+  /* 
+  * Pretty delete messages
+  */
+  $('.delete-status').click(function() {
+      $(this).after('<a href="#" class="confirm-delete-status">delete?</a>');
+      $(':not(.confirm-delete-status)').click(function() {
+        $('.confirm-delete-status').hide();
+      });
+      $('.confirm-delete-status').click(function() {
+        $('.confirm-delete-status').parent().fadeOut('slow');
+      });
+      return false;
+  });
 });
