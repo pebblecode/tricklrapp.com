@@ -8,6 +8,7 @@ set :repository,  "git@apu.pebbleit.com:tweethopper.com.git"
 set :use_sudo, false
 set :scm, :git
 set :deploy_via, :remote_cache
+set :application, "tricklr"
 
 set :default_stage, "staging"
  
