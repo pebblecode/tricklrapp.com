@@ -17,7 +17,7 @@ class Status < ActiveRecord::Base
       if self.user.unpublished_statuses.first.present?
         self.scheduled_at = self.user.unpublished_statuses.first.scheduled_at + 2.hours
       else
-        self.scheduled_at = 2.hours.from_now 
+        self.scheduled_at = 2.minutes.from_now 
       end
     end
   end
