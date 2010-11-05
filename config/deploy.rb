@@ -9,6 +9,7 @@ set :use_sudo, false
 set :scm, :git
 set :deploy_via, :remote_cache
 set :application, "tricklr"
+default_run_options[:pty] = true
 
 set :default_stage, "staging"
  
