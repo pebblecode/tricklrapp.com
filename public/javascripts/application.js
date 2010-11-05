@@ -36,6 +36,7 @@ $(document).ready(function() {
       });
       $('.confirm-delete-status').click(function() {
         $('.confirm-delete-status').parent().fadeOut('slow');
+        return false;
       });
       return false;
   });

@@ -20,8 +20,9 @@
           -else 
             trickling in
             =distance_of_time_in_words(Time.now, t.scheduled_at)
-            = link_to 'Edit', edit_status_path(t)
-            = link_to 'Destroy', t, :confirm => 'Are you sure?', :method => :delete, :class => "delete-status"
-            = link_to 'Reorder', "#", :class => "reorder-statuses"
+            //= link_to 'Edit', edit_status_path(t)
+        -if !t.published_at
+          = link_to 'Destroy', t, :confirm => 'Are you sure?', :method => :delete, :class => "delete-status"
+          = link_to 'Reorder', "#", :class => "reorder-statuses"
 
 

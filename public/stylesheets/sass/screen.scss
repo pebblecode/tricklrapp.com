@@ -266,7 +266,7 @@ ul#status-list
     }
     a.confirm-delete-status {
       @include border-radius(10px);
-      color: #fff;
+      color: #fff !important;
       font-weight: bold;
       position: absolute;
       right:-80px;

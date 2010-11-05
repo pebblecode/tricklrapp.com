@@ -825,7 +825,7 @@ ul#status-list li a.confirm-delete-status {
   -ms-border-radius: 10px;
   -khtml-border-radius: 10px;
   border-radius: 10px;
-  color: #fff;
+  color: #fff !important;
   font-weight: bold;
   position: absolute;
   right: -80px;
