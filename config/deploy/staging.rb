@@ -4,15 +4,15 @@ set :branch, "master"
 
 namespace :deploy do
   task :start do
-    sudo "/usr/bin/monit -g #{application} start all"
+    run "#{sudo} /usr/bin/monit -g #{application} start all"
   end
 
   task :stop do
-    sudo "/usr/bin/monit -g #{application} stop all"
+    run "#{sudo} /usr/bin/monit -g #{application} stop all"
   end
 
   task :restart do
-    sudo "/usr/bin/monit -g #{application} restart all"
+    run "#{sudo} /usr/bin/monit -g #{application} restart all"
   end
 end
 
