@@ -1,0 +1,25 @@
+base: &base
+  adapter: mysql
+  username: tricklr
+  password: foobar
+  host: localhost
+
+development:
+  database: tricklr_development
+  <<: *base
+
+test: &test
+  database: tricklr_test
+  <<: *base
+  
+staging:
+  database: tricklr_staging
+  <<: *base
+
+production:
+  database: tricklr_production
+  <<: *base
+  password: 5AWr7wEr
+
+cucumber:
+  <<: *test
