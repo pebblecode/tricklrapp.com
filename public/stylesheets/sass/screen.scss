@@ -51,7 +51,7 @@ body {
     background: #d2d2d2;
     @include box-shadow; 
     @include border-radius(10px);
-    //background: url('/images/dev/960_grid_12_col.png'), url('/images/dev/vertical_rythmn_18px.png');
+    background: url('/images/dev/960_grid_12_col.png'), url('/images/dev/vertical_rythmn_18px.png');
     padding-left: 10px;
     @include container; 
     margin-top: 18px;

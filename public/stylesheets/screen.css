@@ -473,6 +473,7 @@ body #container {
   -ms-border-radius: 10px;
   -khtml-border-radius: 10px;
   border-radius: 10px;
+  background: url("/images/dev/960_grid_12_col.png"), url("/images/dev/vertical_rythmn_18px.png");
   padding-left: 10px;
   width: 950px;
   margin: 0 auto;
