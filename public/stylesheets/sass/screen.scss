@@ -51,7 +51,7 @@ body {
     background: #d2d2d2;
     @include box-shadow; 
     @include border-radius(10px);
-    background: url('/images/dev/960_grid_12_col.png'), url('/images/dev/vertical_rythmn_18px.png');
+    //background: url('/images/dev/960_grid_12_col.png'), url('/images/dev/vertical_rythmn_18px.png');
     padding-left: 10px;
     @include container; 
     margin-top: 18px;
@@ -235,7 +235,7 @@ ul#status-list
       width: 350px;
       margin-bottom: 0;
     }
-    a.delete-status{
+    input.delete-status{
       width: 16px;
       height: 16px;
       text-indent: -9999px;
@@ -244,8 +244,14 @@ ul#status-list
       top: 40%;
       background: url('/images/icons/16x16/sprite.png') -16px 0 no-repeat;
       right: 10px;
+      border: 0;
+      outline: 0;
       &:hover{
+        cursor: pointer;
         background-position: -16px -16px;
+      }
+      &:hover, &:active, &:focus{
+        outline: 0;
       }
     }
     a.reorder-statuses{
@@ -264,23 +270,24 @@ ul#status-list
     }
     a:hover {
     }
-    a.confirm-delete-status {
-      @include border-radius(10px);
-      color: #fff !important;
-      font-weight: bold;
+    p.confirm-delete-status {
+      display: none;
+      background: url("/images/bg/delete_confirm_chevron.png") left center no-repeat;
       position: absolute;
-      right:-80px;
+      right:-65px;
       top:39%;
-      width:50px;
-      padding: 2px 20px 2px 10px;
-       background-color: #232323;
-
-       background-image: url("/images/icons/16x16/delete_confirm.png"), url("/images/bg/delete_confirm_chevron.png");
-
-       background-repeat: no-repeat, no-repeat;
-
-       background-position: 60px 2px, -10px 0;
-       margin-left: 10px;
+      width: 70px;
+      padding-left: 4px;
+      a {
+        @include border-radius(10px);
+        position: relative;
+        color: #fff !important;
+        font-weight: bold;
+        width:60px;
+        padding: 2px 25px 2px 10px;
+        background: #232323 url("/images/icons/16x16/delete_confirm.png") 58px 1px no-repeat;
+        @include box-shadow(#7f7f7f);
+      }
     }
     span {
       color: #2daebf;

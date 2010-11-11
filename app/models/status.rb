@@ -11,13 +11,13 @@ class Status < ActiveRecord::Base
   validates_presence_of :status
   validates_length_of :status, :maximum => 140
 
-  # Set a default for sheduled_at
+  # Sets when a status is scheduled
   def set_scheduled_at
     unless self.scheduled_at?
       if self.user.unpublished_statuses.first.present?
-        self.scheduled_at = self.user.unpublished_statuses.first.scheduled_at + 2.hours
+        self.scheduled_at = self.user.unpublished_statuses.first.scheduled_at + self.user.setting.interval
       else
-        self.scheduled_at = 2.hours.from_now 
+        self.scheduled_at = Time.now + self.user.setting.interval
       end
     end
   end

@@ -2,13 +2,16 @@ Tricklr::Application.routes.draw do
 
   devise_for :users, :controllers => {:registrations => 'registrations'}
 
+
   match '/auth/:provider/callback' => 'authentications#create'
   match 'help', :to => 'pages#help'
 
   match 'published', :to => 'statuses#published'
 
-  root :to => "statuses#index"
   resources :statuses
+  resources :settings
+
+  root :to => "statuses#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

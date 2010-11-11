@@ -1,0 +1,23 @@
+=form_for @setting do |f|
+  =render :partial => '/partials/error_messages', :locals => { :object => @setting }
+  = field_set_tag 'Settings' do
+    %p
+      =f.label :automatic
+      =f.radio_button :automatic, true
+      =f.radio_button :automatic, false
+    %p
+      =f.label :time_digit
+      =f.text_field :time_digit, :value => number_to_human(@setting.time_digit)
+    %p
+      =f.label :time_unit
+      =f.select :time_unit, options_for_select([ "minutes", "hours", "days" ], @setting.time_unit)
+
+    #slider-range
+    %p
+      =f.label :range
+      =f.text_field :range, :id => "amount"
+
+    =f.submit 'Save', :class => "awesome magenta"
+    
+
+  

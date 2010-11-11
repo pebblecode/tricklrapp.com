@@ -50,7 +50,10 @@ class StatusesController < ApplicationController
   def destroy
     @status.destroy
     flash[:notice] = 'Gone! Your tweet is no more'
-    redirect_to :back
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js { render false }
+    end
   end 
 
   private 

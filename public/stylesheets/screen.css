@@ -473,7 +473,6 @@ body #container {
   -ms-border-radius: 10px;
   -khtml-border-radius: 10px;
   border-radius: 10px;
-  background: url("/images/dev/960_grid_12_col.png"), url("/images/dev/vertical_rythmn_18px.png");
   padding-left: 10px;
   width: 950px;
   margin: 0 auto;
@@ -788,7 +787,7 @@ ul#status-list li p {
   margin-bottom: 0;
 }
 /* line 238, sass/screen.scss */
-ul#status-list li a.delete-status {
+ul#status-list li input.delete-status {
   width: 16px;
   height: 16px;
   text-indent: -9999px;
@@ -797,12 +796,19 @@ ul#status-list li a.delete-status {
   top: 40%;
   background: url("/images/icons/16x16/sprite.png") -16px 0 no-repeat;
   right: 10px;
+  border: 0;
+  outline: 0;
 }
-/* line 247, sass/screen.scss */
-ul#status-list li a.delete-status:hover {
+/* line 249, sass/screen.scss */
+ul#status-list li input.delete-status:hover {
+  cursor: pointer;
   background-position: -16px -16px;
 }
-/* line 251, sass/screen.scss */
+/* line 253, sass/screen.scss */
+ul#status-list li input.delete-status:hover, ul#status-list li input.delete-status:active, ul#status-list li input.delete-status:focus {
+  outline: 0;
+}
+/* line 257, sass/screen.scss */
 ul#status-list li a.reorder-statuses {
   width: 16px;
   height: 16px;
@@ -813,64 +819,72 @@ ul#status-list li a.reorder-statuses {
   right: 40px;
   background: url("/images/icons/16x16/sprite.png") 0 0 no-repeat;
 }
-/* line 260, sass/screen.scss */
+/* line 266, sass/screen.scss */
 ul#status-list li a.reorder-statuses:hover {
   cursor: move;
   background-position: 0 -16px;
 }
-/* line 267, sass/screen.scss */
-ul#status-list li a.confirm-delete-status {
+/* line 273, sass/screen.scss */
+ul#status-list li p.confirm-delete-status {
+  display: none;
+  background: url("/images/bg/delete_confirm_chevron.png") left center no-repeat;
+  position: absolute;
+  right: -65px;
+  top: 39%;
+  width: 70px;
+  padding-left: 4px;
+}
+/* line 281, sass/screen.scss */
+ul#status-list li p.confirm-delete-status a {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   -o-border-radius: 10px;
   -ms-border-radius: 10px;
   -khtml-border-radius: 10px;
   border-radius: 10px;
+  position: relative;
   color: #fff !important;
   font-weight: bold;
-  position: absolute;
-  right: -80px;
-  top: 39%;
-  width: 50px;
-  padding: 2px 20px 2px 10px;
-  background-color: #232323;
-  background-image: url("/images/icons/16x16/delete_confirm.png"), url("/images/bg/delete_confirm_chevron.png");
-  background-repeat: no-repeat, no-repeat;
-  background-position: 60px 2px, -10px 0;
-  margin-left: 10px;
+  width: 60px;
+  padding: 2px 25px 2px 10px;
+  background: #232323 url("/images/icons/16x16/delete_confirm.png") 58px 1px no-repeat;
+  -moz-box-shadow: #7f7f7f 1px 1px 5px 0;
+  -webkit-box-shadow: #7f7f7f 1px 1px 5px 0;
+  -o-box-shadow: #7f7f7f 1px 1px 5px 0;
+  box-shadow: #7f7f7f 1px 1px 5px 0;
 }
-/* line 285, sass/screen.scss */
+/* line 292, sass/screen.scss */
 ul#status-list li span {
   color: #2daebf;
   text-shadow: none;
   text-decoration: none;
   font-style: italic;
 }
-/* line 290, sass/screen.scss */
+/* line 297, sass/screen.scss */
 ul#status-list li span.blue {
   color: #2daebf;
 }
-/* line 292, sass/screen.scss */
+/* line 299, sass/screen.scss */
 ul#status-list li span.blue a {
   color: #2daebf;
 }
-/* line 296, sass/screen.scss */
+/* line 303, sass/screen.scss */
 ul#status-list li span.green {
   color: #91bd09;
 }
-/* line 298, sass/screen.scss */
+/* line 305, sass/screen.scss */
 ul#status-list li span.green a {
   color: #91bd09;
 }
-/* line 302, sass/screen.scss */
+/* line 309, sass/screen.scss */
 ul#status-list li span.orange {
   color: #ff5c00;
 }
-/* line 304, sass/screen.scss */
+/* line 311, sass/screen.scss */
 ul#status-list li span.orange a {
   color: #ff5c00;
 }
-/* line 308, sass/screen.scss */
+/* line 315, sass/screen.scss */
 ul#status-list li span a {
   color: #ff5c00;
   text-shadow: none;

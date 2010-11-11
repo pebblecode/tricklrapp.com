@@ -9,7 +9,7 @@
           =image_tag(current_user.profile_image_url)
           =current_user.screen_name
         %li
-          =link_to "Settings", "#", :class => "settings"
+          =link_to "Settings", settings_path, :class => "settings"
       %li
         =link_to "Help", help_path, :class => "help"
       %li
