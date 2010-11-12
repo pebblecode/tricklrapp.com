@@ -496,8 +496,9 @@ body #container header h1 {
   height: 56px;
   text-indent: -9999px;
   font-size: 1em;
+  margin-bottom: 1.4em;
 }
-/* line 71, sass/screen.scss */
+/* line 72, sass/screen.scss */
 body #container header h1 a {
   width: 200px;
   height: 56px;
@@ -506,18 +507,18 @@ body #container header h1 a {
   text-decoration: none;
   border-bottom: none;
 }
-/* line 80, sass/screen.scss */
+/* line 81, sass/screen.scss */
 body #container header nav {
   float: right;
   text-align: right;
   margin-top: 1em;
 }
-/* line 85, sass/screen.scss */
+/* line 86, sass/screen.scss */
 body #container header nav ul {
   list-style: none;
   margin-right: 0;
 }
-/* line 88, sass/screen.scss */
+/* line 89, sass/screen.scss */
 body #container header nav ul li {
   display: inline;
   text-align: center;
@@ -532,42 +533,47 @@ body #container header nav ul li {
   width: 60px;
   background: #666;
 }
-/* line 96, sass/screen.scss */
+/* line 97, sass/screen.scss */
 body #container header nav ul li.avatar {
   width: 120px;
 }
-/* line 98, sass/screen.scss */
+/* line 99, sass/screen.scss */
 body #container header nav ul li.avatar img {
   width: 18px;
   padding-right: 5px;
   float: left;
 }
-/* line 104, sass/screen.scss */
+/* line 105, sass/screen.scss */
 body #container header nav ul li a.settings {
   color: #2daebf;
 }
-/* line 107, sass/screen.scss */
+/* line 108, sass/screen.scss */
 body #container header nav ul li a.help {
   color: #91bd09;
 }
-/* line 110, sass/screen.scss */
+/* line 111, sass/screen.scss */
 body #container header nav ul li a.logout {
   color: #ff5c00;
 }
-/* line 117, sass/screen.scss */
+/* line 118, sass/screen.scss */
 body #container #new_status {
   margin-left: 160px;
 }
-/* line 119, sass/screen.scss */
+/* line 120, sass/screen.scss */
 body #container #new_status fieldset {
   border: 0;
 }
-/* line 121, sass/screen.scss */
+/* line 122, sass/screen.scss */
 body #container #new_status fieldset legend, body #container #new_status fieldset label {
   display: none;
 }
-/* line 124, sass/screen.scss */
+/* line 125, sass/screen.scss */
 body #container #new_status fieldset textarea {
+  outline: none;
+  -moz-box-shadow: #666666 0px 1px 3px 1px inset;
+  -webkit-box-shadow: #666666 0px 1px 3px 1px inset;
+  -o-box-shadow: #666666 0px 1px 3px 1px inset;
+  box-shadow: #666666 0px 1px 3px 1px inset;
   width: 602px;
   height: 60px;
   color: #333;
@@ -583,7 +589,7 @@ body #container #new_status fieldset textarea {
   line-height: 1em;
   font-family: Helvetica, Arial;
 }
-/* line 136, sass/screen.scss */
+/* line 139, sass/screen.scss */
 body #container #new_status .count {
   float: right;
   margin: 4px 10px 0 0;
@@ -603,17 +609,17 @@ body #container #new_status .count {
   box-shadow: #7f7f7f 1px 1px 5px 0;
   font-weight: bold;
 }
-/* line 147, sass/screen.scss */
+/* line 150, sass/screen.scss */
 body #container #new_status .status-count-warning {
   color: red;
 }
-/* line 150, sass/screen.scss */
+/* line 153, sass/screen.scss */
 body #container #new_status input[type=submit] {
   border: 0;
   float: right;
   margin: .5em 0;
 }
-/* line 157, sass/screen.scss */
+/* line 160, sass/screen.scss */
 body header, body footer {
   display: inline;
   float: left;
@@ -624,7 +630,7 @@ body header, body footer {
 * html body header, * html body footer {
   overflow-x: hidden;
 }
-/* line 161, sass/screen.scss */
+/* line 164, sass/screen.scss */
 body #content {
   display: inline;
   float: left;
@@ -636,7 +642,7 @@ body #content {
   overflow-x: hidden;
 }
 
-/* line 167, sass/screen.scss */
+/* line 170, sass/screen.scss */
 .awesome, .awesome:visited {
   background: #222222 url(http://www.zurb.com/images/alert-overlay.png) repeat-x;
   display: inline-block;
@@ -652,18 +658,18 @@ body #content {
   cursor: pointer;
 }
 
-/* line 183, sass/screen.scss */
+/* line 186, sass/screen.scss */
 .awesome:hover {
   background-color: #111;
   color: #fff;
 }
 
-/* line 184, sass/screen.scss */
+/* line 187, sass/screen.scss */
 .awesome:active {
   top: 1px;
 }
 
-/* line 186, sass/screen.scss */
+/* line 189, sass/screen.scss */
 .awesome, .awesome:visited,
 .medium.awesome, .medium.awesome:visited {
   font-size: 13px;
@@ -672,75 +678,75 @@ body #content {
   text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
 }
 
-/* line 187, sass/screen.scss */
+/* line 190, sass/screen.scss */
 .large.awesome, .large.awesome:visited {
   font-size: 14px;
   padding: 8px 14px 9px;
 }
 
-/* line 189, sass/screen.scss */
+/* line 192, sass/screen.scss */
 .green.awesome, .green.awesome:visited {
   background-color: #91bd09;
 }
 
-/* line 190, sass/screen.scss */
+/* line 193, sass/screen.scss */
 .green.awesome:hover {
   background-color: #749a02;
 }
 
-/* line 191, sass/screen.scss */
+/* line 194, sass/screen.scss */
 .blue.awesome, .blue.awesome:visited {
   background-color: #2daebf;
 }
 
-/* line 192, sass/screen.scss */
+/* line 195, sass/screen.scss */
 .blue.awesome:hover {
   background-color: #007d9a;
 }
 
-/* line 193, sass/screen.scss */
+/* line 196, sass/screen.scss */
 .red.awesome, .red.awesome:visited {
   background-color: #e33100;
 }
 
-/* line 194, sass/screen.scss */
+/* line 197, sass/screen.scss */
 .red.awesome:hover {
   background-color: #872300;
 }
 
-/* line 195, sass/screen.scss */
+/* line 198, sass/screen.scss */
 .magenta.awesome, .magenta.awesome:visited {
   background-color: #a9014b;
 }
 
-/* line 196, sass/screen.scss */
+/* line 199, sass/screen.scss */
 .magenta.awesome:hover {
   background-color: #630030;
 }
 
-/* line 197, sass/screen.scss */
+/* line 200, sass/screen.scss */
 .orange.awesome, .orange.awesome:visited {
   background-color: #ff5c00;
 }
 
-/* line 198, sass/screen.scss */
+/* line 201, sass/screen.scss */
 .orange.awesome:hover {
   background-color: #d45500;
 }
 
-/* line 199, sass/screen.scss */
+/* line 202, sass/screen.scss */
 .yellow.awesome, .yellow.awesome:visited {
   background-color: #ffb515;
 }
 
-/* line 200, sass/screen.scss */
+/* line 203, sass/screen.scss */
 .yellow.awesome:hover {
   background-color: #fc9200;
 }
 
 /* Flash Notices
 -----------------------------------------------------------------------------*/
-/* line 204, sass/screen.scss */
+/* line 207, sass/screen.scss */
 p.flash-notice {
   color: #b8f5cf;
   font-weight: bold;
@@ -758,30 +764,29 @@ p.flash-notice {
 
 /* View links
 -----------------------------------------------------------------------------*/
-/* line 216, sass/screen.scss */
+/* line 219, sass/screen.scss */
 ul#view-links {
-  background: #ccc;
   width: 200px;
   margin-left: 360px;
-  padding: 9px;
   list-style: none;
   float: left;
 }
-/* line 223, sass/screen.scss */
+/* line 224, sass/screen.scss */
 ul#view-links li {
   display: block;
   width: 100px;
   display: inline;
   float: left;
 }
-/* line 228, sass/screen.scss */
+/* line 229, sass/screen.scss */
 ul#view-links li a {
-  display: block;
+  font-size: 1.2em;
+  font-weight: bold;
 }
 
 /* List of statuses
 -----------------------------------------------------------------------------*/
-/* line 237, sass/screen.scss */
+/* line 239, sass/screen.scss */
 ul#status-list {
   clear: both;
   padding-left: 0;
@@ -790,7 +795,7 @@ ul#status-list {
   width: 460px;
   list-style: none;
 }
-/* line 245, sass/screen.scss */
+/* line 247, sass/screen.scss */
 ul#status-list li {
   background-image: -webkit-gradient(linear, 0% 100%, 0% 0%, color-stop(0%, #ebebeb), color-stop(100%, #fafafa));
   background-image: -moz-linear-gradient(bottom, #ebebeb 0%, #fafafa 100%);
@@ -809,12 +814,12 @@ ul#status-list li {
   -khtml-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 252, sass/screen.scss */
+/* line 254, sass/screen.scss */
 ul#status-list li p {
   width: 350px;
   margin-bottom: 0;
 }
-/* line 256, sass/screen.scss */
+/* line 258, sass/screen.scss */
 ul#status-list li input.delete-status {
   width: 16px;
   height: 16px;
@@ -827,16 +832,16 @@ ul#status-list li input.delete-status {
   border: 0;
   outline: 0;
 }
-/* line 267, sass/screen.scss */
+/* line 269, sass/screen.scss */
 ul#status-list li input.delete-status:hover {
   cursor: pointer;
   background-position: -16px -16px;
 }
-/* line 271, sass/screen.scss */
+/* line 273, sass/screen.scss */
 ul#status-list li input.delete-status:hover, ul#status-list li input.delete-status:active, ul#status-list li input.delete-status:focus {
   outline: 0;
 }
-/* line 275, sass/screen.scss */
+/* line 277, sass/screen.scss */
 ul#status-list li a.reorder-statuses {
   width: 16px;
   height: 16px;
@@ -847,12 +852,12 @@ ul#status-list li a.reorder-statuses {
   right: 40px;
   background: url("/images/icons/16x16/sprite.png") 0 0 no-repeat;
 }
-/* line 284, sass/screen.scss */
+/* line 286, sass/screen.scss */
 ul#status-list li a.reorder-statuses:hover {
   cursor: move;
   background-position: 0 -16px;
 }
-/* line 291, sass/screen.scss */
+/* line 293, sass/screen.scss */
 ul#status-list li p.confirm-delete-status {
   display: none;
   background: url("/images/bg/delete_confirm_chevron.png") left center no-repeat;
@@ -862,7 +867,7 @@ ul#status-list li p.confirm-delete-status {
   width: 70px;
   padding-left: 4px;
 }
-/* line 299, sass/screen.scss */
+/* line 301, sass/screen.scss */
 ul#status-list li p.confirm-delete-status a {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -881,38 +886,38 @@ ul#status-list li p.confirm-delete-status a {
   -o-box-shadow: #7f7f7f 1px 1px 5px 0;
   box-shadow: #7f7f7f 1px 1px 5px 0;
 }
-/* line 310, sass/screen.scss */
+/* line 312, sass/screen.scss */
 ul#status-list li span {
   color: #2daebf;
   text-shadow: none;
   text-decoration: none;
   font-style: italic;
 }
-/* line 315, sass/screen.scss */
+/* line 317, sass/screen.scss */
 ul#status-list li span.blue {
   color: #2daebf;
 }
-/* line 317, sass/screen.scss */
+/* line 319, sass/screen.scss */
 ul#status-list li span.blue a {
   color: #2daebf;
 }
-/* line 321, sass/screen.scss */
+/* line 323, sass/screen.scss */
 ul#status-list li span.green {
   color: #91bd09;
 }
-/* line 323, sass/screen.scss */
+/* line 325, sass/screen.scss */
 ul#status-list li span.green a {
   color: #91bd09;
 }
-/* line 327, sass/screen.scss */
+/* line 329, sass/screen.scss */
 ul#status-list li span.orange {
   color: #ff5c00;
 }
-/* line 329, sass/screen.scss */
+/* line 331, sass/screen.scss */
 ul#status-list li span.orange a {
   color: #ff5c00;
 }
-/* line 333, sass/screen.scss */
+/* line 335, sass/screen.scss */
 ul#status-list li span a {
   color: #ff5c00;
   text-shadow: none;

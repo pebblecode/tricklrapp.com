@@ -70,6 +70,7 @@ $(document).ready(function() {
    * Status character countdown
   */
   $('#status_submit').after('<p class="count">140</p>');
+  $('textarea#status_status').focus();
   $('textarea#status_status').keyup(function() {
       var statusLength = $(this).val().length;
       $('.count').html(140 - statusLength);

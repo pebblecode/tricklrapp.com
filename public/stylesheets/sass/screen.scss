@@ -66,6 +66,7 @@ body {
         height: 56px;
         text-indent:-9999px;
         font-size: 1em;
+        margin-bottom: 1.4em;
       }
       h1 a
         {
@@ -122,6 +123,8 @@ body {
       display: none;
       }
       textarea {
+        outline: none;
+        @include box-shadow(#666, 0px, 1px, 3px, 1px, inset);
         width: 602px;
         height: 60px;
         color: #333;
@@ -214,10 +217,8 @@ p.flash-notice {
 /* View links
 -----------------------------------------------------------------------------*/
 ul#view-links{
-  background: #ccc;
   width: 200px;
   margin-left: 360px;
-  padding: 9px;
   list-style: none;
   float: left;
   li {
@@ -226,7 +227,8 @@ ul#view-links{
     display: inline;
     float: left;
     a {
-      display: block;
+      font-size: 1.2em;
+      font-weight: bold;
     }
   }
 }
