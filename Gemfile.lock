@@ -1,7 +1,6 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    SystemTimer (1.2)
     abstract (1.0.0)
     actionmailer (3.0.1)
       actionpack (= 3.0.1)
@@ -148,6 +147,7 @@ GEM
       oa-enterprise (= 0.1.5)
       oa-oauth (= 0.1.5)
       oa-openid (= 0.1.5)
+    pg (0.9.0)
     polyglot (0.3.1)
     pyu-ruby-sasl (0.0.3.2)
     rack (1.2.1)
@@ -242,7 +242,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  SystemTimer
   capistrano
   capistrano-ext
   capybara
@@ -257,6 +256,7 @@ DEPENDENCIES
   mysql (= 2.8.1)
   oa-oauth
   omniauth
+  pg
   rails (= 3.0.1)
   resque
   resque-scheduler

@@ -4,6 +4,7 @@ gem 'rails', '3.0.1'
 
 # MySQL gem to connect to MySQL
 gem 'mysql', '2.8.1'
+gem 'pg'
 
 # Devise for Authentication layer
 # http://github.com/plataformatec/devise
@@ -38,7 +39,7 @@ gem 'resque'
 # Resque scheduler for scheduled tasks
 # http://github.com/bvandenbos/resque-scheduler
 gem 'resque-scheduler'
-gem 'SystemTimer'
+# gem 'SystemTimer'
 
 # Haml for templates
 # http://github.com/nex3/haml

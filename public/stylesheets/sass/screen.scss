@@ -122,12 +122,30 @@ body {
       display: none;
       }
       textarea {
-        width: 620px;
-        height: 108px;
+        width: 602px;
+        height: 60px;
+        color: #333;
         @include border-radius(10px);
         border: 0;
-        padding: 0
+        padding: 18px;
+        font-size: 2em;
+        line-height: 1em;
+        font-family: Helvetica, Arial;
       }
+    }
+    .count {
+      float: right;
+      margin: 4px 10px 0 0 ;
+      padding: 2px 5px 2px 5px;
+      background: #F6F6F6;
+      color: #666;
+      text-shadow: 0 1px 1px #FFFFFF;
+      @include border-radius(10px);
+      @include box-shadow(#7f7f7f);
+      font-weight: bold;
+    }
+    .status-count-warning {
+      color: red;
     }
     input[type=submit]{
       border: 0;
