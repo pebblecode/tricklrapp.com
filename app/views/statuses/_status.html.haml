@@ -1,0 +1,14 @@
+%li
+  %p
+    =status.status
+    %br/
+  %span{ :class => cycle("orange", "blue", "green") }
+    -if status.published_at
+      =link_to time_ago_in_words_with_word(status.published_at), "http://twitter.com/growingshed/status/" + status.twitter_id.to_s
+    -else 
+      trickling in
+      =distance_of_time_in_words(Time.now, status.scheduled_at)
+      //= link_to 'Edit', edit_status_path(t)
+  -if !status.published_at
+    = button_to 'Destroy', status, :method => :delete, :class => "delete-status"
+    = link_to 'Reorder', "#", :class => "reorder-statuses"

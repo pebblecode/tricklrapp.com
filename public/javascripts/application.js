@@ -24,7 +24,7 @@ $(document).ready(function() {
   /*
   * Make tweet list sortable
   */
-  $("#status-list").sortable({ handle: '.reorder-statuses' });
+  $("#queued_statuses").sortable({ handle: '.reorder-statuses' });
 
   /* 
   * Pretty delete messages
@@ -81,5 +81,25 @@ $(document).ready(function() {
         $('.count').removeClass('status-count-warning');
       }
     });
+
+  /*
+   * Show and hide status lists
+  */
+  $('li.queued-statuses').live('click', function() {
+    $(this).addClass("selected");
+    $('li.published-statuses').removeClass("selected");
+    $('#published_statuses').fadeOut('fast', function() {
+      $('#queued_statuses').show();
+    });
+    return false;
+  });
+  $('li.published-statuses').live('click', function() {
+    $(this).addClass("selected");
+    $('li.queued-statuses').removeClass("selected");
+    $('#queued_statuses').fadeOut('fast', function() {
+      $('#published_statuses').show();
+    });
+    return false;
+  });
 
 });

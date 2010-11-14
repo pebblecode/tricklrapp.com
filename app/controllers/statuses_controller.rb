@@ -6,7 +6,8 @@ class StatusesController < ApplicationController
 
   def index
     if current_user.present?
-      @statuses = current_user.unpublished_statuses
+      @queued_statuses = current_user.unpublished_statuses
+      @published_statuses = current_user.published_statuses
     else
       render :action => "pages/index"
     end
@@ -32,7 +33,7 @@ class StatusesController < ApplicationController
     @status.user_id = current_user.id
     if @status.save
       flash[:notice] = 'Hurray! Your tweet was scheduled for delivery'
-      redirect_to statuses_path
+      redirect_to root_path
     else
       render :action => 'new'
     end
@@ -43,6 +44,7 @@ class StatusesController < ApplicationController
       flash[:notice] = "Your tweet was updated"
       redirect_to root_path
     else 
+      redirect_to root_path
       render :action => 'edit'
     end        
   end

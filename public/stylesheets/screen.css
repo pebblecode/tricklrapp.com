@@ -105,8 +105,8 @@ body.bp div.border {
 }
 /* line 48, ../../../../.rvm/gems/ruby-1.9.2-p0@tricklr/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_scaffolding.scss */
 body.bp div.colborder {
-  padding-right: 44px;
-  margin-right: 45px;
+  padding-right: 35px;
+  margin-right: 36px;
   border-right: 1px solid #eeeeee;
 }
 /* line 50, ../../../../.rvm/gems/ruby-1.9.2-p0@tricklr/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_scaffolding.scss */
@@ -473,8 +473,8 @@ body #container {
   -ms-border-radius: 10px;
   -khtml-border-radius: 10px;
   border-radius: 10px;
-  padding-left: 10px;
-  width: 950px;
+  padding: 0 20px;
+  width: 540px;
   margin: 0 auto;
   overflow: hidden;
   *zoom: 1;
@@ -497,8 +497,9 @@ body #container header h1 {
   text-indent: -9999px;
   font-size: 1em;
   margin-bottom: 1.4em;
+  margin-top: 1em;
 }
-/* line 72, sass/screen.scss */
+/* line 73, sass/screen.scss */
 body #container header h1 a {
   width: 200px;
   height: 56px;
@@ -507,18 +508,18 @@ body #container header h1 a {
   text-decoration: none;
   border-bottom: none;
 }
-/* line 81, sass/screen.scss */
+/* line 82, sass/screen.scss */
 body #container header nav {
-  float: right;
+  float: left;
   text-align: right;
   margin-top: 1em;
 }
-/* line 86, sass/screen.scss */
+/* line 87, sass/screen.scss */
 body #container header nav ul {
   list-style: none;
   margin-right: 0;
 }
-/* line 89, sass/screen.scss */
+/* line 90, sass/screen.scss */
 body #container header nav ul li {
   display: inline;
   text-align: center;
@@ -529,7 +530,6 @@ body #container header nav ul li {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  margin-left: 20px;
   width: 60px;
   background: #666;
 }
@@ -555,26 +555,22 @@ body #container header nav ul li a.help {
 body #container header nav ul li a.logout {
   color: #ff5c00;
 }
-/* line 118, sass/screen.scss */
-body #container #new_status {
-  margin-left: 160px;
-}
-/* line 120, sass/screen.scss */
+/* line 119, sass/screen.scss */
 body #container #new_status fieldset {
   border: 0;
 }
-/* line 122, sass/screen.scss */
+/* line 121, sass/screen.scss */
 body #container #new_status fieldset legend, body #container #new_status fieldset label {
   display: none;
 }
-/* line 125, sass/screen.scss */
+/* line 124, sass/screen.scss */
 body #container #new_status fieldset textarea {
   outline: none;
   -moz-box-shadow: #666666 0px 1px 3px 1px inset;
   -webkit-box-shadow: #666666 0px 1px 3px 1px inset;
   -o-box-shadow: #666666 0px 1px 3px 1px inset;
   box-shadow: #666666 0px 1px 3px 1px inset;
-  width: 602px;
+  width: 504px;
   height: 60px;
   color: #333;
   -moz-border-radius: 10px;
@@ -589,7 +585,7 @@ body #container #new_status fieldset textarea {
   line-height: 1em;
   font-family: Helvetica, Arial;
 }
-/* line 139, sass/screen.scss */
+/* line 138, sass/screen.scss */
 body #container #new_status .count {
   float: right;
   margin: 4px 10px 0 0;
@@ -597,6 +593,30 @@ body #container #new_status .count {
   background: #F6F6F6;
   color: #666;
   text-shadow: 0 1px 1px #FFFFFF;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: #7f7f7f 1px 1px 5px 0;
+  -webkit-box-shadow: #7f7f7f 1px 1px 5px 0;
+  -o-box-shadow: #7f7f7f 1px 1px 5px 0;
+  box-shadow: #7f7f7f 1px 1px 5px 0;
+  font-weight: bold;
+}
+/* line 149, sass/screen.scss */
+body #container #new_status .status-count-warning {
+  color: red;
+}
+/* line 152, sass/screen.scss */
+body #container #new_status input[type=submit] {
+  border: 0;
+  color: #000;
+  font-size: 1.2em;
+  cursor: pointer;
+  font-family: Helvetica, Arial;
+  font-weight: bold;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   -o-border-radius: 10px;
@@ -607,146 +627,40 @@ body #container #new_status .count {
   -webkit-box-shadow: #7f7f7f 1px 1px 5px 0;
   -o-box-shadow: #7f7f7f 1px 1px 5px 0;
   box-shadow: #7f7f7f 1px 1px 5px 0;
-  font-weight: bold;
-}
-/* line 150, sass/screen.scss */
-body #container #new_status .status-count-warning {
-  color: red;
-}
-/* line 153, sass/screen.scss */
-body #container #new_status input[type=submit] {
-  border: 0;
+  background-image: -webkit-gradient(linear, 0% 100%, 0% 0%, color-stop(0%, #cccccc), color-stop(100%, #fafafa));
+  background-image: -moz-linear-gradient(bottom, #cccccc 0%, #fafafa 100%);
+  background-image: linear-gradient(bottom, #cccccc 0%, #fafafa 100%);
+  text-shadow: 0 1px 1px #FFFFFF;
   float: right;
+  padding: 9px;
   margin: .5em 0;
 }
-/* line 160, sass/screen.scss */
+/* line 169, sass/screen.scss */
 body header, body footer {
   display: inline;
   float: left;
   margin-right: 10px;
-  width: 950px;
+  width: 540px;
 }
 /* line 139, ../../../../.rvm/gems/ruby-1.9.2-p0@tricklr/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html body header, * html body footer {
   overflow-x: hidden;
 }
-/* line 164, sass/screen.scss */
+/* line 173, sass/screen.scss */
 body #content {
   display: inline;
   float: left;
   margin-right: 0;
-  width: 630px;
+  width: 356.667px;
 }
 /* line 139, ../../../../.rvm/gems/ruby-1.9.2-p0@tricklr/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html body #content {
   overflow-x: hidden;
 }
 
-/* line 170, sass/screen.scss */
-.awesome, .awesome:visited {
-  background: #222222 url(http://www.zurb.com/images/alert-overlay.png) repeat-x;
-  display: inline-block;
-  color: #fff;
-  text-decoration: none;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-  text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-  position: relative;
-  cursor: pointer;
-}
-
-/* line 186, sass/screen.scss */
-.awesome:hover {
-  background-color: #111;
-  color: #fff;
-}
-
-/* line 187, sass/screen.scss */
-.awesome:active {
-  top: 1px;
-}
-
-/* line 189, sass/screen.scss */
-.awesome, .awesome:visited,
-.medium.awesome, .medium.awesome:visited {
-  font-size: 13px;
-  font-weight: bold;
-  line-height: 1;
-  text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
-}
-
-/* line 190, sass/screen.scss */
-.large.awesome, .large.awesome:visited {
-  font-size: 14px;
-  padding: 8px 14px 9px;
-}
-
-/* line 192, sass/screen.scss */
-.green.awesome, .green.awesome:visited {
-  background-color: #91bd09;
-}
-
-/* line 193, sass/screen.scss */
-.green.awesome:hover {
-  background-color: #749a02;
-}
-
-/* line 194, sass/screen.scss */
-.blue.awesome, .blue.awesome:visited {
-  background-color: #2daebf;
-}
-
-/* line 195, sass/screen.scss */
-.blue.awesome:hover {
-  background-color: #007d9a;
-}
-
-/* line 196, sass/screen.scss */
-.red.awesome, .red.awesome:visited {
-  background-color: #e33100;
-}
-
-/* line 197, sass/screen.scss */
-.red.awesome:hover {
-  background-color: #872300;
-}
-
-/* line 198, sass/screen.scss */
-.magenta.awesome, .magenta.awesome:visited {
-  background-color: #a9014b;
-}
-
-/* line 199, sass/screen.scss */
-.magenta.awesome:hover {
-  background-color: #630030;
-}
-
-/* line 200, sass/screen.scss */
-.orange.awesome, .orange.awesome:visited {
-  background-color: #ff5c00;
-}
-
-/* line 201, sass/screen.scss */
-.orange.awesome:hover {
-  background-color: #d45500;
-}
-
-/* line 202, sass/screen.scss */
-.yellow.awesome, .yellow.awesome:visited {
-  background-color: #ffb515;
-}
-
-/* line 203, sass/screen.scss */
-.yellow.awesome:hover {
-  background-color: #fc9200;
-}
-
 /* Flash Notices
 -----------------------------------------------------------------------------*/
-/* line 207, sass/screen.scss */
+/* line 182, sass/screen.scss */
 p.flash-notice {
   color: #b8f5cf;
   font-weight: bold;
@@ -764,39 +678,86 @@ p.flash-notice {
 
 /* View links
 -----------------------------------------------------------------------------*/
-/* line 219, sass/screen.scss */
+/* line 194, sass/screen.scss */
 ul#view-links {
-  width: 200px;
-  margin-left: 360px;
+  width: 220px;
+  margin-left: 150px;
+  padding-left: 0;
   list-style: none;
   float: left;
 }
-/* line 224, sass/screen.scss */
+/* line 200, sass/screen.scss */
 ul#view-links li {
   display: block;
-  width: 100px;
+  padding: 9px;
+  width: 92px;
+  text-align: center;
   display: inline;
   float: left;
+  background-image: -webkit-gradient(linear, 0% 100%, 0% 0%, color-stop(0%, #ebebeb), color-stop(100%, #fafafa));
+  background-image: -moz-linear-gradient(bottom, #ebebeb 0%, #fafafa 100%);
+  background-image: linear-gradient(bottom, #ebebeb 0%, #fafafa 100%);
+  -moz-box-shadow: #7f7f7f 1px 1px 5px 0;
+  -webkit-box-shadow: #7f7f7f 1px 1px 5px 0;
+  -o-box-shadow: #7f7f7f 1px 1px 5px 0;
+  box-shadow: #7f7f7f 1px 1px 5px 0;
 }
-/* line 229, sass/screen.scss */
+/* line 209, sass/screen.scss */
+ul#view-links li.queued-statuses {
+  -moz-border-radius-topleft: 5px;
+  -webkit-border-top-left-radius: 5px;
+  -o-border-top-left-radius: 5px;
+  -ms-border-top-left-radius: 5px;
+  -khtml-border-top-left-radius: 5px;
+  border-top-left-radius: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -o-border-bottom-left-radius: 5px;
+  -ms-border-bottom-left-radius: 5px;
+  -khtml-border-bottom-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+/* line 213, sass/screen.scss */
+ul#view-links li.published-statuses {
+  -moz-border-radius-topright: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -o-border-top-right-radius: 5px;
+  -ms-border-top-right-radius: 5px;
+  -khtml-border-top-right-radius: 5px;
+  border-top-right-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  -o-border-bottom-right-radius: 5px;
+  -ms-border-bottom-right-radius: 5px;
+  -khtml-border-bottom-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+/* line 218, sass/screen.scss */
+ul#view-links li.selected {
+  background-image: -webkit-gradient(linear, 0% 100%, 0% 0%, color-stop(0%, #cccccc), color-stop(100%, #fafafa));
+  background-image: -moz-linear-gradient(bottom, #cccccc 0%, #fafafa 100%);
+  background-image: linear-gradient(bottom, #cccccc 0%, #fafafa 100%);
+}
+/* line 221, sass/screen.scss */
 ul#view-links li a {
   font-size: 1.2em;
   font-weight: bold;
+  text-shadow: 0 1px 1px #FFFFFF;
+  color: #000;
 }
 
 /* List of statuses
 -----------------------------------------------------------------------------*/
-/* line 239, sass/screen.scss */
-ul#status-list {
-  clear: both;
-  padding-left: 0;
+/* line 233, sass/screen.scss */
+ul.status-list {
+  padding-left: 0 !important;
   color: #000;
-  margin-left: 240px;
-  width: 460px;
-  list-style: none;
+  margin: 0 !important;
+  width: 488px;
+  list-style: none !important;
 }
-/* line 247, sass/screen.scss */
-ul#status-list li {
+/* line 240, sass/screen.scss */
+ul.status-list li {
   background-image: -webkit-gradient(linear, 0% 100%, 0% 0%, color-stop(0%, #ebebeb), color-stop(100%, #fafafa));
   background-image: -moz-linear-gradient(bottom, #ebebeb 0%, #fafafa 100%);
   background-image: linear-gradient(bottom, #ebebeb 0%, #fafafa 100%);
@@ -814,13 +775,13 @@ ul#status-list li {
   -khtml-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 254, sass/screen.scss */
-ul#status-list li p {
+/* line 247, sass/screen.scss */
+ul.status-list li p {
   width: 350px;
   margin-bottom: 0;
 }
-/* line 258, sass/screen.scss */
-ul#status-list li input.delete-status {
+/* line 251, sass/screen.scss */
+ul.status-list li input.delete-status {
   width: 16px;
   height: 16px;
   text-indent: -9999px;
@@ -832,17 +793,17 @@ ul#status-list li input.delete-status {
   border: 0;
   outline: 0;
 }
-/* line 269, sass/screen.scss */
-ul#status-list li input.delete-status:hover {
+/* line 262, sass/screen.scss */
+ul.status-list li input.delete-status:hover {
   cursor: pointer;
   background-position: -16px -16px;
 }
-/* line 273, sass/screen.scss */
-ul#status-list li input.delete-status:hover, ul#status-list li input.delete-status:active, ul#status-list li input.delete-status:focus {
+/* line 266, sass/screen.scss */
+ul.status-list li input.delete-status:hover, ul.status-list li input.delete-status:active, ul.status-list li input.delete-status:focus {
   outline: 0;
 }
-/* line 277, sass/screen.scss */
-ul#status-list li a.reorder-statuses {
+/* line 270, sass/screen.scss */
+ul.status-list li a.reorder-statuses {
   width: 16px;
   height: 16px;
   text-indent: -9999px;
@@ -852,13 +813,13 @@ ul#status-list li a.reorder-statuses {
   right: 40px;
   background: url("/images/icons/16x16/sprite.png") 0 0 no-repeat;
 }
-/* line 286, sass/screen.scss */
-ul#status-list li a.reorder-statuses:hover {
+/* line 279, sass/screen.scss */
+ul.status-list li a.reorder-statuses:hover {
   cursor: move;
   background-position: 0 -16px;
 }
-/* line 293, sass/screen.scss */
-ul#status-list li p.confirm-delete-status {
+/* line 286, sass/screen.scss */
+ul.status-list li p.confirm-delete-status {
   display: none;
   background: url("/images/bg/delete_confirm_chevron.png") left center no-repeat;
   position: absolute;
@@ -867,8 +828,8 @@ ul#status-list li p.confirm-delete-status {
   width: 70px;
   padding-left: 4px;
 }
-/* line 301, sass/screen.scss */
-ul#status-list li p.confirm-delete-status a {
+/* line 294, sass/screen.scss */
+ul.status-list li p.confirm-delete-status a {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   -o-border-radius: 10px;
@@ -886,41 +847,100 @@ ul#status-list li p.confirm-delete-status a {
   -o-box-shadow: #7f7f7f 1px 1px 5px 0;
   box-shadow: #7f7f7f 1px 1px 5px 0;
 }
+/* line 305, sass/screen.scss */
+ul.status-list li span {
+  color: #2daebf;
+  text-shadow: none;
+  text-decoration: none;
+  font-style: italic;
+}
+/* line 310, sass/screen.scss */
+ul.status-list li span.blue {
+  color: #2daebf;
+}
 /* line 312, sass/screen.scss */
-ul#status-list li span {
+ul.status-list li span.blue a {
   color: #2daebf;
+}
+/* line 316, sass/screen.scss */
+ul.status-list li span.green {
+  color: #91bd09;
+}
+/* line 318, sass/screen.scss */
+ul.status-list li span.green a {
+  color: #91bd09;
+}
+/* line 322, sass/screen.scss */
+ul.status-list li span.orange {
+  color: #ff5c00;
+}
+/* line 324, sass/screen.scss */
+ul.status-list li span.orange a {
+  color: #ff5c00;
+}
+/* line 328, sass/screen.scss */
+ul.status-list li span a {
+  color: #ff5c00;
   text-shadow: none;
   text-decoration: none;
   font-style: italic;
 }
-/* line 317, sass/screen.scss */
-ul#status-list li span.blue {
-  color: #2daebf;
+
+/* line 338, sass/screen.scss */
+.status-lists {
+  clear: both;
+  margin-left: 30px;
+  width: 488px;
+  margin-bottom: 1.5em;
 }
-/* line 319, sass/screen.scss */
-ul#status-list li span.blue a {
-  color: #2daebf;
+
+/* line 344, sass/screen.scss */
+#published_statuses {
+  display: none;
 }
-/* line 323, sass/screen.scss */
-ul#status-list li span.green {
-  color: #91bd09;
+
+/* Settings form
+-----------------------------------------------------------------------------*/
+/* line 350, sass/screen.scss */
+#settings-form {
+  width: 535px;
+  margin-bottom: 1.5em;
+  font-size: 2em;
 }
-/* line 325, sass/screen.scss */
-ul#status-list li span.green a {
-  color: #91bd09;
+/* line 354, sass/screen.scss */
+#settings-form legend {
+  display: none;
 }
-/* line 329, sass/screen.scss */
-ul#status-list li span.orange {
-  color: #ff5c00;
+/* line 357, sass/screen.scss */
+#settings-form p {
+  border-bottom: 3px dotted #666;
 }
-/* line 331, sass/screen.scss */
-ul#status-list li span.orange a {
-  color: #ff5c00;
+/* line 359, sass/screen.scss */
+#settings-form p label {
+  float: left;
+  width: 250px;
 }
-/* line 335, sass/screen.scss */
-ul#status-list li span a {
-  color: #ff5c00;
-  text-shadow: none;
-  text-decoration: none;
-  font-style: italic;
+/* line 363, sass/screen.scss */
+#settings-form p input {
+  width: 50px;
+  outline: 0;
+  text-align: center;
+  padding: 10px;
+  font-size: 1em;
+  font-weight: bold;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
+  border: 0;
+  -moz-box-shadow: #666666 0px 1px 3px 1px inset;
+  -webkit-box-shadow: #666666 0px 1px 3px 1px inset;
+  -o-box-shadow: #666666 0px 1px 3px 1px inset;
+  box-shadow: #666666 0px 1px 3px 1px inset;
+}
+/* line 374, sass/screen.scss */
+#settings-form p select {
+  font-size: 1em;
 }

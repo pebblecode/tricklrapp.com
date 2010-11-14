@@ -1,28 +1,17 @@
 =render :partial => 'form'
--if @statuses
-  %ul#view-links
-    %li 
-      =link_to "Queue", root_path
-    %li
-      =link_to "Published", published_path
-  
-  %ul#status-list
-    -@statuses.each do |t|
-      %li
-        =#image_tag(current_user.profile_image_url)
-        =#current_user.screen_name
-        %p
-          =t.status
-          %br/
-        %span{ :class => cycle("orange", "blue", "green") }
-          -if t.published_at
-            =link_to time_ago_in_words_with_word(t.published_at), "http://twitter.com/growingshed/status/" + t.twitter_id.to_s
-          -else 
-            trickling in
-            =distance_of_time_in_words(Time.now, t.scheduled_at)
-            //= link_to 'Edit', edit_status_path(t)
-        -if !t.published_at
-          = button_to 'Destroy', t, :method => :delete, :class => "delete-status"
-          = link_to 'Reorder', "#", :class => "reorder-statuses"
 
+%ul#view-links
+  %li.queued-statuses.selected
+    =link_to "Queue", root_path
+  %li.published-statuses
+    =link_to "Published", published_path
+  
+%section.status-lists
+  -if @queued_statuses.present?
+    %ul#queued_statuses.status-list
+      =render @queued_statuses
+
+  -if @published_statuses.present?
+    %ul#published_statuses.status-list
+      = render @published_statuses
 
