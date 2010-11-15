@@ -1,5 +1,14 @@
 =render :partial => 'form'
 
+%section#modal-edit.modal
+  %form{"accept-charset" => "UTF-8", :method => "post"}
+    %textarea{:name => "status[status]"}
+    %input{:type => "hidden", :name => "utf8", :value => "&#x2713;"}
+    %input{:type => "hidden", :name => "_method", :value => "put"}
+    %input{:type => "submit", :value => "submit"}
+  
+    
+
 %ul#view-links
   %li.queued-statuses.selected
     =link_to "Queue", root_path

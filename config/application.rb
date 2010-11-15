@@ -38,6 +38,6 @@ module Tricklr
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
 
-    config.action_view.javascript_expansions[:defaults] = %w(jquery.min jquery-ui-1.8.6.custom.min.js rails)
+    config.action_view.javascript_expansions[:defaults] = %w(jquery.min jquery-ui-1.8.6.custom.min.js jquery.tools.min.js rails)
   end
 end

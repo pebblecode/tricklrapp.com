@@ -45,11 +45,11 @@ body.bp {
 
 // Page layout can be done using mixins applied to your semantic classes and IDs:
 body {
-  background : #272727;
+  background : #272727 url('/images/bg/carbon.png');
   #container {
     //@include linear-gradient(color-stops(#ebebeb, #fafafa), bottom);
     background: #d2d2d2;
-    @include box-shadow; 
+    @include box-shadow(#000);
     @include border-radius(10px);
     //background: url('/images/dev/960_grid_12_col.png'), url('/images/dev/vertical_rythmn_18px.png');
     padding: 0 20px;
@@ -62,8 +62,8 @@ body {
       h1
         {
         float: left;
-        width: 200px;
-        height: 56px;
+        width: 150px;
+        height: 42px;
         text-indent:-9999px;
         font-size: 1em;
         margin-bottom: 1.4em;
@@ -71,8 +71,8 @@ body {
       }
       h1 a
         {
-        width:200px; 
-        height: 56px;
+        width:150px; 
+        height: 42px;
         background: url(/images/bg/logo.png) 0 0 no-repeat;
         float:left;
         text-decoration:none;
@@ -87,13 +87,18 @@ body {
         {
           list-style: none; 
           margin-right: 0;
+          float: left;
+          @include linear-gradient(color-stops(#ccc, #fafafa), bottom);
+          @include border-radius(5px);
+          @include box-shadow(#7f7f7f);
+          
           li{
             display: inline;
             text-align: center;
             float: left;
-            @include border-radius(5px);
+            padding: 3px;
             width: 60px;
-            background: #666;
+            border-right: 1px solid #ccc;
             &.avatar {
               width: 120px;
               img {
@@ -281,16 +286,29 @@ ul.status-list
         background-position: 0 -16px;
       }
     }
+    a.edit-status{
+      width: 16px;
+      height: 16px;
+      text-indent: -9999px;
+      outline: 0;
+      position: absolute;
+      top: 40%;
+      right: 70px;
+      background: url('/images/icons/16x16/sprite.png') -32px 0 no-repeat;
+      &:hover{
+        background-position: -32px -16px;
+      }
+    }
     a:hover {
     }
     p.confirm-delete-status {
       display: none;
-      background: url("/images/bg/delete_confirm_chevron.png") left center no-repeat;
+      background: url("/images/bg/delete_confirm_chevron.png") bottom center no-repeat;
+      padding-bottom: 8px;
       position: absolute;
-      right:-65px;
-      top:39%;
+      right:-17px;
+      top:13%;
       width: 70px;
-      padding-left: 4px;
       a {
         @include border-radius(10px);
         position: relative;
@@ -375,4 +393,62 @@ ul.status-list
       font-size: 1em;
     }
   }
+}
+
+
+
+.modal {
+  background-color:#ccc;
+  display:none;
+  width:550px;
+  padding:15px;
+  text-align:left;
+  @include border-radius(5px);
+  @include box-shadow(#000);
+  textarea {
+    outline: none;
+    @include box-shadow(#666, 0px, 1px, 3px, 1px, inset);
+    width: 504px;
+    height: 60px;
+    color: #333;
+    @include border-radius(10px);
+    border: 0;
+    padding: 18px;
+    font-size: 2em;
+    line-height: 1em;
+    font-family: Helvetica, Arial;
+  }
+  .count {
+    float: right;
+    margin: 4px 10px 0 0 ;
+    padding: 2px 5px 2px 5px;
+    background: #F6F6F6;
+    color: #666;
+    text-shadow: 0 1px 1px #FFFFFF;
+    @include border-radius(5px);
+    @include box-shadow(#7f7f7f);
+    font-weight: bold;
+  }
+  .status-count-warning {
+    color: red;
+  }
+  input[type=submit]{
+    border: 0;
+    color: #000;
+    font-size: 1.2em;
+    cursor: pointer;
+    font-family: Helvetica, Arial;
+    font-weight: bold;
+    @include border-radius(10px);
+    @include box-shadow(#7f7f7f);
+    @include linear-gradient(color-stops(#ccc, #fafafa), bottom);
+    text-shadow: 0 1px 1px #FFFFFF;
+    float: right;
+    padding: 9px;
+    margin: .5em 0;
+  }
+}
+                                                  
+#ajax-loader {
+  float:left;
 }

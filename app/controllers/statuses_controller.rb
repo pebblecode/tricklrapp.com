@@ -1,5 +1,7 @@
 class StatusesController < ApplicationController
 
+  respond_to :html, :xml, :json
+
   before_filter :authenticate_user!, :except => :index
   before_filter :current_status, :except => [:index, :new, :create, :published]
   before_filter :new_status, :only => [:index, :new, :published]
@@ -33,29 +35,24 @@ class StatusesController < ApplicationController
     @status.user_id = current_user.id
     if @status.save
       flash[:notice] = 'Hurray! Your tweet was scheduled for delivery'
-      redirect_to root_path
-    else
-      render :action => 'new'
     end
+    respond_with(@status, :location => root_url)
   end
 
   def update
     if @status.update_attributes(params[:status])
       flash[:notice] = "Your tweet was updated"
-      redirect_to root_path
-    else 
-      redirect_to root_path
-      render :action => 'edit'
     end        
+    respond_with(@status) do |format|
+      format.xml { render :xml => @status }
+      format.json { render :json => @status }
+    end
   end
 
   def destroy
     @status.destroy
     flash[:notice] = 'Gone! Your tweet is no more'
-    respond_to do |format|
-      format.html { redirect_to :back }
-      format.js { render false }
-    end
+    respond_with(@status)
   end 
 
   private 

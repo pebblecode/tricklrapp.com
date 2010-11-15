@@ -53,19 +53,6 @@ $(document).ready(function() {
   });
 
 
-  $( "#slider-range" ).slider({
-    range: true,
-    min: 0,
-    max: 500,
-    values: [ 75, 300 ],
-    slide: function( event, ui ) {
-      $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-    }
-  });
-  $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-                     " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-
-
   /*
    * Status character countdown
   */
@@ -101,5 +88,57 @@ $(document).ready(function() {
     });
     return false;
   });
+
+  /*
+   * Populates modal form for editing a status
+  */
+  $('a.edit-status').live('click', function() {
+    $('#modal-edit textarea').val($(this).prev().prev().text().trim());
+    $('#modal-edit form').attr("action", this.href.replace(/\/edit$/,"") + ".json");
+    var csrf = $('meta[name=csrf-token]').attr('content');
+    $('#modal-edit form').append("<input type='hidden' value='" + csrf + "' name='authenticity_token'/>")
+  });
+
+  /*
+   * Listens for a clicks on editing a status and creates an overlay
+  */
+  var triggers = $("a.edit-status").overlay({
+
+    mask: {
+      color: '#000',
+      loadSpeed: 200,
+      opacity: 0.8
+    },
+
+    closeOnClick: true
+  });
+
+  /*
+   * Handles AJAX submission of modal edit box
+  */
+  $('#modal-edit input[type=submit]').live('click', function() {
+    $(this).before('<img src="/images/ajax/ajax-loader.gif" id="ajax-loader" />')
+    var statusId = $('#modal-edit form').attr("action").replace(/[^0-9]*/,"").replace(/.json/, "");
+    $.ajax({
+      type: 'POST',
+      url: $('#modal-edit form').attr("action"),
+      data: $('#modal-edit form').serialize(),
+      cache: false,
+      success: function(data){
+        $('#ajax-loader').remove();
+        $('#modal-edit').fadeOut();
+        $('#exposeMask').fadeOut('slow', function() {
+          $('li#status-' + statusId +' p').text(data.status.status);
+          $('li#status-' + statusId +'').effect("highlight", {}, 1500);
+        });
+      }
+    });
+    return false;
+  });
+
+  //$('#new-status input[type=submit]').live('click', function() {
+  //  $(this).parents('form:first').submit();
+  //  $('#things').prepend('<%=escape_javascript render(@thing) %>');
+  //});
 
 });
