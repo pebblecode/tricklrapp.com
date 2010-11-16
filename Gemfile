@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.1'
+gem 'rails', '3.0.3'
 
 # MySQL gem to connect to MySQL
 gem 'mysql', '2.8.1'

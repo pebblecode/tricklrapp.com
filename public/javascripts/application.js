@@ -22,9 +22,13 @@ $(document).ready(function() {
   $(".flash-notice").flashNotice();  
 
   /*
-  * Make tweet list sortable
-  */
-  $("#queued_statuses").sortable({ handle: '.reorder-statuses' });
+  * Makes queued statues sortable
+  * See http://docs.jquery.com/UI/Sortable
+  */ 
+  $('#queued_statuses').sortable({handle: '.reorder-statuses', update: function() {
+    $.post('/statuses/sort', '_method=put&authenticity_token='+ $('meta[name=csrf-token]').attr('content')+'&'+$(this).sortable('serialize'));
+    }
+  });
 
   /* 
   * Pretty delete messages

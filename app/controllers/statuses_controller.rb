@@ -3,7 +3,7 @@ class StatusesController < ApplicationController
   respond_to :html, :xml, :json
 
   before_filter :authenticate_user!, :except => :index
-  before_filter :current_status, :except => [:index, :new, :create, :published]
+  before_filter :current_status, :except => [:index, :new, :create, :published, :sort]
   before_filter :new_status, :only => [:index, :new, :published]
 
   def index
@@ -54,6 +54,13 @@ class StatusesController < ApplicationController
     flash[:notice] = 'Gone! Your tweet is no more'
     respond_with(@status)
   end 
+
+  
+  def sort
+    order = params[:status]
+    Status.reorder(order)
+    render :nothing => true
+  end
 
   private 
 

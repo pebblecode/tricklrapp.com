@@ -8,7 +8,11 @@ Tricklr::Application.routes.draw do
 
   match 'published', :to => 'statuses#published'
 
-  resources :statuses
+  resources :statuses do
+    collection do
+      put :sort
+    end
+  end
   resources :settings
 
   root :to => "statuses#index"

@@ -53,5 +53,12 @@ class Status < ActiveRecord::Base
     self.queue
   end
 
+  # Updates scheduled at after an AJAX put
+  def reorder(ids)
+    update_all(
+      ['position = FIND_IN_SET(id, ?)', ids.join(',')],
+      { :id => ids }
+    )
+  end
 end
 
