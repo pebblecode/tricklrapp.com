@@ -58,7 +58,7 @@ class StatusesController < ApplicationController
   
   def sort
     order = params[:status]
-    Status.reorder(order)
+    Status.sort(order, current_user)
     render :nothing => true
   end
 

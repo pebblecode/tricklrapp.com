@@ -54,11 +54,18 @@ class Status < ActiveRecord::Base
   end
 
   # Updates scheduled at after an AJAX put
-  def reorder(ids)
-    update_all(
-      ['position = FIND_IN_SET(id, ?)', ids.join(',')],
-      { :id => ids }
-    )
+  def self.sort(ids, user)
+    statuses = user.unpublished_statuses
+    ids.each_with_index do |id, index|
+      logger.info(statuses[1].scheduled_at)
+    end
+    s = Status.find(20)
+    s.scheduled_at = "2010-11-16 21:25:12"
+    s.save!
+    # I have two arrays 
+    # one a list of ids
+    # another a hash of statuses
+    # I want to get the value scheduled_at value of an item at x and update it
   end
 end
 
