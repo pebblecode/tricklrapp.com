@@ -13,7 +13,7 @@ jQuery.fn.flashNotice = function () {
     jQuery(this).fadeOut();
   });
 };
-
+jQuery.timeago.settings.allowFuture = true;
 
 $(document).ready(function() {
   /* 
@@ -26,7 +26,16 @@ $(document).ready(function() {
   * See http://docs.jquery.com/UI/Sortable
   */ 
   $('#queued_statuses').sortable({handle: '.reorder-statuses', update: function() {
-    $.post('/statuses/sort', '_method=put&authenticity_token='+ $('meta[name=csrf-token]').attr('content')+'&'+$(this).sortable('serialize'));
+    $.post('/statuses/sort', '_method=put&authenticity_token='+ $('meta[name=csrf-token]').attr('content')+'&'+$(this).sortable('serialize'),
+    function(data){
+      $.each(data, function(index, status) { 
+        cssIndex = index+1
+        timeString = jQuery.timeago(status.status.scheduled_at).replace(/about/,"").replace(/from now/, "");
+        $('#queued_statuses li:nth-child('+cssIndex +') span').text("trickling in about " + timeString).effect("highlight", {}, 1500);
+        //alert();
+      });
+
+    });
     }
   });
 
@@ -132,8 +141,10 @@ $(document).ready(function() {
         $('#ajax-loader').remove();
         $('#modal-edit').fadeOut();
         $('#exposeMask').fadeOut('slow', function() {
-          $('li#status-' + statusId +' p').text(data.status.status);
-          $('li#status-' + statusId +'').effect("highlight", {}, 1500);
+          $('li#status_' + statusId +' p').fadeOut('slow', function() {
+            $('li#status_' + statusId +'').effect("highlight", {}, 1500);
+            $(this).text(data.status.status).fadeIn();
+          });
         });
       }
     });

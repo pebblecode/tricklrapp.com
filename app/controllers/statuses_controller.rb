@@ -58,8 +58,8 @@ class StatusesController < ApplicationController
   
   def sort
     order = params[:status]
-    Status.sort(order, current_user)
-    render :nothing => true
+    Status.reorder_statuses(order, current_user)
+    render :json => current_user.unpublished_statuses.reload.to_json
   end
 
   private 

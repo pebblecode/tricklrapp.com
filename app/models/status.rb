@@ -3,7 +3,6 @@ class Status < ActiveRecord::Base
   belongs_to :user
 
   before_create :set_scheduled_at 
-  before_update :set_scheduled_at
   before_update :check_scheduled_at
   after_create :queue
   before_destroy :dequeue
@@ -12,13 +11,13 @@ class Status < ActiveRecord::Base
   validates_length_of :status, :maximum => 140
 
   # Sets when a status is scheduled
+  # If we have unpublished statuses schedule it after the last one
+  # If not use the default setting
   def set_scheduled_at
-    unless self.scheduled_at?
-      if self.user.unpublished_statuses.first.present?
-        self.scheduled_at = self.user.unpublished_statuses.first.scheduled_at + self.user.setting.interval
-      else
-        self.scheduled_at = Time.now + self.user.setting.interval
-      end
+    if self.user.unpublished_statuses.first.present?
+      self.scheduled_at = self.user.unpublished_statuses.first.scheduled_at + self.user.setting.interval
+    else
+      self.scheduled_at = Time.now + self.user.setting.interval
     end
   end
 
@@ -54,18 +53,15 @@ class Status < ActiveRecord::Base
   end
 
   # Updates scheduled at after an AJAX put
-  def self.sort(ids, user)
-    statuses = user.unpublished_statuses
-    ids.each_with_index do |id, index|
-      logger.info(statuses[1].scheduled_at)
+  def self.reorder_statuses(ids, user)
+    scheduled_times = user.unpublished_statuses.collect {|x| x = x.scheduled_at }
+    new_schedule = Hash[*ids.zip(scheduled_times).flatten]
+    new_schedule.each do |s|
+      Status.update_all(['scheduled_at=?', s[1]], ['id=?', s[0]])
     end
-    s = Status.find(20)
-    s.scheduled_at = "2010-11-16 21:25:12"
-    s.save!
-    # I have two arrays 
-    # one a list of ids
-    # another a hash of statuses
-    # I want to get the value scheduled_at value of an item at x and update it
+    ids.each do |id|
+      Status.find(id).requeue
+    end
   end
 end
 
