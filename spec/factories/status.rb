@@ -1,5 +1,5 @@
 Factory.define :status do |f|
-  f.association :user_id, :factory => :user
+  f.association :user, :factory => :user
   f.status 'Some BS'
 end
 

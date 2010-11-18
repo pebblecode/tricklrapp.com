@@ -25,7 +25,7 @@ describe StatusesController do
       end
 
       it 'redirects to the sign in page' do
-        response.should redirect_to(new_user_session_path)
+        response.should redirect_to(pages_path)
       end
 
     end
