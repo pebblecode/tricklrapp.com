@@ -17,7 +17,8 @@ class StatusesController < ApplicationController
 
   def published
     if current_user.present?
-      @statuses = current_user.published_statuses
+      @queued_statuses = current_user.unpublished_statuses
+      @published_statuses = current_user.published_statuses
       render :index
     else
       render :action => "pages/index"
