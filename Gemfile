@@ -53,6 +53,9 @@ gem 'compass'
 # https://github.com/indirect/jquery-rails
 gem 'jquery-rails'
 
+# https://github.com/thoughtbot/hoptoad_notifier
+gem 'hoptoad_notifier'
+
 # Testing goodness!
 group :test do
   gem 'shoulda'

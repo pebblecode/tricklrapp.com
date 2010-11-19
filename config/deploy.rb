@@ -4,7 +4,7 @@ require 'bundler/capistrano'
 set :stages, %w(production staging)
   
 set :keep_releases, 3 
-set :repository,  "git@apu.pebbleit.com:tweethopper.com.git"
+set :repository,  "git@apu.pebbleit.com:tricklrapp.com.git"
 set :use_sudo, false
 set :scm, :git
 set :deploy_via, :remote_cache
@@ -48,3 +48,6 @@ after "deploy:update_code", "deploy:link_config_files"
 # require 'hoptoad_notifier/capistrano'
 
 
+
+        require 'config/boot'
+        require 'hoptoad_notifier/capistrano'

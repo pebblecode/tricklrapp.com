@@ -87,6 +87,9 @@ GEM
     haml (3.0.22)
     hashie (0.4.0)
     highline (1.6.1)
+    hoptoad_notifier (2.3.12)
+      activesupport
+      builder
     httparty (0.6.1)
       crack (= 0.1.8)
     i18n (0.4.2)
@@ -251,6 +254,7 @@ DEPENDENCIES
   devise
   factory_girl_rails
   haml
+  hoptoad_notifier
   jquery-rails
   launchy
   mysql (= 2.8.1)
