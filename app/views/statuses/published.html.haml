@@ -1,13 +1,14 @@
+
 =render :partial => 'form'
   
 %ul#view-links
-  %li.queued-statuses.selected
+  %li.queued-statuses
     =link_to "Queue", root_path
-  %li.published-statuses
+  %li.published-statuses.selected
     =link_to "Published", published_path
   
 %section.status-lists
   -if @statuses.present?
-    %ul#queued_statuses.status-list
+    %ul#published_statuses.status-list
       =render @statuses
 

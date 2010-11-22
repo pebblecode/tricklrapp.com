@@ -396,7 +396,7 @@ body.bp .bottom {
 }
 /* line 8, ../../../../.rvm/gems/ruby-1.9.2-p0@tricklr/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_debug.scss */
 body.bp .showgrid {
-  background: url('/images/grid.png?1288877022');
+  background: url('/images/grid.png?1288902044');
 }
 /* line 4, ../../../../.rvm/gems/ruby-1.9.2-p0@tricklr/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
 body.bp .error {
@@ -918,33 +918,28 @@ ul.status-list li span a {
   margin-bottom: 1.5em;
 }
 
-/* line 362, sass/screen.scss */
-#published_statuses {
-  display: none;
-}
-
 /* Settings form
 -----------------------------------------------------------------------------*/
-/* line 368, sass/screen.scss */
+/* line 365, sass/screen.scss */
 #settings-form {
   width: 535px;
   margin-bottom: 1.5em;
   font-size: 2em;
 }
-/* line 372, sass/screen.scss */
+/* line 369, sass/screen.scss */
 #settings-form legend {
   display: none;
 }
-/* line 375, sass/screen.scss */
+/* line 372, sass/screen.scss */
 #settings-form p {
   border-bottom: 3px dotted #666;
 }
-/* line 377, sass/screen.scss */
+/* line 374, sass/screen.scss */
 #settings-form p label {
   float: left;
   width: 250px;
 }
-/* line 381, sass/screen.scss */
+/* line 378, sass/screen.scss */
 #settings-form p input {
   width: 50px;
   outline: 0;
@@ -964,12 +959,12 @@ ul.status-list li span a {
   -o-box-shadow: #666666 0px 1px 3px 1px inset;
   box-shadow: #666666 0px 1px 3px 1px inset;
 }
-/* line 392, sass/screen.scss */
+/* line 389, sass/screen.scss */
 #settings-form p select {
   font-size: 1em;
 }
 
-/* line 400, sass/screen.scss */
+/* line 397, sass/screen.scss */
 .modal {
   background-color: #ccc;
   display: none;
@@ -987,7 +982,7 @@ ul.status-list li span a {
   -o-box-shadow: black 1px 1px 5px 0;
   box-shadow: black 1px 1px 5px 0;
 }
-/* line 408, sass/screen.scss */
+/* line 405, sass/screen.scss */
 .modal textarea {
   outline: none;
   -moz-box-shadow: #666666 0px 1px 3px 1px inset;
@@ -1009,7 +1004,7 @@ ul.status-list li span a {
   line-height: 1em;
   font-family: Helvetica, Arial;
 }
-/* line 421, sass/screen.scss */
+/* line 418, sass/screen.scss */
 .modal .count {
   float: right;
   margin: 4px 10px 0 0;
@@ -1029,11 +1024,11 @@ ul.status-list li span a {
   box-shadow: #7f7f7f 1px 1px 5px 0;
   font-weight: bold;
 }
-/* line 432, sass/screen.scss */
+/* line 429, sass/screen.scss */
 .modal .status-count-warning {
   color: red;
 }
-/* line 435, sass/screen.scss */
+/* line 432, sass/screen.scss */
 .modal input[type=submit] {
   border: 0;
   color: #000;
@@ -1060,7 +1055,7 @@ ul.status-list li span a {
   margin: .5em 0;
 }
 
-/* line 452, sass/screen.scss */
+/* line 449, sass/screen.scss */
 #ajax-loader {
   float: left;
 }

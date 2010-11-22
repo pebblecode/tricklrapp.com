@@ -32,7 +32,6 @@ $(document).ready(function() {
         cssIndex = index+1
         timeString = jQuery.timeago(status.status.scheduled_at).replace(/about/,"").replace(/from now/, "");
         $('#queued_statuses li:nth-child('+cssIndex +') span').text("trickling in about " + timeString).effect("highlight", {}, 1500);
-        //alert();
       });
 
     });
@@ -85,22 +84,22 @@ $(document).ready(function() {
   /*
    * Show and hide status lists
   */
-  $('li.queued-statuses').live('click', function() {
-    $(this).addClass("selected");
-    $('li.published-statuses').removeClass("selected");
-    $('#published_statuses').fadeOut('fast', function() {
-      $('#queued_statuses').show();
-    });
-    return false;
-  });
-  $('li.published-statuses').live('click', function() {
-    $(this).addClass("selected");
-    $('li.queued-statuses').removeClass("selected");
-    $('#queued_statuses').fadeOut('fast', function() {
-      $('#published_statuses').show();
-    });
-    return false;
-  });
+  //$('li.queued-statuses').live('click', function() {
+  //  $(this).addClass("selected");
+  //  $('li.published-statuses').removeClass("selected");
+  //  $('#published_statuses').fadeOut('fast', function() {
+  //    $('#queued_statuses').show();
+  //  });
+  //  return false;
+  //});
+  //$('li.published-statuses').live('click', function() {
+  //  $(this).addClass("selected");
+  //  $('li.queued-statuses').removeClass("selected");
+  //  $('#queued_statuses').fadeOut('fast', function() {
+  //    $('#published_statuses').show();
+  //  });
+  //  return false;
+  //});
 
   /*
    * Populates modal form for editing a status
