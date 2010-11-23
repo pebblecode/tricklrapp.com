@@ -92,15 +92,64 @@ $(document).ready(function() {
   //  });
   //  return false;
   //});
-  //$('li.published-statuses').live('click', function() {
-  //  $(this).addClass("selected");
-  //  $('li.queued-statuses').removeClass("selected");
-  //  $('#queued_statuses').fadeOut('fast', function() {
-  //    $('#published_statuses').show();
-  //  });
-  //  return false;
-  //});
 
+  /*
+   * Fetches published statuses via AJAX and writes them
+  * to the DOM when a user clicks the Published tab
+  */
+  $('#view-links li.published-statuses').live('click', function() {
+    $(this).addClass("selected");
+    $(this).parent().after('<img src="/images/ajax/ajax-loader.gif" id="ajax-loader" />')
+    $('#published_statuses').remove();
+    $('li.queued-statuses').removeClass("selected");
+    $('#queued_statuses').fadeOut('fast', function() {
+      $.ajax({
+        url: "/published.json",
+        dataType: 'json',
+        success: function(json){
+          $('#ajax-loader').remove();
+          $('.status-lists').append('<ul id="published_statuses" class="status-list"></ul>');
+          twitterHandle = $('li.avatar a').text();
+          $.each(json, function(i, status){
+            timeString = jQuery.timeago(status.status.scheduled_at);
+            html = '<li><p>'+ status.status.status +'</p><span class="orange"><a href="http://twitter.com/'+ twitterHandle +'/status/'+ status.status.twitter_id +'">' + timeString + '</a></span></li>';
+            $(html).hide().prependTo("#published_statuses").fadeIn("slow");
+          });
+
+        }
+      });
+    });
+    return false;
+  });
+
+  /*
+   * Fetches published statuses via AJAX and writes them
+  * to the DOM when a user clicks the Published tab
+  */
+  $('#view-links li.queued-statuses').live('click', function() {
+    $(this).addClass("selected");
+    $(this).parent().after('<img src="/images/ajax/ajax-loader.gif" id="ajax-loader" />')
+    $('#queued_statuses').remove();
+    $('li.published-statuses').removeClass("selected");
+    $('#published_statuses').fadeOut('fast', function() {
+      $.ajax({
+        url: "/statuses.json",
+        dataType: 'json',
+        success: function(json){
+          $('#ajax-loader').remove();
+          $('.status-lists').append('<ul id="queued_statuses" class="status-list"></ul>');
+          twitterHandle = $('li.avatar a').text();
+          $.each(json, function(i, status){
+            timeString = jQuery.timeago(status.status.scheduled_at);
+            html = '<li><p>'+status.status.status +'</p><span class="orange"><a href="http://twitter.com/'+ twitterHandle +'/status/'+ status.status.twitter_id +'">' + timeString + '</a></span></li>';
+            $(html).hide().prependTo("#queued_statuses").fadeIn("slow");
+          });
+
+        }
+      });
+    });
+    return false;
+  });
   /*
    * Populates modal form for editing a status
   */
@@ -114,16 +163,16 @@ $(document).ready(function() {
   /*
    * Listens for a clicks on editing a status and creates an overlay
   */
-  var triggers = $("a.edit-status").overlay({
+  //var triggers = $("a.edit-status").overlay({
 
-    mask: {
-      color: '#000',
-      loadSpeed: 200,
-      opacity: 0.8
-    },
+  //  mask: {
+  //    color: '#000',
+  //    loadSpeed: 200,
+  //    opacity: 0.8
+  //  },
 
-    closeOnClick: true
-  });
+  //  closeOnClick: true
+  //});
 
   /*
    * Handles AJAX submission of modal edit box

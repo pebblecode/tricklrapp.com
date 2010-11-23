@@ -1058,4 +1058,5 @@ ul.status-list li span a {
 /* line 449, sass/screen.scss */
 #ajax-loader {
   float: left;
+  margin-left: 244px;
 }
