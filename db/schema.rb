@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101110145549) do
+ActiveRecord::Schema.define(:version => 20101130161701) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(:version => 20101110145549) do
     t.boolean  "automatic",                                   :default => false
     t.decimal  "time_digit",    :precision => 6, :scale => 1, :default => 2.0
     t.string   "time_unit",                                   :default => "hours"
-    t.datetime "publish_from"
-    t.datetime "publish_until"
+    t.time     "publish_from"
+    t.time     "publish_until"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

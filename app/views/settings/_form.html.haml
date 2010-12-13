@@ -11,6 +11,14 @@
       =f.text_field :time_digit, :value => number_to_human(@setting.time_digit)
       =f.select :time_unit, options_for_select([ "minutes", "hours", "days" ], @setting.time_unit)
 
+    %p
+      
+      =f.label :publish_from
+      =f.time_select :publish_from
+    %p
+      =f.label :publish_until
+      =f.time_select :publish_until
+
     -##slider-range
       %p
         =f.label :range
