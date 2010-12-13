@@ -4,6 +4,8 @@ gem 'rails', '3.0.3'
 
 # MySQL gem to connect to MySQL
 gem 'mysql', '2.8.1'
+
+# Postgres
 gem 'pg'
 
 # Devise for Authentication layer
