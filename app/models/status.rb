@@ -12,21 +12,15 @@ class Status < ActiveRecord::Base
 
   # Sets when a status is scheduled
   # If we have unpublished statuses schedule it after the last one
-  # If not use the default setting
+  # If not use the default setting from Time.now
   def set_scheduled_at
-    if self.user.unpublished_statuses.first.present?
-      self.scheduled_at = self.user.unpublished_statuses.first.scheduled_at + self.user.setting.interval
-    else
-      self.scheduled_at = Time.now + self.user.setting.interval
-    end
+    self.scheduled_at = (self.user.unpublished_statuses.first.present? ? self.user.unpublished_statuses.first.scheduled_at : Time.now) + self.user.setting.interval
   end
 
   # Check if the scheduled at attribute has changed
   # and force a requeue
   def check_scheduled_at
-    if self.scheduled_at_changed?
-      self.requeue
-    end
+    self.requeue if self.scheduled_at_changed?
   end
 
   # Queues a tweet up for delivery via Resque Scheduler
@@ -48,8 +42,7 @@ class Status < ActiveRecord::Base
   # provide a way to do this so we need to dequeue it 
   # then requeue it
   def requeue
-    self.dequeue
-    self.queue
+    self.dequeue; self.queue
   end
 
   # Updates scheduled at after an AJAX put
