@@ -10,9 +10,14 @@ class SendTweet < ActiveRecord::Base
     credentials = @tweet.user.authentications.first
 
     # Construct OAuth request
-    oauth = Twitter::OAuth.new(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET)
-    oauth.authorize_from_access(credentials.token, credentials.secret)
-    client = Twitter::Base.new(oauth)
+    Twitter.configure do |config|
+      config.consumer_key = TWITTER_CONSUMER_KEY
+      config.consumer_secret = TWITTER_CONSUMER_SECRET
+      config.oauth_token = credentials.token
+      config.oauth_token_secret = credentials.secret
+    end
+
+    client = Twitter::Client.new
 
     # We need some error handling here if Twitter is down etc...
     response = client.update(@tweet.status)

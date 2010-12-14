@@ -7,7 +7,7 @@ class Status < ActiveRecord::Base
   after_create :queue
   before_destroy :dequeue
 
-  validates_presence_of :status
+  validates_presence_of :status, :user_id
   validates_length_of :status, :maximum => 140
 
   # Sets when a status is scheduled
