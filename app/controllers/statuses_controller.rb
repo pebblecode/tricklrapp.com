@@ -44,7 +44,6 @@ class StatusesController < ApplicationController
     flash[:notice] = 'Gone! Your tweet is no more'
     respond_with(@status)
   end 
-
   
   def sort
     order = params[:status]
