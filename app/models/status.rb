@@ -1,3 +1,4 @@
+require 'chronic' 
 class Status < ActiveRecord::Base
 
   belongs_to :user
@@ -15,6 +16,17 @@ class Status < ActiveRecord::Base
   # If not use the default setting from Time.now
   def set_scheduled_at
     self.scheduled_at = (self.user.unpublished_statuses.first.present? ? self.user.unpublished_statuses.first.scheduled_at : Time.now) + self.user.setting.interval
+    check_scheduled_range
+  end
+
+  # Check the current scheduled at range 
+  # If the scheduled_at time is not in range then
+  # advance it 
+  def check_scheduled_range
+    if !self.user.setting.publish_range.include?(self.scheduled_at.strftime("%H%M").to_i)
+      # logger.info("************not in range****************")
+      self.scheduled_at = Chronic.parse(self.user.setting.publish_from.strftime("%H:%M"))
+    end
   end
 
   # Check if the scheduled at attribute has changed
@@ -56,5 +68,6 @@ class Status < ActiveRecord::Base
       Status.find(id).requeue
     end
   end
+
 end
 

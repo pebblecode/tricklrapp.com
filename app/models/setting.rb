@@ -61,4 +61,8 @@ class Setting < ActiveRecord::Base
     @range = value
   end
 
+  def publish_range
+    publish_from.strftime("%H%M").to_i..publish_until.strftime("%H%M").to_i
+  end
+
 end

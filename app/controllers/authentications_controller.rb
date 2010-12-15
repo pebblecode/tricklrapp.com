@@ -6,6 +6,7 @@ class AuthenticationsController < ActionController::Base
 
   def create
     omniauth = request.env["omniauth.auth"]
+    # logger.info(omniauth.to_yaml)
     authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
     if authentication
       flash[:notice] = "Signed in successfully."

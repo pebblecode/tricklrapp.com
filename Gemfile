@@ -58,6 +58,9 @@ gem 'jquery-rails'
 # https://github.com/thoughtbot/hoptoad_notifier
 gem 'hoptoad_notifier'
 
+# https://github.com/AaronH/chronic
+gem 'aaronh-chronic'
+
 # Testing goodness!
 group :test do
   gem 'shoulda'
