@@ -23,9 +23,11 @@ class Status < ActiveRecord::Base
   # If the scheduled_at time is not in range then
   # advance it 
   def check_scheduled_range
-    if !self.user.setting.publish_range.include?(self.scheduled_at.strftime("%H%M").to_i)
-      # logger.info("************not in range****************")
-      self.scheduled_at = Chronic.parse(self.user.setting.publish_from.strftime("%H:%M"))
+    if self.user.setting.publish_from.present? && self.user.setting.publish_to.present?
+      if !self.user.setting.publish_range.include?(self.scheduled_at.strftime("%H%M").to_i)
+        # logger.info("************not in range****************")
+        self.scheduled_at = Chronic.parse(self.user.setting.publish_from.strftime("%H:%M"))
+      end
     end
   end
 
