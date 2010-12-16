@@ -57,7 +57,6 @@ body {
     margin-top: 18px;
     a { text-decoration: none; }
     header {
-      width: 940px;
       /* Image replacement technique */
       h1
         {
@@ -80,12 +79,13 @@ body {
       }
       nav
       {
-        float: left;
+        float: right;
         text-align: right;
         margin-top: 1em;
         ul
         {
           list-style: none; 
+          padding-left: 0;
           margin-right: 0;
           float: left;
           @include linear-gradient(color-stops(#ccc, #fafafa), bottom);
@@ -101,9 +101,12 @@ body {
             border-right: 1px solid #ccc;
             &.avatar {
               width: 120px;
+              a {
+                color: #666;
+              }
               img {
                 width: 18px;
-                padding-right: 5px;
+                padding-left: 5px;
                 float: left;
           }
         }
@@ -117,6 +120,30 @@ body {
           color: #ff5c00;
         }
       }
+    }
+  }
+}
+section.content-box {
+  padding: 10px;
+  background: #F6F6F6;
+  @include box-shadow(#7f7f7f);
+  @include border-radius(5px);
+  width: 520px;
+  margin-bottom: 1.5em;
+}
+section.recently-trickled, section.features{
+  float: left;
+  padding: 0 10px 0 10px;
+  width: 250px;
+}
+section.recently-trickled ul{
+  list-style: none;
+  padding-left: 0;
+  li {
+    img {
+      width: 30px;
+      float: left;
+      padding-right: 5px;
     }
   }
 }
@@ -135,14 +162,14 @@ body {
         @include border-radius(10px);
         border: 0;
         padding: 18px;
-        font-size: 2em;
+        font-size: 1.6em;
         line-height: 1em;
         font-family: Helvetica, Arial;
       }
     }
     .count {
       float: right;
-      margin: 4px 10px 0 0 ;
+      margin: 12px 10px 0 0 ;
       padding: 2px 5px 2px 5px;
       background: #F6F6F6;
       color: #666;
@@ -182,12 +209,14 @@ header, footer {
   // true means it's the last column in the row
   @include column($content-columns, true); } }
 
+#content {
+  width: 540px !important;
+}
 /* Flash Notices
 -----------------------------------------------------------------------------*/
 p.flash-notice {
   color: #b8f5cf;  
   font-weight: bold;
-  width: 602px;
   padding: 9px;
   margin-left: 160px;
   background: #2db25f;
@@ -279,7 +308,7 @@ ul.status-list
       outline: 0;
       position: absolute;
       top: 40%;
-      right: 40px;
+      right: 70px;
       background: url('/images/icons/16x16/sprite.png') 0 0 no-repeat;
       &:hover{
         cursor: move;
@@ -293,7 +322,7 @@ ul.status-list
       outline: 0;
       position: absolute;
       top: 40%;
-      right: 70px;
+      right: 40px;
       background: url('/images/icons/16x16/sprite.png') -32px 0 no-repeat;
       &:hover{
         background-position: -32px -16px;
@@ -363,7 +392,6 @@ ul.status-list
 /* Settings form
 -----------------------------------------------------------------------------*/
 #settings-form {
-  width: 535px;
   margin-bottom: 1.5em;
   font-size: 2em;
   legend {

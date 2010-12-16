@@ -15,7 +15,7 @@ Tricklr::Application.routes.draw do
   end
   resources :settings
 
-  root :to => "statuses#index"
+  root :to => "pages#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

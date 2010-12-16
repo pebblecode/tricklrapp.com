@@ -1,4 +1,3 @@
-require 'chronic' 
 class Status < ActiveRecord::Base
 
   belongs_to :user
@@ -10,6 +9,13 @@ class Status < ActiveRecord::Base
 
   validates_presence_of :status, :user_id
   validates_length_of :status, :maximum => 140
+  
+
+  #-------------------------------------
+  # Scopes
+  #-------------------------------------
+  scope :latest, where("published_at IS NOT NULL").limit(3).order("published_at DESC")
+
 
   # Sets when a status is scheduled
   # If we have unpublished statuses schedule it after the last one
@@ -21,14 +27,31 @@ class Status < ActiveRecord::Base
 
   # Check the current scheduled at range 
   # If the scheduled_at time is not in range then
-  # advance it 
+  # advance it to the scheduled from time
+  # TODO - add support for when publish_until is before publish_after
+  # e.g from 2300 to 0100
   def check_scheduled_range
-    if self.user.setting.publish_from.present? && self.user.setting.publish_to.present?
+    # We need the range to be available from settings to do anything
+    if self.user.setting.publish_from.present? && self.user.setting.publish_until.present?
+      # We only only interested in scheduled_at times outside the range
       if !self.user.setting.publish_range.include?(self.scheduled_at.strftime("%H%M").to_i)
-        # logger.info("************not in range****************")
-        self.scheduled_at = Chronic.parse(self.user.setting.publish_from.strftime("%H:%M"))
+        # If the scheduled at time is after publish_from advance to publish_from
+        if self.scheduled_at.strftime("%H%M").to_i < self.user.setting.publish_from("%H%M").to_i
+          # if minutes to advance is positive it is the same day
+          if minutes_to_advance(self.user.setting.publish_from, self.scheduled_at) >= 0
+            self.scheduled_at = self.scheduled_at.advance(:minutes => minutes_to_advance(self.user.setting.publish_from, self.scheduled_at))
+          # If not then it must be tomorrow
+          else
+            self.scheduled_at = self.scheduled_at.advance(:days => 1)
+            self.scheduled_at = self.scheduled_at.advance(:minutes => minutes_to_advance(self.user.setting.publish_from, self.scheduled_at))
+          end
+        end
       end
     end
+  end
+
+  def minutes_to_advance(from, to)
+    (Time.parse(from.strftime("%H:%M")) - Time.parse(to.strftime("%H:%M"))) / 60
   end
 
   # Check if the scheduled at attribute has changed

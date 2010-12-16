@@ -1,1 +1,25 @@
-<h1>Homepage!</h1>
+
+%section.content-box
+  %p 
+    Tricklr is a web app that lets you trickle you tweets at regular intervals.
+  %p 
+    Great for marketing teams and high volume tweeters.
+  =link_to image_tag('/images/twitter/sign-in-with-twitter-d.png'),  '/auth/twitter'
+
+%section.recently-trickled
+  %h3 Recently trickled
+
+  -if @statuses.present?
+    %ul
+      -@statuses.each do |s|
+        %li
+          =image_tag(s.user.profile_image_url)
+          =s.user.screen_name
+          %br/
+          =s.status
+          =s.user.screen_name
+          %br/
+          =time_ago_in_words_with_word(s.published_at)
+
+%section.features
+  %h3 Features
