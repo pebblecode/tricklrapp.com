@@ -40,14 +40,4 @@ end
 after "deploy:update_code", "deploy:link_config_files"
 
 
-
-#Dir[File.join(File.dirname(__FILE__), '..', 'vendor', 'gems', 'hoptoad_notifier-*')].each do |vendored_notifier|
-#  $: << File.join(vendored_notifier, 'lib')
-#end
-
-# require 'hoptoad_notifier/capistrano'
-
-
-
-        require 'config/boot'
-        require 'hoptoad_notifier/capistrano'
+require 'hoptoad_notifier/capistrano'
