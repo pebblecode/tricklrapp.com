@@ -110,12 +110,12 @@ describe StatusesController do
 
         it "sets a flash message" do
           post :create 
-          flash[:notice].should eq("Hurray! Your tweet was scheduled for delivery")
+          flash[:notice].should eq("Hurray! Your status was scheduled for delivery")
         end
 
-        it "redirects to the root url" do 
+        it "redirects to the statuses url" do 
           post :create 
-          response.should redirect_to(root_url)
+          response.should redirect_to(statuses_url)
         end
 
       end
@@ -131,9 +131,9 @@ describe StatusesController do
           assigns[:status].should eq(status)
         end
 
-        it "redirects to the root url" do
+        it "redirects to the statuses url" do
           post :create 
-          response.should redirect_to(root_url)
+          response.should redirect_to(statuses_url)
         end
 
       end

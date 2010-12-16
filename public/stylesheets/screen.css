@@ -603,15 +603,15 @@ body #container section.recently-trickled ul li img {
   padding-right: 5px;
 }
 /* line 151, sass/screen.scss */
-body #container #new_status fieldset {
+body #container #new_status fieldset, body #container .edit_status fieldset {
   border: 0;
 }
 /* line 153, sass/screen.scss */
-body #container #new_status fieldset legend, body #container #new_status fieldset label {
+body #container #new_status fieldset legend, body #container #new_status fieldset label, body #container .edit_status fieldset legend, body #container .edit_status fieldset label {
   display: none;
 }
 /* line 156, sass/screen.scss */
-body #container #new_status fieldset textarea {
+body #container #new_status fieldset textarea, body #container .edit_status fieldset textarea {
   outline: none;
   -moz-box-shadow: #666666 0px 1px 3px 1px inset;
   -webkit-box-shadow: #666666 0px 1px 3px 1px inset;
@@ -633,7 +633,7 @@ body #container #new_status fieldset textarea {
   font-family: Helvetica, Arial;
 }
 /* line 170, sass/screen.scss */
-body #container #new_status .count {
+body #container #new_status .count, body #container .edit_status .count {
   float: right;
   margin: 12px 10px 0 0;
   padding: 2px 5px 2px 5px;
@@ -653,11 +653,11 @@ body #container #new_status .count {
   font-weight: bold;
 }
 /* line 181, sass/screen.scss */
-body #container #new_status .status-count-warning {
+body #container #new_status .status-count-warning, body #container .edit_status .status-count-warning {
   color: red;
 }
 /* line 184, sass/screen.scss */
-body #container #new_status input[type=submit] {
+body #container #new_status input[type=submit], body #container .edit_status input[type=submit] {
   border: 0;
   color: #000;
   font-size: 1.2em;

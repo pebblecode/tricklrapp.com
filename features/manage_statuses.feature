@@ -10,7 +10,7 @@ Feature: Manage Statues
         When I go to the homepage
         And I fill in "Status" with "buildin da internetz"
         And I press "Trickle it!"
-        Then I should see "Hurray! Your tweet was scheduled for delivery"
+        Then I should see "Hurray! Your status was scheduled for delivery"
         And I should see "buildin da internetz"
 
     Scenario: Viewing queued statuses
@@ -30,7 +30,7 @@ Feature: Manage Statues
         When I go to the homepage
         Then I should see "plz delete thnx"
         And I press "Destroy"
-        Then I should see "Gone! Your tweet is no more"
+        Then I should see "Gone! Your status is no more"
         And I should not see "plz delete thnx"
 
     Scenario: Editing a queued statuses
@@ -40,6 +40,6 @@ Feature: Manage Statues
         And I follow "Edit"
         And I fill in "Status" with "ok we iz edited"
         And I press "Trickle it"
-        Then I should see "Your tweet was updated"
+        Then I should see "Your status was updated"
         And I should not see "edit me thnx"
         And I should see "ok we iz edited"
