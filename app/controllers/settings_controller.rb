@@ -9,7 +9,7 @@ class SettingsController < ApplicationController
   def update
     if @setting.update_attributes(params[:setting])
       flash[:notice] = "Your settings were updated"
-      redirect_to root_path
+      redirect_to statuses_path
     else 
       render :action => 'index'
     end        
