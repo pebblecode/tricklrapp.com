@@ -7,8 +7,16 @@ class Status < ActiveRecord::Base
   after_create :queue
   before_destroy :dequeue
 
-  validates_presence_of :status, :user_id
-  validates_length_of :status, :maximum => 140
+  validates :status,
+    :presence => true,
+    :length => { :within => 1..140, :allow_blank => true }
+  validates :user_id,
+    :presence => true, 
+    :numericality => true
+  validates :twitter_id,
+    :length => { :within => 1..255, :allow_blank => true }
+  validates :response_code,
+    :length => { :within => 1..255, :allow_blank => true }
   
 
   #-------------------------------------
@@ -93,6 +101,8 @@ class Status < ActiveRecord::Base
       Status.find(id).requeue
     end
   end
+
+
 
 end
 

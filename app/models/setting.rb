@@ -3,6 +3,9 @@ class Setting < ActiveRecord::Base
   belongs_to :user
   # before_update :calculate_interval
 
+  validates :user_id,
+    :presence => true, 
+    :numericality => true
   validates :time_digit,   
     :numericality => true,
     :presence => true,

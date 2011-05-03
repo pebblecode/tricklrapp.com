@@ -1,8 +1,9 @@
+
 require 'spec_helper'
 
-describe Status do
+describe SendTweet do
 
-  it { should validate_presence_of(:user_id) }
+  it { should validate_presence_of(:) }
   it { should validate_numericality_of(:user_id) }
   it { should validate_presence_of(:status) }
 

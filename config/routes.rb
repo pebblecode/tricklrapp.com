@@ -2,7 +2,7 @@ Tricklr::Application.routes.draw do
 
   devise_for :users, :controllers => {:registrations => 'registrations'}
 
-  match '/auth/:provider/callback' => 'authentications#create'
+  match '/users/auth/:provider/callback' => 'authentications#create'
 
   match 'help', :to => 'pages#help'
 

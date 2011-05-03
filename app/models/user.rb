@@ -20,6 +20,16 @@ class User < ActiveRecord::Base
   has_one :setting
 
   #-------------------------------------
+  # Validations
+  #-------------------------------------
+  validates :email,
+    :length => { :within => 1..255, :allow_blank => true }
+  validates :screen_name,
+    :length => { :within => 1..255, :allow_blank => true }
+  validates :profile_image_url,
+    :length => { :within => 1..255, :allow_blank => true }
+
+  #-------------------------------------
   # Applies omniauth response to the User model
   #-------------------------------------
   def apply_omniauth(omniauth)
