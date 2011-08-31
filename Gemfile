@@ -1,39 +1,30 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.3'
-
-# MySQL gem to connect to MySQL
-gem 'mysql', '2.8.1'
+gem 'rails', '3.1.0'
 
 # Postgres
+# https://bitbucket.org/ged/ruby-pg/wiki/Home
 gem 'pg'
 
 # Devise for Authentication layer
 # http://github.com/plataformatec/devise
 gem 'devise'
-# gem 'devise', :git => 'git://github.com/plataformatec/devise.git', :branch => 'omniauth'
 
 # Omniauth for easy authentication against third parties
 # https://github.com/intridea/omniauth
-gem "oa-oauth", :require => "omniauth/oauth"
+gem "oa-oauth", :require => 'omniauth/oauth'
 
 # Omniauth for easy auth against 3rd party services 
 # http://github.com/intridea/omniauth
-gem 'omniauth'
+gem 'omniauth', '~> 0.2.6'
 
 # Will paginate for pagination
 # https://github.com/mislav/will_paginate/wiki
-gem "will_paginate", "~> 3.0.pre2"
+gem 'will_paginate', '~> 3.0.pre2'
 
 # Twitter gem for reading/writing
 # http://github.com/jnunemaker/twitter
 gem 'twitter'
-
-# Deployment with Capistrano
-# http://github.com/capistrano/capistrano
-# http://github.com/capistrano/capistrano-ext
-gem 'capistrano'
-gem 'capistrano-ext'
 
 # Resque for queuing tasks
 gem 'resque'
@@ -41,7 +32,6 @@ gem 'resque'
 # Resque scheduler for scheduled tasks
 # http://github.com/bvandenbos/resque-scheduler
 gem 'resque-scheduler'
-# gem 'SystemTimer'
 
 # Haml for templates
 # http://github.com/nex3/haml
@@ -58,8 +48,15 @@ gem 'jquery-rails'
 # https://github.com/thoughtbot/hoptoad_notifier
 gem 'hoptoad_notifier'
 
+# Performance monitoring with NewRelic
+gem 'newrelic_rpm'
 
-# Testing goodness!
+# Rails 3.1 - Asset Pipeline
+gem 'sass-rails', '~> 3.1.0'
+gem 'coffee-rails', '~> 3.1.0'
+gem 'uglifier'
+
+
 group :test do
   gem 'shoulda'
   gem 'capybara'   
@@ -67,8 +64,19 @@ group :test do
   gem 'cucumber-rails'
   gem 'rspec-rails'
   gem 'resque_spec'
-  gem 'spork'
-  gem 'launchy'
   gem 'factory_girl_rails'
-  gem 'webrat'
 end
+
+group :development do
+  gem 'thin'
+  gem 'capistrano'
+  gem 'capistrano-ext'
+  gem 'guard-cucumber'
+  gem 'guard-rspec'
+  gem 'guard-spork'
+  gem 'rb-fsevent'
+  gem 'growl'
+  gem 'foreman'
+  gem 'spork', '0.8.5'
+end
+
