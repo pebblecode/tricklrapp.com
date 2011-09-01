@@ -4,7 +4,6 @@ class SendTweet < ActiveRecord::Base
 
   def self.perform(tweet_id)
 
-    logger.info(tweet_id)
     # Get the tweet and auth details
     @tweet = Status.find(tweet_id)
     credentials = @tweet.user.authentications.first

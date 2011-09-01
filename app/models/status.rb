@@ -1,12 +1,21 @@
 class Status < ActiveRecord::Base
 
+  #-------------------------------------
+  # Relationships
+  #-------------------------------------
   belongs_to :user
 
+  #-------------------------------------
+  # Callbacks
+  #-------------------------------------
   before_create :set_scheduled_at 
   before_update :check_scheduled_at
   after_create :queue
   before_destroy :dequeue
 
+  #-------------------------------------
+  # Validations
+  #-------------------------------------
   validates :status,
     :presence => true,
     :length => { :within => 1..140, :allow_blank => true }
@@ -18,7 +27,6 @@ class Status < ActiveRecord::Base
   validates :response_code,
     :length => { :within => 1..255, :allow_blank => true }
   
-
   #-------------------------------------
   # Scopes
   #-------------------------------------
@@ -101,8 +109,6 @@ class Status < ActiveRecord::Base
       Status.find(id).requeue
     end
   end
-
-
 
 end
 

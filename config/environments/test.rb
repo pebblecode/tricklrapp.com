@@ -1,4 +1,4 @@
-Hello::Application.configure do
+Tricklr::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # The test environment is used exclusively to run your application's
@@ -39,4 +39,7 @@ Hello::Application.configure do
 
   # Allow pass debug_assets=true as a query parameter to load pages with unpackaged assets
   config.assets.allow_debugging = true
+
+  TWITTER_CONSUMER_KEY = "jTogT14Qg3JVoSUTY8aMg"
+  TWITTER_CONSUMER_SECRET = "8iIUvM66i3PGrzxl0cGXGTqSmXkHp1Y1mDtf6PyaRE"
 end

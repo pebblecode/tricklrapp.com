@@ -19,42 +19,42 @@ describe Authentication do
   end
 
   it "should allow a provider up to 255 characters" do 
-    @authentication.provider = rand(36**255).to_s(36)
+    @authentication.provider = Random.alphanumeric(255)
     @authentication.should be_valid
   end
 
   it "should not allow a provider over 255 characters" do 
-    @authentication.provider = rand(36**256).to_s(36)
+    @authentication.provider = Random.alphanumeric(256)
     @authentication.should_not be_valid
   end
 
   it "should allow a uid up to 255 characters" do 
-    @authentication.uid = rand(36**255).to_s(36)
+    @authentication.uid = Random.alphanumeric(255)
     @authentication.should be_valid
   end
 
   it "should not allow a uid over 255 characters" do 
-    @authentication.uid = rand(36**256).to_s(36)
+    @authentication.uid = Random.alphanumeric(256)
     @authentication.should_not be_valid
   end
 
   it "should allow a token up to 255 characters" do 
-    @authentication.token = rand(36**255).to_s(36)
+    @authentication.token = Random.alphanumeric(255)
     @authentication.should be_valid
   end
 
   it "should not allow a token over 255 characters" do 
-    @authentication.token = rand(36**256).to_s(36)
+    @authentication.token = Random.alphanumeric(256)
     @authentication.should_not be_valid
   end
 
   it "should allow a secret up to 255 characters" do 
-    @authentication.token = rand(36**255).to_s(36)
+    @authentication.token = Random.alphanumeric(255)
     @authentication.should be_valid
   end
 
   it "should not allow a secret over 255 characters" do 
-    @authentication.token = rand(36**256).to_s(36)
+    @authentication.token = Random.alphanumeric(256)
     @authentication.should_not be_valid
   end
   

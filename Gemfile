@@ -14,10 +14,6 @@ gem 'devise'
 # https://github.com/intridea/omniauth
 gem "oa-oauth", :require => 'omniauth/oauth'
 
-# Omniauth for easy auth against 3rd party services 
-# http://github.com/intridea/omniauth
-gem 'omniauth', '~> 0.2.6'
-
 # Will paginate for pagination
 # https://github.com/mislav/will_paginate/wiki
 gem 'will_paginate', '~> 3.0.pre2'
@@ -59,6 +55,7 @@ gem 'uglifier'
 
 group :test do
   gem 'shoulda'
+  gem 'random_data'
   gem 'capybara'   
   gem 'database_cleaner'
   gem 'cucumber-rails'
@@ -69,6 +66,7 @@ end
 
 group :development do
   gem 'thin'
+  gem 'unicorn'
   gem 'capistrano'
   gem 'capistrano-ext'
   gem 'guard-cucumber'

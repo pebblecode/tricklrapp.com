@@ -1,6 +1,7 @@
 ENV["RAILS_ENV"] ||= 'test'
 require 'rubygems'
 require 'spork'
+require 'capybara/rspec'
 
 Spork.prefork do
   require File.expand_path("../../config/environment", __FILE__)
@@ -20,3 +21,9 @@ RSpec.configure do |config|
 
   config.use_transactional_fixtures = true
 end
+
+OmniAuth.config.test_mode = true
+OmniAuth.config.add_mock(:twitter, 
+                         {:uid => '12345', 
+                          :nickname => 'zapnap',
+                          :name => 'David Rotenmeier'})

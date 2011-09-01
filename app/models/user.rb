@@ -1,45 +1,60 @@
 class User < ActiveRecord::Base
-  
+
   #-------------------------------------
   # Filters
   #-------------------------------------
   after_create :create_settings
-  
+
   #-------------------------------------
   # Set up devise
   #-------------------------------------
-  devise :database_authenticatable, :omniauthable
+  devise :rememberable, :omniauthable
 
   #-------------------------------------
   # Relationships
   #-------------------------------------
   has_many :authentications
   has_many :statuses, :order => 'scheduled_at DESC'
-  has_many :unpublished_statuses, :class_name => "Status", :order => 'scheduled_at DESC', :conditions => ['published_at IS NULL']
-  has_many :published_statuses, :class_name => "Status", :order => 'scheduled_at DESC', :conditions => ['published_at IS NOT NULL']
+  has_many :unpublished_statuses, 
+    :class_name => "Status", 
+    :order => 'scheduled_at DESC', 
+    :conditions => ['published_at IS NULL']
+  has_many :published_statuses, 
+    :class_name => "Status", 
+    :order => 'scheduled_at DESC', 
+    :conditions => ['published_at IS NOT NULL']
   has_one :setting
+
+  #-------------------------------------
+  # Attributes accessible
+  #-------------------------------------
+  attr_accessible :nickname, :name, :remember_me
 
   #-------------------------------------
   # Validations
   #-------------------------------------
-  validates :email,
+  validates :name,
     :length => { :within => 1..255, :allow_blank => true }
-  validates :screen_name,
-    :length => { :within => 1..255, :allow_blank => true }
-  validates :profile_image_url,
+  validates :nickname,
     :length => { :within => 1..255, :allow_blank => true }
 
   #-------------------------------------
   # Applies omniauth response to the User model
   #-------------------------------------
-  def apply_omniauth(omniauth)
-    self.screen_name = omniauth['extra']['user_hash']['screen_name'] if screen_name.blank?
-    self.profile_image_url = omniauth['extra']['user_hash']['profile_image_url'] if profile_image_url.blank?
-    authentications.build(
-      :provider => omniauth['provider'], 
-      :uid => omniauth['uid'],
-      :token => omniauth['credentials']['token'],
-      :secret => omniauth['credentials']['secret'])
+  def self.find_for_twitter_oauth(omniauth)
+    authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
+    if authentication && authentication.user
+      authentication.user
+    else
+      user = User.create!(:nickname => omniauth['user_info']['nickname'], 
+                          :name => omniauth['user_info']['name'])
+      user.authentications.create!(:provider => omniauth['provider'], 
+                                   :uid => omniauth['uid'],
+                                   :token => omniauth['credentials']['token'],
+                                   :secret => omniauth['credentials']['secret'])
+      user.save
+      user
+    end
   end
 
   #-------------------------------------
@@ -51,5 +66,4 @@ class User < ActiveRecord::Base
     self.setting = Setting.new
     self.save!
   end
-
 end

@@ -16,6 +16,10 @@
       =f.label :publish_until
       %div.input
         =f.time_select :publish_until
+    %div.clearfix
+      =f.label :time_zone
+      %div.input
+        =time_zone_select( "setting", "time_zone", nil, :default => "Pacific Time (US & Canada)" )
     %section.actions
       %button.btn.primary
         Save
