@@ -39,7 +39,7 @@ gem 'haml'
 
 # Compass for CSS 
 # https://github.com/chriseppstein/compass
-gem 'compass'
+gem 'compass', :git => 'https://github.com/chriseppstein/compass.git', :branch => 'rails31'
 
 # Automates using jQuery with Rails3
 # https://github.com/indirect/jquery-rails

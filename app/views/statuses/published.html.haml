@@ -1,14 +1,18 @@
 
 =render :partial => 'form'
   
-%ul#view-links
-  %li.queued-statuses
-    =link_to "Queue", root_path
-  %li.published-statuses.selected
-    =link_to "Published", published_path
+%section.row
+  %section.span4.columns
+    %div.well
+      =link_to "Queue", root_path, :class => ["btn", "small"]
+      =link_to "Published", published_path, :class => ["btn", "info", "small"]
   
-%section.status-lists
-  -if @statuses.present?
-    %ul#published_statuses.status-list
-      =render @statuses
 
+%section.status-lists
+%section.row
+  %section.span2.columns
+    &nbsp;
+  %section.span8.columns
+    -if @statuses.present?
+      %ul
+        =render @statuses
