@@ -42,6 +42,7 @@ class User < ActiveRecord::Base
   # Applies omniauth response to the User model
   #-------------------------------------
   def self.find_for_twitter_oauth(omniauth)
+    logger.info(omniauth)
     authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
     if authentication && authentication.user
       authentication.user

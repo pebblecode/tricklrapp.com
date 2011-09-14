@@ -57,6 +57,7 @@ group :test do
   gem 'shoulda'
   gem 'random_data'
   gem 'capybara'   
+  gem 'launchy'
   gem 'database_cleaner'
   gem 'cucumber-rails'
   gem 'rspec-rails'
