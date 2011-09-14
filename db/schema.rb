@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(:version => 20110901092332) do
     t.boolean  "automatic",                                   :default => false
     t.decimal  "time_digit",    :precision => 6, :scale => 1, :default => 2.0
     t.string   "time_unit",                                   :default => "hours"
-    t.time     "publish_from"
-    t.time     "publish_until"
+    t.datetime "publish_from"
+    t.datetime "publish_until"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "time_zone"
@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(:version => 20110901092332) do
   create_table "users", :force => true do |t|
     t.string   "nickname"
     t.string   "name"
-    t.string   "remember_token"
     t.datetime "remember_created_at"
+    t.string   "remember_token"
     t.integer  "sign_in_count",       :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
