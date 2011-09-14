@@ -11,17 +11,22 @@
 body {
   padding-top: 60px;
 }
-
-#logo a {
-  display: block;
-  background: transparent image_url('logo.png') no-repeat 0 -56px;
-  width: 205px;
-  height: 42px;
-  text-indent: -9999px;
-  outline: none;
+.container {
+  width: 725px;
+  margin: 0 auto;
+  background: #d2d2d2;
   
-  &:hover {
-    background-position: 0 0;
+  #logo a {
+    display: block;
+    background: transparent image_url('logo.png') no-repeat 0 -56px;
+    width: 205px;
+    height: 42px;
+    text-indent: -9999px;
+    outline: none;
+
+    &:hover {
+      background-position: 0 0;
+    }
   }
 }
 
