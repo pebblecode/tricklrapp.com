@@ -11,7 +11,7 @@
         %section.topbar
           %section.fill
             %section.container
-              %h3 
+              %h3#logo
                 %a(href="/") 
                   Tricklr
               %ul
@@ -30,13 +30,14 @@
                     =link_to "Login", "/users/auth/twitter"
 
 
-        %section#content
-          - if flash[:notice]
-            %div.alert-message.success
-              = flash[:notice]
-          - elsif flash[:error]
-            %div.alert-message.error
-              = flash[:notice]
-          =yield
-      =render :partial => 'layouts/shared/footer'
-      = javascript_include_tag 'application'
+      %section#content
+        - if flash[:notice]
+          %div.alert-message.success
+            = flash[:notice]
+        - elsif flash[:error]
+          %div.alert-message.error
+            = flash[:notice]
+        =yield
+
+    =render :partial => 'layouts/shared/footer'
+    = javascript_include_tag 'application'
