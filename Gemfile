@@ -78,3 +78,7 @@ group :development do
   gem 'spork', '0.8.5'
 end
 
+group :production do
+  gem 'unicorn'
+  gem 'thin'
+end 
