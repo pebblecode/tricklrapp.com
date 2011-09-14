@@ -6,6 +6,10 @@ gem 'rails', '3.1.0'
 # https://bitbucket.org/ged/ruby-pg/wiki/Home
 gem 'pg'
 
+
+# MySql2 
+gem 'mysql2'
+
 # Devise for Authentication layer
 # http://github.com/plataformatec/devise
 gem 'devise'
