@@ -1,9 +1,9 @@
 =render :partial => 'form'
   
 %ul.tab-headings
-  %li.active.first
+  %li{:class => "first #{(@statuses_type == :unpublished) ? "active" : ""}"}
     =link_to "Queue", root_path
-  %li.last
+  %li{:class => "first #{(@statuses_type == :published) ? "active" : ""}"}
     =link_to "Published", published_path
   
 / %section.status-lists
