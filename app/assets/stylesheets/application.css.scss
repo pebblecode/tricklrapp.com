@@ -40,6 +40,7 @@ $dark_link_colour: #265467;
 }
 
 body {
+  font-family: Helvetica, Arial, sans-serif;
   padding-top: 60px;
   background: transparent image_url('background.gif') repeat 0 0;
 }
@@ -54,6 +55,17 @@ a {
   
   &:hover {
     text-decoration: underline;
+  }
+}
+
+.actions {
+  margin-top: 10px;
+  
+  button {
+    @include button;
+    height: 38px;
+    font-weight: bold;
+    color: $dark_link_colour;
   }
 }
 
@@ -159,10 +171,14 @@ a {
       textarea {
         width: 555px;
         height: 80px;
-        border: 1px solid #787878;
+        border: 1px solid #AEAEAE;
         @include border-radius(6px, 6px);
         padding: 10px;
         @include single-box-shadow(#dbdbdb, 3px, 3px, 10px, 0, inset);
+      }
+      
+      .actions {
+        float: right;
       }
     }
   }
