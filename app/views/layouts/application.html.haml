@@ -6,30 +6,25 @@
     = stylesheet_link_tag 'application'
     = csrf_meta_tag
   %body
-    %section.container
-      %section.topbar-wrapper
-        %section.topbar
-          %section.fill
-            %section.container
-              %h3#logo
-                %a(href="/") 
-                  Tricklr
-              %ul.nav
-                - if current_user
-                  %li.settings
-                    =link_to "Settings", settings_path
-                  %li.help
-                    =link_to "Help", help_path                  
-                  %li.account
-                    =link_to current_user.nickname, root_path
-                    %span.sep /
-                    =link_to "Logout", destroy_user_session_path
+    %section#wrapper
+      %section.topbar
+        %h3#logo
+          %a(href="/") 
+            Tricklr
+        %ul.nav
+          - if current_user
+            %li.settings
+              =link_to "Settings", settings_path
+            %li.help
+              =link_to "Help", help_path                  
+            %li.account
+              =link_to current_user.nickname, root_path
+              %span.sep /
+              =link_to "Logout", destroy_user_session_path
 
-                - else
-                  %li.login
-                    =link_to "Login", "/users/auth/twitter"
-
-
+          - else
+            %li.login
+              =link_to "Login", "/users/auth/twitter"
 
       %section#content
         - if flash[:notice]
