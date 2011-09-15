@@ -184,6 +184,7 @@ a {
     
     .tab-headings {
       list-style: none;
+      clear: right;
       li {
         a {
           float: left;
@@ -192,14 +193,15 @@ a {
           @include linear-gradient(color-stops(#ffffff, #f2f2f2), top);
           font-weight: bold;
           width: 50%;
+          height: 38px;
           border: 1px solid #b4b4b4;
         }
         
-        &.first {
+        &.first a {
           @include border-top-left-radius(6px);
           @include border-bottom-left-radius(6px);
         }
-        &.last {
+        &.last a {
           @include border-top-right-radius(6px);
           @include border-bottom-right-radius(6px);
         }
@@ -207,9 +209,13 @@ a {
         &.active a {
           @include linear-gradient(color-stops(#cceaf7, #c2deea), top);
         }
-      }
-    }
-  }
+      } // .tab-headings li
+    } // .tab-headings
+    
+    .status-list {
+      clear: both;
+    } // .status-list
+  } // #content
 } // #wrapper
 
 footer {
