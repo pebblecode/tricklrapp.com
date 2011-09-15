@@ -15,6 +15,7 @@ $light_blue: #92dfff;
 $dark_blue: #52b8e3;
 $border_gray: #5b5b5b;
 $link_colour: #29abe2;
+$dark_link_colour: #265467;
 
 @mixin button {
   border: 1px solid #aeaeae;
@@ -58,7 +59,7 @@ a {
 
 #wrapper {
   padding: 5px 20px 20px;
-  width: 725px;
+  width: 575px;
   margin: 0 auto;
   background: #d2d2d2;
   border: 2px solid #ddd;
@@ -70,7 +71,7 @@ a {
     
     #logo {
       position: absolute;
-      top: 0;
+      top: -5px;
       left: 0;
       
       a {
@@ -103,10 +104,17 @@ a {
         }
         
         &.account {
+          font-weight: bold;
+          
           width: 250px;
           text-align: center;
+          height: 38px;
+          line-height: 38px;
+          @include button;
+          
           a, span {
             display: inline;
+            color: $dark_link_colour;
           }
         }
         
