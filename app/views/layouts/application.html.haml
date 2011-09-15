@@ -14,20 +14,21 @@
               %h3#logo
                 %a(href="/") 
                   Tricklr
-              %ul
-                -if current_user
-                  %li
-                    =link_to current_user.nickname, root_path
-
-                  %li
+              %ul.nav
+                - if current_user
+                  %li.setting
                     =link_to "Settings", settings_path
-                %li
-                  =link_to "Help", help_path
-                %li
-                  -if current_user
+                  %li.help
+                    =link_to "Help", help_path                  
+                  %li.account
+                    =link_to current_user.nickname, root_path
+                    %span.sep /
                     =link_to "Logout", destroy_user_session_path
-                  -else
+
+                - else
+                  %li.login
                     =link_to "Login", "/users/auth/twitter"
+
 
 
       %section#content

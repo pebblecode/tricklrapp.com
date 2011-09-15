@@ -3,10 +3,17 @@
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *
- *= require html5_boilerplate
- *= require_self
- *= require_tree . 
  */
+
+/* Import files using sass instead of rails sprockets (easier to control order)*/
+@import 'html5_boilerplate';
+@import '_css3';
+@import 'statuses';
+
+/* Colours */
+$light_blue: #92dfff;
+$dark_blue: #52b8e3;
+
 
 body {
   padding-top: 60px;
@@ -16,17 +23,55 @@ body {
   margin: 0 auto;
   background: #d2d2d2;
   
-  #logo a {
-    display: block;
-    background: transparent image_url('logo.png') no-repeat 0 -56px;
-    width: 205px;
-    height: 42px;
-    text-indent: -9999px;
-    outline: none;
+  .topbar {
+    position: relative;
+    
+    #logo a {
+      display: block;
+      background: transparent image_url('logo.png') no-repeat 0 -56px;
+      width: 205px;
+      height: 42px;
+      text-indent: -9999px;
+      outline: none;
 
-    &:hover {
-      background-position: 0 0;
+      &:hover {
+        background-position: 0 0;
+      }
     }
+    
+    .nav {
+      display: block;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      list-style: none;
+      
+      li {
+        float: right;
+        height: 38px;
+        @include linear-gradient(color-stops($light_blue, $dark_blue));
+        margin-left: 10px;
+        
+        a {
+          display: block;
+          
+        }
+        
+        &.account {
+          width: 250px;
+          text-align: center;
+          a, span {
+            display: inline;
+          }
+        }
+        
+        &.setting a, 
+        &.help a {
+          width: 38px;
+        }        
+      }
+    }
+  
   }
 }
 
