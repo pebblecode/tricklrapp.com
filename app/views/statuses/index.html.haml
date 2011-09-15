@@ -3,7 +3,7 @@
 %ul.tab-headings
   %li{:class => "first #{(@statuses_type == :unpublished) ? "active" : ""}"}
     =link_to "Queue", root_path
-  %li{:class => "first #{(@statuses_type == :published) ? "active" : ""}"}
+  %li{:class => "last #{(@statuses_type == :published) ? "active" : ""}"}
     =link_to "Published", published_path
   
 / %section.status-lists
