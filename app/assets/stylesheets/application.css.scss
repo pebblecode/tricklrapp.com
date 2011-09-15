@@ -181,6 +181,34 @@ a {
         float: right;
       }
     }
+    
+    .tab-headings {
+      list-style: none;
+      li {
+        a {
+          float: left;
+          display: block;
+                    
+          @include linear-gradient(color-stops(#ffffff, #f2f2f2), top);
+          font-weight: bold;
+          width: 50%;
+          border: 1px solid #b4b4b4;
+        }
+        
+        &.first {
+          @include border-top-left-radius(6px);
+          @include border-bottom-left-radius(6px);
+        }
+        &.last {
+          @include border-top-right-radius(6px);
+          @include border-bottom-right-radius(6px);
+        }
+        
+        &.active a {
+          @include linear-gradient(color-stops(#cceaf7, #c2deea), top);
+        }
+      }
+    }
   }
 } // #wrapper
 
