@@ -13,7 +13,20 @@
 /* Colours */
 $light_blue: #92dfff;
 $dark_blue: #52b8e3;
+$border_gray: #5b5b5b;
 
+
+@mixin button {
+  border: 1px solid #aeaeae;
+  @include border-radius(6px, 6px);
+  @include linear-gradient(color-stops($light_blue, $dark_blue));
+  @include single-box-shadow(#666666, 5px, 5px, 10px, -5px);  
+}
+
+@mixin button_hover {
+  border: 1px solid #bababa;
+  @include linear-gradient(color-stops(#fff, #f2f2f2));
+}
 
 body {
   padding-top: 60px;
@@ -48,13 +61,10 @@ body {
       
       li {
         float: right;
-        height: 38px;
-        @include linear-gradient(color-stops($light_blue, $dark_blue));
         margin-left: 10px;
         
         a {
           display: block;
-          
         }
         
         &.account {
@@ -65,10 +75,17 @@ body {
           }
         }
         
-        &.setting a, 
+        &.setting a,
         &.help a {
+          @include button;
           width: 38px;
-        }        
+          height: 38px;
+          
+          &:hover {
+            @include button_hover;
+          }
+          
+        }
       }
     }
   
