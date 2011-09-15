@@ -41,32 +41,40 @@ $border_gray: #5b5b5b;
 body {
   padding-top: 60px;
 }
-.container {
+#wrapper {
+  padding: 5px 20px 20px;
   width: 725px;
   margin: 0 auto;
   background: #d2d2d2;
+  @include border-radius(6px, 6px);
   
   .topbar {
     position: relative;
     
-    #logo a {
-      display: block;
-      background: transparent image_url('logo.png') no-repeat 0 -56px;
-      width: 205px;
-      height: 42px;
-      text-indent: -9999px;
-      outline: none;
+    #logo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      
+      a {
+        display: block;
+        background: transparent image_url('logo.png') no-repeat 0 0;
+        width: 205px;
+        height: 42px;
+        text-indent: -9999px;
+        outline: none;
 
-      &:hover {
-        background-position: 0 0;
+        &:hover {
+          background-position: 0 -56px;
+        }
       }
-    }
+    } // #logo
     
     .nav {
       display: block;
       position: absolute;
-      top: 20px;
-      right: 20px;
+      top: 0;
+      right: 0;
       list-style: none;
       
       li {
@@ -111,8 +119,12 @@ body {
           }
         }
       }
-    }
+    } // .nav
   
+  } // .topbar
+  
+  #content {
+    margin-top: 52px;
   }
-}
+} // #wrapper
 
