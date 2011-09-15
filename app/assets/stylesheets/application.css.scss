@@ -75,7 +75,7 @@ body {
           }
         }
         
-        &.setting a,
+        &.settings a,
         &.help a {
           @include button;
           width: 38px;
@@ -84,7 +84,20 @@ body {
           &:hover {
             @include button_hover;
           }
+        }
+        &.settings a {
+          @include linear-gradient(color-stops($light_blue, $dark_blue), top, image_url('icons/settings_icon.png'));
           
+          &:hover {
+            @include linear-gradient(color-stops(#fff, #f2f2f2), top, image_url('icons/settings_hover_icon.png'));
+          }
+        }
+        &.help a {
+          @include linear-gradient(color-stops($light_blue, $dark_blue), top, image_url('icons/help_icon.png'));
+          
+          &:hover {
+            @include linear-gradient(color-stops(#fff, #f2f2f2), top, image_url('icons/help_hover_icon.png'));
+          }
         }
       }
     }
