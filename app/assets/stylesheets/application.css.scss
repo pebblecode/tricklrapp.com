@@ -20,7 +20,7 @@ $link_colour: #29abe2;
   border: 1px solid #aeaeae;
   @include border-radius(6px, 6px);
   @include linear-gradient(color-stops($light_blue, $dark_blue));
-  @include single-box-shadow(#666666, 5px, 5px, 10px, -5px);  
+  @include single-box-shadow(#666666, 5px, 5px, 10px, -5px);
 }
 
 @mixin button_with_image($image_path) {
@@ -61,7 +61,9 @@ a {
   width: 725px;
   margin: 0 auto;
   background: #d2d2d2;
-  @include border-radius(6px, 6px);
+  border: 2px solid #ddd;
+  @include border-radius(7px, 7px);
+  @include single-box-shadow(#111111, 5px, 5px, 10px, 0);
   
   .topbar {
     position: relative;
