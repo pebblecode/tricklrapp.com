@@ -8,11 +8,13 @@ class StatusesController < ApplicationController
 
   def index
     @statuses = current_user.unpublished_statuses
+    @statuses_type = :unpublished
     respond_with(@statuses)
   end
 
   def published
     @statuses = current_user.published_statuses
+    @statuses_type = :published
     render 'statuses/index'
   end
 
