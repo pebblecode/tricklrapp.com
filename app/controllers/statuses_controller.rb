@@ -13,7 +13,7 @@ class StatusesController < ApplicationController
 
   def published
     @statuses = current_user.published_statuses
-    respond_with(@statuses)
+    render 'statuses/index'
   end
 
   def new
