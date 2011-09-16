@@ -17,6 +17,9 @@ $border_gray: #5b5b5b;
 $link_colour: #29abe2;
 $dark_link_colour: #265467;
 
+/* Sizes */
+$inner_content_width: 575px;
+
 @mixin button {
   border: 1px solid #aeaeae;
   @include border-radius(6px, 6px);
@@ -71,7 +74,7 @@ a {
 
 #wrapper {
   padding: 5px 20px 20px;
-  width: 575px;
+  width: $inner_content_width;
   margin: 0 auto;
   background: #d2d2d2;
   border: 2px solid #ddd;
@@ -169,7 +172,7 @@ a {
       }
       
       textarea {
-        width: 555px;
+        width: $inner_content_width - 20px;
         height: 80px;
         border: 1px solid #AEAEAE;
         @include border-radius(6px, 6px);
@@ -185,6 +188,8 @@ a {
     .tab-headings {
       list-style: none;
       clear: right;
+      padding-left: 0;
+      width: $inner_content_width + 2;
       li {
         a {
           float: left;
@@ -192,18 +197,24 @@ a {
                     
           @include linear-gradient(color-stops(#ffffff, #f2f2f2), top);
           font-weight: bold;
+          line-height: 38px;
           width: 50%;
           height: 38px;
           border: 1px solid #b4b4b4;
+          text-align: center;
         }
         
         &.first a {
           @include border-top-left-radius(6px);
           @include border-bottom-left-radius(6px);
+          width: floor($inner_content_width / 2);
         }
         &.last a {
           @include border-top-right-radius(6px);
           @include border-bottom-right-radius(6px);
+          border-left: none;
+          width: 285px;
+          width: floor($inner_content_width / 2);
         }
         
         &.active a {
