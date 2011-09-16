@@ -225,6 +225,10 @@ a {
     
     .status-list {
       clear: both;
+      
+      li {
+        @include linear-gradient(color-stops(#ffffff, #f2f2f2), top);
+      }
     } // .status-list
   } // #content
 } // #wrapper
