@@ -16,6 +16,7 @@ $dark_blue: #52b8e3;
 $border_gray: #5b5b5b;
 $link_colour: #29abe2;
 $dark_link_colour: #265467;
+$content_gray: #707070;
 
 /* Sizes */
 $inner_content_width: 575px;
@@ -190,6 +191,9 @@ a {
       clear: right;
       padding-left: 0;
       width: $inner_content_width + 2;
+/*      @include single-box-shadow(#666666, 5px, 5px, 10px, -5px);*/
+      background-color: transparent;
+      
       li {
         a {
           float: left;
@@ -225,9 +229,32 @@ a {
     
     .status-list {
       clear: both;
+      margin: 0;
+      padding: 0;
       
       li {
         @include linear-gradient(color-stops(#ffffff, #f2f2f2), top);
+        @include border-radius(6px);
+        border: 1px solid #aeaeae;
+        @include single-box-shadow(#999999, 5px, 5px, 10px, -5px);
+        
+        margin: 20px 0 0 0;
+        padding: 15px;
+        color: $content_gray;
+        list-style: none;
+        
+        font-size: 14px;
+        line-height: 18px;
+        
+        p {
+          margin: 0;
+        }
+        .meta {
+          color: $link_colour;
+          font-weight: bold;
+          margin-top: 15px;
+          display: block;
+        }
       }
     } // .status-list
   } // #content
