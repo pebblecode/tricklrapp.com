@@ -1,7 +1,7 @@
 %li{:id => "status_#{status.id}"}
   %p
     =status.status
-  %span{ :class => cycle("orange", "blue", "green") }
+  %span.meta
     -if status.published_at
       =link_to time_ago_in_words_with_word(status.published_at), "http://twitter.com/growingshed/status/" + status.twitter_id.to_s
     -else 

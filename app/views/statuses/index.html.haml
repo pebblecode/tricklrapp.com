@@ -1,6 +1,6 @@
 =render :partial => 'form'
   
-%ul.tab-headings
+%ul.tab-headings.clearfix
   %li{:class => "first #{(@statuses_type == :unpublished) ? "active" : ""}"}
     =link_to "Queue", root_path
   %li{:class => "last #{(@statuses_type == :published) ? "active" : ""}"}
