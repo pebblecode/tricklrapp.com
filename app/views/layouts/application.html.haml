@@ -5,6 +5,11 @@
     /= stylesheet_link_tag "http://twitter.github.com/bootstrap/assets/css/bootstrap-1.1.1.min.css"
     = stylesheet_link_tag 'application'
     = csrf_meta_tag
+    
+    = javascript_include_tag "http://use.typekit.com/kvm0rss.js"
+    :javascript
+      try{Typekit.load();}catch(e){}
+    
   %body
     %section#wrapper
       %section.topbar
