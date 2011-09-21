@@ -213,6 +213,6 @@ $(document).ready(function() {
   //  $('#things').prepend('<%=escape_javascript render(@thing) %>');
   //});
   $('ul#queued_statuses').ready(function() {
-    $('ul#queued_statuses li form').after('<a href="#" class="reorder-statuses">Reorder</a>');
+    $('ul#queued_statuses li .actions').prepend('<li class="move"><a href="#" class="reorder-statuses" title="Move">Reorder</a></li>');
   });
 });

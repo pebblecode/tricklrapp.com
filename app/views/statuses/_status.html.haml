@@ -8,5 +8,8 @@
       trickling in
       =distance_of_time_in_words(Time.now, status.scheduled_at)
   -if !status.published_at
-    = link_to 'Edit', edit_status_path(status), :class => "edit-status", :rel => "#modal-edit"
-    = button_to 'Destroy', status, :method => :delete, :class => ["btn", "danger", "small"]
+    %ul.actions
+      %li.edit
+        = link_to 'Edit', edit_status_path(status), :class => "edit-status", :rel => "#modal-edit", :title => "Edit"
+      %li.delete
+        = button_to 'Destroy', status, :method => :delete, :class => ["Delete"]

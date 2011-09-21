@@ -43,6 +43,18 @@ $inner_content_width: 575px;
   @include linear-gradient(color-stops(#fff, #f2f2f2), top, image_url($image_path));
 }
 
+/* Applied to icons/actions-icons.png image */
+@mixin actions-button($start_x_pos) {
+  background: transparent image_url('icons/action-icons.png') no-repeat $start_x_pos -24px;
+  width: 11px;
+  height: 11px;
+  text-indent: -9999px;
+  display: block;
+  &:hover {
+    background-position: $start_x_pos 0;
+  }          
+}
+
 body {
   font-family: Helvetica, Arial, sans-serif;
   padding-top: 60px;
@@ -232,7 +244,7 @@ a {
       margin: 0;
       padding: 0;
       
-      li {
+      > li {
         @include linear-gradient(color-stops(#ffffff, #f2f2f2), top);
         @include border-radius(6px);
         border: 1px solid #aeaeae;
@@ -249,11 +261,32 @@ a {
         p {
           margin: 0;
         }
+        
         .meta {
           color: $link_colour;
           font-weight: bold;
           margin-top: 15px;
           display: block;
+        }
+        
+        .actions {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          li {
+            &.move a {
+              @include actions-button(0);
+            }
+
+            &.edit a {
+              @include actions-button(-20px);
+            }
+
+            &.delete input {
+              @include actions-button(-38px);
+              border: none;
+            }
+          }
         }
       }
     } // .status-list
