@@ -50,6 +50,8 @@ $inner_content_width: 575px;
   height: 11px;
   text-indent: -9999px;
   display: block;
+  float: left;
+  margin-left: 8px;
   &:hover {
     background-position: $start_x_pos 0;
   }          
@@ -258,8 +260,11 @@ a {
         font-size: 14px;
         line-height: 18px;
         
+        position: relative;
+        
         p {
           margin: 0;
+          width: 490px;
         }
         
         .meta {
@@ -273,6 +278,12 @@ a {
           list-style: none;
           margin: 0;
           padding: 0;
+          
+          width: 60px;
+          position: absolute;
+          right: 10px;
+          top: 15px;
+          
           li {
             &.move a {
               @include actions-button(0);
