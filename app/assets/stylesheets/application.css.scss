@@ -96,6 +96,9 @@ a {
   @include border-radius(7px, 7px);
   @include single-box-shadow(#111111, 5px, 5px, 10px, 0);
   
+  position: relative;
+  z-index: 100;
+  
   .topbar {
     position: relative;
     
@@ -307,4 +310,23 @@ a {
 footer {
   text-align: center;
   color: white;
-}
+  
+  position: absolute;
+  z-index: 50;
+  top: 95px;
+  left: 855px;
+  
+  .pebble-code-tag {
+    outline: none;
+    
+    display: block;
+    width: 132px;
+    height: 64px;
+    text-indent: -9999px;
+    background: transparent image_url('pebble-code.png') no-repeat 0 0;
+    
+    &:hover {
+      background-position: 5px 0;
+    }
+  }
+} // footer
