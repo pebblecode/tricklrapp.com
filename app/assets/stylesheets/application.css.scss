@@ -351,6 +351,79 @@ footer {
   }
 } // footer
 
+
+// ------------------------------------------------------------------------
+// Page specific styles
+// ------------------------------------------------------------------------
+
+.homepage {
+  #content {
+    h2 {
+      @include adelle_font;
+      font-size: 20px;
+      line-height: 30px;
+      font-weight: bold;
+      
+      color: $link_colour;
+    }
+    
+    .intro {
+      @include adelle_font;
+      font-size: 14px;
+      line-height: 18px;
+      font-weight: bold;
+      
+      color: #909090;
+    }
+    
+    .step-by-step {
+      padding: 0;
+      margin: 0;
+      
+      li {
+        width: 150px;
+        margin-right: 15px;
+        
+        @include adelle_font;
+        font-size: 14px;
+        line-height: 18px;
+        font-weight: bold;
+        
+        float: left;
+        display: block;
+        
+        color: #909090;
+        
+        border-right: 1px solid #e0e0e0;
+        
+        &.last {
+          margin-right: 0;
+          border-right: none;
+        }
+      }
+    } // .step-by-step
+    
+    .sign-in {
+      @include adelle_font;
+      font-size: 18px;
+      line-height: 22px;
+      font-weight: bold;
+      
+      clear: both;
+      margin-top: 20px;
+      
+      a {
+        color: $link_colour;
+      }
+    } // .sign-in
+    
+  } // #content
+}// .homepage
+
+// ------------------------------------------------------------------------
+// Misc styles
+// ------------------------------------------------------------------------
+
 // qTip - most styles in application.js
 .qtip {
   margin-top: 13px;
