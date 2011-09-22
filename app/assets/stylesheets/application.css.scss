@@ -357,12 +357,48 @@ footer {
 // ------------------------------------------------------------------------
 
 .homepage {
+  .nav {
+    top: -5px;
+    
+    .login a {
+      
+/*      Tried using css, but button divider and image too hard to do.
+
+      @include adelle_font;
+      font-size: 24px;
+      line-height: 42px;
+      font-weight: bold;
+      
+      background: transparent image_url('twitter.png') no-repeat 0 0;
+      padding-left: 45px + 10px;
+      
+      @include button;*/
+      
+      display: block;
+      background: transparent image_url('twitter.png') no-repeat 0 0;
+      width: 322px;
+      height: 44px;
+      
+      text-indent: -9999px;
+      outline: none;
+      
+      &:hover {
+        background-position: 0 -56px;
+      }
+    }
+  } // .nav
+    
   #content {
+    background-color: #f6f6f6;
+    padding: 20px;
+    
     h2 {
       @include adelle_font;
       font-size: 20px;
       line-height: 30px;
       font-weight: bold;
+      
+      margin-top: 0;
       
       color: $link_colour;
     }
@@ -411,6 +447,7 @@ footer {
       
       clear: both;
       margin-top: 20px;
+      margin-bottom: 0;
       
       a {
         color: $link_colour;
