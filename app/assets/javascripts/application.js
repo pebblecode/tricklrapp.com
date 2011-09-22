@@ -215,4 +215,28 @@ $(document).ready(function() {
   $('ul#queued_statuses').ready(function() {
     $('ul#queued_statuses li .actions').prepend('<li class="move"><a href="#" class="reorder-statuses" title="Move">Reorder</a></li>');
   });
+  
+  // qTips - link tooltips
+  $("#wrapper #content .status-list > li .actions li a[title], #wrapper #content .status-list > li .actions li input[title]").qtip({
+    position: {
+      corner: {
+        target: 'bottomMiddle',
+        tooltip: 'topMiddle'
+      }
+    },
+    style: { 
+      padding: 5,
+      background: '#29abe2',
+      color: 'white',
+      textAlign: 'center',
+      border: false,
+      width: 50,
+      tip: {
+        corner: 'topMiddle',
+        color: '#29abe2',
+        size: {x:11, y:5}
+      }
+    }
+  });
+  
 });
