@@ -5,8 +5,9 @@
     /= stylesheet_link_tag "http://twitter.github.com/bootstrap/assets/css/bootstrap-1.1.1.min.css"
     = stylesheet_link_tag 'application'
     = csrf_meta_tag
-    
-  %body
+  
+  - body_class = (current_user ? "user_page" : "homepage")
+  %body{ :class => body_class }
     %section#wrapper
       %section.topbar
         %h3#logo
@@ -17,7 +18,7 @@
             %li.settings
               =link_to "Settings", settings_path
             %li.help
-              =link_to "Help", help_path                  
+              =link_to "Help", help_path
             %li.account
               =link_to current_user.nickname, root_path
               %span.sep= "|"
@@ -25,7 +26,7 @@
 
           - else
             %li.login
-              =link_to "Login", "/users/auth/twitter"
+              =link_to "Login", user_omniauth_authorize_path(:twitter)
 
       %section#content
         - if flash[:notice]
