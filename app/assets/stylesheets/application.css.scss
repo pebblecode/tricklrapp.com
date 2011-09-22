@@ -392,6 +392,11 @@ footer {
     background-color: #f6f6f6;
     padding: 20px;
     
+    @include linear-gradient(color-stops(#ffffff, #f2f2f2), top);
+    @include border-radius(6px);
+    border: 1px solid #ccc;
+    @include single-box-shadow(#999999, 5px, 5px, 10px, -5px);
+    
     h2 {
       @include adelle_font;
       font-size: 20px;
