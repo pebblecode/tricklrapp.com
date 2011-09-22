@@ -6,10 +6,6 @@
     = stylesheet_link_tag 'application'
     = csrf_meta_tag
     
-    = javascript_include_tag "http://use.typekit.com/kvm0rss.js"
-    :javascript
-      try{Typekit.load();}catch(e){}
-    
   %body
     %section#wrapper
       %section.topbar
@@ -42,3 +38,6 @@
 
     =render :partial => 'layouts/shared/footer'
     = javascript_include_tag 'application'
+    = javascript_include_tag "http://use.typekit.com/kvm0rss.js"
+    :javascript
+      try{Typekit.load();}catch(e){}    
