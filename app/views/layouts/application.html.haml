@@ -7,7 +7,7 @@
     = csrf_meta_tag
   
   - body_class = [((controller.class.name == "StatusesController") ? "status-listing-page" : "page")]
-  - body_class << "logged-in" if current_user
+  - body_class << "no-user" unless current_user
   %body{ :class => body_class.join(" ") }
     %section#wrapper
       %section.topbar
