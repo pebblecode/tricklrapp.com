@@ -415,10 +415,14 @@ footer {
     .step-by-step {
       padding: 0;
       margin: 0;
+      background: transparent image_url('step-by-step.png') no-repeat center 0;
+      width: 545px;
+      height: 299px;
       
       li {
-        width: 150px;
-        margin-right: 15px;
+        width: 145px;
+        margin-right: 50px;
+        margin-top: 220px;
         
         @include adelle_font;
         font-size: 14px;
@@ -429,8 +433,6 @@ footer {
         display: block;
         
         color: #909090;
-        
-        border-right: 1px solid #e0e0e0;
         
         &.last {
           margin-right: 0;
