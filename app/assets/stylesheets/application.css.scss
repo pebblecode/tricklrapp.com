@@ -197,6 +197,70 @@ a {
   
   #content {
     margin-top: 72px;
+
+    h2 {
+      @include adelle_font;
+      font-size: 20px;
+      line-height: 30px;
+      font-weight: bold;
+
+      margin-top: 0;
+
+      color: $link_colour;
+    }
+
+    .intro {
+      @include adelle_font;
+      font-size: 14px;
+      line-height: 18px;
+      font-weight: bold;
+
+      color: #909090;
+    }
+
+    .step-by-step {
+      padding: 0;
+      margin: 0;
+      background: transparent image_url('step-by-step.png') no-repeat center 0;
+      width: 545px;
+      height: 299px;
+
+      li {
+        width: 145px;
+        margin-right: 50px;
+        margin-top: 220px;
+
+        @include adelle_font;
+        font-size: 14px;
+        line-height: 18px;
+        font-weight: bold;
+
+        float: left;
+        display: block;
+
+        color: #909090;
+
+        &.last {
+          margin-right: 0;
+          border-right: none;
+        }
+      }
+    } // .step-by-step
+
+    .sign-in {
+      @include adelle_font;
+      font-size: 18px;
+      line-height: 22px;
+      font-weight: bold;
+
+      clear: both;
+      margin-top: 20px;
+      margin-bottom: 0;
+
+      a {
+        color: $link_colour;
+      }
+    } // .sign-in
     
     .status-form {
       legend {
@@ -353,10 +417,22 @@ footer {
 
 
 // ------------------------------------------------------------------------
-// Page specific styles
+// Body class based styles
 // ------------------------------------------------------------------------
 
-.homepage {
+.page {
+  #content {
+    background-color: #f6f6f6;
+    padding: 20px;
+
+    @include linear-gradient(color-stops(#ffffff, #f2f2f2), top);
+    @include border-radius(6px);
+    border: 1px solid #ccc;
+    @include single-box-shadow(#999999, 5px, 5px, 10px, -5px);
+  }
+}
+
+.logged-in {
   .nav {
     top: -5px;
     
@@ -387,82 +463,8 @@ footer {
       }
     }
   } // .nav
-    
-  #content {
-    background-color: #f6f6f6;
-    padding: 20px;
-    
-    @include linear-gradient(color-stops(#ffffff, #f2f2f2), top);
-    @include border-radius(6px);
-    border: 1px solid #ccc;
-    @include single-box-shadow(#999999, 5px, 5px, 10px, -5px);
-    
-    h2 {
-      @include adelle_font;
-      font-size: 20px;
-      line-height: 30px;
-      font-weight: bold;
-      
-      margin-top: 0;
-      
-      color: $link_colour;
-    }
-    
-    .intro {
-      @include adelle_font;
-      font-size: 14px;
-      line-height: 18px;
-      font-weight: bold;
-      
-      color: #909090;
-    }
-    
-    .step-by-step {
-      padding: 0;
-      margin: 0;
-      background: transparent image_url('step-by-step.png') no-repeat center 0;
-      width: 545px;
-      height: 299px;
-      
-      li {
-        width: 145px;
-        margin-right: 50px;
-        margin-top: 220px;
-        
-        @include adelle_font;
-        font-size: 14px;
-        line-height: 18px;
-        font-weight: bold;
-        
-        float: left;
-        display: block;
-        
-        color: #909090;
-        
-        &.last {
-          margin-right: 0;
-          border-right: none;
-        }
-      }
-    } // .step-by-step
-    
-    .sign-in {
-      @include adelle_font;
-      font-size: 18px;
-      line-height: 22px;
-      font-weight: bold;
-      
-      clear: both;
-      margin-top: 20px;
-      margin-bottom: 0;
-      
-      a {
-        color: $link_colour;
-      }
-    } // .sign-in
-    
-  } // #content
-}// .homepage
+} // .logged-in
+
 
 // ------------------------------------------------------------------------
 // Misc styles
