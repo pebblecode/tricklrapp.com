@@ -148,9 +148,11 @@ a {
         &.account {
           
           width: 250px;
-          text-align: center;
+/*          text-align: center;
           height: 38px;
-          @include button;
+          @include button;*/
+          color: $link_colour;
+          text-align: right;
           
           @include adelle_font;
           font-size: 14px;
