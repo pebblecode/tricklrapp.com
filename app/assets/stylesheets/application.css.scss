@@ -20,6 +20,7 @@ $content_gray: #707070;
 
 /* Sizes */
 $inner_content_width: 575px;
+$pebble_code_tag_width: 132px;
 
 @mixin button {
   border: 1px solid #aeaeae;
@@ -101,16 +102,22 @@ a {
 }
 
 #wrapper {
-  padding: 5px 20px 20px;
-  width: $inner_content_width;
+  width: $inner_content_width + $pebble_code_tag_width;
   margin: 0 auto;
-  background: #d2d2d2;
-  border: 2px solid #ddd;
-  @include border-radius(7px, 7px);
-  @include single-box-shadow(#111111, 5px, 5px, 10px, 0);
-  
   position: relative;
-  z-index: 100;
+  
+  #content-wrapper {
+    padding: 5px 20px 20px;
+    width: $inner_content_width;
+    
+    background: #d2d2d2;
+    border: 2px solid #ddd;
+    @include border-radius(7px, 7px);
+    @include single-box-shadow(#111111, 5px, 5px, 10px, 0);
+
+    position: relative;
+    z-index: 100;    
+  } // #content-wrapper
   
   .topbar {
     position: relative;
@@ -399,16 +406,16 @@ footer {
   text-align: center;
   color: white;
   
-  position: absolute;
-  z-index: 50;
-  top: 95px;
-  left: 845px;
-  
   .pebble-code-tag {
+    position: absolute;
+    z-index: 50;
+    top: 35px;
+    left: 605px;
+    
     outline: none;
     
     display: block;
-    width: 132px;
+    width: $pebble_code_tag_width;
     height: 64px;
     text-indent: -9999px;
     background: transparent image_url('pebble-code.png') no-repeat 0 0;
