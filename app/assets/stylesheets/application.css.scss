@@ -209,13 +209,14 @@ a {
   #content {
     margin-top: 72px;
 
-    h2 {
+    h2, legend {
       @include adelle_font;
       font-size: 20px;
       line-height: 30px;
       font-weight: bold;
 
       margin-top: 0;
+      margin-bottom: 16px;
 
       color: $link_colour;
     }
@@ -440,6 +441,12 @@ footer {
     @include border-radius(6px);
     border: 1px solid #ccc;
     @include single-box-shadow(#999999, 5px, 5px, 10px, -5px);
+  }
+}
+
+.settings-page {
+  legend {
+    display: none;
   }
 }
 
