@@ -9,6 +9,8 @@
 @import 'html5_boilerplate';
 @import '_css3';
 @import 'statuses';
+@import 'jquery-ui-1.8.16.custom';
+@import 'ui.slider.extras';
 
 /* Colours */
 $light_blue: #92dfff;
@@ -445,7 +447,7 @@ footer {
 }
 
 .settings-page {
-  legend {
+  > fieldset > legend {
     display: none;
   }
 }

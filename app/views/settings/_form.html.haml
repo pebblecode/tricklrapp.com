@@ -8,22 +8,19 @@
         =f.text_field :time_digit, :value => number_to_human(@setting.time_digit), :class => "small"
         =f.select :time_unit, options_for_select([ "minutes", "hours", "days" ], @setting.time_unit)
 
-    %div.clearfix
-      =f.label :publish_from
-      %div.input
-        =f.time_select :publish_from
-    %div.clearfix
-      =f.label :publish_until
-      %div.input
-        =f.time_select :publish_until
+    = field_set_tag 'Trikle between' do
+      %div.clearfix
+        =f.label :publish_from
+        %div.input
+          =f.time_select :publish_from, :minute_step => 60
+      %div.clearfix
+        =f.label :publish_until
+        %div.input
+          =f.time_select :publish_until, :minute_step => 60
+        
     %div.clearfix
       =f.label :time_zone
       %div.input
         =time_zone_select( "setting", "time_zone", nil, :default => "Pacific Time (US & Canada)" )
     %section.actions
-      %button.btn.primary
-        Save
-
-    
-
-  
+      %button.btn.primary Save

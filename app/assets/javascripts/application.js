@@ -5,7 +5,7 @@
 // // the compiled file.
 //
 //= require jquery.min
-//= require jquery-ui-1.8.6.custom.min
+//= require jquery-ui-1.8.16.custom.min
 //= require_tree .
 /*
  * Fades flash notices out after they are shown
@@ -237,6 +237,11 @@ $(document).ready(function() {
         size: {x:11, y:5}
       }
     }
+  });
+  
+  // jQuery UI Slider - http://www.filamentgroup.com/lab/update_jquery_ui_slider_from_a_select_element_now_with_aria_support/
+  $('#settings-form select#setting_publish_from_4i, #settings-form select#setting_publish_until_4i').selectToUISlider({
+    labels: 24
   });
   
 });
