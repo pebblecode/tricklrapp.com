@@ -10,35 +10,37 @@
   - body_class << "no-user" unless current_user
   %body{ :class => body_class.join(" ") }
     %section#wrapper
-      %section.topbar
-        %h3#logo
-          %a(href="/") 
-            Tricklr
-        %ul.nav
-          - if current_user
-            %li.settings
-              =link_to "Settings", settings_path
-            %li.help
-              =link_to "Help", help_path
-            %li.account
-              =link_to current_user.nickname, root_path
-              %span.sep= "|"
-              =link_to "Logout", destroy_user_session_path
+      #content-wrapper
+        %section.topbar
+          %h3#logo
+            %a(href="/") 
+              Tricklr
+          %ul.nav
+            - if current_user
+              %li.settings
+                =link_to "Settings", settings_path
+              %li.help
+                =link_to "Help", help_path
+              %li.account
+                =link_to current_user.nickname, root_path
+                %span.sep= "|"
+                =link_to "Logout", destroy_user_session_path
 
-          - else
-            %li.login
-              =link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter)
+            - else
+              %li.login
+                =link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter)
 
-      %section#content
-        - if flash[:notice]
-          %div.alert-message.success
-            = flash[:notice]
-        - elsif flash[:error]
-          %div.alert-message.error
-            = flash[:notice]
-        =yield
+        %section#content
+          - if flash[:notice]
+            %div.alert-message.success
+              = flash[:notice]
+          - elsif flash[:error]
+            %div.alert-message.error
+              = flash[:notice]
+          =yield
 
-    =render :partial => 'layouts/shared/footer'
+      =render :partial => 'layouts/shared/footer'
+
     = javascript_include_tag 'application'
     = javascript_include_tag "http://use.typekit.com/kvm0rss.js"
     :javascript
