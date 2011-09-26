@@ -241,7 +241,8 @@ $(document).ready(function() {
   
   // jQuery UI Slider - http://www.filamentgroup.com/lab/update_jquery_ui_slider_from_a_select_element_now_with_aria_support/
   $('#settings-form select#setting_publish_from_4i, #settings-form select#setting_publish_until_4i').selectToUISlider({
-    labels: 24
+    labels: 24,
+    tooltip: false
   });
   
 });
