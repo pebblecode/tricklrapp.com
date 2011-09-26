@@ -108,6 +108,29 @@ a {
   margin: 0 auto;
   position: relative;
   
+  .alert-message {
+/*    position: absolute;
+    top: -65px;
+    left: -4px;
+    width: 600px;
+    padding: 15px 10px 10px;
+    @include border-bottom-left-radius(6px);
+    @include border-bottom-right-radius(6px);
+    */
+    
+    display: block;
+    width: 555px;
+    padding: 10px;
+    border: 1px solid #aeaeae;
+
+    @include border-radius(6px);
+    @include linear-gradient(color-stops(#FFF1AD, #FFE76F)); // yellow
+    
+    &.success {
+      @include linear-gradient(color-stops(#EAFFBD, #D7FF81)); // green
+    }
+  }
+  
   #content-wrapper {
     padding: 5px 20px 20px;
     width: $inner_content_width;
@@ -449,6 +472,10 @@ footer {
     @include border-radius(6px);
     border: 1px solid #ccc;
     @include single-box-shadow(#999999, 5px, 5px, 10px, -5px);
+    
+    .alert-message {
+      width: 510px;
+    }
   }
 }
 
