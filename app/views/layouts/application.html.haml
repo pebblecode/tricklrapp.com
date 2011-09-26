@@ -6,9 +6,17 @@
     = stylesheet_link_tag 'application'
     = csrf_meta_tag
   
-  - body_class = [((controller.class.name == "StatusesController") ? "status-listing-page" : "page")]
+  - body_class = []
   - body_class << "no-user" unless current_user
-  - body_class << "settings-page" if (controller.class.name == "SettingsController")
+  :ruby
+    body_class << if (controller.class.name == "StatusesController")
+                    "status-listing-page"
+                  elsif (controller.class.name == "SettingsController")
+                    "settings-page"
+                  else
+                    "page"
+                  end
+    
   %body{ :class => body_class.join(" ") }
     %section#wrapper
       #content-wrapper
