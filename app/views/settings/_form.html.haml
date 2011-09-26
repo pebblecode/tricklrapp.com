@@ -3,7 +3,7 @@
   = field_set_tag 'Settings' do
   
     %div.clearfix
-      =f.label :time_digit, 'Trickle every'
+      =f.label :time_digit, 'Trickle my tweets every'
       %div.input
         =f.text_field :time_digit, :value => number_to_human(@setting.time_digit), :class => "small"
         =f.select :time_unit, options_for_select([ "minutes", "hours", "days" ], @setting.time_unit)
