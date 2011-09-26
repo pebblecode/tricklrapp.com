@@ -448,10 +448,8 @@ footer {
 
 .settings-page {
   
-  .settings-form > fieldset {
-    > legend {
-      display: none;
-    }
+  #settings-form > fieldset > legend {
+    display: none;
   }
   
   .trickle-between {
