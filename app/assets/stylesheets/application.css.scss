@@ -470,6 +470,14 @@ footer {
       cursor: default;
     } // legend, label
   
+    #setting_time_digit {
+      width: 100px;
+      border: 1px solid #AEAEAE;
+      @include border-radius(6px, 6px);
+      padding: 10px;
+      @include single-box-shadow(#dbdbdb, 3px, 3px, 10px, 0, inset);
+    }
+    
     #settings-form > fieldset > legend {
       display: none;
     }
