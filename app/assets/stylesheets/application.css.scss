@@ -447,8 +447,16 @@ footer {
 }
 
 .settings-page {
-  > fieldset > legend {
-    display: none;
+  > fieldset {
+    > legend {
+      display: none;
+    }
+  }
+  
+  .trickle-between {
+    .ui-slider {
+      margin: 70px 0;
+    }
   }
 }
 
