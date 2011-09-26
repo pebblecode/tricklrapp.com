@@ -10,10 +10,10 @@
 
     = field_set_tag 'Trickle between', :class => "trickle-between" do
       =f.label :publish_from
-      =f.time_select :publish_from, :minute_step => 60
+      =f.time_select :publish_from, :minute_step => 60, :time_separator => ""
 
       =f.label :publish_until
-      =f.time_select :publish_until, :minute_step => 60
+      =f.time_select :publish_until, :minute_step => 60, :time_separator => ""
         
     %div.clearfix
       =f.label :time_zone
