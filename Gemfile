@@ -67,6 +67,7 @@ group :test do
   gem 'rspec-rails'
   gem 'resque_spec'
   gem 'factory_girl_rails'
+  gem 'spork', '~> 0.9.0.rc'
 end
 
 group :development do
@@ -80,7 +81,6 @@ group :development do
   gem 'rb-fsevent'
   gem 'growl'
   gem 'foreman'
-  gem 'spork', '0.8.5'
 end
 
 group :production do

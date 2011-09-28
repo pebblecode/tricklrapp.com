@@ -10,7 +10,10 @@ Tricklr is a simple to use web app for marketing teams and high volume tweeters.
   
 ## Testing
 
-Testing framework used is rspec and capybara.
+Rspec and capybara are used for testing. 
+
+For supporting the testing framework, guard and spork (makes tests run faster) are also used.
+See [railscast spork](http://railscasts.com/episodes/285-spork) on how to set it up.
 
 To set up the test environment:
 
@@ -18,5 +21,10 @@ To set up the test environment:
   rake db:migrate RAILS_ENV=test
 
 To run tests:
+  
+  # Run the spork server:
+  spork
+  
+  # In another terminal
+  rspec . --drb
 
-  rspec .
