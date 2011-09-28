@@ -1,2 +1,17 @@
-Use this README file to introduce your application and point to useful places in the API for learning more.
-Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
+# Tricklr
+
+Tricklr is a simple to use web app for marketing teams and high volume tweeters. Tricklr helps you effectively manage your Twitter feed by trickling out tweets at regular intervals. 
+
+## Running the site
+
+  gem install bundle
+  bundle install
+  rails s
+  
+## Testing
+
+Testing framework used is rspec and capybara.
+
+To run tests:
+
+  rspec .
