@@ -5,6 +5,9 @@ require 'spork'
 Spork.prefork do
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
+  # From http://github.com/timcharper/spork/wiki/Spork.trap_method-Jujutsu
+  Spork.trap_method(Rails::Application::RoutesReloader, :reload!)
+  
   require 'capybara/rspec'
   require 'shoulda/integrations/rspec2'
   require 'shoulda'
