@@ -63,7 +63,7 @@ describe StatusesController do
       end
 
       it 'renders the index template' do
-        response.should render_template("published")
+        response.should render_template("index")
       end
 
     end
