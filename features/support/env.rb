@@ -8,8 +8,10 @@ require 'rubygems'
 require 'spork'
  
 Spork.prefork do
-  require 'cucumber/rails'
-
+  ENV["RAILS_ENV"] ||= "test"
+  require File.expand_path(File.dirname(__FILE__) + '/../../config/environment')  
+  
+  require 'cucumber/rails/rspec'
 
   # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
   # order to ease the transition to Capybara we set the default here. If you'd
