@@ -13,5 +13,5 @@ Given /^I have authenticated against Twitter$/ do
     } 
   })
   visit('/')
-  click_link 'Login'
+  click_link 'Sign in with Twitter'
 end
