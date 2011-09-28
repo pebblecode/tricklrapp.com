@@ -68,6 +68,9 @@ group :test do
   gem 'resque_spec'
   gem 'factory_girl_rails'
   gem 'spork', '~> 0.9.0.rc'
+  gem 'guard-cucumber'
+  gem 'guard-rspec'
+  gem 'guard-spork'
 end
 
 group :development do
@@ -75,9 +78,6 @@ group :development do
   gem 'unicorn'
   gem 'capistrano'
   gem 'capistrano-ext'
-  gem 'guard-cucumber'
-  gem 'guard-rspec'
-  gem 'guard-spork'
   gem 'rb-fsevent'
   gem 'growl'
   gem 'foreman'
