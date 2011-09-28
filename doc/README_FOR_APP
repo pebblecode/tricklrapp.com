@@ -12,6 +12,11 @@ Tricklr is a simple to use web app for marketing teams and high volume tweeters.
 
 Testing framework used is rspec and capybara.
 
+To set up the test environment:
+
+  rake db:create RAILS_ENV=test
+  rake db:migrate RAILS_ENV=test
+
 To run tests:
 
   rspec .
