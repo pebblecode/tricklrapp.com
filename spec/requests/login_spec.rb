@@ -23,16 +23,21 @@ describe "Login integration tests" do
   it "should redirect to homepage on statuses page if logged out" do
     visit root_path
     click_link('Sign in with Twitter')
-    page.html.should match /Trickle it!/
     click_link('Logout')
-    page.html.should match /Sign in with Twitter/
     
     visit statuses_path
-    page.html.should match /Sign in with Twitter/
+    page.current_path.should match root_path
+  end
+  
+  it "should redirect to homepage on sign in page if logged out" do
+    visit root_path
+    click_link('Sign in with Twitter')
+    click_link('Logout')
     
     visit new_user_session_path
-    page.html.should match /Sign in with Twitter/    
+    page.current_path.should match root_path
   end
+  
 end
 
 describe "Login specs" do
