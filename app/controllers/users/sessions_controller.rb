@@ -3,6 +3,8 @@ class Users::SessionsController < ApplicationController
   end
 
   def new
+    # Go to homepage for login
+    redirect_to root_url
   end
 
   def destroy
