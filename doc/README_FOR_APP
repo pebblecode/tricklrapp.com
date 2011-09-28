@@ -10,21 +10,38 @@ Tricklr is a simple to use web app for marketing teams and high volume tweeters.
   
 ## Testing
 
-Rspec and capybara are used for testing. 
+For testing, the following is used:
 
-For supporting the testing framework, guard and spork (makes tests run faster) are also used.
-See [railscast spork](http://railscasts.com/episodes/285-spork) on how to set it up.
+* [Rspec](http://rspec.info/)
+* [Capybara](https://github.com/jnicklas/capybara) - acceptance testing with html interaction
+* [Spork](https://github.com/timcharper/spork) - preloads rails env to run tests faster
+* [Guard](https://github.com/guard/guard) - automatically runs tests
+
+See [railscast spork](http://railscasts.com/episodes/285-spork) on how to initially set it up spork and guard. 
+**Note: All the necessary files should already be set up in the git repo.**
 
 To set up the test environment:
 
   rake db:create RAILS_ENV=test
   rake db:migrate RAILS_ENV=test
 
-To run tests:
+To automate tests running in the background:
+
+  guard
+
+To focus guard tests to just run a particular test, use the :focus tag in specs eg,
+
+  it 'renders the index template', :focus do
+    response.should render_template("index")
+  end
+
+To run tests manually:
   
   # Run the spork server:
   spork
   
-  # In another terminal
+  # In another terminal, run the tests
   rspec . --drb
+  rspec ./spec/controllers/statuses_controller_spec.rb --drb     # to run individual tests
+  
 
