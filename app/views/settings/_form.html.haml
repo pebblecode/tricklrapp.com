@@ -8,7 +8,7 @@
         =f.text_field :time_digit, :value => number_to_human(@setting.time_digit), :class => "small"
         =f.select :time_unit, options_for_select([ "minutes", "hours", "days" ], @setting.time_unit)
 
-    = field_set_tag 'Trickle between', :class => "trickle-between" do
+    = field_set_tag 'Trickle between the hours of', :class => "trickle-between" do
       =f.label :publish_from
       =f.time_select :publish_from, :minute_step => 60, :time_separator => ""
 
