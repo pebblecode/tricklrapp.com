@@ -8,6 +8,9 @@ Tricklr is a simple to use web app for marketing teams and high volume tweeters.
   bundle install
   rails s
   
+  # To start the resque workers
+  foreman start
+  
 ## Testing
 
 For testing, the following is used:
