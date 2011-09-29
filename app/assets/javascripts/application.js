@@ -77,18 +77,11 @@ $(document).ready(function() {
   /*
    * Status character countdown
   */
-  $('#status_submit').after('<p class="count">140</p>');
-  $('textarea#status_status').focus();
-  $('textarea#status_status').keyup(function() {
-      var statusLength = $(this).val().length;
-      $('.count').html(140 - statusLength);
-      if($(this).val().length > 130) {
-        $('.count').addClass('status-count-warning');
-      }
-      if($(this).val().length < 130) {
-        $('.count').removeClass('status-count-warning');
-      }
-    });
+  $('#status_submit').before('<p id="char-count"></p>');
+  $('#status_status').NobleCount('#char-count', {
+    on_positive: 'positive-count',
+    on_negative: 'negative-count'
+  });
 
   /*
    * Show and hide status lists
