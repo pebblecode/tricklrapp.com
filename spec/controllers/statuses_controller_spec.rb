@@ -115,7 +115,7 @@ describe StatusesController do
 
         it "redirects to the statuses url" do 
           post :create 
-          response.should redirect_to(statuses_url)
+          response.should render_template('index')
         end
 
       end
@@ -133,7 +133,7 @@ describe StatusesController do
 
         it "redirects to the statuses url" do
           post :create 
-          response.should redirect_to(statuses_url)
+          response.should render_template('index')
         end
 
       end

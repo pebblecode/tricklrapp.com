@@ -6,9 +6,9 @@ class StatusesController < ApplicationController
   before_filter :current_status, :except => [:index, :new, :create, :published, :sort]
   before_filter :new_status, :only => [:index, :new, :published]
 
+  before_filter :get_unpublished_statuses, :only => [:new, :index, :create]
+  
   def index
-    @statuses = current_user.unpublished_statuses
-    @statuses_type = :unpublished
     respond_with(@statuses)
   end
 
@@ -19,6 +19,7 @@ class StatusesController < ApplicationController
   end
 
   def new
+    render 'statuses/index'
   end
 
   def edit
@@ -31,7 +32,7 @@ class StatusesController < ApplicationController
     if @status.save
       flash[:notice] = 'Hurray! Your status was scheduled for delivery'
     end
-    respond_with(@status, :location => statuses_path)
+    render 'statuses/index'
   end
 
   def update
@@ -61,6 +62,11 @@ class StatusesController < ApplicationController
 
   def new_status
     @status = Status.new
+  end
+  
+  def get_unpublished_statuses
+    @statuses = current_user.unpublished_statuses
+    @statuses_type = :unpublished
   end
 
 end
