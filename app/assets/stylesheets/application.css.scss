@@ -85,6 +85,7 @@ a {
 
 .actions {
   margin-top: 10px;
+  position: relative;
   
   button {
     @include button;
@@ -100,6 +101,18 @@ a {
     &:hover {
       @include button_hover;
     }
+  }
+  
+  #char-count {
+    color: #265467;
+    font-family: adelle, serif;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 38px;
+    
+    position: absolute;
+    top: -18px;
+    right: 125px;
   }
 }
 
@@ -305,6 +318,9 @@ a {
       }
       
       textarea {
+        font-size: 20px;
+        line-height: 24px;
+        
         width: $inner_content_width - 20px;
         height: 80px;
         border: 1px solid #AEAEAE;
