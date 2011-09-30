@@ -18,9 +18,9 @@
                   end
     
   %body{ :class => body_class.join(" ") }
-    %section#wrapper
+    #wrapper
       #content-wrapper
-        %section.topbar
+        .topbar
           %h3#logo
             %a(href="/") 
               Tricklr
@@ -39,7 +39,7 @@
               %li.login
                 =link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter)
 
-        %section#content
+        #content
           - if flash[:notice]
             %div.alert-message.success
               = flash[:notice]
