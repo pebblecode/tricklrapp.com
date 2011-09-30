@@ -167,10 +167,16 @@ a {
     border: 1px solid #aeaeae;
 
     @include border-radius(6px);
-    @include linear-gradient(color-stops(#FFF1AD, #FFE76F)); // yellow
+    background: #FFE76F;
+    .cssgradients & {
+      @include linear-gradient(color-stops(#FFF1AD, #FFE76F)); // yellow
+    }
     
     &.success {
-      @include linear-gradient(color-stops(#EAFFBD, #D7FF81)); // green
+      background: #D7FF81;
+      .cssgradients & {
+        @include linear-gradient(color-stops(#EAFFBD, #D7FF81)); // green
+      }
     }
   }
   
@@ -605,7 +611,10 @@ a {
       .ui-widget-header {
         height: 60px;
         
-        background: rgba(0,0,0,0.1);
+        background: transparent;
+        .rgba & {
+          background: rgba(0,0,0,0.1);
+        }
       
         z-index: 20;
       }
