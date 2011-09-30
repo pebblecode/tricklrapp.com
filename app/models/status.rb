@@ -52,7 +52,7 @@ class Status < ActiveRecord::Base
       # We only only interested in scheduled_at times outside the range
       if !self.user.setting.publish_range.include?(self.scheduled_at.strftime("%H%M").to_i)
         # If the scheduled at time is after publish_from advance to publish_from
-        if self.scheduled_at.strftime("%H%M").to_i < self.user.setting.publish_from("%H%M").to_i
+        if self.scheduled_at.strftime("%H%M").to_i < self.user.setting.publish_from.strftime("%H%M").to_i
           # if minutes to advance is positive it is the same day
           if minutes_to_advance(self.user.setting.publish_from, self.scheduled_at) >= 0
             self.scheduled_at = self.scheduled_at.advance(:minutes => minutes_to_advance(self.user.setting.publish_from, self.scheduled_at))
