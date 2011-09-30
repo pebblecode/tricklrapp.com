@@ -11,6 +11,18 @@ Tricklr is a simple to use web app for marketing teams and high volume tweeters.
   # To start the resque workers
   foreman start
   
+### Running the site on Virtual Box
+
+Add this to the hosts file (C:\WINDOWS\system32\drivers\etc):
+
+  10.0.2.2        tricklr.local
+  
+To access the site, go to:
+
+  http://tricklr.local:3000/
+  
+**Note: you need the http://, and 3000 should be the port number the server is run on
+  
 ## Testing
 
 For testing, the following is used:
