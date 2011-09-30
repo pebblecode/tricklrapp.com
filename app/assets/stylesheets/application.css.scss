@@ -611,7 +611,7 @@ a {
       .ui-widget-header {
         height: 60px;
         
-        background: transparent;
+        background: transparent image_url('grey-highlight.png') repeat 0 0;
         .rgba & {
           background: rgba(0,0,0,0.1);
         }
