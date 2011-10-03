@@ -13,26 +13,26 @@
     =render :partial => 'devices/form', :locals => { :object => @company }
   
 
-#column-wrapper
-  #column-row
-    #column-1
+%section#column-wrapper
+  %section#column-row
+    %section#column-1
       -if @highrise_data.present?    
-        .box
+        %section.box
           =render :partial => 'partials/highrise_info', :locals => { :object => @highrise_data }
-      .box.lan-info
+      %section.box.lan-info
         =render :partial => 'partials/lan_info', :locals => { :object => @site }
-      .box.wan-info
+      %section.box.wan-info
         =render :partial => 'partials/wan_info', :locals => { :object => @site }
 
-    #column-2
+    %section#column-2
       -if @site.devices.present?      
-        .box
+        %section.box
           =render :partial => 'partials/show_devices', :locals => { :object => @site }
 
 
-    #column-3
+    %section#column-3
       -if @site.company.contacts.present?
-        .box
+        %section.box
           =render :partial => 'partials/show_employees', :locals => { :object => @company }
 
 %ul.toolbar.secondary

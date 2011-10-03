@@ -6,7 +6,7 @@
   %li{:class => "last #{(@statuses_type == :published) ? "active" : ""}"}
     =link_to "Published", published_path
   
-/ .status-lists
+/ %section.status-lists
 
 -if @statuses.present?
   %ul#queued_statuses.status-list
