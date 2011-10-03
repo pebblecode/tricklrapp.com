@@ -75,9 +75,12 @@ $pebble_code_tag_width: 132px;
   background: transparent image_url('icons/action-icons.png') no-repeat $start_x_pos -24px;
   width: 11px;
   height: 11px;
-  text-indent: -9999px;
+  
+  /* Hide text */
+  font-size: 0; 
+  line-height: 0;
+  
   display: block;
-  float: left;
   margin-left: 8px;
   &:hover {
     background-position: $start_x_pos 0;
@@ -472,6 +475,8 @@ a {
           top: 15px;
           
           li {
+            float: left;
+            
             &.move a {
               @include actions-button(0);
             }
