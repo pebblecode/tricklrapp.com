@@ -3,6 +3,11 @@
   %head
     %title Tricklr
     = stylesheet_link_tag 'application'
+    :plain
+      <!--[if IE 7]>
+        <link rel="stylesheet" type="text/css" href="/assets/ie7.css">
+      <![endif]-->
+
     = csrf_meta_tag
   
   - body_class = []
