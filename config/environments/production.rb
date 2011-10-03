@@ -57,4 +57,7 @@ Tricklr::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  TWITTER_CONSUMER_KEY = "jTogT14Qg3JVoSUTY8aMg"
+  TWITTER_CONSUMER_SECRET = "8iIUvM66i3PGrzxl0cGXGTqSmXkHp1Y1mDtf6PyaRE"
 end
