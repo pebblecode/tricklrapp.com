@@ -7,18 +7,18 @@ set :branch, "master"
 
 namespace :deploy do
   task :start do
-    sudo "/usr/sbin/monit -g tricklr start all"
-    sudo "/etc/init.d/tricklr start"
+    run "/usr/sbin/monit -g tricklr start all"
+    run "/etc/init.d/tricklr start"
   end
 
   task :stop do
-    sudo "/usr/sbin/monit -g tricklr stop all"
-    sudo "/etc/init.d/tricklr stop"
+    run "/usr/sbin/monit -g tricklr stop all"
+    run "/etc/init.d/tricklr stop"
   end
 
   task :restart do
-    sudo "/usr/sbin/monit -g tricklr restart all"
-    sudo "/etc/init.d/tricklr restart"
+    run "/usr/sbin/monit -g tricklr restart all"
+    run "/etc/init.d/tricklr restart"
   end
 
   task :link_config_files do
