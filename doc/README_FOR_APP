@@ -25,6 +25,10 @@ To start the resque workers
   
   foreman start
   
+To precompile assets
+
+  bundle exec rake assets:precompile
+  
 ### Running the site on Virtual Box
 
 Add this to the hosts file (C:\WINDOWS\system32\drivers\etc):
