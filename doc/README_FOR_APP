@@ -4,11 +4,24 @@ Tricklr is a simple to use web app for marketing teams and high volume tweeters.
 
 ## Running the site
 
+For initial installation (should only need to be done once)
+
   gem install bundle
   bundle install
-  rails s
   
-  # To start the resque workers
+  # Set up the database
+  # Copy config/database.yml.example to config/database.yml, and change the relevant values
+  bundle exec rake db:create
+  bundle exec rake db:migrate
+  
+
+Run the site
+
+  bundle exec rails s
+
+  
+To start the resque workers
+  
   foreman start
   
 ### Running the site on Virtual Box
