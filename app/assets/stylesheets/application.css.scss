@@ -209,7 +209,7 @@ a {
     
     #logo {
       position: absolute;
-      top: -5px;
+      top: -3px;
       left: 0;
       z-index: 1000;
       
@@ -218,7 +218,6 @@ a {
         background: transparent image_url('logo.png') no-repeat 0 0;
         width: 205px;
         height: 42px;
-        margin-top: 2px;
         text-indent: -9999px;
         outline: none;
 
