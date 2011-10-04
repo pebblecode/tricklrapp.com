@@ -1,3 +1,13 @@
+GIT
+  remote: https://github.com/chriseppstein/compass.git
+  revision: 22e2458b77519e8eb8463170c1a1fe4bab105f3e
+  branch: rails31
+  specs:
+    compass (0.12.0.alpha.0.22e2458)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -51,6 +61,7 @@ GEM
       xpath (~> 0.1.4)
     childprocess (0.2.2)
       ffi (~> 1.0.6)
+    chunky_png (1.2.5)
     coffee-rails (3.1.1)
       coffee-script (>= 2.2.0)
       railties (~> 3.1.0)
@@ -64,7 +75,7 @@ GEM
       gherkin (~> 2.5.0)
       json (>= 1.4.6)
       term-ansicolor (>= 1.0.6)
-    cucumber-rails (1.1.0)
+    cucumber-rails (1.1.1)
       capybara (>= 1.1.1)
       cucumber (>= 1.1.0)
       nokogiri (>= 1.5.0)
@@ -87,25 +98,26 @@ GEM
     faraday (0.7.4)
       addressable (~> 2.2.6)
       multipart-post (~> 1.1.0)
-      rack (>= 1.1.0, < 2)
+      rack (< 2, >= 1.1.0)
     faraday_middleware (0.7.0)
       faraday (~> 0.7.3)
     ffi (1.0.9)
     foreman (0.22.0)
       term-ansicolor (~> 1.0.5)
       thor (>= 0.13.6)
+    fssm (0.2.7)
     gherkin (2.5.1)
       json (>= 1.4.6)
     growl (1.0.3)
-    guard (0.8.1)
+    guard (0.8.4)
       thor (~> 0.14.6)
-    guard-cucumber (0.6.3)
+    guard-cucumber (0.7.2)
       cucumber (>= 0.10)
-      guard (>= 0.4.0)
+      guard (>= 0.8.3)
     guard-rspec (0.4.5)
       guard (>= 0.4.0)
-    guard-spork (0.2.1)
-      guard (>= 0.2.2)
+    guard-spork (0.3.0)
+      guard (>= 0.8.2)
       spork (>= 0.8.4)
     haml (3.1.3)
     hashie (1.1.0)
@@ -156,11 +168,13 @@ GEM
     orm_adapter (0.0.5)
     pg (0.11.0)
     polyglot (0.3.2)
-    rack (1.3.3)
+    rack (1.3.4)
     rack-cache (1.0.3)
       rack (>= 0.4)
     rack-mount (0.8.3)
       rack (>= 1.0.0)
+    rack-protection (1.1.2)
+      rack
     rack-ssl (1.3.2)
       rack
     rack-test (0.6.1)
@@ -216,8 +230,8 @@ GEM
     rubyzip (0.9.4)
     rufus-scheduler (2.0.11)
       tzinfo (>= 0.3.23)
-    sass (3.1.7)
-    sass-rails (3.1.3)
+    sass (3.1.8)
+    sass-rails (3.1.4)
       actionpack (~> 3.1.0)
       railties (~> 3.1.0)
       sass (>= 3.1.4)
@@ -230,14 +244,15 @@ GEM
       rubyzip
     shoulda (2.11.3)
     simple_oauth (0.1.5)
-    sinatra (1.2.6)
-      rack (~> 1.1)
-      tilt (< 2.0, >= 1.2.2)
+    sinatra (1.3.0)
+      rack (~> 1.3)
+      rack-protection (~> 1.1)
+      tilt (~> 1.3)
     spork (0.9.0.rc9)
-    sprockets (2.0.0)
+    sprockets (2.0.2)
       hike (~> 1.2)
       rack (~> 1.0)
-      tilt (!= 1.3.0, ~> 1.1)
+      tilt (~> 1.1, != 1.3.0)
     term-ansicolor (1.0.6)
     thin (1.2.11)
       daemons (>= 1.0.9)
@@ -279,6 +294,7 @@ DEPENDENCIES
   capistrano-ext
   capybara
   coffee-rails (~> 3.1.0)
+  compass!
   cucumber-rails
   database_cleaner
   devise
