@@ -503,7 +503,7 @@ a {
 
 footer {
   text-align: center;
-  color: white;
+  color: #6d6d6d;
   
   .pebble-code-tag {
     position: absolute;
@@ -527,6 +527,15 @@ footer {
   .copyright {
     margin: 20px 0;
     width: 620px;
+  
+  a {
+  color: #648795;
+  }
+  
+  a:hover {
+  color: #29ABE2;
+  }
+  
   } // .copyright
   
 } // footer
