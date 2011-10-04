@@ -77,4 +77,8 @@ To run tests manually:
   rspec . --drb
   rspec ./spec/controllers/statuses_controller_spec.rb --drb     # to run individual tests
   
+## Deploying to production
 
+Currently staging is also production.
+
+  cap production deploy
