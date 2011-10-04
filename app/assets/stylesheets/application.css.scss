@@ -154,6 +154,14 @@ a {
   margin: 0 auto;
   position: relative;
   
+  .beta-tag {
+    position: absolute;
+    z-index: 1000;
+
+    top: -41px;
+    left: -74px;
+  }
+  
   .alert-message {
 /*    position: absolute;
     top: -65px;
