@@ -10,6 +10,10 @@ gem 'pg'
 # MySql2 
 gem 'mysql2'
 
+# Sqlite
+gem 'sqlite3-ruby'
+
+
 # Devise for Authentication layer
 # http://github.com/plataformatec/devise
 gem 'devise'
