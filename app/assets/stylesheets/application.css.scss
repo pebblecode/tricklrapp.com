@@ -218,12 +218,10 @@ a {
         background: transparent image_url('logo.png') no-repeat 0 0;
         width: 205px;
         height: 42px;
+        margin-top: 2px;
         text-indent: -9999px;
         outline: none;
 
-        &:hover {
-          background-position: 0 -56px;
-        }
       }
     } // #logo
     
@@ -549,8 +547,8 @@ footer {
       @include linear-gradient(color-stops(#ffffff, #f2f2f2), top);
     }
     @include border-radius(6px);
-    border: 1px solid #ccc;
-    @include single-box-shadow(#999999, 5px, 5px, 10px, -5px);
+    border: 1px solid #b3b3b3;
+    @include single-box-shadow(#bbbbbb, 1px, 1px, 7px, 0px);
     
     .alert-message {
       width: 510px;
@@ -689,9 +687,9 @@ footer {
       background: transparent image_url('twitter.png') no-repeat 0 0;
       width: 322px;
       height: 44px;
-      
       text-indent: -9999px;
       outline: none;
+      @include single-box-shadow(#bbbbbb, 1px, 1px, 7px, 0px);
       
       &:hover {
         background-position: 0 -56px;
