@@ -17,6 +17,7 @@ For initial installation (should only need to be done once)
 
 Run the site
 
+  # If the Gemfile has changed, you will need to run 'bundle install' first
   bundle exec rails s
 
   
