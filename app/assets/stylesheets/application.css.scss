@@ -686,9 +686,9 @@ footer {
       background: transparent image_url('twitter.png') no-repeat 0 0;
       width: 322px;
       height: 44px;
-      
       text-indent: -9999px;
       outline: none;
+      @include single-box-shadow(#bbbbbb, 1px, 1px, 7px, 0px);
       
       &:hover {
         background-position: 0 -56px;
