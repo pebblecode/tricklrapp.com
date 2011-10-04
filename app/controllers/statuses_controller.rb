@@ -31,6 +31,9 @@ class StatusesController < ApplicationController
     @status.user = current_user
     if @status.save
       flash[:notice] = 'Hurray! Your status was scheduled for delivery'
+      
+      # Clear status message for form refresh
+      @status.status = nil
     end
     render 'statuses/index'
   end
