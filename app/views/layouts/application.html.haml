@@ -25,13 +25,14 @@
                   end
     
   %body{ :class => body_class.join(" ") }
-    = image_tag('beta.png', :title => 'Currently Beta software', :class => 'beta-tag')
     %section#wrapper
       #content-wrapper
         %section.topbar
           %h3#logo
             %a(href="/") 
               Tricklr
+          = image_tag('beta.png', :title => 'Currently Beta software', :class => 'beta-tag', :width => "86", :height => "85")
+          
           %ul.nav
             - if current_user
               %li.settings
