@@ -240,4 +240,9 @@ $(document).ready(function() {
     });
   }
   
+  // Fade out alert messages after 4 seconds
+  if ($('.alert-message').length > 0) {
+    setTimeout("$('.alert-message').fadeOut(1000)", 4000);
+  }
+  
 });
