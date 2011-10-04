@@ -221,9 +221,6 @@ a {
         text-indent: -9999px;
         outline: none;
 
-        &:hover {
-          background-position: 0 -56px;
-        }
       }
     } // #logo
     
@@ -550,7 +547,7 @@ footer {
     }
     @include border-radius(6px);
     border: 1px solid #b3b3b3;
-    @include single-box-shadow(#bbbbbb, 1px, 1px, 6px, 0px);
+    @include single-box-shadow(#bbbbbb, 1px, 1px, 7px, 0px);
     
     .alert-message {
       width: 510px;
