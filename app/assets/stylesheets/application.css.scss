@@ -149,23 +149,18 @@ a {
   }
 } // .actions
 
-.beta-tag {
-  position: absolute;
-  z-index: 1000;
-      
-  top: -90px;
-  left: -120px;
-  width: 149px;
-  
-/*    top: -29px;
-  left: 196px;
-  width: 64px;*/
-}
-
 #wrapper {
   width: $inner_content_width + $pebble_code_tag_width;
   margin: 0 auto;
   position: relative;
+  
+  .beta-tag {
+    position: absolute;
+    z-index: 1000;
+
+    top: -41px;
+    left: -74px;
+  }
   
   .alert-message {
 /*    position: absolute;
