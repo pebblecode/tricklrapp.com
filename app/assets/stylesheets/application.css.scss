@@ -611,14 +611,14 @@ footer {
     }
   
     .trickle-between {
-      margin: 20px 0 40px;
+      margin: 20px 0 70px;
+      
+      .browserFirefox & {
+        margin-bottom: 60px;
+      }
       
       select, label { /* Normal controsl hidden, as js slider replaces it */
         display: none;
-      }
-      
-      legend {
-        margin-bottom: 40px;
       }
     
       .ui-widget-content {
@@ -666,6 +666,11 @@ footer {
     
       .ui-slider-horizontal {
         height: 60px;
+        top: 30px;
+        
+        .browserFirefox & {
+          top: 15px;
+        }
       }
     
       .ui-slider span.ui-slider-tic {
