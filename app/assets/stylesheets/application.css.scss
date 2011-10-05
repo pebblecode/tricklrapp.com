@@ -127,18 +127,18 @@ a {
   }
   
   #char-count {
-    color: #265467;
-    font-family: adelle, serif;
-    font-size: 20px;
+    color: #919191;
+    font-family: adelle,serif;
+    font-size: 28px;
     font-weight: bold;
     line-height: 38px;
-    width: 200px;
-    text-align: right;
-    
     position: absolute;
-    top: -18px;
     right: 125px;
-    
+    text-align: right;
+    text-shadow: 1px 1px 0.5px #F2F2F2, -1px -1px 0 #666666;
+    top: -26px;
+    width: 200px;
+        
     &.positive-count {
       
     }
