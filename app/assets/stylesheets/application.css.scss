@@ -179,15 +179,15 @@ a {
     border: 1px solid #aeaeae;
 
     @include border-radius(6px);
-    background: #FFE76F;
+    background: #ff8daf;
     .cssgradients & {
-      @include linear-gradient(color-stops(#FFF1AD, #FFE76F)); // yellow
+      @include linear-gradient(color-stops(#ffbed2, #ff7aa4)); // pink
     }
     
     &.success {
-      background: #D7FF81;
+      background: #93d8ef;
       .cssgradients & {
-        @include linear-gradient(color-stops(#EAFFBD, #D7FF81)); // green
+        @include linear-gradient(color-stops(#a5e3f7, #8ac9dd)); // blue
       }
     }
   }
