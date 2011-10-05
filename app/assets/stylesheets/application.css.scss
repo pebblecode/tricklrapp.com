@@ -484,6 +484,9 @@ a {
             
             &.move a {
               @include actions-button(0);
+              &:hover {
+                cursor: move;
+              }
             }
 
             &.edit a {
