@@ -403,6 +403,7 @@ a {
           padding-top: 2px;
           @include adelle_font;
           color: $content_gray;
+          @include single-box-shadow(#bbbbbb, 1px, 1px, 7px, 0);
           
           width: 50%;
           height: 36px;
@@ -445,7 +446,7 @@ a {
         }
         @include border-radius(6px);
         border: 1px solid #aeaeae;
-        @include single-box-shadow(#999999, 5px, 5px, 10px, -5px);
+        @include single-box-shadow(#bbbbbb, 1px, 1px, 7px, 0);
         
         margin: 10px 0 0 0;
         padding: 15px;
