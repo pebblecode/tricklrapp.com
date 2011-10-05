@@ -116,6 +116,8 @@ a {
     font-size: 0;
     line-height: 0;
     
+    @include single-box-shadow(#bbbbbb, 1px, 1px, 7px, 0);
+    
     &#status_submit {
       width: 120px;
       background: transparent image_url('icons/trickle_btn.png') no-repeat 0 0;
@@ -276,6 +278,7 @@ a {
           height: 44px;
           text-indent: -9999px;
           outline: none;
+          @include single-box-shadow(#bbbbbb, 1px, 1px, 7px, 0);
           
           &:hover {
             background-position: 0 -54px;
