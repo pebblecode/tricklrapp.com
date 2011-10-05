@@ -132,6 +132,7 @@ a {
     font-size: 28px;
     font-weight: bold;
     line-height: 38px;
+    letter-spacing: 0.05em;
     position: absolute;
     right: 125px;
     text-align: right;
@@ -249,13 +250,14 @@ a {
           text-align: right;
           
           @include adelle_font;
-          font-size: 14px;
+          font-size: 18px;
           line-height: 38px; /* Same as height */
           font-weight: bold;
-          
+          letter-spacing: 0.05em;          
           a, span {
             display: inline;
-            color: $dark_link_colour;
+            color: #7a7a7a;
+            text-shadow: 1px 1px 0.5px #F2F2F2;
           }
         }
         
