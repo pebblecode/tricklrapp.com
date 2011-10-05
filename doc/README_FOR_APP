@@ -23,7 +23,7 @@ Run the site
   
 To start the resque workers
   
-  foreman start
+  bundle exec foreman start
   
 To precompile assets
 
