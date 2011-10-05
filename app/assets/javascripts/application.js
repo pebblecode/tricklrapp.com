@@ -37,9 +37,9 @@ $(document).ready(function() {
   $('#queued_statuses').sortable({handle: '.reorder-statuses', update: function() {
     $.post('/statuses/sort', '_method=put&authenticity_token='+ $('meta[name=csrf-token]').attr('content')+'&'+$(this).sortable('serialize'),
     function(data){
-      $.each(data, function(index, status) { 
+      $.each(data, function(index, status) {
         cssIndex = index+1
-        timeString = jQuery.timeago(status.status.scheduled_at).replace(/about/,"").replace(/from now/, "");
+        timeString = jQuery.timeago(status.scheduled_at).replace(/about/,"").replace(/from now/, "");
         $('#queued_statuses li:nth-child('+cssIndex +') span').text("trickling in about " + timeString).effect("highlight", {}, 1500);
       });
 
