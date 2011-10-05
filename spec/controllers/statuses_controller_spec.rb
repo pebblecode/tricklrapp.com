@@ -24,7 +24,7 @@ describe StatusesController do
         get :index
       end
 
-      it 'shows the statuses page' do
+      it 'shows the tweets page' do
         response.should be_success
       end
 
@@ -58,7 +58,7 @@ describe StatusesController do
         get :published
       end
 
-      it 'shows the statuses page' do
+      it 'shows the tweets page' do
         response.should be_success
       end
 
@@ -95,14 +95,14 @@ describe StatusesController do
         Status.stub(:new).and_return(status)
       end
 
-      it 'creates a new status' do
+      it 'creates a new tweet' do
         Status.should_receive(:new).
           with("status" => "Foo bar").
           and_return(status)
         post :create, :status => { "status" => "Foo bar" }
       end
 
-      context "when the status saves successfully" do
+      context "when the tweet saves successfully" do
 
         before do
           status.stub(:save).and_return(true) 
@@ -110,10 +110,10 @@ describe StatusesController do
 
         it "sets a flash message" do
           post :create 
-          flash[:notice].should eq("Hurray! Your status was scheduled for delivery")
+          flash[:notice].should eq("Hurray! Your tweet was scheduled for delivery")
         end
 
-        it "redirects to the statuses url" do 
+        it "redirects to the tweets url" do 
           post :create 
           response.should render_template('index')
         end
@@ -131,7 +131,7 @@ describe StatusesController do
           assigns[:status].should eq(status)
         end
 
-        it "redirects to the statuses url" do
+        it "redirects to the tweets url" do
           post :create 
           response.should render_template('index')
         end

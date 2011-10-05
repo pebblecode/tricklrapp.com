@@ -30,7 +30,7 @@ class StatusesController < ApplicationController
     @status = Status.new(params[:status])
     @status.user = current_user
     if @status.save
-      flash[:notice] = 'Hurray! Your status was scheduled for delivery'
+      flash[:notice] = 'Hurray! Your tweet was scheduled for delivery'
       
       # Clear status message for form refresh
       @status.status = nil
@@ -40,14 +40,14 @@ class StatusesController < ApplicationController
 
   def update
     if @status.update_attributes(params[:status])
-      flash[:notice] = "Your status was updated"
+      flash[:notice] = "Your tweet was updated"
     end        
     respond_with(@status, :location => statuses_path)
   end
 
   def destroy
     @status.destroy
-    flash[:notice] = 'Gone! Your status is no more'
+    flash[:notice] = 'Gone! Your tweet is no more'
     respond_with(@status)
   end 
   
