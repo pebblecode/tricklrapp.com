@@ -18,9 +18,9 @@ require 'bundler/capistrano'
 # We are using rvm so let Capistrano know
 # See http://beginrescueend.com/integration/capistrano/
 #---------------------------
-$:.unshift(File.expand_path('./lib', ENV['rvm_path'])) 
-require "rvm/capistrano"
-set :rvm_ruby_string, '1.9.2@tricklr'
+# $:.unshift(File.expand_path('./lib', ENV['rvm_path'])) 
+# require "rvm/capistrano"
+# set :rvm_ruby_string, '1.9.2@tricklr'
 
 #---------------------------
 # Git stuff
