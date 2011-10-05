@@ -82,3 +82,8 @@ To run tests manually:
 Currently staging is also production.
 
   cap production deploy
+  
+To manually start up the monit workers, run the following on production (as tricklr user):
+
+ cd /var/www/vhosts/tricklrapp.com/httpdocs/current; RAILS_ENV=production bundle exec nohup rake environment resque:scheduler& > log/resque_scheduler.log && echo $! > tmp/pids/resque_scheduler.pid
+ cd /var/www/vhosts/tricklrapp.com/httpdocs/current; RAILS_ENV=production QUEUE=* VERBOSE=1 bundle exec nohup rake environment resque:work& > log/resque_worker.log && echo $! > tmp/pids/resque_worker.pid
