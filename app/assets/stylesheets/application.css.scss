@@ -127,18 +127,19 @@ a {
   }
   
   #char-count {
-    color: #265467;
-    font-family: adelle, serif;
-    font-size: 20px;
+    color: #919191;
+    font-family: adelle,serif;
+    font-size: 28px;
     font-weight: bold;
     line-height: 38px;
-    width: 200px;
-    text-align: right;
-    
+    letter-spacing: 0.05em;
     position: absolute;
-    top: -18px;
     right: 125px;
-    
+    text-align: right;
+    text-shadow: 1px 1px 0.5px #F2F2F2, -1px -1px 0 #666666;
+    top: -26px;
+    width: 200px;
+        
     &.positive-count {
       
     }
@@ -249,13 +250,14 @@ a {
           text-align: right;
           
           @include adelle_font;
-          font-size: 14px;
+          font-size: 18px;
           line-height: 38px; /* Same as height */
           font-weight: bold;
-          
+          letter-spacing: 0.05em;          
           a, span {
             display: inline;
-            color: $dark_link_colour;
+            color: #7a7a7a;
+            text-shadow: 1px 1px 0.5px #F2F2F2;
           }
         }
         
@@ -403,6 +405,7 @@ a {
           padding-top: 2px;
           @include adelle_font;
           color: $content_gray;
+          @include single-box-shadow(#bbbbbb, 1px, 1px, 7px, 0);
           
           width: 50%;
           height: 36px;
@@ -434,7 +437,7 @@ a {
     
     .status-list {
       clear: both;
-      margin: 0;
+      margin: 20px 0 0 0;
       padding: 0;
       
       > li {
@@ -445,9 +448,9 @@ a {
         }
         @include border-radius(6px);
         border: 1px solid #aeaeae;
-        @include single-box-shadow(#999999, 5px, 5px, 10px, -5px);
+        @include single-box-shadow(#bbbbbb, 1px, 1px, 7px, 0);
         
-        margin: 20px 0 0 0;
+        margin: 10px 0 0 0;
         padding: 15px;
         color: $content_gray;
         list-style: none;
@@ -464,8 +467,8 @@ a {
         
         .meta {
           color: $link_colour;
-          font-weight: bold;
           margin-top: 15px;
+          font-style: italic;
           display: block;
         }
         
