@@ -111,18 +111,27 @@ a {
   position: relative;
   
   button {
-    @include button;
-    height: 38px;    
-    color: $dark_link_colour;
-    padding: 9px 12px;
+    height: 44px;
+    border: none;
+    font-size: 0;
+    line-height: 0;
     
-    @include adelle_font;
-    font-size: 18px;
-    line-height: 22px;
-    font-weight: bold;
+    &#status_submit {
+      width: 120px;
+      background: transparent image_url('icons/trickle_btn.png') no-repeat 0 0;
+      
+      &:hover {
+        background-position: 0 -54px;
+      }
+    }
     
-    &:hover {
-      @include button_hover;
+    &.save-button {
+      width: 73px;
+      background: transparent image_url('icons/save_btn.png') no-repeat 0 0;
+      
+      &:hover {
+        background-position: 0 -54px;
+      }
     }
   }
   
@@ -251,7 +260,7 @@ a {
           
           @include adelle_font;
           font-size: 18px;
-          line-height: 38px; /* Same as height */
+          line-height: 44px; /* Same as height */
           font-weight: bold;
           letter-spacing: 0.05em;          
           a, span {
@@ -263,28 +272,20 @@ a {
         
         &.settings a,
         &.help a {
-          @include button;
-          width: 38px;
-          height: 38px;
+          width: 44px;
+          height: 44px;
           text-indent: -9999px;
           outline: none;
+          
           &:hover {
-            @include button_hover;
-          }
+            background-position: 0 -54px;
+          }          
         }
         &.settings a {
-          @include button_with_image('icons/settings_icon.png');
-          
-          &:hover {
-            @include button_hover_with_image('icons/settings_hover_icon.png');
-          }
+          background: transparent image_url('icons/settings_btn.png') no-repeat 0 0;
         }
         &.help a {
-          @include button_with_image('icons/help_icon.png');
-          
-          &:hover {
-            @include button_hover_with_image('icons/help_hover_icon.png');
-          }
+          background: transparent image_url('icons/help_btn.png') no-repeat 0 0;
         }
       }
     } // .nav
