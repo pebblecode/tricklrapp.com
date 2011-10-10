@@ -60,9 +60,6 @@ gem 'sass-rails', '~> 3.1.0'
 gem 'coffee-rails', '~> 3.1.0'
 gem 'uglifier'
 
-gem 'rack', '1.3.3'
-
-
 group :test do
   gem 'shoulda'
   gem 'random_data'
