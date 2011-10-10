@@ -113,9 +113,9 @@ describe StatusesController do
           flash[:notice].should eq("Hurray! Your tweet was scheduled for delivery")
         end
 
-        it "redirects to the tweets url" do 
+        it "redirects to the statuses url" do 
           post :create 
-          response.should render_template('index')
+          response.should redirect_to(statuses_url)
         end
 
       end

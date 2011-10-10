@@ -60,7 +60,7 @@ To set up the test environment:
 
 To automate tests running in the background:
 
-  guard
+  bundle exec guard
 
 To focus guard tests to just run a particular test, use the :focus tag in specs eg,
 
@@ -71,11 +71,11 @@ To focus guard tests to just run a particular test, use the :focus tag in specs 
 To run tests manually:
   
   # Run the spork server:
-  spork
+  bundle exec spork
   
   # In another terminal, run the tests
-  rspec . --drb
-  rspec ./spec/controllers/statuses_controller_spec.rb --drb     # to run individual tests
+  bundle exec rspec . --drb
+  bundle exec rspec ./spec/controllers/statuses_controller_spec.rb --drb     # to run individual tests
   
 ## Deploying to production
 
