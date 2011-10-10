@@ -4,6 +4,7 @@ server "apu.pebbleit.com", :app, :web, :db, :primary => true
 set :deploy_to, "/var/www/vhosts/tricklrapp.com/httpdocs" 
 set :branch, "master"
 set :user, "tricklr"
+set :bundle_flags, "--deployment --quiet --binstubs --shebang ruby-local-exec"
 
 set :default_environment, {
   'PATH' => "/home/tricklr/.rbenv/shims:/home/tricklr/.rbenv/bin:$PATH"
