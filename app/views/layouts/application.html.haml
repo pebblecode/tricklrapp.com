@@ -17,18 +17,18 @@
       // Code from http://blog.typekit.com/2010/11/11/font-events-using-javascript-callbacks/
       (function() {
         
-        var adelle_font_selector = '.actions #char-count, #wrapper .topbar .nav li.account a, #wrapper #content h2, #wrapper #content legend, #wrapper #content .intro, #wrapper #content .step-by-step li, #wrapper #content .sign-in, #wrapper #content .tab-headings li a, .settings-page #wrapper #content legend, .settings-page #wrapper #content label';
+        var font_element_selector = '.actions #char-count, #wrapper .topbar .nav li.account a, #wrapper #content h2, #wrapper #content legend, #wrapper #content .intro, #wrapper #content .step-by-step li, #wrapper #content .sign-in, #wrapper #content .tab-headings li a, .settings-page #wrapper #content legend, .settings-page #wrapper #content label';
         
         $(document).ready(function() {
           
           // Add class to elements that are hidden already
-          $(adelle_font_selector).each(function() {
+          $(font_element_selector).each(function() {
             if ($(this).is(":hidden")) {
               $(this).addClass("ignore_font");
             }
           });
 
-          $(adelle_font_selector).not('.ignore_font').css('visibility', 'hidden');
+          $(font_element_selector).not('.ignore_font').css('visibility', 'hidden');
         });
         try {
           Typekit.load({
@@ -36,15 +36,15 @@
               // As soon as the fonts are active, fade in the example
               // Don't fade in browsers that don't do proper opacity, like IE
               if (jQuery.support.opacity) {
-                $(adelle_font_selector).not('.ignore_font').css('visibility', 'visible').hide().fadeIn();
+                $(font_element_selector).not('.ignore_font').css('visibility', 'visible').hide().fadeIn();
               } else {
-                $(adelle_font_selector).not('.ignore_font').css('visibility', 'visible');
+                $(font_element_selector).not('.ignore_font').css('visibility', 'visible');
               }
             },
             inactive: function() {
               // If the fonts are inactive, just show the example
               // You can apply fallback styles using the wf-inactive class in your CSS
-              $(adelle_font_selector).not('.ignore_font').css('visibility', 'visible');
+              $(font_element_selector).not('.ignore_font').css('visibility', 'visible');
             }
           })
         } catch(e) {}
