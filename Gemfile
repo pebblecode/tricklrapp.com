@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
+gem 'rails', '3.1.1'
 
 # Postgres
 # https://bitbucket.org/ged/ruby-pg/wiki/Home
@@ -59,7 +59,6 @@ gem 'newrelic_rpm'
 gem 'sass-rails', '~> 3.1.0'
 gem 'coffee-rails', '~> 3.1.0'
 gem 'uglifier'
-
 
 group :test do
   gem 'shoulda'
