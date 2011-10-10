@@ -99,6 +99,27 @@ $pebble_code_tag_width: 132px;
 
 
 // ------------------------------------------------------------------------
+// Typography
+// ------------------------------------------------------------------------
+
+// Put here, so that it is easy to pull out for typekit font loading
+
+.actions #char-count,
+#wrapper .topbar .nav li.account,
+#wrapper #content h2, 
+#wrapper #content legend,
+#wrapper #content .intro,
+#wrapper #content .step-by-step li,
+#wrapper #content .sign-in,
+#wrapper #content .tab-headings li a,
+.settings-page #wrapper #content legend,
+.settings-page #wrapper #content label
+{
+  @include adelle_font;
+}
+
+
+// ------------------------------------------------------------------------
 // General styles
 // ------------------------------------------------------------------------
 
@@ -154,7 +175,6 @@ a {
   
   #char-count {
     color: #919191;
-    font-family: adelle,serif;
     font-size: 28px;
     font-weight: bold;
     line-height: 38px;
@@ -280,7 +300,6 @@ a {
           color: $link_colour;
           text-align: right;
           
-          @include adelle_font;
           font-size: 18px;
           line-height: 44px; /* Same as height */
           font-weight: bold;
@@ -319,7 +338,6 @@ a {
     margin-top: 72px;
 
     h2, legend {
-      @include adelle_font;
       font-size: 20px;
       line-height: 30px;
       font-weight: bold;
@@ -331,7 +349,6 @@ a {
     }
 
     .intro {
-      @include adelle_font;
       font-size: 14px;
       line-height: 18px;
       font-weight: bold;
@@ -351,7 +368,6 @@ a {
         margin-right: 50px;
         margin-top: 220px;
 
-        @include adelle_font;
         font-size: 14px;
         line-height: 18px;
         font-weight: bold;
@@ -369,7 +385,6 @@ a {
     } // .step-by-step
 
     .sign-in {
-      @include adelle_font;
       font-size: 18px;
       line-height: 22px;
       font-weight: bold;
@@ -427,7 +442,6 @@ a {
           font-size: 17px;
           line-height: 36px;
           padding-top: 2px;
-          @include adelle_font;
           color: $content_gray;
           @include single-box-shadow(#bbbbbb, 1px, 1px, 7px, 0);
           
@@ -597,7 +611,6 @@ footer {
 .settings-page {
   #wrapper #content {
     legend, label {
-      @include adelle_font;
       font-size: 24px;
       line-height: 40px;
       font-weight: bold;
