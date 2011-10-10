@@ -15,6 +15,10 @@ $(document).ready(function(){
         $('html').addClass('browserIE' + $.browser.version.substring(0,1));
     }
     
+    // Is this a version of Webkit?
+    if($.browser.webkit){    
+      $('html').addClass('browserWebkit');
+    }
     
     // Is this a version of Chrome?
     if($.browser.chrome){
