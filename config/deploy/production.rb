@@ -37,5 +37,5 @@ namespace :deploy do
 
 end
 
-after "deploy:update_code", "deploy:link_config_files"# , "deploy:precompile_assets"
+before "deploy:assets:precompile", "deploy:link_config_files"# , "deploy:precompile_assets"
 
