@@ -113,7 +113,8 @@ $pebble_code_tag_width: 132px;
 #wrapper #content .sign-in,
 #wrapper #content .tab-headings li a,
 .settings-page #wrapper #content legend,
-.settings-page #wrapper #content label
+.settings-page #wrapper #content .trickle-every label,
+.settings-page #wrapper #content .trickle-between label
 {
   @include adelle_font;
 }
@@ -610,7 +611,7 @@ footer {
 
 .settings-page {
   #wrapper #content {
-    legend, label {
+    legend, .trickle-every label {
       font-size: 24px;
       line-height: 40px;
       font-weight: bold;
@@ -649,14 +650,39 @@ footer {
     .trickle-between {
       margin: 20px 0 70px;
       
-      .browserFirefox & {
-        margin-bottom: 60px;
+      legend {
+        margin-bottom: 20px;
       }
       
-      select, label { /* Normal controsl hidden, as js slider replaces it */
+      label {
+        font-size: 20px;
+        line-height: 30px;
+        font-weight: bold;
+        letter-spacing: 0.05em;
+        margin-top: 0;
+        margin-bottom: 16px;
+
+        color: $link_colour;
+      } // .settings-page #wrapper #content .trickle-between label
+      
+      select { /* Normal controsl hidden, as js slider replaces it */
         display: none;
       }
-    
+      
+      .publish-from {
+        .browserWebkit & {
+          position: relative;
+          top: 20px;
+        }
+      }
+      
+      .publish-until {
+        margin-top: 40px;
+        .browserWebkit & {
+          margin-top: 60px;
+        }
+      }
+      
       .ui-widget-content {
         background: none;
         cursor: pointer;
@@ -666,7 +692,7 @@ footer {
         background-color: #d2d2d2;
         font-size: 12px;
         line-height: 16px;
-        margin-top: 3px;
+        margin-top: -8px;
       
         z-index: 10;
       }
@@ -691,26 +717,24 @@ footer {
       
         border: none;
       }
-        #handle_setting_publish_from_4i {
-          background: transparent image_url('sliders.png') no-repeat 0 0;
-          top: -15px;
-        }
-        #handle_setting_publish_until_4i {
-          background: transparent image_url('sliders.png') no-repeat 0 -52px;
-          top: 40px;
-        }
+      
+      #handle_setting_publish_from_4i,
+      #handle_setting_publish_until_4i {
+        background: transparent image_url('sliders.png') no-repeat 0 0;
+        top: -25px;
+      }
     
       .ui-slider-horizontal {
-        height: 60px;
-        top: 30px;
+        height: 35px;
+        top: 25px;
         
         .browserFirefox & {
-          top: 15px;
+
         }
       }
     
       .ui-slider span.ui-slider-tic {
-        height: 60px;
+        height: 35px;
       }
     } // .trickle-between
     
@@ -763,3 +787,34 @@ footer {
 .qtip {
   margin-top: 13px;
 }
+
+// ------------------------------------------------------------------------
+// Clearfix
+// ------------------------------------------------------------------------
+
+/* http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflowhidden-demystified */
+
+.clearfix:before,
+.clearfix:after {
+  content: '\0020';
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+/*
+  The following zoom:1 rule is specifically for IE6 + IE7.
+  Move to separate stylesheet if invalid CSS is a problem.
+*/
+
+.clearfix {
+  zoom: 1;
+}
+
+
