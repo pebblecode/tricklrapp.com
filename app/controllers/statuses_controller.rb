@@ -34,8 +34,10 @@ class StatusesController < ApplicationController
       
       # Clear status message for form refresh
       @status.status = nil
+      redirect_to statuses_url
+    else
+      render 'statuses/index'
     end
-    render 'statuses/index'
   end
 
   def update
