@@ -42,7 +42,7 @@ describe "A user submitting a new tweet" do
     end
   end
   
-  it "should see see an empty tweet text box" do
+  it "should see an empty tweet text box" do
     visit root_path
     fill_in('status_status', :with => 'hello, I am queued')
     click_button('Trickle it!')
@@ -50,4 +50,17 @@ describe "A user submitting a new tweet" do
     find_field('status[status]').value.should == ""
   end
     
+  it "should be able to submit another tweet" do
+    visit root_path
+    fill_in('status_status', :with => 'hello, I am queued')
+    click_button('Trickle it!')
+
+    fill_in('status_status', :with => 'another tweet')
+    click_button('Trickle it!')
+    
+    within(:css, "ul#queued_statuses li") do
+      page.html.should match /hello, I am queued/
+      page.html.should match /another tweet/
+    end
+  end
 end
