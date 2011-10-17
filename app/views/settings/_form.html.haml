@@ -10,11 +10,11 @@
 
     = field_set_tag 'Trickle between the hours of', :class => "trickle-between" do
       %div.publish-from
-        =f.label :publish_from
+        =f.label :publish_from, "Each day, start Tricklin' at:"
         =f.time_select :publish_from, :minute_step => 60, :time_separator => ""
 
       %div.publish-until
-        =f.label :publish_until
+        =f.label :publish_until, "And stop Tricklin' at:"
         =f.time_select :publish_until, :minute_step => 60, :time_separator => ""
         
     -# %div.clearfix
