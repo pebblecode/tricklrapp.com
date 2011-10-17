@@ -52,16 +52,13 @@ describe "A user submitting a new tweet" do
   #     Then I should see "I'm in ur computer testin ur app"
   #     And I should see "can haz fish plz?"
   it "should be able to view published tweets" do
-    pending("have to figure out how to test for a published tweet")
-    # @status = Factory(:status, 
-    #                   :status => tweet, 
-    #                   :published_at => Time.now - 2.hours,
-    #                   :twitter_id => "1234", 
-    #                   :user => User.find_by_nickname(user))
-    
-    # visit published_path
-    # page.html.should match /I'm in ur computer testin ur app/
-    # page.html.should match /can haz fish plz?/
+    @status = Factory(:status, 
+                      :status => "I'm in ur computer testin ur app, can haz fish plz?",
+                      :published_at => Time.now - 2.hours,
+                      :twitter_id => "36670724", 
+                      :user => User.find_by_nickname('shapeshed'))
+    visit published_path
+    page.html.should match /I'm in ur computer testin ur app, can haz fish plz?/
   end
 
   it "should be able to delete a queued tweet" do
