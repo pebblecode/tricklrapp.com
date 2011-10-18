@@ -49,7 +49,7 @@ describe "A user submitting a new tweet" do
     @status = Factory(:status, 
                       :status => "I'm in ur computer testin ur app, can haz fish plz?",
                       :published_at => Time.now - 2.hours,
-                      :twitter_id => "36670724", refactor!!
+                      :twitter_id => "36670724",
                       :user => User.find_by_nickname('shapeshed'))
                       
     visit published_path
