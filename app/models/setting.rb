@@ -9,11 +9,11 @@ class Setting < ActiveRecord::Base
     :numericality => true,
     :presence => true,
     :on => :update
-  validates :time_unit,   
+  validates :time_unit,
     :presence => true,
-    :format =>  { 
-      :with => /^(minutes|hours|days)$/, 
-      :message => 'must be one of minutes, hours, or days' 
+    :format =>  {
+      :with => /^(minutes|hours|days|weeks)$/,
+      :message => 'must be one of minutes, hours, days, weeks'
     },
     :on => :update
 
