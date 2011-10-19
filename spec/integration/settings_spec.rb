@@ -65,3 +65,53 @@ describe "Save 'Trickle my tweets every' settings" do
   end
   
 end
+
+describe "Saved 'Trickle my tweets every' setting changes trickle frequency" do
+  
+  describe 'for trickling every 1 week' do
+    it {
+      visit root_path
+      click_link('Sign in with Twitter')
+
+      visit settings_path
+      select('1 week', :from => 'setting_publish_frequency')
+      click_button('Save')
+
+      visit root_path
+      fill_in('status_status', :with => 'you be tweeted in 1 week')
+      click_button('Trickle it!')
+
+      page.html.should match /trickling in 7 days/
+    }
+    
+    it 'for 3 trickles' do
+      visit root_path
+      click_link('Sign in with Twitter')
+
+      visit settings_path
+      select('1 week', :from => 'setting_publish_frequency')
+      click_button('Save')
+
+      visit root_path
+      fill_in('status_status', :with => 'you be tweeted in 1 week')
+      click_button('Trickle it!')
+
+      page.html.should match /trickling in 7 days/
+      
+      visit root_path
+      fill_in('status_status', :with => 'you be tweeted in 2 week')
+      click_button('Trickle it!')
+
+      page.html.should match /trickling in 14 days/
+      
+      visit root_path
+      fill_in('status_status', :with => 'you be tweeted in 3 week')
+      click_button('Trickle it!')
+
+      page.html.should match /trickling in 21 days/
+    end
+  end
+
+  pending 'changing settings between different trickles'
+  
+end

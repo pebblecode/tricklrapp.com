@@ -5,8 +5,8 @@
     -if status.published_at
       =link_to time_ago_in_words_with_word(status.published_at), "http://twitter.com/growingshed/status/" + status.twitter_id.to_s
     -else 
-      trickling in
-      =distance_of_time_in_words(Time.now, status.scheduled_at)
+      = "trickling in #{distance_of_time_in_words(Time.now, status.scheduled_at)}"
+      
   -if !status.published_at
     %ul.actions
       %li.edit
