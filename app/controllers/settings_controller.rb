@@ -30,7 +30,7 @@ class SettingsController < ApplicationController
 
   def get_publish_frequency_options
     @publish_frequencies = PublishFrequencies.frequencies
-    @publish_frequencies_default = PublishFrequencies.frequency_default
+    @publish_frequencies_default = PublishFrequencies.frequency_default_from_setting(@setting)
   end
   
 end

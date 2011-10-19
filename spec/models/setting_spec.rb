@@ -77,6 +77,63 @@ describe Setting do
       end
       
     end
+    
+    describe '.frequency_default_from_setting' do
+      it 'is 2 hours with no settings' do
+        PublishFrequencies.frequency_default_from_setting(nil).should == '2 hours'
+      end
+      
+      it 'is 2 hours with no time and time unit values in settings' do
+        setting = Factory(:setting, :time_digit => nil, :time_unit => nil)
+        PublishFrequencies.frequency_default_from_setting(setting).should == '2 hours'
+      end
+      
+      describe 'is 2 hours if settings has the invalid value: ' do
+        it "2 minutes" do
+          @setting = Factory(:setting, :time_digit => 2, :time_unit => 'minutes')
+        end
+        
+        it "15 hours" do
+          @setting = Factory(:setting, :time_digit => 15, :time_unit => 'hours')
+        end
+        
+        it "15 hour" do
+          @setting = Factory(:setting, :time_digit => 15, :time_unit => 'hour')
+        end
+        
+        it "12 months" do
+          @setting = Factory(:setting, :time_digit => 12, :time_unit => 'months')
+        end
+        
+        after(:each) do
+          PublishFrequencies.frequency_default_from_setting(@setting).should == '2 hours'
+        end
+      end
+      
+      it 'is the settings value with valid settings' do
+        setting = Factory(:setting)
+        
+        setting.time_digit = '5'
+        setting.time_unit = 'minutes'
+        PublishFrequencies.frequency_default_from_setting(setting).should == '5 minutes'
+        
+        setting.time_digit = '1'
+        setting.time_unit = 'hours'
+        PublishFrequencies.frequency_default_from_setting(setting).should == '1 hour'
+        
+        setting.time_digit = '5'
+        setting.time_unit = 'days'
+        PublishFrequencies.frequency_default_from_setting(setting).should == '5 days'
+        
+        setting.time_digit = '1'
+        setting.time_unit = 'week'
+        PublishFrequencies.frequency_default_from_setting(setting).should == '1 week'
+        
+        setting.time_digit = '1'
+        setting.time_unit = 'month'
+        PublishFrequencies.frequency_default_from_setting(setting).should == '1 month'
+      end
+    end
 
   end
 end
