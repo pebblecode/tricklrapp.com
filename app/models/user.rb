@@ -62,8 +62,8 @@ class User < ActiveRecord::Base
   # Creates settings for a new user
   #-------------------------------------
   def create_settings
-    # A default value of 7200 is set on interval in the db
-    # so we don't need to delcare it here
+    # A default value of 7200 seconds (2 hours) is set on interval in the db
+    # so we don't need to declare it here
     self.setting = Setting.new
     self.save!
   end
