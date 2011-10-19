@@ -3,11 +3,11 @@
   = field_set_tag 'Settings' do
   
     %div.trickle-every.clearfix
-      =f.label :time_digit, 'Trickle my tweets every'
+      = f.label :publish_frequency, 'Trickle my tweets every'
       %div.input
-        =f.text_field :time_digit, :value => number_to_human(@setting.time_digit), :class => "small"
-        =f.select :time_unit, options_for_select([ "minutes", "hours", "days" ], @setting.time_unit)
-
+        %select{ :name => :setting_publish_frequency }
+          = options_for_select(@publish_frequencies, @publish_frequencies_default)
+        
     = field_set_tag 'Trickle between the hours of', :class => "trickle-between" do
       %div.publish-from
         =f.label :publish_from, "Each day, start Tricklin' at:"
