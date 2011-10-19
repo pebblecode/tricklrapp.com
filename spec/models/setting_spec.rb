@@ -79,59 +79,57 @@ describe Setting do
     end
     
     describe '.frequency_default_from_setting' do
+      def frequency_time_and_unit_default_equals_output(frequency_time, frequency_unit, output)
+        setting = Factory(:setting, :time_digit => frequency_time, :time_unit => frequency_unit)
+        PublishFrequencies.frequency_default_from_setting(setting).should == output
+      end
+      
       it 'is 2 hours with no settings' do
         PublishFrequencies.frequency_default_from_setting(nil).should == '2 hours'
       end
       
       it 'is 2 hours with no time and time unit values in settings' do
-        setting = Factory(:setting, :time_digit => nil, :time_unit => nil)
-        PublishFrequencies.frequency_default_from_setting(setting).should == '2 hours'
+        frequency_time_and_unit_default_equals_output(nil, nil, '2 hours')
       end
       
       describe 'is 2 hours if settings has the invalid value: ' do
-        it "2 minutes" do
-          @setting = Factory(:setting, :time_digit => 2, :time_unit => 'minutes')
+        it "2 minutes (not in list)" do
+          frequency_time_and_unit_default_equals_output(2, 'minutes', '2 hours')
         end
         
         it "15 hours" do
-          @setting = Factory(:setting, :time_digit => 15, :time_unit => 'hours')
+          frequency_time_and_unit_default_equals_output(15, 'hours', '2 hours')
         end
-        
+          
         it "15 hour" do
-          @setting = Factory(:setting, :time_digit => 15, :time_unit => 'hour')
+          frequency_time_and_unit_default_equals_output(15, 'hour', '2 hours')
         end
         
         it "12 months" do
-          @setting = Factory(:setting, :time_digit => 12, :time_unit => 'months')
-        end
-        
-        after(:each) do
-          PublishFrequencies.frequency_default_from_setting(@setting).should == '2 hours'
+          frequency_time_and_unit_default_equals_output(12, 'months', '2 hours')
         end
       end
       
-      it 'is the settings value with valid settings' do
-        setting = Factory(:setting)
+      describe 'is the settings value with valid setting:' do
+        it "5 minutes" do
+          frequency_time_and_unit_default_equals_output(5, 'minutes', '5 minutes')
+        end
         
-        setting.time_digit = '5'
-        setting.time_unit = 'minutes'
-        PublishFrequencies.frequency_default_from_setting(setting).should == '5 minutes'
+        it "1 hour" do
+          frequency_time_and_unit_default_equals_output(1, 'hours', '1 hour')
+        end
         
-        setting.time_digit = '1'
-        setting.time_unit = 'hours'
-        PublishFrequencies.frequency_default_from_setting(setting).should == '1 hour'
+        it "5 days" do
+          frequency_time_and_unit_default_equals_output(5, 'days', '5 days')
+        end
         
-        setting.time_digit = '5'
-        setting.time_unit = 'days'
-        PublishFrequencies.frequency_default_from_setting(setting).should == '5 days'
+        it "1 week" do
+          frequency_time_and_unit_default_equals_output(1, 'weeks', '1 week')
+        end
         
-        setting.time_digit = '1'
-        setting.time_unit = 'week'
-        PublishFrequencies.frequency_default_from_setting(setting).should == '1 week'
-        
-        setting.time_digit = '1'
-        setting.time_unit = 'month'
-        PublishFrequencies.frequency_default_from_setting(setting).should == '1 month'
+        it "1 month" do
+          frequency_time_and_unit_default_equals_output(1, 'months', '1 month')
+        end
       end
     end
 
