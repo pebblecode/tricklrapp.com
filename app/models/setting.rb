@@ -36,7 +36,7 @@ class Setting < ActiveRecord::Base
 end
 
 class PublishFrequencies
-  @@frequencies = ['1 minute', '5 minutes', '10 minutes', '20 minutes', '30 minutes', '1 hour', '2 hours', '3 hours', '4 hours', '5 hours', '6 hours', '7 hours', '8 hours', '1 day', '2 days', '3 days', '4 days', '5 days', '6 days', '1 week', '2 weeks', '3 weeks', '1 month']
+  @@frequencies = ['1 minute', '5 minutes', '10 minutes', '20 minutes', '30 minutes', '1 hour', '2 hours', '3 hours', '4 hours', '5 hours', '6 hours', '7 hours', '8 hours', '1 day', '2 days', '3 days', '4 days', '5 days', '6 days', '1 week', '2 weeks', '3 weeks', '4 weeks']
   
   @@frequency_time_regex = /^(\d+) (\w+)$/
   @@frequency_time_regex_index = 1
