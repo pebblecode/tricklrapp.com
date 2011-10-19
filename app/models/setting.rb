@@ -48,8 +48,15 @@ class PublishFrequencies
     @@frequencies
   end
   
-  def self.frequency_default
-    @@frequency_default
+  def self.frequency_default_from_setting(setting)
+    if setting
+      time_unit = (setting.time_digit == 1) ? setting.time_unit.singularize : setting.time_unit
+      default_value = "#{setting.time_digit.to_i} #{time_unit}"
+      
+      (self.valid_frequency? default_value) ? default_value : @@frequency_default
+    else
+      @@frequency_default
+    end
   end
   
   def self.time_from_str(str)
