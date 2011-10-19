@@ -51,12 +51,12 @@ describe "Changing 'Trickle my tweets every' setting" do
       find_field('setting_publish_frequency').value.should == "1 week"
     end
   
-    it "to 1 month" do
-      select('1 month', :from => 'setting_publish_frequency')
+    it "to 4 weeks" do
+      select('4 weeks', :from => 'setting_publish_frequency')
     
       click_button('Save')
       visit settings_path
-      find_field('setting_publish_frequency').value.should == "1 month"
+      find_field('setting_publish_frequency').value.should == "4 weeks"
     end
   end
   
