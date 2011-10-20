@@ -553,19 +553,19 @@ footer {
   .pebble-code-tag {
     position: absolute;
     z-index: 50;
-    top: 35px;
-    left: 605px;
+    top: 45px;
+    left: 615px;
     
     outline: none;
     
     display: block;
     width: $pebble_code_tag_width;
-    height: 64px;
+    height: 49px;
     text-indent: -9999px;
     background: transparent image_url('pebble-code.png') no-repeat 0 0;
     
     &:hover {
-      background-position: 2px 0;
+      background-position: 0 -49px;
     }
   } // .pebble-code-tag
   
