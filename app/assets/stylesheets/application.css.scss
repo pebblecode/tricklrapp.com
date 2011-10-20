@@ -273,7 +273,10 @@ a {
         height: 42px;
         text-indent: -9999px;
         outline: none;
-
+        
+        &:hover {
+          background-position: 0 -42px;
+        }
       }
     } // #logo
     
