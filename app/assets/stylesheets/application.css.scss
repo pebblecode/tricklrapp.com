@@ -224,22 +224,25 @@ a {
     @include border-bottom-left-radius(6px);
     @include border-bottom-right-radius(6px);
     */
-    
+    color: #707070;
     display: block;
     width: 555px;
-    padding: 10px;
-    border: 1px solid #aeaeae;
+    padding: 5px 10px;
+    border: 1px solid #AEAEAE;
+    box-shadow: 1px 1px 7px 0 #BBBBBB;
+    position: absolute;
+    margin-top: 15px;
 
     @include border-radius(6px);
     background: #ff8daf;
     .cssgradients & {
-      @include linear-gradient(color-stops(#ffbed2, #ff7aa4)); // pink
+      @include linear-gradient(color-stops(#FFFFFF, #F2F2F2)); // pink
     }
     
     &.success {
       background: #93d8ef;
       .cssgradients & {
-        @include linear-gradient(color-stops(#a5e3f7, #8ac9dd)); // blue
+        @include linear-gradient(color-stops(#FFFFFF, #F2F2F2)); // blue
       }
     }
   }
@@ -339,7 +342,7 @@ a {
   } // .topbar
   
   #content {
-    margin-top: 72px;
+    margin-top: 52px;
 
     h2, legend {
       font-size: 20px;
@@ -406,6 +409,15 @@ a {
       legend {
         display: none;
       }
+      
+      .type_tweets {
+      color: #9E9E9E;
+      margin: 20px 0 10px 0;
+      @include adelle_font;
+      font-size: 15px;
+      text-shadow: 1px 1px 0.5px #F2F2F2;
+      }
+      
       
       textarea {
 /*        font-size: 20px;
