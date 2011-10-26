@@ -342,7 +342,7 @@ a {
   } // .topbar
   
   #content {
-    margin-top: 52px;
+    margin-top: 72px;
 
     h2, legend {
       font-size: 20px;
@@ -620,7 +620,15 @@ footer {
     
     .alert-message {
       width: 510px;
+      margin: 0;
     }
+  }
+}
+
+.status-listing-page{
+  
+  #wrapper #content {
+    margin-top: 52px;
   }
 }
 
