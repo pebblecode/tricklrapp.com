@@ -672,15 +672,23 @@ footer {
 
 .settings-page {
   #wrapper #content {
+    button, input, select, textarea {
+      margin: 10px auto -5px auto;
+      display:block;
+      }
+  
     legend, .trickle-every label {
       font-size: 24px;
       line-height: 40px;
       font-weight: bold;
+      padding: 3px 0 0 0;
 
       margin-top: 0;
       margin-bottom: 16px;
 
-      color: #676767;
+      color: #a3a3a3;
+      font-weight: 600;
+      letter-spacing: 0.06em;
       display: block;
       text-align: center;
       width: 573px;
@@ -691,7 +699,7 @@ footer {
       }
       @include border-radius(6px);
       border: 1px solid #a7a7a7;
-      @include single-box-shadow(#999999, 5px, 5px, 10px, -5px);
+      @include single-box-shadow(#BBBBBB, 5px, 5px, 10px, -5px);
       
       cursor: default;
     } // legend, label
