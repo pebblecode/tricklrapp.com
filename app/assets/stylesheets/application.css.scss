@@ -318,6 +318,10 @@ a {
             display: inline;
             color: #7a7a7a;
             text-shadow: 1px 1px 0.5px #F2F2F2;
+            &:hover {
+              text-decoration: none;
+              color: #568FB8;
+            }
           }
         }
         
@@ -474,19 +478,50 @@ a {
           @include border-top-left-radius(6px);
           @include border-bottom-left-radius(6px);
           width: floor($inner_content_width / 2);
+          color: #939393;
+          text-shadow: 1px 1px 0.5px #F2F2F2;
+          .cssgradients & {
+            @include linear-gradient(color-stops(#ffffff, #f2f2f2), top);
+            }
+          &:hover{
+            .cssgradients & {
+            @include linear-gradient(color-stops(#d9d9d9, #FFFFFF), top);
+            }  
+            text-decoration: none;
+            }
         }
         &.last a {
           @include border-top-right-radius(6px);
           @include border-bottom-right-radius(6px);
           border-left: none;
           width: 285px;
+          text-shadow: 1px 1px 0.5px #F2F2F2;
           width: floor($inner_content_width / 2);
+          color: #939393;
+          .cssgradients & {
+            @include linear-gradient(color-stops(#ffffff, #f2f2f2), top);
+            }
+          &:hover{
+           color: #797979; 
+           text-decoration: none;
+           .cssgradients & {
+            @include linear-gradient(color-stops(#d9d9d9, #FFFFFF), top);
+            }
+           }
         }
         
         &.active a {
           background: #c2deea;
+          text-shadow: 1px 1px 0.5px #F2F2F2;
           .cssgradients & {
             @include linear-gradient(color-stops(#cceaf7, #c2deea), top);
+            }
+         &:hover{
+           color: #797979; 
+           text-decoration: none;
+         .cssgradients & {
+            @include linear-gradient(color-stops(#aec7d2, #cceaf7), top);
+            }
           }
         }
       } // .tab-headings li
