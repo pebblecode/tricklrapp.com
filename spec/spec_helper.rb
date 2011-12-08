@@ -29,7 +29,7 @@ Spork.prefork do
   OmniAuth.config.add_mock(:twitter, { 
     :provider    => "twitter", 
     :uid         => "36670724", 
-    :user_info   => { 
+    :info   => { 
     :name       => "George Ornbo", 
     :nickname   => "shapeshed"
   }, 

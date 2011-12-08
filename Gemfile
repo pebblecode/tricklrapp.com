@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.1'
+gem 'rails', '3.1.3'
 
 # Postgres
 # https://bitbucket.org/ged/ruby-pg/wiki/Home
@@ -20,7 +20,7 @@ gem 'devise'
 
 # Omniauth for easy authentication against third parties
 # https://github.com/intridea/omniauth
-gem "oa-oauth", :require => 'omniauth/oauth'
+gem 'omniauth-twitter'
 
 # Will paginate for pagination
 # https://github.com/mislav/will_paginate/wiki

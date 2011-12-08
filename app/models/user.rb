@@ -41,14 +41,14 @@ class User < ActiveRecord::Base
   #-------------------------------------
   # Applies omniauth response to the User model
   #-------------------------------------
-  def self.find_for_twitter_oauth(omniauth)
-    logger.info(omniauth)
+  def self.find_for_twitter_oauth(omniauth, signed_in_resource=nil)
+    #logger.info(omniauth.to_yaml)
     authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
     if authentication && authentication.user
       authentication.user
     else
-      user = User.create!(:nickname => omniauth['user_info']['nickname'], 
-                          :name => omniauth['user_info']['name'])
+      user = User.create!(:nickname => omniauth['info']['nickname'], 
+                          :name => omniauth['info']['name'])
       user.authentications.create!(:provider => omniauth['provider'], 
                                    :uid => omniauth['uid'],
                                    :token => omniauth['credentials']['token'],
