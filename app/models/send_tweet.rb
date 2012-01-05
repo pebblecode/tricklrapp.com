@@ -1,4 +1,4 @@
-class SendTweet < ActiveRecord::Base
+class SendTweet
 
   @queue = :send_tweet
 
