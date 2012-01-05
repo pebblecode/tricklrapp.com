@@ -12,7 +12,8 @@ class Status < ActiveRecord::Base
   before_update :check_scheduled_at
   after_create :queue
   before_destroy :dequeue
-
+  
+  attr_accessor :jump_queue
   #-------------------------------------
   # Validations
   #-------------------------------------
@@ -73,14 +74,18 @@ class Status < ActiveRecord::Base
   # Check if the scheduled at attribute has changed
   # and force a requeue
   def check_scheduled_at
-    self.requeue if self.scheduled_at_changed?
+    if self.jump_queue
+      SendTweet.perform(self.id)
+    else
+      self.requeue if self.scheduled_at_changed?
+    end
   end
 
   # Queues a tweet up for delivery via Resque Scheduler
   # This references the perform method in the SendTweet class
   # For more documentation see http://github.com/bvandenbos/resque-scheduler
   def queue
-    Resque.enqueue_at(self.scheduled_at, SendTweet, self.id)
+    Resque.enqueue_at(self.scheduled_at, SendTweet, self.id)  
   end
 
   # Take a tweet off the queue
