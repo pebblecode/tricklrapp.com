@@ -7,7 +7,7 @@ gem 'rails', '3.1.3'
 gem 'pg'
 
 
-# MySql2 
+# MySql2
 gem 'mysql2'
 
 # Sqlite
