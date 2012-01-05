@@ -75,12 +75,21 @@ describe "A user submitting a new tweet" do
     click_link('Edit')
     fill_in('status_status', :with => 'ok we iz edited')
     click_button('Trickle it!')
-    
+
     page.html.should match /Your tweet was updated/
     page.html.should_not match /edit me thnx/
     page.html.should match /ok we iz edited/
   end
   
+  it "should be able to jump the queue" do
+    visit root_path
+    fill_in('status_status', :with => 'Scumbag status: gets on the queue, jumps it')
+    click_button('Trickle it!')
+    page.html.should match /Scumbag status: gets on the queue, jumps it/
+    # click_button('Jump the queue!')
+    # page.html.should match /Cool, we jumped the queue and tweeted your status/
+    # page.html.should_not match /Scumbag status: gets on the queue, jumps it/
+  end
 end
 
 describe "A user entering erroneous tweets" do
