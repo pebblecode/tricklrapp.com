@@ -107,11 +107,6 @@ $(document).ready(function() {
   $('#status_submit').before('<p id="char-count"></p>');
   $('#status_status').statusCount();
   
-  // $('#status_status').NobleCount('#char-count', {
-  //   on_positive: 'positive-count',
-  //   on_negative: 'negative-count'
-  // });
-
   /*
    * Show and hide status lists
   */
