@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.0.rc2'
+gem 'rails', '3.1.3'
 
 # Postgres
 # https://bitbucket.org/ged/ruby-pg/wiki/Home
@@ -56,8 +56,8 @@ gem 'hoptoad_notifier'
 gem 'newrelic_rpm'
 
 # Rails 3.1 - Asset Pipeline
-gem 'sass-rails', '~> 3.2.3'
-gem 'coffee-rails', '~> 3.2.1'
+gem 'sass-rails', '~> 3.1.0'
+gem 'coffee-rails', '~> 3.1.0'
 gem 'uglifier'
 
 group :test do
