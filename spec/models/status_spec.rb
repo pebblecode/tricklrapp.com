@@ -40,5 +40,12 @@ describe Status do
     @status.should_not be_valid
   end
   
+  it "should be rescheduled when publish! is called" do
+    @time = Time.now.utc
+    Time.stub!(:now).and_return(@time)
+    @status.scheduled_at.should be > Time.now.utc
+    @status.publish!
+    @status.scheduled_at.should eql(Time.now.utc)
+  end
 end
 

@@ -15,7 +15,7 @@ Tricklr::Application.routes.draw do
       put :sort
     end
     member do
-      post :publish
+      put :publish
     end
   end
   resources :settings

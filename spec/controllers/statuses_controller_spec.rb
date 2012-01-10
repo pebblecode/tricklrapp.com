@@ -38,7 +38,7 @@ describe StatusesController do
 
   describe 'POST #create' do
 
-    let(:status) { mock_model(Status).as_null_object }
+    let(:status) { mock_model(Status).as_null_object }    
 
     context 'when not logged in' do
 
@@ -107,5 +107,41 @@ describe StatusesController do
     end
   
   end
+  describe 'PUT #publish' do
+    let(:status) { mock_model(Status).as_null_object}
 
+    context 'when not logged in' do
+
+      before(:each) do
+        ResqueSpec.reset!
+        @user = Factory.create(:user)
+        @status = Factory.create(:status, :user => @user)
+      end
+      it 'redirects to the sign in page' do
+        put :publish, :id => @status.id
+        response.should redirect_to(new_user_session_path)
+      end
+    end
+    context 'when logged in' do
+      before(:each) do 
+        ResqueSpec.reset!
+        @user = Factory.create(:user)
+        sign_in @user
+        @status = Factory.create(:status, :user => @user)
+      end
+      it 'reschedules the status' do
+        put :publish, :id => @status.id
+      end
+      it "sets a flash message" do
+        put :publish, :id => @status.id
+        flash[:notice].should eq("Cool, your tweet has been rescheduled")
+      end
+
+      it "redirects to the statuses url" do 
+        put :publish, :id => @status.id
+        response.should redirect_to(statuses_url)
+      end
+    end
+    
+  end
 end

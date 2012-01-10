@@ -106,3 +106,19 @@ describe "A user entering erroneous tweets" do
     page.html.should match /hello, I am queued/
   end
 end
+
+describe "A user jumping the queue" do
+  before(:each) do
+    visit root_path
+    click_link('Sign in with Twitter')
+    fill_in('status_status', :with => 'hello, I am gonna jump the queue')
+    click_button('Trickle it!')
+    page.html.should match /hello, I am gonna jump the queue/
+  end
+  
+  it "should be rescheduled when published" do
+    page.html.should match /trickling in about 2 hours/
+    click_button('Publish now')
+    page.html.should match /trickling in less than a minute/
+  end
+end

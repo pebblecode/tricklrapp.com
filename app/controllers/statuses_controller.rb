@@ -54,10 +54,14 @@ class StatusesController < ApplicationController
   end
   
   def publish
-    order = params[:status]
-    status.publish!
-    flash[:notice] = "Cool, your tweet has been rescheduled"
-    respond_with(@status, :location => statuses_path)
+      @status = Status.find(params[:id])
+      @status.publish!
+      flash[:notice] = "Cool, your tweet has been rescheduled"
+      respond_with(@status, :location => statuses_path)
+  rescue ActiveRecord::RecordNotFound
+    @status = nil
+    flash[:notice] = "Could not find that status to publish."
+    redirect_to statuses_path
   end
 
   private 

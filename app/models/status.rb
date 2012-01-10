@@ -73,8 +73,10 @@ class Status < ActiveRecord::Base
   
   # Remove from the queue and requeue it for "now", jumping the queue.
   def publish!
-    dequeue
-    schedule(Time.now.utc)
+    self.dequeue
+    self.scheduled_at = Time.now.utc
+    self.save
+    Resque.enqueue(SendTweet, self.id)
   end
 
   # Check if the scheduled at attribute has changed
@@ -87,7 +89,7 @@ class Status < ActiveRecord::Base
   # This references the perform method in the SendTweet class
   # For more documentation see http://github.com/bvandenbos/resque-scheduler
   def queue
-    Resque.enqueue_at(self.scheduled_at, SendTweet, self.id)  
+    self.schedule(self.scheduled_at)
   end
   
   # Take a tweet off the queue
