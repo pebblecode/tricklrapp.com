@@ -13,7 +13,7 @@ class Status < ActiveRecord::Base
   after_create :queue
   before_destroy :dequeue
   
-  attr_accessor :jump_queue
+  attr_accessor :publish
   #-------------------------------------
   # Validations
   #-------------------------------------
@@ -70,15 +70,17 @@ class Status < ActiveRecord::Base
   def minutes_to_advance(from, to)
     (Time.parse(from.strftime("%H:%M")) - Time.parse(to.strftime("%H:%M"))) / 60
   end
+  
+  # Remove from the queue and requeue it for "now", jumping the queue.
+  def publish!
+    dequeue
+    schedule(Time.now.utc)
+  end
 
   # Check if the scheduled at attribute has changed
   # and force a requeue
   def check_scheduled_at
-    if self.jump_queue
-      SendTweet.perform(self.id)
-    else
-      self.requeue if self.scheduled_at_changed?
-    end
+    self.requeue if self.scheduled_at_changed?
   end
 
   # Queues a tweet up for delivery via Resque Scheduler
@@ -87,7 +89,7 @@ class Status < ActiveRecord::Base
   def queue
     Resque.enqueue_at(self.scheduled_at, SendTweet, self.id)  
   end
-
+  
   # Take a tweet off the queue
   # As there is no way to edit something that's been added
   # we need to use this too for the edit process
@@ -115,5 +117,11 @@ class Status < ActiveRecord::Base
     end
   end
 
+  protected
+    # Schedules a status to be published, accepts the time
+    def schedule(time)
+      Resque.enqueue_at(time, SendTweet, self.id)
+    end
+    
 end
 

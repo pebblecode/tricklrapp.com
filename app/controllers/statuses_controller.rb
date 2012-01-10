@@ -42,11 +42,7 @@ class StatusesController < ApplicationController
 
   def update
     if @status.update_attributes(params[:status])
-      if @status.jump_queue
-        flash[:notice] = "Cool, we jumped the queue and tweeted your status :)"
-      else
-        flash[:notice] = "Your tweet was updated"
-      end
+      flash[:notice] = "Your tweet was updated"
     end        
     respond_with(@status, :location => statuses_path)
   end
@@ -61,6 +57,13 @@ class StatusesController < ApplicationController
     order = params[:status]
     Status.reorder_statuses(order, current_user)
     render :json => current_user.unpublished_statuses.reload.to_json
+  end
+  
+  def publish
+    order = params[:status]
+    status.publish!
+    flash[:notice] = "Cool, your tweet has been rescheduled"
+    respond_with(@status, :location => statuses_path)
   end
 
   private 
