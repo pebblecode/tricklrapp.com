@@ -14,18 +14,12 @@ set :default_stage, "staging"
 #---------------------------
 require 'bundler/capistrano'
   
-#---------------------------
-# We are using rvm so let Capistrano know
-# See http://beginrescueend.com/integration/capistrano/
-#---------------------------
-# $:.unshift(File.expand_path('./lib', ENV['rvm_path'])) 
-# require "rvm/capistrano"
-# set :rvm_ruby_string, '1.9.2@tricklr'
+set :normalize_asset_timestamps, false
 
 #---------------------------
 # Git stuff
 #---------------------------
-set :repository,  "git@apu.pebbleit.com:tricklrapp.com.git"
+set :repository,  "git@github.com:pebblecode/tricklrapp.com.git"
 set :scm, :git
 set :deploy_via, :remote_cache
 set :keep_releases, 3 
