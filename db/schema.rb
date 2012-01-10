@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(:version => 20110901092332) do
     t.string   "uid"
     t.string   "token"
     t.string   "secret"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "settings", :force => true do |t|
@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(:version => 20110901092332) do
     t.string   "time_unit",                                   :default => "hours"
     t.datetime "publish_from"
     t.datetime "publish_until"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                                       :null => false
+    t.datetime "updated_at",                                                       :null => false
     t.string   "time_zone"
   end
 
@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(:version => 20110901092332) do
     t.string   "response_code"
     t.datetime "scheduled_at"
     t.datetime "published_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -56,8 +56,8 @@ ActiveRecord::Schema.define(:version => 20110901092332) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
   end
 
 end
