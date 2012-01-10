@@ -1,10 +1,9 @@
 # This will pre-compile the Rails 3 Asset Pipeline
 load 'deploy/assets'
-server "apu.pebbleit.com", :app, :web, :db, :primary => true
-set :deploy_to, "/var/www/vhosts/tricklrapp.com/httpdocs" 
-set :branch, "master"
+server "starling.tricklrapp.com", :app, :web, :db, :primary => true
+set :deploy_to, "/srv/tricklrapp.com" 
+set :branch, "production"
 set :user, "tricklr"
-set :bundle_flags, "--deployment --quiet --binstubs --shebang ruby-local-exec"
 
 set :default_environment, {
   'PATH' => "/home/tricklr/.rbenv/shims:/home/tricklr/.rbenv/bin:$PATH"
@@ -31,12 +30,7 @@ namespace :deploy do
     run "ln -nfs #{deploy_to}/#{shared_dir}/tmp/sockets #{release_path}/tmp/sockets"
   end
 
-  # desc "Precompiles assets for the Asset Pipeline"
-  # task :precompile_assets do
-  #   run "cd #{current_path} && bundle exec rake RAILS_ENV=production RAILS_GROUPS=assets assets:precompile"
-  # end
-
 end
 
-before "deploy:assets:precompile", "deploy:link_config_files"# , "deploy:precompile_assets"
+before "deploy:assets:precompile", "deploy:link_config_files"
 
