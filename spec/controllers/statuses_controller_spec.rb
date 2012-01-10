@@ -36,40 +36,6 @@ describe StatusesController do
   
   end
 
-  describe 'GET #published' do
-
-    context 'when not logged in' do
-
-      before(:each) do
-        get :published
-      end
-
-      it 'redirects to the sign in page' do
-        response.should redirect_to(new_user_session_path)
-      end
-
-    end
-
-    context 'when logged in' do
-
-      before(:each) do 
-        @user = Factory.create(:user)
-        sign_in @user
-        get :published
-      end
-
-      it 'shows the tweets page' do
-        response.should be_success
-      end
-
-      it 'renders the index template' do
-        response.should render_template("index")
-      end
-
-    end
-  
-  end
-
   describe 'POST #create' do
 
     let(:status) { mock_model(Status).as_null_object }

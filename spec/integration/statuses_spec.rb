@@ -44,17 +44,6 @@ describe "A user submitting a new tweet" do
       page.html.should match /another tweet/
     end
   end
-  
-  it "should be able to view published tweets" do
-    @status = Factory(:status, 
-                      :status => "I'm in ur computer testin ur app, can haz fish plz?",
-                      :published_at => Time.now - 2.hours,
-                      :twitter_id => "36670724",
-                      :user => User.find_by_nickname('shapeshed'))
-                      
-    visit published_path
-    page.html.should match /I'm in ur computer testin ur app, can haz fish plz?/
-  end
 
   it "should be able to delete a queued tweet" do
     visit root_path
