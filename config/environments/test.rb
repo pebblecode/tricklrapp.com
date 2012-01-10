@@ -40,6 +40,6 @@ Tricklr::Application.configure do
   # Allow pass debug_assets=true as a query parameter to load pages with unpackaged assets
   config.assets.allow_debugging = true
 
-  TWITTER_CONSUMER_KEY = "jTogT14Qg3JVoSUTY8aMg"
-  TWITTER_CONSUMER_SECRET = "8iIUvM66i3PGrzxl0cGXGTqSmXkHp1Y1mDtf6PyaRE"
+  TWITTER_CONSUMER_KEY = "lbeefzEl8rvGRGUtuRXCw"
+  TWITTER_CONSUMER_SECRET = "n4iutWp4zFkYxjVMtqtjWWJ8J4LqEBjej8tXnAISU"
 end
