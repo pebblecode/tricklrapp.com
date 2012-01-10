@@ -537,7 +537,10 @@ a {
             &.edit a {
               @include actions-button(-20px);
             }
-
+            &.jump-queue input {
+              @include actions-button(0);
+              border: none;
+            }
             &.delete input {
               @include actions-button(-38px);
               border: none;

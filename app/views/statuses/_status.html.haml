@@ -9,6 +9,10 @@
       
   -if !status.published_at
     %ul.actions
+      %li.jump-queue
+        = form_for status do |f|
+          = f.hidden_field :jump_queue, :value => true
+          = f.submit 'Jump the queue!'
       %li.edit
         = link_to 'Edit', edit_status_path(status), :class => "edit-status", :rel => "#modal-edit", :title => "Edit"
       %li.delete

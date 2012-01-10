@@ -42,7 +42,11 @@ class StatusesController < ApplicationController
 
   def update
     if @status.update_attributes(params[:status])
-      flash[:notice] = "Your tweet was updated"
+      if @status.jump_queue
+        flash[:notice] = "Cool, we jumped the queue and tweeted your status :)"
+      else
+        flash[:notice] = "Your tweet was updated"
+      end
     end        
     respond_with(@status, :location => statuses_path)
   end
