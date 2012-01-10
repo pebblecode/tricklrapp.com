@@ -2,10 +2,6 @@ require 'spec_helper'
 
 describe Status do
 
-  it { should validate_presence_of(:user_id) }
-  it { should validate_numericality_of(:user_id) }
-  it { should validate_presence_of(:status) }
-
   before(:each) do
     @status = Factory(:status)
   end

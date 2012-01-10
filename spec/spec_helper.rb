@@ -9,8 +9,6 @@ Spork.prefork do
   Spork.trap_method(Rails::Application::RoutesReloader, :reload!)
   
   require 'capybara/rspec'
-  require 'shoulda/integrations/rspec2'
-  require 'shoulda'
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
   
   RSpec.configure do |config|

@@ -3,12 +3,6 @@ require 'spec_helper'
 
 describe User do
 
-  it { should have_many(:authentications) }
-  it { should have_many(:statuses) }
-  it { should have_many(:unpublished_statuses) }
-  it { should have_many(:published_statuses) }
-  it { should have_one(:setting) }
-
   before(:each) do
     @user = Factory(:user)
   end

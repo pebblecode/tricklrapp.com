@@ -61,7 +61,6 @@ gem 'coffee-rails', '~> 3.2.1'
 gem 'uglifier'
 
 group :test do
-  gem 'shoulda'
   gem 'random_data'
   gem 'capybara'   
   gem 'launchy'
