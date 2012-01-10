@@ -122,3 +122,30 @@ describe "A user jumping the queue" do
     page.html.should match /trickling in less than a minute/
   end
 end
+
+describe "Scheduling various statuses" do
+  before do
+    @time = Time.now.utc
+    Time.stub!(:now).and_return(@time)
+  end
+  before(:each) do
+    visit root_path
+    click_link('Sign in with Twitter')
+  end
+  context "viewing the queue in the present" do
+    before(:each) do
+      fill_in('status_status', :with => 'This status will be published in about 2 hours')
+      click_button('Trickle it!')
+    end
+    it "should schedule the first tweet in about 2 hours by default" do
+      page.html.should match /This status will be published in about 2 hours/
+      page.html.should match /trickling in about 2 hours/
+    end
+    it "should schedule the second tweet in about 4 hours by default" do
+      fill_in('status_status', :with => 'This status will be published in about 4 hours')
+      click_button('Trickle it!')
+      page.html.should match /This status will be published in about 4 hours/
+      page.html.should match /trickling in about 4 hours/
+    end
+  end
+end
