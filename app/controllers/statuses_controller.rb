@@ -3,19 +3,13 @@ class StatusesController < ApplicationController
   respond_to :html, :xml, :json
 
   before_filter :authenticate_user!
-  before_filter :current_status, :except => [:index, :new, :create, :published, :sort]
-  before_filter :new_status, :only => [:index, :new, :published]
+  before_filter :current_status, :except => [:index, :new, :create, :sort]
+  before_filter :new_status, :only => [:index, :new]
 
   before_filter :get_unpublished_statuses, :only => [:new, :index, :create]
   
   def index
     respond_with(@statuses)
-  end
-
-  def published
-    @statuses = current_user.published_statuses
-    @statuses_type = :published
-    render 'statuses/index'
   end
 
   def new
