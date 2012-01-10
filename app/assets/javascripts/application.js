@@ -24,6 +24,33 @@ jQuery.fn.flashNotice = function () {
 };
 jQuery.timeago.settings.allowFuture = true;
 
+$.fn.statusCount = function(){
+  var tcoSize = 20;
+  var maxStatusSize = 140;
+  var statusBox = this;
+  var countBox = $('#char-count');
+  var contentSize = statusBox.val().length;
+  var urlRegex = /(^|\s)((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/gi;
+  
+  countBox.text(maxStatusSize);
+  
+  this.keydown(function(){
+    contentSize = statusBox.val().length;
+    text = statusBox.val();
+    // detect links
+    links = text.match(urlRegex);
+    if (links != null) {
+      totalLinks = links.length;
+      totalLinkSize = links.join('').replace(/\s/g, '').length;
+      totaltcoSize = totalLinks * tcoSize;
+      contentSize = contentSize - totalLinkSize + totaltcoSize;
+    };
+    countBox.text(maxStatusSize - contentSize);
+  });
+};
+
+
+
 $(document).ready(function() {
   /* 
   * Fade flash notices
@@ -78,10 +105,12 @@ $(document).ready(function() {
    * Status character countdown
   */
   $('#status_submit').before('<p id="char-count"></p>');
-  $('#status_status').NobleCount('#char-count', {
-    on_positive: 'positive-count',
-    on_negative: 'negative-count'
-  });
+  $('#status_status').statusCount();
+  
+  // $('#status_status').NobleCount('#char-count', {
+  //   on_positive: 'positive-count',
+  //   on_negative: 'negative-count'
+  // });
 
   /*
    * Show and hide status lists
