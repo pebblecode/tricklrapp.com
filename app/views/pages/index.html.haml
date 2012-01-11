@@ -1,15 +1,24 @@
-%h2
-  Welcome to Tricklr!
+.secondary-container
+  %h2
+    Welcome to Tricklr!
   
-%p.intro
-  Tricklr is a simple to use web app for marketing teams and high volume
-  tweeters. Tricklr helps you effectively manage your Twitter feed by trickling out tweets
-  at regular intervals.
+  %p.intro
+    Tricklr is a simple to use web app for marketing teams and high volume
+    tweeters.
+  %p.intro
+    Tricklr helps you effectively manage your Twitter feed by trickling out tweets
+    at regular intervals.
 
-%ul.step-by-step.clearfix
-  %li First compose your tweets and add them to the queue.
-  %li Next choose when and how often you want your tweets to trickle.
-  %li.last Ready to rock! Your tweets will now trickle out at the rate set.
-
-%p.sign-in
-  = link_to "Sign in to get started.", user_omniauth_authorize_path(:twitter)
+  %ul.step-by-step.clearfix
+    %li
+      %img{:src => image_path('start-icon-1.png'), :alt => ''}/
+      %br/
+      First compose your tweets and add them to the queue.
+    %li
+      %img{:src => image_path('start-icon-2.png'), :alt => ''}/
+      %br/
+      Next choose when and how often you want your tweets to trickle.
+    %li.last
+      %img{:src => image_path('start-icon-3.png'), :alt => ''}/
+      %br/
+      Ready to rock! Your tweets will now trickle out at the rate set.
