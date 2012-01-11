@@ -228,6 +228,12 @@ body{
   @include box-shadow(#aaa 0 1px 4px);
   background: url(noise/10p.png) #efefef;
 }
+h2{
+  margin-bottom: 5px;
+}
+p+h2{
+  margin-top: 1em;
+}
 .input-em{
   color: #a9ddf7;
 }
@@ -305,7 +311,7 @@ section.actions{
 .button:visited{
   color: pink;
 }
-.button:active{
+.button:active, .button.active{
   color: $t-blue;
   
   @include text-shadow (#e5e5e5 1px 1px 0);
@@ -350,7 +356,7 @@ section.actions{
   background-position: 0 66px;
 }
 
-.settings:active{
+.settings:active, .settings.active{
   background-image: url(settings.png);
   background-position: 0 33px;
 }
@@ -462,4 +468,8 @@ nav{
   vertical-align: middle;
   color: #888;
   font-size: 17px;
+}
+
+.ralign{
+  text-align: right;
 }

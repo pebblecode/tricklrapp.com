@@ -35,7 +35,8 @@
     #wrap
       #main-container
         #logo
-          %img{:src => image_path('logo_white.png'), :alt => 'Tricklr logo'}/
+          %a{:href => '/', :alt => 'Tricklr'}
+            %img{:src => image_path('logo_white.png'), :alt => 'Tricklr logo'}/
         = render :partial => 'layouts/shared/header'
         %section#content
           - if flash[:notice]
