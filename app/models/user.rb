@@ -42,10 +42,12 @@ class User < ActiveRecord::Base
   # Applies omniauth response to the User model
   #-------------------------------------
   def self.find_for_twitter_oauth(omniauth, signed_in_resource=nil)
-    #logger.info(omniauth.to_yaml)
+    logger.info(omniauth.to_yaml)
     authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
     if authentication && authentication.user
-      authentication.user
+      user = authentication.user
+      user.update_timezone(omniauth['extra']['raw_info']['time_zone'])
+      user
     else
       user = User.create!(:nickname => omniauth['info']['nickname'], 
                           :name => omniauth['info']['name'])
@@ -54,17 +56,25 @@ class User < ActiveRecord::Base
                                    :token => omniauth['credentials']['token'],
                                    :secret => omniauth['credentials']['secret'])
       user.save
-      user
+      user.update_timezone(omniauth['extra']['raw_info']['time_zone'])
+      return user
     end
   end
 
   #-------------------------------------
   # Creates settings for a new user
   #-------------------------------------
-  def create_settings
-    # A default value of 7200 seconds (2 hours) is set on interval in the db
-    # so we don't need to declare it here
-    self.setting = Setting.new
-    self.save!
+  
+  
+  def update_timezone(time_zone)
+    setting.time_zone = time_zone
+    setting.save
   end
+  private
+    def create_settings
+      # A default value of 7200 seconds (2 hours) is set on interval in the db
+      # so we don't need to declare it here
+      self.setting = Setting.new
+      self.save!
+    end
 end

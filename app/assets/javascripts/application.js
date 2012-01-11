@@ -107,11 +107,6 @@ $(document).ready(function() {
   $('#status_submit').before('<p id="char-count"></p>');
   $('#status_status').statusCount();
   
-  // $('#status_status').NobleCount('#char-count', {
-  //   on_positive: 'positive-count',
-  //   on_negative: 'negative-count'
-  // });
-
   /*
    * Show and hide status lists
   */
@@ -262,12 +257,12 @@ $(document).ready(function() {
   });
   
   // jQuery UI Slider - http://www.filamentgroup.com/lab/update_jquery_ui_slider_from_a_select_element_now_with_aria_support/
-  if ($('#settings-form select#setting_publish_from_4i, #settings-form select#setting_publish_until_4i').length > 0) {
-    $('#settings-form select#setting_publish_from_4i').selectToUISlider({
+  if ($('#setting_publish_from_4i, #setting_publish_until_4i').length > 0) {
+    $('#setting_publish_from_4i').selectToUISlider({
       labels: 24,
       tooltip: false
     });
-    $('#settings-form select#setting_publish_until_4i').selectToUISlider({
+    $('#setting_publish_until_4i').selectToUISlider({
       labels: 24,
       tooltip: false
     });

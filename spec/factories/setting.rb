@@ -3,5 +3,6 @@ Factory.define :setting do |f|
   f.automatic true
   f.time_digit '1'
   f.time_unit 'hours'
+  f.time_zone 'London'
 end
 
