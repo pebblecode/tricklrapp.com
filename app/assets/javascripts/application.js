@@ -30,6 +30,7 @@ $.fn.statusCount = function(){
   var statusBox = this;
   var countBox = $('#char-count');
   var contentSize = statusBox.val().length;
+
   var urlRegex = /(^|\s)((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/gi;
   
   countBox.text(maxStatusSize);
@@ -105,7 +106,10 @@ $(document).ready(function() {
    * Status character countdown
   */
   $('#status_submit').before('<p id="char-count"></p>');
-  $('#status_status').statusCount();
+  if($('#status_status').length > 0){
+    $('#status_status').statusCount();
+  }
+  
   
   /*
    * Show and hide status lists
@@ -230,7 +234,7 @@ $(document).ready(function() {
   //  $('#things').prepend('<%=escape_javascript render(@thing) %>');
   //});
   $('ul#queued_statuses').ready(function() {
-    $('ul#queued_statuses li .actions').prepend('<li class="move"><a href="#" class="reorder-statuses" title="Move">Reorder</a></li>');
+    $('ul#queued_statuses li .actions').prepend('<li class="move"><a href="#" class="icon move reorder-statuses" title="Move">Reorder</a></li>');
   });
   
   // qTips - link tooltips
@@ -255,17 +259,35 @@ $(document).ready(function() {
       }
     }
   });
-  
+  $()
   // jQuery UI Slider - http://www.filamentgroup.com/lab/update_jquery_ui_slider_from_a_select_element_now_with_aria_support/
   if ($('#setting_publish_from_4i, #setting_publish_until_4i').length > 0) {
     $('#setting_publish_from_4i').selectToUISlider({
       labels: 24,
-      tooltip: false
-    });
+      tooltip: false,
+      sliderOptions: {
+        change: function(){
+          var from = $('#setting_publish_from_4i').val();
+          var until = $('#setting_publish_until_4i').val();
+          str = "Publish between " + from + ":00 and " + until + ":00"
+          $("#publish-between").text(str)
+        }
+      }
+    }).hide();
     $('#setting_publish_until_4i').selectToUISlider({
       labels: 24,
-      tooltip: false
-    });
+      tooltip: false,
+      sliderOptions: {
+        change: function(){
+          var from = $('#setting_publish_from_4i').val();
+          var until = $('#setting_publish_until_4i').val();
+          str = "Publish between " + from + ":00 and " + until + ":00"
+          $("#publish-between").text(str)
+        }
+      }
+    }).hide();
+    $('#setting_publish_from_5i').hide();
+    $('#setting_publish_until_5i').hide();
   }
   
   // Fade out alert messages after 4 seconds

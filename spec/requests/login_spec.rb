@@ -9,13 +9,13 @@ describe "Login integration tests" do
   it "should correctly log in a user via twitter" do
     visit root_path
     click_link('Sign in with Twitter')
-    page.html.should match /Trickle it!/
+    page.html.should match /Add to Queue/
   end
 
   it "should correctly log out a user" do
     visit root_path
     click_link('Sign in with Twitter')
-    page.html.should match /Trickle it!/
+    page.html.should match /Add to Queue/
     click_link('Logout')
     page.html.should match /Sign in with Twitter/
   end

@@ -1,25 +1,24 @@
-=form_for @setting, :html => { :id => 'settings-form' } do |f|
-  =render :partial => '/partials/error_messages', :locals => { :object => @setting }
-  = field_set_tag 'Settings' do
-  
-    %div.trickle-every.clearfix
-      = f.label :publish_frequency, 'Trickle my tweets every'
-      %div.input
-        %select{ :name => :setting_publish_frequency }
-          = options_for_select(@publish_frequencies, @publish_frequencies_default)
-        
-    = field_set_tag 'Trickle between the hours of', :class => "trickle-between" do
-      %div.publish-from
-        =f.label :publish_from, "Each day, start Tricklin' at:"
-        =f.time_select :publish_from, :minute_step => 60, :time_separator => ""
-
-      %div.publish-until
-        =f.label :publish_until, "And stop Tricklin' at:"
-        =f.time_select :publish_until, :minute_step => 60, :time_separator => ""
-        
-    -# %div.clearfix
-      =f.label :time_zone
-      %div.input
-        =time_zone_select( "setting", "time_zone", nil, :default => "Pacific Time (US & Canada)" )
+.container
+  =form_for @setting, :html => { :id => 'settings-form' } do |f|
+    =render :partial => '/partials/error_messages', :locals => { :object => @setting }
+    .field
+      = f.label :publish_frequency, 'Publish tweets every'
+      %select{ :name => :setting_publish_frequency }
+        = options_for_select(@publish_frequencies, @publish_frequencies_default)
+    %h2#publish-between
+      Publish between 
+      - if @setting.publish_from.present? and @setting.publish_until.present?
+        #{@setting.publish_from.to_s(:time)} and #{@setting.publish_until.to_s(:time)}
+    %div.publish-from
+      =f.time_select :publish_from, :minute_step => 60, :time_separator => ""
+    %div.publish-until
+      =f.time_select :publish_until, :minute_step => 60, :time_separator => ""
+    %section.time-zone.field
+      %em
+        = Time.zone
+        = link_to image_tag('icon-external-link.png'), 'https://twitter.com/settings/account'
+      
     %section.actions
-      %button.save-button{:type => "submit"} Save
+      =link_to 'Go back', root_url, :class => 'button'
+      %button.button.save-button{:type => "submit", :class => 'button'} Save Setting
+    

@@ -65,7 +65,9 @@ class User < ActiveRecord::Base
   # Creates settings for a new user
   #-------------------------------------
   
-  
+  def time_zone
+    setting.time_zone || Rails.configuration.time_zone
+  end
   def update_timezone(time_zone)
     setting.time_zone = time_zone
     setting.save

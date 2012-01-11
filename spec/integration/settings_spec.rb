@@ -79,7 +79,7 @@ describe "Saved 'Trickle my tweets every' setting changes trickle frequency" do
 
       visit root_path
       fill_in('status_status', :with => 'you be tweeted in 1 week')
-      click_button('Trickle it!')
+      click_button('Add to Queue')
 
       page.html.should match /trickling in 7 days/
     }
@@ -94,19 +94,19 @@ describe "Saved 'Trickle my tweets every' setting changes trickle frequency" do
 
       visit root_path
       fill_in('status_status', :with => 'you be tweeted in 1 week')
-      click_button('Trickle it!')
+      click_button('Add to Queue')
 
       page.html.should match /trickling in 7 days/
       
       visit root_path
       fill_in('status_status', :with => 'you be tweeted in 2 week')
-      click_button('Trickle it!')
+      click_button('Add to Queue')
 
       page.html.should match /trickling in 14 days/
       
       visit root_path
       fill_in('status_status', :with => 'you be tweeted in 3 week')
-      click_button('Trickle it!')
+      click_button('Add to Queue')
 
       page.html.should match /trickling in 21 days/
     end

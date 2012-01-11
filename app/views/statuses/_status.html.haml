@@ -1,18 +1,22 @@
-%li{:id => "status_#{status.id}"}
+%li{:id => "status_#{status.id}", :class => 'secondary-container'}
   %p
     =status.status
-  %span.meta
-    -if status.published_at
-      =link_to time_ago_in_words_with_word(status.published_at), "http://twitter.com/growingshed/status/" + status.twitter_id.to_s
-    -else 
+  .meta.clearfix
+    %em.ttp
       = "trickling in #{distance_of_time_in_words(Time.now, status.scheduled_at)}"
-      
-  -if !status.published_at
-    %ul.actions
-      %li.jump-queue
-        = form_for [:publish, status] do |f|
-          = f.submit 'Publish now', :confirm => 'Are you sure? Your status will be published'
-      %li.edit
-        = link_to 'Edit', edit_status_path(status), :class => "edit-status", :rel => "#modal-edit", :title => "Edit"
-      %li.delete
-        = button_to 'Destroy', status, :method => :delete, :title => "Delete"
+    -if !status.published_at
+      %ul.actions
+        %li.edit
+          = link_to 'Edit', edit_status_path(status), :class => "icon edit edit-status", :rel => "#modal-edit", :title => "Edit"
+        %li.jump-queue
+          = form_for [:publish, status] do |f|
+            = f.submit 'Publish now', 
+              :confirm => 'Are you sure? Your status will be published',
+              :class => 'icon jump-q'
+        %li.delete
+          = button_to 'Destroy',
+            status,
+            :method => :delete,
+            :title => "Delete",
+            :confirm => 'Are you sure you want to delete?',
+            :class => 'icon delete'

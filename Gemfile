@@ -33,10 +33,6 @@ gem 'resque-scheduler'
 # http://github.com/nex3/haml
 gem 'haml'
 
-# Compass for CSS 
-# https://github.com/chriseppstein/compass
-gem 'compass'
-
 # Automates using jQuery with Rails3
 # https://github.com/indirect/jquery-rails
 gem 'jquery-rails'
@@ -46,11 +42,6 @@ gem 'hoptoad_notifier'
 
 # Performance monitoring with NewRelic
 gem 'newrelic_rpm'
-
-# Rails 3.1 - Asset Pipeline
-gem 'sass-rails', '~> 3.1.0'
-gem 'coffee-rails', '~> 3.1.0'
-gem 'uglifier'
 
 group :test do
   gem 'random_data'
@@ -84,3 +75,10 @@ group :production do
   gem 'thin'
   gem 'therubyracer' 
 end 
+
+group :assets do
+  gem 'sass-rails', '~> 3.1.0'
+  gem 'coffee-rails', '~> 3.1.0'
+  gem 'uglifier'
+  gem 'compass', '~> 0.12.alpha'
+end

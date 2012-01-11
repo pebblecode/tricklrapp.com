@@ -1,10 +1,9 @@
 =form_for @status do |f|
   =render :partial => '/partials/error_messages', :locals => { :object => @status }
-  = field_set_tag "Hey! We're ready to queue your tweet", :class => 'status-form' do
-    %div.input
-      =f.text_area :status
-    %section.actions
-      %button#status_submit{:type => "submit"}
-        Trickle it!
+  %div.text-input
+    =f.text_area :status, :cols => 77
+  %section.actions
+    %button#status_submit{:type => "submit", :class => 'button' }
+      Add to Queue
     
 

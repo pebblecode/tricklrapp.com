@@ -25,7 +25,6 @@ class StatusesController < ApplicationController
     @status.user = current_user
     if @status.save
       flash[:notice] = 'Hurray! Your tweet was scheduled for delivery'
-      
       # Clear status message for form refresh
       @status.status = nil
       redirect_to statuses_url
