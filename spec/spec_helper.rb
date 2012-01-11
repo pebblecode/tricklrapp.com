@@ -29,13 +29,18 @@ Spork.prefork do
     :provider    => "twitter", 
     :uid         => "36670724", 
     :info   => { 
-    :name       => "George Ornbo", 
-    :nickname   => "shapeshed"
-  }, 
+      :name       => "George Ornbo", 
+      :nickname   => "shapeshed"
+    }, 
     :credentials => {   
-    :token => "36670724-itwLyz641g76JitN9CTIpEw5Dtrsa7NLU7fpZ7aPXO",
-    :secret => "OcKQ907H0KUV7qzbWNGNYasdEBDsjasd5rPXtyTzi6c"
-  } 
+      :token => "36670724-itwLyz641g76JitN9CTIpEw5Dtrsa7NLU7fpZ7aPXO",
+      :secret => "OcKQ907H0KUV7qzbWNGNYasdEBDsjasd5rPXtyTzi6c"
+    },
+    'extra' => {
+      'raw_info' => {
+        'time_zone' => 'London'
+      }
+    }
   })
   
 end
