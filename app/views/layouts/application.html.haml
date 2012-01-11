@@ -1,110 +1,20 @@
-!!!
-%html
+!!! Transitional
+%html(xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en")
   %head
+    %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}/
     %title Tricklr
     
     %link{:rel => "icon", :type => "image/x-icon", :href => "/favicon.ico"}/
     %link{:rel => "shortcut icon", :type => "image/x-icon", :href => "/favicon.ico"}/
-    
-    = stylesheet_link_tag 'application'
-    :plain
-      <!--[if IE 7]>
-        <link rel="stylesheet" type="text/css" href="/assets/ie7.css">
-      <![endif]-->
-    = javascript_include_tag 'application'
-    = javascript_include_tag "http://use.typekit.com/kvm0rss.js"
-    :javascript
-      // Code from http://blog.typekit.com/2010/11/11/font-events-using-javascript-callbacks/
-      (function() {
-        
-        var font_element_selector = '.actions #char-count, #wrapper .topbar .nav li.account, #wrapper #content h2, #wrapper #content legend, #wrapper #content .intro, #wrapper #content .step-by-step li, #wrapper #content .sign-in, #wrapper #content .tab-headings li a, .settings-page #wrapper #content legend, .settings-page #wrapper #content label, .settings-page #wrapper #content .trickle-between label';
-        
-        $(document).ready(function() {
-          
-          // Add class to elements that are hidden already
-          $(font_element_selector).each(function() {
-            if ($(this).is(":hidden")) {
-              $(this).addClass("ignore_font");
-            }
-          });
+    = stylesheet_link_tag :application, asset_path('fonts.css'), 'http://fonts.googleapis.com/css?family=Kreon:300,400,700'
+    = javascript_include_tag :application
 
-          $(font_element_selector).not('.ignore_font').css('visibility', 'hidden');
-        });
-        try {
-          Typekit.load({
-            active: function() {
-              // As soon as the fonts are active, fade in the example
-              // Don't fade in browsers that don't do proper opacity, like IE
-              if (jQuery.support.opacity) {
-                $(font_element_selector).not('.ignore_font').css('visibility', 'visible').hide().fadeIn();
-              } else {
-                $(font_element_selector).not('.ignore_font').css('visibility', 'visible');
-              }
-            },
-            inactive: function() {
-              // If the fonts are inactive, just show the example
-              // You can apply fallback styles using the wf-inactive class in your CSS
-              $(font_element_selector).not('.ignore_font').css('visibility', 'visible');
-            }
-          })
-        } catch(e) {}
-      })();
-    :javascript
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-26218270-1']);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    
-    = csrf_meta_tag
-  
-  - body_class = []
-  - body_class << "no-user" unless current_user
-  :ruby
-    body_class << if (controller.class.name == "StatusesController")
-                    "status-listing-page"
-                  elsif (controller.class.name == "SettingsController")
-                    "settings-page"
-                  else
-                    "page"
-                  end
-    
-  %body{ :class => body_class.join(" ") }
-    %section#wrapper
-      #content-wrapper
-        %section.topbar
-          %h3#logo
-            %a(href="/") 
-              Tricklr
-          = image_tag('beta.png', :title => 'Currently Beta software', :class => 'beta-tag', :width => "86", :height => "85")
-          
-          %ul.nav
-            - if current_user
-              %li.settings
-                =link_to "Settings", settings_path
-              %li.help
-                =link_to "Help", help_path
-              %li.account
-                =link_to current_user.nickname, root_path
-                %span.sep= "|"
-                =link_to "Logout", destroy_user_session_path
-
-            - else
-              %li.login
-                =link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter)
-
-        %section#content
-          - if flash[:notice]
-            %div.alert-message.success
-              = flash[:notice]
-          - elsif flash[:error]
-            %div.alert-message.error
-              = flash[:notice]
-          =yield
-
-      =render :partial => 'layouts/shared/footer'
-      
+  %body
+    #wrap
+      #main-container
+        #logo
+          %img{:src => image_path('logo_white.png'), :alt => 'Tricklr logo'}/
+        = render :partial => 'layouts/shared/header'
+        = yield
+        / %hr{:class=>'slider-grove'}/
+        / = render :partial => 'layouts/shared/footer'

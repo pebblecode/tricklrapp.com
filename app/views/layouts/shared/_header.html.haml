@@ -1,20 +1,18 @@
-
-%header
-  %h1 
-    =link_to "Tricklr", root_path
-  %nav
+%nav.clearfix
+  - if user_signed_in?
     %ul
       -if current_user
-        %li.avatar
-          =link_to image_tag(current_user.profile_image_url), root_path
-          =link_to current_user.screen_name, root_path
-        %li
-          =link_to "Settings", settings_path, :class => "settings"
-      %li
-        =link_to "Help", help_path, :class => "help"
-      %li
-        -if current_user
-          =link_to "Logout", destroy_user_session_path, :class => "logout"
-        -else
-          =link_to "Login", "/users/auth/twitter", :class => "logout"
-
+        %li.nickname
+          %h3#account-name
+            %span
+              = current_user.nickname
+        %li.menu-items
+          = link_to "Logout", destroy_user_session_path, :class => "button logout"
+          = link_to "Help", help_path, :class => "button help"
+          = link_to "Settings", settings_path, :class => "button settings"
+  - else
+    / not logged in
+    %a{ :class => 'button sign-in', :href => "/users/auth/twitter"}
+      %span{:class => 'symbol'}
+        t
+      Sign in with Twitter
