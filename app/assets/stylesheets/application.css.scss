@@ -22,6 +22,7 @@ $border_gray: #5b5b5b;
 $link_colour: #29abe2;
 $dark_link_colour: #265467;
 $content_gray: #707070;
+$t-blue: #18a6ec;
 
 /* Sizes */
 $inner_content_width: 575px;
@@ -95,7 +96,8 @@ $pebble_code_tag_width: 132px;
   }          
 }
 
-@import "base/statuses";
+@import "tricklr/statuses";
+@import "tricklr/settings";
 // ------------------------------------------------------------------------
 // Clearfix
 // ------------------------------------------------------------------------
@@ -131,10 +133,6 @@ $pebble_code_tag_width: 132px;
 textarea {
   resize: none;
 }
-
-
-
-$t-blue: #18a6ec;
 
 h1{
   font: 700 21px kreon;
@@ -218,6 +216,10 @@ body{
   border: 3px solid $t-blue;
   @include box-shadow(rgba(0, 0, 0, 0.3) 0 5px 20px 10px);
   background: url(noise/10p.png) #dadada;
+}
+
+.container{
+  margin: 10px;
 }
 
 .secondary-container{
