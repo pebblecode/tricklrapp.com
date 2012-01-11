@@ -1,12 +1,8 @@
 =render :partial => 'form'
-  
-%ul.tab-headings.clearfix
-  %li{:class => "first #{(@statuses_type == :unpublished) ? "active" : ""}"}
-    =link_to "Queue", root_path
-  
-/ %section.status-lists
 
 -if @statuses.present?
-  %ul#queued_statuses.status-list
-    =render @statuses
+  .container
+    %h1 Queued Tweets
+    %ul#queued_statuses.status-list
+      =render @statuses
 

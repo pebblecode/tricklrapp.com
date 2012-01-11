@@ -1,4 +1,53 @@
-textarea#status_status{
+.container{ h1{ margin: 10px;}}
+.text-input{
+  margin: 10px;
+  padding: 10px;
+  @include border-radius(5px);
+  border: 1px solid #bbb;
+  @include box-shadow(#e3e3e3 1px 1px 0, #ccc 1px 1px 5px 1px inset);
+  background: url(noise/5p.png) #fbfbfb;
+  textarea{
+    border: 0;
+    background-color: transparent;
+    outline: none;
+  }
+}
+/* textarea */
+#status_status{ 
+  border: 0;
+  background-color: transparent;
+  outline: none;
   height: 100px;
-  overflow: hidden;
+  overflow: scroll;
+}
+
+#queued_statuses{
+  margin: 0;
+  padding: 0;
+  .actions{
+    float: right;
+    margin: 0;
+    li{ display: inline-block; }
+  }
+  .meta{
+    margin-top: 1em;
+  }
+  .ttp{ }
+}
+
+.icon{
+  text-indent: -9999px;
+  border: 0;
+  display: inline-block;
+}
+
+/* This was not in the design templates... should be updated by Mark? */
+.alert-message{
+  margin: 10px;
+  background: #fff;
+  color: #888;
+  padding: 5px 7px;
+  @include border-radius(5px);
+  @include box-shadow(#ccc 1px 1px 0);
+  
 }

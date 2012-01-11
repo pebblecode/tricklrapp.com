@@ -4,7 +4,6 @@
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
  *= require ./base/html5_boilerplate
- *= require ./base/statuses
  *= require ./base/jquery-ui-1.8.16.custom
  *= require ./base/ui.slider.extras
 */
@@ -96,6 +95,7 @@ $pebble_code_tag_width: 132px;
   }          
 }
 
+@import "base/statuses";
 // ------------------------------------------------------------------------
 // Clearfix
 // ------------------------------------------------------------------------
@@ -126,6 +126,11 @@ $pebble_code_tag_width: 132px;
 }
 
 
+/* Do not allow textareas to be resized horizontally, Vertical is okay... for now.
+*/
+textarea {
+  resize: none;
+}
 
 
 
@@ -155,7 +160,7 @@ p{
   color: #4e5b64;
 }
 
-em{
+em, .emphasized{
   font-style: oblique;
   color: #119bdf;
   @include text-shadow (#fff 1px 1px 0);
@@ -207,7 +212,7 @@ body{
 #main-container{
   min-height: 200px;
   width: 600px;
-  margin: 100px 0 0 0;
+  margin: 100px 0 20px 0;
   padding: 10px;
   @include border-radius(10px);
   border: 3px solid $t-blue;
@@ -223,16 +228,6 @@ body{
   @include box-shadow(#aaa 0 1px 4px);
   background: url(noise/10p.png) #efefef;
 }
-
-#text-input{
-  margin: 10px;
-  padding: 10px;
-  @include border-radius(5px);
-  border: 1px solid #bbb;
-  @include box-shadow(#e3e3e3 1px 1px 0, #ccc 1px 1px 5px 1px inset);
-  background: url(noise/5p.png) #fbfbfb;
-}
-
 .input-em{
   color: #a9ddf7;
 }
@@ -262,10 +257,17 @@ body{
   @include box-shadow(#c3c3c3 0 2px 2px 1px, #055885 0 1px 5px 1px inset);
 }
 
+section.actions{
+  text-align: right;
+}
 #char-count{
   color: #bdbdbd;
   font-size: 35px;
-  margin: 10px;
+  font-family: kreon;
+  font-weight: 700;
+  @include text-shadow (#efefef 1px 1px 0);
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .headers{
@@ -324,6 +326,7 @@ body{
 
 .help{
   @include border-radius(0);
+  border-left: 0;
   margin: 10px -2px;
   padding: 5px 12px 6px 13px;
 }
@@ -339,7 +342,7 @@ body{
   width: 33px;
   padding: 0;
   text-indent: -99999px;
-  
+  border-left: 0;
   background-image: url(settings.png);
 }
 

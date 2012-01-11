@@ -8,13 +8,43 @@
     %link{:rel => "shortcut icon", :type => "image/x-icon", :href => "/favicon.ico"}/
     = stylesheet_link_tag :application, asset_path('fonts.css'), 'http://fonts.googleapis.com/css?family=Kreon:300,400,700'
     = javascript_include_tag :application
+    :javascript
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-26218270-1']);
+      _gaq.push(['_trackPageview']);
 
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    = csrf_meta_tag
+
+  - body_class = []
+  - body_class << "no-user" unless current_user
+  :ruby
+    body_class << if (controller.class.name == "StatusesController")
+                    "status-listing-page"
+                  elsif (controller.class.name == "SettingsController")
+                    "settings-page"
+                  else
+                    "page"
+                  end
   %body
     #wrap
       #main-container
         #logo
           %img{:src => image_path('logo_white.png'), :alt => 'Tricklr logo'}/
         = render :partial => 'layouts/shared/header'
-        = yield
+        %section#content
+          - if flash[:notice]
+            %div.alert-message.success
+              = flash[:notice]
+          - elsif flash[:error]
+            %div.alert-message.error
+              = flash[:notice]
+          =yield
+        
         / %hr{:class=>'slider-grove'}/
         / = render :partial => 'layouts/shared/footer'
