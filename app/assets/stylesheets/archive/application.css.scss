@@ -1,0 +1,826 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *
+ */
+
+/* Import files using sass instead of rails sprockets (easier to control order)*/
+@import 'html5_boilerplate';
+@import '_css3';
+@import 'statuses';
+@import 'jquery-ui-1.8.16.custom';
+@import 'ui.slider.extras';
+
+
+// ------------------------------------------------------------------------
+// Variables
+// ------------------------------------------------------------------------
+
+/* Colours */
+$light_blue: #92dfff;
+$dark_blue: #52b8e3;
+$border_gray: #5b5b5b;
+$link_colour: #29abe2;
+$dark_link_colour: #265467;
+$content_gray: #707070;
+
+/* Sizes */
+$inner_content_width: 575px;
+$pebble_code_tag_width: 132px;
+
+
+// ------------------------------------------------------------------------
+// Mixins
+// ------------------------------------------------------------------------
+
+@mixin button {
+  border: 1px solid #aeaeae;
+  @include border-radius(6px, 6px);
+  
+  background: $dark_blue;
+  .cssgradients & {
+    @include linear-gradient(color-stops($light_blue, $dark_blue));
+  }
+  
+  .boxshadow & {
+    @include single-box-shadow(#666666, 5px, 5px, 10px, -5px);
+  }
+  
+}
+
+@mixin button_with_image($image_path) {
+  @include button;
+  
+  background: $dark_blue image_url($image_path) no-repeat 0 0;
+  .cssgradients & {
+    @include linear-gradient(color-stops($light_blue, $dark_blue), top, image_url($image_path));
+  }
+}
+
+@mixin button_hover {
+  border: 1px solid #bababa;
+
+  background: #f2f2f2;
+  .cssgradients & {
+    @include linear-gradient(color-stops(#fff, #f2f2f2));
+  }
+}
+
+@mixin button_hover_with_image($image_path) {
+  @include button_hover;
+  
+  background: #f2f2f2 image_url($image_path) no-repeat 0 0;
+  .cssgradients & {
+    @include linear-gradient(color-stops(#fff, #f2f2f2), top, image_url($image_path));
+  }
+}
+
+@mixin adelle_font {
+  font-family: adelle, serif;
+}
+
+/* Applied to icons/actions-icons.png image */
+@mixin actions-button($start_x_pos) {
+  background: transparent image_url('icons/action-icons.png') no-repeat $start_x_pos -24px;
+  width: 11px;
+  height: 11px;
+  
+  /* Hide text */
+  font-size: 0; 
+  line-height: 0;
+  
+  display: block;
+  margin-left: 8px;
+  &:hover {
+    background-position: $start_x_pos 0;
+  }          
+}
+
+
+// ------------------------------------------------------------------------
+// Typography
+// ------------------------------------------------------------------------
+
+// Put here, so that it is easy to pull out for typekit font loading
+
+.actions #char-count,
+#wrapper .topbar .nav li.account,
+#wrapper #content h2, 
+#wrapper #content legend,
+#wrapper #content .intro,
+#wrapper #content .step-by-step li,
+#wrapper #content .sign-in,
+#wrapper #content .tab-headings li a,
+.settings-page #wrapper #content legend,
+.settings-page #wrapper #content .trickle-every label,
+.settings-page #wrapper #content .trickle-between label
+{
+  @include adelle_font;
+}
+
+
+// ------------------------------------------------------------------------
+// General styles
+// ------------------------------------------------------------------------
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  padding-top: 60px;
+  background: transparent image_url('background.png') repeat 0 0;
+}
+
+a {
+  color: $link_colour;
+  text-decoration: none;
+  
+  &:visited {
+    color: $link_colour - #222;
+  }
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.actions {
+  margin-top: 10px;
+  position: relative;
+  
+  button {
+    height: 44px;
+    border: none;
+    font-size: 0;
+    line-height: 0;
+    
+    @include single-box-shadow(#bbbbbb, 1px, 1px, 7px, 0);
+    
+    &#status_submit {
+      width: 120px;
+      background: transparent image_url('icons/trickle_btn.png') no-repeat 0 0;
+      
+      &:hover {
+        background-position: 0 -54px;
+      }
+    }
+    
+    &.save-button {
+      width: 73px;
+      background: transparent image_url('icons/save_btn.png') no-repeat 0 0;
+      
+      &:hover {
+        background-position: 0 -54px;
+      }
+    }
+  }
+  
+  #char-count {
+    color: #919191;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 38px;
+    letter-spacing: 0.06em;
+    position: absolute;
+    right: 125px;
+    text-align: right;
+    text-shadow: 1px 1px 0.5px #F2F2F2, -1px -1px 0 #666666;
+    top: -26px;
+    width: 200px;
+        
+    &.positive-count {
+      
+    }
+    
+    &.negative-count {
+      color: red;
+    }
+  }
+} // .actions
+
+
+// ------------------------------------------------------------------------
+// Content styles
+// ------------------------------------------------------------------------
+
+#wrapper {
+  width: 620px;
+  margin: 0 auto;
+  position: relative;
+  
+  .beta-tag {
+    position: absolute;
+    z-index: 1000;
+
+    top: -41px;
+    left: -74px;
+  }
+  
+  .alert-message {
+/*    position: absolute;
+    top: -65px;
+    left: -4px;
+    width: 600px;
+    padding: 15px 10px 10px;
+    @include border-bottom-left-radius(6px);
+    @include border-bottom-right-radius(6px);
+    */
+    
+    display: block;
+    width: 555px;
+    padding: 10px;
+    border: 1px solid #aeaeae;
+
+    @include border-radius(6px);
+    background: #ff8daf;
+    .cssgradients & {
+      @include linear-gradient(color-stops(#ffbed2, #ff7aa4)); // pink
+    }
+    
+    &.success {
+      background: #93d8ef;
+      .cssgradients & {
+        @include linear-gradient(color-stops(#a5e3f7, #8ac9dd)); // blue
+      }
+    }
+  }
+  
+  #content-wrapper {
+    padding: 5px 20px 20px;
+    width: $inner_content_width;
+    
+    background: #d2d2d2;
+    border: 2px solid #ddd;
+    @include border-radius(7px, 7px);
+    @include single-box-shadow(#111111, 5px, 5px, 10px, 0);
+
+    position: relative;
+    z-index: 100;    
+  } // #content-wrapper
+  
+  .topbar {
+    position: relative;
+    
+    #logo {
+      position: absolute;
+      top: -3px;
+      left: 0;
+      z-index: 1000;
+      
+      a {
+        display: block;
+        background: transparent image_url('logo.png') no-repeat 0 0;
+        width: 205px;
+        height: 42px;
+        text-indent: -9999px;
+        outline: none;
+        
+        &:hover {
+          background-position: 0 -42px;
+        }
+      }
+    } // #logo
+    
+    .nav {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      list-style: none;
+      
+      li {
+        float: right;
+        margin-left: 10px;
+        
+        a {
+          display: block;
+        }
+        
+        &.account {
+          
+          width: 250px;
+/*          text-align: center;
+          height: 38px;
+          @include button;*/
+          color: $link_colour;
+          text-align: right;
+          
+          font-size: 18px;
+          line-height: 44px; /* Same as height */
+          font-weight: bold;
+          letter-spacing: 0.06em;          
+          a, span {
+            display: inline;
+            color: #7a7a7a;
+            text-shadow: 1px 1px 0.5px #F2F2F2;
+          }
+        }
+        
+        &.settings a,
+        &.help a {
+          width: 44px;
+          height: 44px;
+          text-indent: -9999px;
+          outline: none;
+          @include single-box-shadow(#bbbbbb, 1px, 1px, 7px, 0);
+          
+          &:hover {
+            background-position: 0 -54px;
+          }          
+        }
+        &.settings a {
+          background: transparent image_url('icons/settings_btn.png') no-repeat 0 0;
+        }
+        &.help a {
+          background: transparent image_url('icons/help_btn.png') no-repeat 0 0;
+        }
+      }
+    } // .nav
+  
+  } // .topbar
+  
+  #content {
+    margin-top: 72px;
+
+    h2, legend {
+      font-size: 20px;
+      line-height: 30px;
+      font-weight: bold;
+      letter-spacing: 0.06em;
+      margin-top: 0;
+      margin-bottom: 16px;
+
+      color: $link_colour;
+    }
+
+    .intro {
+      font-size: 14px;
+      line-height: 18px;
+      font-weight: bold;
+      letter-spacing: 0.06em;
+      color: #909090;
+    }
+
+    .step-by-step {
+      padding: 0;
+      margin: 0;
+      background: transparent image_url('step-by-step.png') no-repeat center 0;
+      width: 545px;
+      height: 299px;
+
+      li {
+        width: 145px;
+        margin-right: 50px;
+        margin-top: 220px;
+
+        font-size: 14px;
+        line-height: 18px;
+        font-weight: bold;
+        letter-spacing: 0.06em;
+        float: left;
+        display: block;
+
+        color: #909090;
+
+        &.last {
+          margin-right: 0;
+          border-right: none;
+        }
+      }
+    } // .step-by-step
+
+    .sign-in {
+      font-size: 18px;
+      line-height: 22px;
+      font-weight: bold;
+      letter-spacing: 0.06em;
+      clear: both;
+      margin-top: 20px;
+      margin-bottom: 0;
+
+      a {
+        color: $link_colour;
+      }
+    } // .sign-in
+    
+    .status-form {
+      legend {
+        display: none;
+      }
+      
+      textarea {
+/*        font-size: 20px;
+        line-height: 24px;*/
+        
+        width: $inner_content_width - 20px;
+        height: 80px;
+        border: 1px solid #AEAEAE;
+        @include border-radius(6px, 6px);
+        padding: 10px;
+        @include single-box-shadow(#dbdbdb, 3px, 3px, 10px, 0, inset);
+      }
+      
+      .actions {
+        float: right;
+      }
+    }
+    
+    .tab-headings {
+      list-style: none;
+      clear: right;
+      padding-left: 0;
+      width: $inner_content_width + 2;
+/*      @include single-box-shadow(#666666, 5px, 5px, 10px, -5px);*/
+      background-color: transparent;
+      
+      li {
+        a {
+          float: left;
+          display: block;
+          
+          background: #f2f2f2;
+          .cssgradients & {
+            @include linear-gradient(color-stops(#ffffff, #f2f2f2), top);
+          }
+          
+          font-weight: bold;
+          font-size: 17px;
+          line-height: 36px;
+          padding-top: 2px;
+          color: $content_gray;
+          @include single-box-shadow(#bbbbbb, 1px, 1px, 7px, 0);
+          
+          width: 50%;
+          height: 36px;
+          border: 1px solid #b4b4b4;
+          text-align: center;
+        }
+        
+        &.first a {
+          @include border-top-left-radius(6px);
+          @include border-bottom-left-radius(6px);
+          width: floor($inner_content_width / 2);
+        }
+        &.last a {
+          @include border-top-right-radius(6px);
+          @include border-bottom-right-radius(6px);
+          border-left: none;
+          width: 285px;
+          width: floor($inner_content_width / 2);
+        }
+        
+        &.active a {
+          background: #c2deea;
+          .cssgradients & {
+            @include linear-gradient(color-stops(#cceaf7, #c2deea), top);
+          }
+        }
+      } // .tab-headings li
+    } // .tab-headings
+    
+    .status-list {
+      clear: both;
+      margin: 20px 0 0 0;
+      padding: 0;
+      
+      > li {
+        
+        background: #f2f2f2;
+        .cssgradients & {
+          @include linear-gradient(color-stops(#ffffff, #f2f2f2), top);
+        }
+        @include border-radius(6px);
+        border: 1px solid #aeaeae;
+        @include single-box-shadow(#bbbbbb, 1px, 1px, 7px, 0);
+        
+        margin: 10px 0 0 0;
+        padding: 15px;
+        color: $content_gray;
+        list-style: none;
+        
+        font-size: 14px;
+        line-height: 18px;
+        
+        position: relative;
+        
+        p {
+          margin: 0;
+          width: 490px;
+        }
+        
+        .meta {
+          color: $link_colour;
+          margin-top: 15px;
+          font-style: italic;
+          display: block;
+        }
+        
+        .actions {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          
+          width: 70px;
+          position: absolute;
+          right: 0;
+          top: 15px;
+          
+          li {
+            float: left;
+            
+            &.move a {
+              @include actions-button(0);
+              &:hover {
+                cursor: move;
+              }
+            }
+
+            &.edit a {
+              @include actions-button(-20px);
+            }
+            &.jump-queue input {
+              @include actions-button(0);
+              border: none;
+            }
+            &.delete input {
+              @include actions-button(-38px);
+              border: none;
+            }
+          }
+        }
+      }
+    } // .status-list
+  } // #content
+} // #wrapper
+
+footer {
+  text-align: center;
+  color: #6d6d6d;
+  
+  .pebble-code-tag {
+    position: absolute;
+    z-index: 50;
+    top: 45px;
+    left: 615px;
+    
+    outline: none;
+    
+    display: block;
+    width: $pebble_code_tag_width;
+    height: 49px;
+    text-indent: -9999px;
+    background: transparent image_url('pebble-code.png') no-repeat 0 0;
+    
+    &:hover {
+      background-position: 0 -49px;
+    }
+  } // .pebble-code-tag
+  
+  .copyright {
+    margin: 20px 0;
+    width: 620px;
+  
+  a {
+  color: #648795;
+  }
+  
+  a:hover {
+  color: #29ABE2;
+  }
+  
+  } // .copyright
+  
+} // footer
+
+
+// ------------------------------------------------------------------------
+// Body class based styles
+// ------------------------------------------------------------------------
+
+.page {
+  #content {
+    background-color: #f6f6f6;
+    padding: 20px;
+
+    background: #f2f2f2;
+    .cssgradients & {
+      @include linear-gradient(color-stops(#ffffff, #f2f2f2), top);
+    }
+    @include border-radius(6px);
+    border: 1px solid #b3b3b3;
+    @include single-box-shadow(#bbbbbb, 1px, 1px, 7px, 0px);
+    
+    .alert-message {
+      width: 510px;
+    }
+  }
+}
+
+.settings-page {
+  #wrapper #content {
+    legend, .trickle-every label {
+      font-size: 24px;
+      line-height: 40px;
+      font-weight: bold;
+
+      margin-top: 0;
+      margin-bottom: 16px;
+
+      color: #676767;
+      display: block;
+      text-align: center;
+      width: 573px;
+      
+      background: #f2f2f2;
+      .cssgradients & {
+        @include linear-gradient(color-stops(#ffffff, #f2f2f2), top);
+      }
+      @include border-radius(6px);
+      border: 1px solid #a7a7a7;
+      @include single-box-shadow(#999999, 5px, 5px, 10px, -5px);
+      
+      cursor: default;
+    } // legend, label
+  
+    #setting_time_digit {
+      width: 100px;
+      border: 1px solid #AEAEAE;
+      @include border-radius(6px, 6px);
+      padding: 10px;
+      @include single-box-shadow(#dbdbdb, 3px, 3px, 10px, 0, inset);
+    }
+    
+    #settings-form > fieldset > legend {
+      display: none;
+    }
+  
+    .trickle-between {
+      margin: 20px 0 70px;
+      
+      legend {
+        margin-bottom: 20px;
+      }
+      
+      label {
+        font-size: 20px;
+        line-height: 30px;
+        font-weight: bold;
+        letter-spacing: 0.06em;
+        margin-top: 0;
+        margin-bottom: 16px;
+
+        color: $link_colour;
+      } // .settings-page #wrapper #content .trickle-between label
+      
+      select { /* Normal controsl hidden, as js slider replaces it */
+        display: none;
+      }
+      
+      .publish-from {
+        .browserWebkit & {
+          position: relative;
+          top: 20px;
+        }
+      }
+      
+      .publish-until {
+        margin-top: 40px;
+        .browserWebkit & {
+          margin-top: 60px;
+        }
+      }
+      
+      .ui-widget-content {
+        background: none;
+        cursor: pointer;
+      }
+    
+      .ui-slider li span.ui-slider-label-show, .ui-slider dd span.ui-slider-label-show {
+        background-color: #d2d2d2;
+        font-size: 12px;
+        line-height: 16px;
+        margin-top: -8px;
+      
+        z-index: 10;
+      }
+    
+      .ui-widget-header {
+        height: 60px;
+        
+        background: transparent image_url('grey-highlight.png') repeat 0 0;
+        .rgba & {
+          background: rgba(0,0,0,0.1);
+        }
+      
+        z-index: 20;
+      }
+    
+      .ui-slider .ui-slider-handle {
+        cursor: pointer;
+        height: 40px;
+        width: 22px;
+        z-index: 30;
+        outline-color: $link_colour;
+      
+        border: none;
+      }
+      
+      #handle_setting_publish_from_4i,
+      #handle_setting_publish_until_4i {
+        background: transparent image_url('sliders.png') no-repeat 0 0;
+        top: -25px;
+      }
+    
+      .ui-slider-horizontal {
+        height: 35px;
+        top: 25px;
+        
+        .browserFirefox & {
+
+        }
+      }
+    
+      .ui-slider span.ui-slider-tic {
+        height: 35px;
+      }
+    } // .trickle-between
+    
+    .actions {
+      margin-top: 40px;
+    }
+    
+  } // #wrapper #content
+}
+
+.no-user {
+  .nav {
+    top: -5px;
+    
+    .login a {
+      
+/*      Tried using css, but button divider and image too hard to do.
+
+      @include adelle_font;
+      font-size: 24px;
+      line-height: 42px;
+      font-weight: bold;
+      
+      background: transparent image_url('twitter.png') no-repeat 0 0;
+      padding-left: 45px + 10px;
+      
+      @include button;*/
+      
+      display: block;
+      background: transparent image_url('twitter.png') no-repeat 0 0;
+      width: 322px;
+      height: 44px;
+      text-indent: -9999px;
+      outline: none;
+      @include single-box-shadow(#bbbbbb, 1px, 1px, 7px, 0px);
+      
+      &:hover {
+        background-position: 0 -56px;
+      }
+    }
+  } // .nav
+} // .logged-in
+
+
+// ------------------------------------------------------------------------
+// Misc styles
+// ------------------------------------------------------------------------
+
+// qTip - most styles in application.js
+.qtip {
+  margin-top: 13px;
+}
+
+// ------------------------------------------------------------------------
+// Clearfix
+// ------------------------------------------------------------------------
+
+/* http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflowhidden-demystified */
+
+.clearfix:before,
+.clearfix:after {
+  content: '\0020';
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+/*
+  The following zoom:1 rule is specifically for IE6 + IE7.
+  Move to separate stylesheet if invalid CSS is a problem.
+*/
+
+.clearfix {
+  zoom: 1;
+}
+
+
