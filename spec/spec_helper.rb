@@ -13,6 +13,9 @@ Spork.prefork do
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
   
   RSpec.configure do |config|
+    config.after(:suite) do
+      Resque.redis.flushall
+    end
     config.mock_with :rspec
     config.include Devise::TestHelpers, :type => :controller
 
