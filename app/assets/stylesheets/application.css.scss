@@ -31,6 +31,22 @@ $pebble_code_tag_width: 132px;
 // ------------------------------------------------------------------------
 // Mixins
 // ------------------------------------------------------------------------
+@mixin sticky-footer($footer-height, $root-selector: unquote("#root"), $root-footer-selector: unquote("#root_footer"), $footer-selector: 
+unquote("#footer")) {
+  html, body {
+    height: 100%; }
+  #{$root-selector} {
+    clear: both;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin-bottom: -$footer-height;
+    #{$root-footer-selector} {
+      height: $footer-height; } }
+  #{$footer-selector} {
+    clear: both;
+    position: relative;
+    height: $footer-height; } }
 
 @mixin button {
   border: 1px solid #aeaeae;
@@ -95,6 +111,7 @@ $pebble_code_tag_width: 132px;
   }          
 }
 
+@include sticky-footer(20px, "#wrap", "#wrap_footer", "#footer");
 // ------------------------------------------------------------------------
 // Clearfix
 // ------------------------------------------------------------------------
@@ -205,8 +222,10 @@ body{
 	background-image: url(drops-bg-2.png) ;
 }
 
+
 #wrap{
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   width: 600px;
 }
 
@@ -690,21 +709,20 @@ h2#publish-between{
       font: 700 15px kreon;
       color: #777;
       padding: 5px !important;
-      text-align: center;
+      padding-left: 10px !important;
     }
   }
 }
 
-footer{
+#footer{
   text-shadow: 1px 1px 0 #efefef;
-  position: absolute;
-  bottom: 0;
   width: 100%;
   box-shadow: 0 -5px 20px 10px rgba(0, 0, 0, 0.3);
   color: #4e5b64;
   text-align: center;
-  margin-top: 200px;
   padding: 10px 0;
   background: url(../img/noise/10p.png) #dadada;
   border-top: 3px solid #18a6ec;
+  height: 20px;
+  margin-top: 0;
 }
