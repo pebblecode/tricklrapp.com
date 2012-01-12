@@ -264,36 +264,68 @@ $(document).ready(function() {
   // jQuery UI Slider - http://www.filamentgroup.com/lab/update_jquery_ui_slider_from_a_select_element_now_with_aria_support/
   if ($('#setting_publish_from_4i, #setting_publish_until_4i').length > 0) {
     $('#setting_publish_from_4i').selectToUISlider({
-      labels: 24,
+      labels: 0,
       tooltip: false,
       sliderOptions: {
-        change: function(){
-          var from = $('#setting_publish_from_4i').val();
-          var until = $('#setting_publish_until_4i').val();
-          str = "Publish between " + from + ":00 and " + until + ":00"
-          $("#publish-between").text(str)
+          change: function(){
+            var from = Number($('#setting_publish_from_4i').val());
+            var until = Number($('#setting_publish_until_4i').val());
+            console.log(from);
+            console.log($('#setting_publish_until_4i').val());
+            if(from > 12){
+              from = (Number(from) - 12)
+              from = "" + from + ":00pm";
+            }else{
+              from = from + ":00am";
+            };
+
+            if (until > 12) {
+              until = Number(until) - 12;
+              until = until + ":00pm";
+            }else{
+              until = until + ":00am";
+            };
+            str = "Publish between " + from + " and " + until
+            $("#publish-between").text(str)
+          }
         }
-      }
     }).hide();
     $('#setting_publish_until_4i').selectToUISlider({
-      labels: 24,
+      labels: 0,
       tooltip: false,
       sliderOptions: {
         change: function(){
-          var from = $('#setting_publish_from_4i').val();
-          var until = $('#setting_publish_until_4i').val();
-          str = "Publish between " + from + ":00 and " + until + ":00"
+          var from = Number($('#setting_publish_from_4i').val());
+          var until = Number($('#setting_publish_until_4i').val());
+          if(Number(from) > 12){
+            from = (Number(from) - 12)
+            from = "" + from + ":00pm";
+          }else{
+            from = from + ":00am";
+          };
+          
+          if (Number(until) > 12) {
+            until = Number(until) - 12;
+            until = until + ":00pm";
+          }else{
+            until = until + ":00am";
+          };
+          str = "Publish between " + from + " and " + until
           $("#publish-between").text(str)
         }
       }
     }).hide();
     $('#setting_publish_from_5i').hide();
     $('#setting_publish_until_5i').hide();
-  }
+  };
   
   // Fade out alert messages after 4 seconds
   if ($('.alert-message').length > 0) {
     setTimeout("$('.alert-message').fadeOut(1000)", 4000);
-  }
-  
+  };
+
+
+  if($("#setting_publish_frequency").length > 0){
+    $("#setting_publish_frequency").selectmenu({style: 'dropdown'});
+  };
 });

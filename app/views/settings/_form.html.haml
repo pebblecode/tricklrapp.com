@@ -3,23 +3,24 @@
     =render :partial => '/partials/error_messages', :locals => { :object => @setting }
     .field
       = f.label :publish_frequency, 'Post every'
-      %select{ :name => :setting_publish_frequency }
-        = options_for_select(@publish_frequencies, @publish_frequencies_default)
+      .select-menu
+        %select{ :name => :setting_publish_frequency, :id => "setting_publish_frequency"}
+          = options_for_select(@publish_frequencies, @publish_frequencies_default)
     %h2#publish-between
       Post between 
       - if @setting.publish_from.present? and @setting.publish_until.present?
-        #{@setting.publish_from.to_s(:time)} and #{@setting.publish_until.to_s(:time)}
+        #{@setting.publish_from.strftime('%l:%M%P')} and #{@setting.publish_until.strftime('%l:%M%P')}
     %div.publish-from
       =f.time_select :publish_from, :minute_step => 60, :time_separator => ""
+      .background
     %div.publish-until
       =f.time_select :publish_until, :minute_step => 60, :time_separator => ""
+      .background
     %section.time-zone.field
       %em
         = Time.zone
-        = link_to image_tag('icon-external-link.png'), 'https://twitter.com/settings/account'
-      %p 
-        Tricklr takes the timezone that is set in your Twitter account. To update your timezone, go to your [Twitter settings account section]. If you do not have a timezone set in your Twitter account, Tricklr will use GMT.
-      
+        %a{:href=>'https://twitter.com/settings/account', :class => 'text-link'}
+          (?)
     %section.actions
       =link_to 'Go back', root_url, :class => 'button'
       %button.button.save-button{:type => "submit", :class => 'button'} Save Setting

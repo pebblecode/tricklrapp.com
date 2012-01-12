@@ -117,9 +117,9 @@ describe "A user jumping the queue" do
   end
   
   it "should be rescheduled when published" do
-    page.html.should match /trickling in about 2 hours/
-    click_button('Publish now')
-    page.html.should match /trickling in less than a minute/
+    page.html.should match /posting in about 2 hours/
+    click_button('Publish Now')
+    page.html.should match /posting in less than a minute/
   end
 end
 
@@ -139,13 +139,13 @@ describe "Scheduling various statuses" do
     end
     it "should schedule the first tweet in about 2 hours by default" do
       page.html.should match /This status will be published in about 2 hours/
-      page.html.should match /trickling in about 2 hours/
+      page.html.should match /posting in about 2 hours/
     end
     it "should schedule the second tweet in about 4 hours by default" do
       fill_in('status_status', :with => 'This status will be published in about 4 hours')
       click_button('Add to Queue')
       page.html.should match /This status will be published in about 4 hours/
-      page.html.should match /trickling in about 4 hours/
+      page.html.should match /posting in about 4 hours/
     end
   end
 end
