@@ -238,7 +238,8 @@ $(document).ready(function() {
   });
   
   // qTips - link tooltips
-  $("#wrapper #content .status-list > li .actions li a[title], #wrapper #content .status-list > li .actions li input[title]").qtip({
+  // $("#wrapper #content .status-list > li .actions li a[title], #wrapper #content .status-list > li .actions li input[title]").qtip({
+  $("ul.actions li a[title], ul.actions li form div input[title]").qtip({
     position: {
       corner: {
         target: 'bottomMiddle',
@@ -251,7 +252,7 @@ $(document).ready(function() {
       color: 'white',
       textAlign: 'center',
       border: false,
-      width: 50,
+      width: 65,
       tip: {
         corner: 'topMiddle',
         color: '#29abe2',
