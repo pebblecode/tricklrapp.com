@@ -111,7 +111,6 @@ unquote("#footer")) {
   }          
 }
 
-@include sticky-footer(20px, "#wrap", "#wrap_footer", "#footer");
 // ------------------------------------------------------------------------
 // Clearfix
 // ------------------------------------------------------------------------
@@ -730,14 +729,18 @@ h2#publish-between{
 }
 
 #footer{
-  text-shadow: 1px 1px 0 #efefef;
-  width: 100%;
-  box-shadow: 0 -5px 20px 10px rgba(0, 0, 0, 0.3);
-  color: #4e5b64;
+  color: #111111;
+  text-shadow: 1px 1px 0 #444;
   text-align: center;
-  padding: 10px 0;
-  background: url("noise/10p.png") #dadada;
-  border-top: 3px solid #18a6ec;
-  height: 20px;
-  margin-top: 0;
+  margin-top: 80px;
+      }
+
+#footer a{
+  color: #095276;
+  text-shadow: 1px 1px 0 #222;
 }
+
+#footer a:hover{
+  color: $t_blue;
+}
+
