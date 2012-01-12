@@ -68,7 +68,7 @@ $(document).ready(function() {
       $.each(data, function(index, status) {
         cssIndex = index+1
         timeString = jQuery.timeago(status.scheduled_at).replace(/about/,"").replace(/from now/, "");
-        $('#queued_statuses li:nth-child('+cssIndex +') span').text("trickling in about " + timeString).effect("highlight", {}, 1500);
+        $('#queued_statuses li:nth-child('+cssIndex +') div.meta em.ttp').text("posting in about " + timeString).effect("highlight", {}, 1500);
       });
 
     });
