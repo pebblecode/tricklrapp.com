@@ -2,11 +2,11 @@
   =form_for @setting, :html => { :id => 'settings-form' } do |f|
     =render :partial => '/partials/error_messages', :locals => { :object => @setting }
     .field
-      = f.label :publish_frequency, 'Publish tweets every'
+      = f.label :publish_frequency, 'Post every'
       %select{ :name => :setting_publish_frequency }
         = options_for_select(@publish_frequencies, @publish_frequencies_default)
     %h2#publish-between
-      Publish between 
+      Post between 
       - if @setting.publish_from.present? and @setting.publish_until.present?
         #{@setting.publish_from.to_s(:time)} and #{@setting.publish_until.to_s(:time)}
     %div.publish-from
@@ -17,6 +17,8 @@
       %em
         = Time.zone
         = link_to image_tag('icon-external-link.png'), 'https://twitter.com/settings/account'
+      %p 
+        Tricklr takes the timezone that is set in your Twitter account. To update your timezone, go to your [Twitter settings account section]. If you do not have a timezone set in your Twitter account, Tricklr will use GMT.
       
     %section.actions
       =link_to 'Go back', root_url, :class => 'button'
