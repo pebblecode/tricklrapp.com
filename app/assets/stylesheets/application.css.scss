@@ -22,7 +22,7 @@ $border_gray: #5b5b5b;
 $link_colour: #29abe2;
 $dark_link_colour: #265467;
 $content_gray: #707070;
-$t-blue: #18a6ec;
+$t_blue: #18a6ec;
 
 /* Sizes */
 $inner_content_width: 575px;
@@ -142,7 +142,7 @@ h1{
 
 h2{
   font: 700 21px kreon;
-  color: $t-blue;
+  color: $t_blue;
   @include text-shadow (#fff 1px 1px 0);
 }
 
@@ -165,12 +165,12 @@ em, .emphasized{
 }
 
 a{
-  color: $t-blue;
+  color: $t_blue;
   text-decoration: none;
   
 }
 a:visited{
-  color: $t-blue;
+  color: $t_blue;
 }
 
 a:hover{
@@ -183,7 +183,7 @@ a.button{
   &:hover{
     text-decoration: none;
   }
-  &:active{color: $t-blue;}
+  &:active{color: $t_blue;}
   &:visited{color: #777;}
 }
 *{
@@ -213,7 +213,7 @@ body{
   margin: 100px 0 20px 0;
   padding: 10px;
   @include border-radius(10px);
-  border: 3px solid $t-blue;
+  border: 3px solid $t_blue;
   @include box-shadow(rgba(0, 0, 0, 0.3) 0 5px 20px 10px);
   background: url(noise/10p.png) #dadada;
 }
@@ -249,9 +249,9 @@ p+h2{
   
   @include border-radius(7px);
   border: 2px solid #fff;
-  @include background-image(url(noise/5p.png), linear-gradient(#3fcdff, $t-blue));
+  @include background-image(url(noise/5p.png), linear-gradient(#3fcdff, $t_blue));
   @include box-shadow(#c3c3c3 0 2px 2px 1px, #019fdb 0 1px 5px 1px inset);
-  background-color: $t-blue;
+  background-color: $t_blue;
 }
 
 #logo:hover{
@@ -305,16 +305,16 @@ section.actions{
 }
 
 .button:hover{
-  color: $t-blue;
+  color: $t_blue;
   
-  border: 1px solid $t-blue;
+  border: 1px solid $t_blue;
   @include box-shadow(#bbb 0 2px 2px); 
 }
 .button:visited{
   color: pink;
 }
 .button:active, .button.active{
-  color: $t-blue;
+  color: $t_blue;
   
   @include text-shadow (#e5e5e5 1px 1px 0);
   
@@ -384,7 +384,7 @@ section.actions{
 }
 
 .icon:hover{
-  background-color: $t-blue;
+  background-color: $t_blue;
 }
 
 .move{
@@ -424,7 +424,7 @@ footer{
   margin-top: 200px;
   padding: 10px 0;
   background: url(noise/10p.png) #dadada;
-  border-top: 3px solid $t-blue;
+  border-top: 3px solid $t_blue;
 }
 
 .slider-grove{

@@ -2,7 +2,7 @@
   .field{ margin: 10px 0;}
   label, legend{
     font: 700 21px kreon;
-    color: $t-blue;
+    color: $t_blue;
     @include text-shadow (#fff 1px 1px 0);
   }
   .actions{
