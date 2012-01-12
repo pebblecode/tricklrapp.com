@@ -251,6 +251,11 @@ body{
   border: 1px solid #fff;
   @include box-shadow(#aaa 0 1px 4px);
   background: url(noise/10p.png) #efefef;
+  
+  &.content-box{
+    margin-bottom: 0;
+    padding-bottom: 15px;
+  }
 }
 h2{
   margin-bottom: 5px;
@@ -298,6 +303,9 @@ section.actions{
   @include text-shadow (#efefef 1px 1px 0);
   display: inline-block;
   vertical-align: middle;
+  &.negative{
+    color: #e6006f;
+  }
 }
 
 .headers{
@@ -721,7 +729,7 @@ h2#publish-between{
   color: #4e5b64;
   text-align: center;
   padding: 10px 0;
-  background: url(../img/noise/10p.png) #dadada;
+  background: url("noise/10p.png") #dadada;
   border-top: 3px solid #18a6ec;
   height: 20px;
   margin-top: 0;

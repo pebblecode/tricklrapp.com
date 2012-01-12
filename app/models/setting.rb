@@ -18,7 +18,9 @@ class Setting < ActiveRecord::Base
     :on => :update
 
   def interval
-    time_digit.to_f.send(time_unit).to_i
+    unit = 'minutes' if time_unit == 'mins'
+    unit ||= time_unit
+    time_digit.to_f.send(unit).to_i
   end
 
   def range
