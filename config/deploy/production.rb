@@ -4,7 +4,8 @@ server "starling.tricklrapp.com", :app, :web, :db, :primary => true
 set :deploy_to, "/srv/tricklrapp.com" 
 set :branch, "production"
 set :user, "tricklr"
-set :rake, "#{rake} --trace"
+# If anything fails during a deploy and you want to see the trace: 
+# set :rake, "#{rake} --trace"
 set :default_environment, {
   'PATH' => "/home/tricklr/.rbenv/shims:/home/tricklr/.rbenv/bin:$PATH"
 }
