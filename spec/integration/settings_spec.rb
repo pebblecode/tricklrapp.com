@@ -19,12 +19,12 @@ describe "Save 'Trickle my tweets every' settings" do
   end
   
   context "when selecting the following (from the select box):" do
-    it "1 minute" do
-      select('1 minute', :from => 'setting_publish_frequency')
+    it "30 mins" do
+      select('30 mins', :from => 'setting_publish_frequency')
     
       click_button('Save')
       visit settings_path
-      find_field('setting_publish_frequency').value.should == "1 minute"
+      find_field('setting_publish_frequency').value.should == "30 mins"
     end
   
     it "1 hour" do
@@ -51,13 +51,6 @@ describe "Save 'Trickle my tweets every' settings" do
       find_field('setting_publish_frequency').value.should == "1 week"
     end
   
-    it "4 weeks" do
-      select('4 weeks', :from => 'setting_publish_frequency')
-    
-      click_button('Save')
-      visit settings_path
-      find_field('setting_publish_frequency').value.should == "4 weeks"
-    end
   end
   
   context "when selecting the following (from the javascript slider):" do
