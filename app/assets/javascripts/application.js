@@ -23,26 +23,7 @@ jQuery.fn.flashNotice = function () {
   });
 };
 jQuery.timeago.settings.allowFuture = true;
-$.fn.character_count = function(countBox, statusBox, maxStatusSize, tcoSize){
-  var urlRegex = /(^|\s)((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/gi;
-  var contentSize = statusBox.val().length;
-  var text = statusBox.val();
-  // detect links
-  var links = text.match(urlRegex);
-  if (links != null) {
-    var totalLinks = links.length;
-    var totalLinkSize = links.join('').replace(/\s/g, '').length;
-    var totaltcoSize = totalLinks * tcoSize;
-    contentSize = contentSize - totalLinkSize + totaltcoSize;
-  };
-  var remainder = maxStatusSize - contentSize;
-  countBox.text(remainder);
-  if (remainder < 0) {
-    countBox.addClass('negative');
-  }else{
-    countBox.removeClass('negative');
-  };
-}
+
 $.fn.statusCount = function(){
   var tcoSize = 20;
   var maxStatusSize = 140;
@@ -50,7 +31,27 @@ $.fn.statusCount = function(){
   var countBox = $('#char-count');
   var contentSize = statusBox.val().length;
   countBox.text(maxStatusSize);
-  this.keyup(character_count(countBox, statusBox, maxStatusSize, tcoSize));
+  this.live('keyup', function(){
+    var urlRegex = /(^|\s)((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/gi;
+    var contentSize = statusBox.val().length;
+    var text = statusBox.val();
+    // detect links
+    var links = text.match(urlRegex);
+    if (links != null) {
+      var totalLinks = links.length;
+      var totalLinkSize = links.join('').replace(/\s/g, '').length;
+      var totaltcoSize = totalLinks * tcoSize;
+      contentSize = contentSize - totalLinkSize + totaltcoSize;
+    };
+    var remainder = maxStatusSize - contentSize;
+    countBox.text(remainder);
+    if (remainder < 0) {
+      countBox.addClass('negative');
+    }else{
+      countBox.removeClass('negative');
+    };
+    
+  });
 };
 
 
