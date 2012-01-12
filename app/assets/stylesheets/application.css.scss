@@ -244,6 +244,13 @@ body{
   margin: 10px;
 }
 
+.container-tweets{
+  margin: 10px 0;
+  h1{
+    margin-left: 10px;
+  }
+}
+
 .secondary-container{
   margin: 10px;
   padding: 10px;
@@ -610,7 +617,7 @@ h2#publish-between{
     top: 0;
     left: 0;
     height: 50px;
-    width: 100%;
+    width: 583px;
     background: url('ui/slider-bg.png') no-repeat 0 0;
   }
   .ui-slider ol, .ui-slider dl {
