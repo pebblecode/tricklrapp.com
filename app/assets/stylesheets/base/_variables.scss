@@ -1,0 +1,79 @@
+/* Colours */
+$light_blue: #92dfff;
+$dark_blue: #52b8e3;
+$border_gray: #5b5b5b;
+$link_colour: #29abe2;
+$dark_link_colour: #265467;
+$content_gray: #707070;
+$t_blue: #18a6ec;
+
+/* Sizes */
+$inner_content_width: 575px;
+$pebble_code_tag_width: 132px;
+
+// ------------------------------------------------------------------------
+// Mixins
+// ------------------------------------------------------------------------
+
+@mixin button {
+  border: 1px solid #aeaeae;
+  @include border-radius(6px, 6px);
+  
+  background: $dark_blue;
+  .cssgradients & {
+    @include linear-gradient(color-stops($light_blue, $dark_blue));
+  }
+  
+  .boxshadow & {
+    @include single-box-shadow(#666666, 5px, 5px, 10px, -5px);
+  }
+  
+}
+
+@mixin button_with_image($image_path) {
+  @include button;
+  
+  background: $dark_blue image_url($image_path) no-repeat 0 0;
+  .cssgradients & {
+    @include linear-gradient(color-stops($light_blue, $dark_blue), top, image_url($image_path));
+  }
+}
+
+@mixin button_hover {
+  border: 1px solid #bababa;
+
+  background: #f2f2f2;
+  .cssgradients & {
+    @include linear-gradient(color-stops(#fff, #f2f2f2));
+  }
+}
+
+@mixin button_hover_with_image($image_path) {
+  @include button_hover;
+  
+  background: #f2f2f2 image_url($image_path) no-repeat 0 0;
+  .cssgradients & {
+    @include linear-gradient(color-stops(#fff, #f2f2f2), top, image_url($image_path));
+  }
+}
+
+@mixin adelle_font {
+  font-family: adelle, serif;
+}
+
+/* Applied to icons/actions-icons.png image */
+@mixin actions-button($start_x_pos) {
+  background: transparent image_url('icons/action-icons.png') no-repeat $start_x_pos -24px;
+  width: 11px;
+  height: 11px;
+  
+  /* Hide text */
+  font-size: 0; 
+  line-height: 0;
+  
+  display: block;
+  margin-left: 8px;
+  &:hover {
+    background-position: $start_x_pos 0;
+  }          
+}
