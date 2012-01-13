@@ -1,5 +1,5 @@
 class Status < ActiveRecord::Base
-
+  MAX_STATUS_LENGTH = 140
   #-------------------------------------
   # Relationships
   #-------------------------------------
@@ -18,8 +18,8 @@ class Status < ActiveRecord::Base
   # Validations
   #-------------------------------------
   validates :status,
-    :presence => true,
-    :length => { :within => 1..140, :allow_blank => true }
+    :presence => true
+  validate  :status_message_length
   validates :user_id,
     :presence => true, 
     :numericality => true
@@ -27,7 +27,7 @@ class Status < ActiveRecord::Base
     :length => { :within => 1..255, :allow_blank => true }
   validates :response_code,
     :length => { :within => 1..255, :allow_blank => true }
-  
+
   #-------------------------------------
   # Scopes
   #-------------------------------------
@@ -119,10 +119,25 @@ class Status < ActiveRecord::Base
     end
   end
 
+  def twitter_character_count
+    # links are converted to t.co
+    tco_size = 20
+    url_regex = /((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/i
+    count = status.length
+    links = status.scan(url_regex).collect{|x| x.first }
+    if links.any?
+      links_length = links.join('').length
+      count = (count - links_length) + (links.count * tco_size)
+    end
+    return count
+  end
   protected
     # Schedules a status to be published, accepts the time
     def schedule(time)
       Resque.enqueue_at(time, SendTweet, self.id)
+    end
+    def status_message_length
+      twitter_character_count <= MAX_STATUS_LENGTH
     end
     
 end
