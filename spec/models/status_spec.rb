@@ -14,6 +14,11 @@ describe Status do
     @status.status = Random.alphanumeric(140)
     @status.should be_valid
   end
+  
+  it "should count urls as 20 characters" do
+    @status.status = "http://cnn.com/#{Random.alphanumeric(150)}"
+    @status.twitter_character_count.should == 20
+  end
 
   it "should not allow a status over 140 characters" do 
     @status.status = Random.alphanumeric(141)

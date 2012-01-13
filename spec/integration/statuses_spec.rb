@@ -102,7 +102,7 @@ describe "A user entering erroneous tweets" do
     visit root_path
     fill_in('status_status', :with => 'This is a very long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long tweet')
     click_button('Add to Queue')
-    page.html.should match /Tweet is too long \(maximum is 140 characters\)/
+    page.html.should match /Tweet is too long - maximum is 140 characters, links count as 20/
     page.html.should match /hello, I am queued/
   end
 end

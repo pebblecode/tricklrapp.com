@@ -1,5 +1,6 @@
 class Status < ActiveRecord::Base
   MAX_STATUS_LENGTH = 140
+  TCO_SIZE = 20
   #-------------------------------------
   # Relationships
   #-------------------------------------
@@ -8,7 +9,7 @@ class Status < ActiveRecord::Base
   #-------------------------------------
   # Callbacks
   #-------------------------------------
-  before_create :set_scheduled_at 
+  before_create :set_scheduled_at
   before_update :check_scheduled_at
   after_create :queue
   before_destroy :dequeue
@@ -19,9 +20,9 @@ class Status < ActiveRecord::Base
   #-------------------------------------
   validates :status,
     :presence => true
-  validate  :status_message_length
+  validate  :validate_status_length
   validates :user_id,
-    :presence => true, 
+    :presence => true,
     :numericality => true
   validates :twitter_id,
     :length => { :within => 1..255, :allow_blank => true }
@@ -121,13 +122,12 @@ class Status < ActiveRecord::Base
 
   def twitter_character_count
     # links are converted to t.co
-    tco_size = 20
     url_regex = /((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/i
     count = status.length
     links = status.scan(url_regex).collect{|x| x.first }
     if links.any?
       links_length = links.join('').length
-      count = (count - links_length) + (links.count * tco_size)
+      count = (count - links_length) + (links.count * TCO_SIZE)
     end
     return count
   end
@@ -136,9 +136,10 @@ class Status < ActiveRecord::Base
     def schedule(time)
       Resque.enqueue_at(time, SendTweet, self.id)
     end
-    def status_message_length
-      twitter_character_count <= MAX_STATUS_LENGTH
+    def validate_status_length
+      if twitter_character_count > MAX_STATUS_LENGTH
+        errors.add(:status, "is too long - maximum is #{MAX_STATUS_LENGTH} characters, links count as #{TCO_SIZE} characters)")
+      end
     end
-    
 end
 
