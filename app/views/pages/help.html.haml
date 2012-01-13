@@ -1,26 +1,38 @@
 %section.content-box.secondary-container
+  %img{:src => image_path('help-t-logo.png'), :alt => 'Tricklr logo', :id => "help-logo"}/
   %h2 What is Tricklr?
-  %p Tricklr is a simple to use web app for high volume tweeters. Tricklr helps you manage your Twitter feed by trickling out tweets at regular intervals that you control..
+  %p Tricklr is a simple to use web app for high volume tweeters. Tricklr helps you manage your Twitter feed by trickling out tweets at regular intervals that you control.
   %br
   %p Spreading out lots of tweets over the course of a day is disruptive. Tricklr enables you to write many tweets in one sitting and seem active on twitter over days, even weeks!
-  %br
-  %p Tricklr solves our tweeting frustrations by stopping unnecessary context switching throughout the day.
   
-
-  %h2 How do I use it?
-  %p First set up how often and between what times you would like to post your tweets. Next compose your tweets and add them to the queue. That's it! Your tweets will now trickle out at the rate set.
-  
-  %h2 Who made Tricklr?
-  %p We did! <a class="text-link" href="http://pebblecode.com">pebble {code}</a>  is a London-based software development company. We write software for us and for special clients with fun tricky problems.
-  
+  .how-do
+    %h2 How do I use it?
+    %p First navigate to the settings page.
+    %img{:src => image_path('help-drop-off.png'), :alt =>'drop down off', :class => 'help-img'}
+    %img{:src => image_path('help-drop-on.png'), :alt =>'drop down on', :class => 'help-img'}
+    %p Next change how often you want your tweets to be posted with the drop down menu.
+    
+    %img{:src => image_path('help-slider.png'), :alt =>'slider', :class => 'help-img'}
+    %p Then use the two sliders to decide when you what time of day your want your twwets to stop/start being posted
+    %p Save your settings and your ready to enter some tweets!
+    
+    %img{:src => image_path('help-type.png'), :alt =>'type', :class => 'help-img'}
+    %img{:src => image_path('help-add.png'), :alt =>'add to queue', :class => 'help-img'}
+    %p click the add to queue button and your done. Your tweet will now by scheduled and posted automatically. 
+       
   %h2 What if I have multiple twitter accounts?
   %p For now, Tricklr supports one Twitter account at a time. If you want to use another Twitter account, you must logout and sign in a with the relevant Twitter account. To use multiple Twitter accounts at the same time, you could using different browsers, ;-).
   
+  %img{:src => image_path('help-timezone.png'), :alt => 'timezone icon', :id => "help-timezone"}/
   %h2 What if I am in a different timezone?
   %p Tricklr takes the timezone that is set in your Twitter account. To update your timezone, go to your <a href="https://twitter.com/settings/account">Twitter settings</a>. If you do not have a timezone set in your Twitter account, Tricklr will use GMT.
   
+  %img{:src => image_path('help-mail.png'), :alt => 'email icon', :id => "help-mail"}/
   %h2 How do I get in touch for feature requests?
   %p If you want to get in touch for any reason, please email us at tricklr@pebblecode.com - we will try and get back to you asap. 
+  
+  %h2 Who made Tricklr?
+  %p We did! <a class="text-link" href="http://pebblecode.com">pebble {code}</a>  is a London-based software development company. We write software for us and for special clients with fun tricky problems.
 
 .ralign.navigation
   = link_to 'Go back', '/', :class => 'button'
