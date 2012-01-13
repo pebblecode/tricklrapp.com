@@ -521,6 +521,7 @@ h2#publish-between{
 #settings-form{
   .select-menu{
     display: inline-block;
+    z-index: 10;
     div, .ui-selectmenu{
       display: inline-block;
     }
@@ -626,6 +627,9 @@ h2#publish-between{
   .ui-slider{
     width: 532px;
     left: 12px;
+    .ui-slider-handle{
+      z-index: 1;
+    }
   }
   .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
     height: 24px;
