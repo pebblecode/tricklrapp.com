@@ -510,7 +510,29 @@ nav{
   text-align: right;
 }
 
+/* HELP */
 
+#help-logo{
+  float: left;
+  clear: left;
+  margin: 30px 20px 20px 10px;
+}
+
+.help-section{
+  margin: 20px 0;
+}
+
+#help-timezone{
+  float: right;
+  clear: right;
+  margin: 0 10px 0 20px;
+}
+
+#help-mail{
+  float: left;
+  clear: left;
+  margin: 0 20px 0 10px;
+}
 
 /* SETTINGS*/
 
@@ -747,4 +769,26 @@ h2#publish-between{
 #footer a:hover{
   color: $t_blue;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
