@@ -519,21 +519,38 @@ nav{
 }
 
 .how-do{
-  img{
-    
+  p{
+    margin: 0 0 20px 0;
+    text-align: center;
   }
 }
 
-#help-timezone{
-  float: right;
-  clear: right;
-  margin: 0 10px 0 20px;
+.help-img-small{
+  width: 270px;
+  @include border-radius(5px);
+  @include box-shadow(#fff 1px 1px 0);
 }
 
-#help-mail{
-  float: left;
-  clear: left;
-  margin: 0 20px 0 10px;
+.help-img-large{
+  @include border-radius(5px);
+  @include box-shadow(#fff 1px 1px 0);
+}
+
+.help-img-left{
+  margin-right: 13px;
+}
+
+.help-timezone{
+  padding-left: 60px;
+  background: url(help-timezone.png) no-repeat;
+  margin-bottom: 20px;
+}
+
+.help-mail{
+  height: 51px;
+  padding-left: 60px;
+  background: url(help-mail.png) no-repeat;
+  margin-bottom: 20px;  
 }
 
 /* SETTINGS*/
