@@ -465,9 +465,19 @@ footer{
   
 }
 
-p.intro{
-  margin: 1em 0;
+.intro{
+  padding-right: 200px;
+  margin: 0 0 30px 0;
+  h2{
+    font-size: 38px;
+  }
 }
+
+.intro-logo{
+  float: right;
+  margin: 50px 15px  0 0;
+}
+
 .step-by-step {
   padding: 0;
   margin: 0;
@@ -476,15 +486,20 @@ p.intro{
 
   li {
     width: 145px;
-    margin-right: 50px;
+    margin-right: 63px;
     margin-top: 10px;
     line-height: 18px;
     letter-spacing: 0.06em;
     float: left;
     color: #4e5b64;
     display: block;
+    img{
+      margin-bottom: 10px;
+    }
+    
     &.last {
-      margin-right: 0;
+      float: right;
+      margin-right: -17px;
       border-right: none;
     }
   }
@@ -778,6 +793,7 @@ h2#publish-between{
   text-shadow: 1px 1px 0 #444;
   text-align: center;
   margin-top: 80px;
+  margin-bottom: 40px;
       }
 
 #footer a{

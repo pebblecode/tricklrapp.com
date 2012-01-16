@@ -1,17 +1,18 @@
 .secondary-container.content-box
-  %h2
-    Welcome to Tricklr!
-  %p.intro
-    Tricklr is a simple to use web app for high volume tweeters. Tricklr helps you manage your Twitter feed by trickling out tweets at regular intervals that you control.
-  %p.intro
-    Spreading out lots of tweets over the course of a day is disruptive. Tricklr enables you to write many tweets in one sitting and seem active on twitter over days, even weeks!
-  %p.intro
-    Tricklr solves our tweeting woes for us here at @pebblecode. Try it out for yourself by signing in with your Twitter login details above. Oh yeah, it's free!
+  %img{:src => image_path('intro-logo.png'), :alt =>'intro-logo', :class => 'intro-logo'}
+  .intro
+    %h2
+      Welcome to Tricklr!
+    %p Tricklr is a simple to use web app for high volume tweeters. Tricklr helps you manage your Twitter feed by trickling out tweets at regular intervals that you control.
+    %br
+    %p Spreading out lots of tweets over the course of a day is disruptive. Tricklr enables you to write many tweets in one sitting and seem active on twitter over days, even weeks!
+    %br
+    %p Tricklr solves our tweeting woes for us here at <a href="https://twitter.com/pebblecode">@pebblecode.</a> Try it out for yourself by signing in with your Twitter login details above. Oh yeah, it's free!
+    
   %ul.step-by-step.clearfix
     %li
       %img{:src => image_path('start-icon-1.png'), :alt => ''}/
-      %br/
-      Compose your tweets and add them to the queue.
+      %p Compose your tweets and add them to the queue.
     %li
       %img{:src => image_path('start-icon-2.png'), :alt => ''}/
       %br/
