@@ -2,23 +2,27 @@
  * IE7 stylesheet
  *
  */
- 
-#wrapper .topbar #logo {
-  top: 10px;
+@mixin debug{
+  border: 1px solid pink;
+} 
+body{}
+#logo{ float: left;}
+#topmenu{
+  float: right;
+  .sign-in{
+    padding-bottom: 10px;
+  }
+  ul{
+    li{
+      display: inline;
+      &.nickname{
+        padding: 10px 0;
+        h3{ padding: 5px 5px 6px 13px;}
+      }
+    }
+  } 
 }
 
-.actions #char-count {
-  top: 3px;
-}
-
-.tab-headings .last a {
-  margin-top: -16px;
-}
-
-#wrapper #content .status-list > li .actions li.delete input {
-  margin-top: -1px;
-}
-
-#footer .copyright {
-  margin-left: -80px;
+#account-name{
+  display: block;
 }

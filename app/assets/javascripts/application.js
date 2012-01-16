@@ -272,7 +272,6 @@ $(document).ready(function() {
           change: function(){
             var from = Number($('#setting_publish_from_4i').val());
             var until = Number($('#setting_publish_until_4i').val());
-            console.log(from);
             console.log($('#setting_publish_until_4i').val());
             if(from > 12){
               from = (Number(from) - 12)
@@ -287,8 +286,8 @@ $(document).ready(function() {
             }else{
               until = until + ":00am";
             };
-            str = "Publish between " + from + " and " + until
-            $("#publish-between").text(str)
+            str = "Publish between " + from + " and " + until;
+            $("#publish-between").text(str);
           }
         }
     }).hide();
