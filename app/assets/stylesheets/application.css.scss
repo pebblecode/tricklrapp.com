@@ -465,9 +465,19 @@ footer{
   
 }
 
-p.intro{
-  margin: 1em 0;
+.intro{
+  padding-right: 200px;
+  margin: 0 0 30px 0;
+  h2{
+    font-size: 38px;
+  }
 }
+
+.intro-logo{
+  float: right;
+  margin: 50px 15px  0 0;
+}
+
 .step-by-step {
   padding: 0;
   margin: 0;
@@ -476,15 +486,20 @@ p.intro{
 
   li {
     width: 145px;
-    margin-right: 50px;
+    margin-right: 63px;
     margin-top: 10px;
     line-height: 18px;
     letter-spacing: 0.06em;
     float: left;
     color: #4e5b64;
     display: block;
+    img{
+      margin-bottom: 10px;
+    }
+    
     &.last {
-      margin-right: 0;
+      float: right;
+      margin-right: -17px;
       border-right: none;
     }
   }
@@ -519,21 +534,38 @@ nav{
 }
 
 .how-do{
-  img{
-    
+  p{
+    margin: 0 0 20px 0;
+    text-align: center;
   }
 }
 
-#help-timezone{
-  float: right;
-  clear: right;
-  margin: 0 10px 0 20px;
+.help-img-small{
+  width: 270px;
+  @include border-radius(5px);
+  @include box-shadow(#fff 1px 1px 0);
 }
 
-#help-mail{
-  float: left;
-  clear: left;
-  margin: 0 20px 0 10px;
+.help-img-large{
+  @include border-radius(5px);
+  @include box-shadow(#fff 1px 1px 0);
+}
+
+.help-img-left{
+  margin-right: 13px;
+}
+
+.help-timezone{
+  padding-left: 60px;
+  background: url(help-timezone.png) no-repeat;
+  margin-bottom: 20px;
+}
+
+.help-mail{
+  height: 51px;
+  padding-left: 60px;
+  background: url(help-mail.png) no-repeat;
+  margin-bottom: 20px;  
 }
 
 /* SETTINGS*/
@@ -761,6 +793,7 @@ h2#publish-between{
   text-shadow: 1px 1px 0 #444;
   text-align: center;
   margin-top: 80px;
+  margin-bottom: 40px;
       }
 
 #footer a{
