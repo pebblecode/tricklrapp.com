@@ -26,3 +26,62 @@ body{}
 #account-name{
   display: block;
 }
+
+
+#new_status, form.edit_status{
+  .actions{
+    text-align: right;
+    vertical-align: bottom;
+    
+  }
+  text-align: right;
+  #char-count{
+    display: inline;
+    margin: -15px 0px 0 0;
+    padding: 0;
+  }
+  #status_submit{ display: inline; height: 33px;}
+  
+}
+.background{ z-index: 1; zoom: 1;}
+.ui-slider-handle{
+z-index: 0 !important;
+zoom: 1;
+}
+#queued_statuses .actions{
+  float: right;
+  li{
+    display: inline;
+    margin: 0 0 0 5px;
+    a{ display: block;}
+    input{
+      display: block;
+    }
+  }
+  .move{
+    margin-right: 0px;
+  }
+  
+}
+#topmenu{
+  .button{
+    background: url('ui/tricklr-btn-grad.png') repeat-x 0 0;
+    height: 30px;
+    padding: 3px 12px 0px 13px;
+  }
+  .help{
+    margin-right: -5px;
+  }
+  .settings{
+    border-top-left-radius: 0;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 3px;
+    height: 33px;
+    width: 33px;
+    padding: 0;
+    text-indent: -99999px;
+    background-image: url(settings.png);
+  }
+}
+

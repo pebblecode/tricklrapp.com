@@ -7,8 +7,13 @@
     %link{:rel => "icon", :type => "image/x-icon", :href => "/favicon.ico"}/
     %link{:rel => "shortcut icon", :type => "image/x-icon", :href => "/favicon.ico"}/
     = stylesheet_link_tag :application, asset_path('fonts.css'), 'http://fonts.googleapis.com/css?family=Kreon:300,400,700'
+    /[if IE]
+      = stylesheet_link_tag "ie.css"
     /[if IE 7]
       = stylesheet_link_tag "ie7.css"
+    /[if IE 8]
+      = stylesheet_link_tag "ie8.css"
+      
 
     = javascript_include_tag :application
     :javascript

@@ -2,7 +2,7 @@
   =render :partial => '/partials/error_messages', :locals => { :object => @status }
   %div.text-input
     =f.text_area :status, :cols => 77
-  %section.actions
+  %section.actions.clearfix
     %button#status_submit{:type => "submit", :class => 'button' }
       Add to Queue
     

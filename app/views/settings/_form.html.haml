@@ -16,12 +16,12 @@
     %div.publish-until
       =f.time_select :publish_until, :minute_step => 60, :time_separator => ""
       .background
-    %section.time-zone.field
+    .time-zone.field
       %em
         = Time.zone
         %a{:href=>'https://twitter.com/settings/account', :class => 'text-link'}
           (change)
-    %section.actions
+    .actions.ralign
       =link_to 'Go back', root_url, :class => 'button'
       %button.button.save-button{:type => "submit", :class => 'button'} Save Setting
     

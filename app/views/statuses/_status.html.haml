@@ -1,23 +1,24 @@
-%li{:id => "status_#{status.id}", :class => 'secondary-container'}
-  %p
-    =status.status
-  .meta.clearfix
-    %em.ttp
-      = "posting in #{distance_of_time_in_words(Time.now, status.scheduled_at)}"
-    -if !status.published_at
-      %ul.actions
-        %li.edit
-          = link_to 'Edit', edit_status_path(status), :class => "icon edit edit-status", :rel => "#modal-edit", :title => "Edit"
-        %li.jump-queue
-          = button_to "Publish Now",
-            publish_status_path(status),
-            :method => :put, 
-            :title => "Publish Now",
-            :class => 'icon jump-q'
-        %li.delete
-          = button_to 'Destroy',
-            status,
-            :method => :delete,
-            :title => "Delete",
-            :confirm => 'Are you sure you want to delete?',
-            :class => 'icon delete'
+- if status
+  %li{:id => "status_#{status.id}", :class => 'secondary-container'}
+    %p
+      =status.status
+    .meta.clearfix
+      %em.ttp
+        = "posting in #{distance_of_time_in_words(Time.now, status.scheduled_at)}" if status.scheduled_at
+      -if !status.published_at
+        %ul.actions
+          %li.edit
+            = link_to 'Edit', edit_status_path(status), :class => "icon edit edit-status", :rel => "#modal-edit", :title => "Edit"
+          %li.jump-queue
+            = button_to "Publish Now",
+              publish_status_path(status),
+              :method => :put, 
+              :title => "Publish Now",
+              :class => 'icon jump-q'
+          %li.delete
+            = button_to 'Destroy',
+              status,
+              :method => :delete,
+              :title => "Delete",
+              :confirm => 'Are you sure you want to delete?',
+              :class => 'icon delete'

@@ -1,0 +1,43 @@
+.button{
+  background: url('ui/tricklr-btn-grad.png') repeat-x 0 0;
+}
+
+.button:active, .button.active{
+  background: url('ui/tricklr-btn-grad-active.png') repeat-x 0 0;
+  
+}
+#topmenu{
+  .button{
+    background: url('ui/tricklr-btn-grad.png') repeat-x 0 0;
+    height: 30px;
+    padding: 3px 12px 0px 13px;
+  }
+  .help{
+    margin-right: -5px;
+  }
+  .settings{
+    border-top-left-radius: 0;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 3px;
+    height: 33px;
+    width: 33px;
+    padding: 0;
+    text-indent: -99999px;
+    background-image: url(settings.png);
+  }
+  .settings:hover{
+    background-position: 0 -66px;
+  }
+
+  .settings:active, .settings.active{
+    background-position: 0 -33px;
+  }
+  
+}
+
+#queued_statuses .actions{
+  .move{
+    margin-right: 3px;
+  }
+}

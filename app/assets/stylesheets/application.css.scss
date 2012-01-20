@@ -504,11 +504,14 @@ footer{
     }
   }
 } // .step-by-step
-
+.content-box.main-page{
+  margin-bottom: 10px;
+}
 #topmenu{
   float: right;
   padding-top: 10px;
   ul{
+    margin: 0;
     li{
       display: inline-block;
     }

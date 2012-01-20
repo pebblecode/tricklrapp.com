@@ -1,0 +1,16 @@
+
+#new_status, form.edit_status{
+  .actions{
+    text-align: right;
+    vertical-align: bottom;
+    
+  }
+  text-align: right;
+  #char-count{
+    display: inline;
+    margin: -15px 0px 0 0;
+    padding: 0;
+  }
+  #status_submit{ display: inline; height: 33px;}
+  
+}
