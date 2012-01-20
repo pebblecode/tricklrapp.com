@@ -808,7 +808,25 @@ h2#publish-between{
   color: $t_blue;
 }
 
-
+.bad-browser{
+  &.secondary-container{
+    margin-bottom: 10px;
+    position: relative;
+  }
+  h2{
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  p{
+    width: 370px;
+  }
+  img{
+    position: absolute;
+    margin: 20px;
+    right: 0;
+    bottom: 0;
+  }
+}
 
 
 

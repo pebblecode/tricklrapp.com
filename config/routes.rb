@@ -7,6 +7,7 @@ Tricklr::Application.routes.draw do
   end
 
   match 'help', :to => 'pages#help'
+  match 'bad-browser', :to => 'pages#bad-browser'
 
   match 'published', :to => 'statuses#published'
 
