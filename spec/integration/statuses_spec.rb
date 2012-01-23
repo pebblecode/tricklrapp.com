@@ -149,3 +149,22 @@ describe "Scheduling various statuses" do
     end
   end
 end
+
+describe "Viewing the page with a browser" do
+  context "that is unsupported" do
+    it "should be redirected" do
+      user_agent_ie7 = "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)"
+      get '/', {}, 'HTTP_USER_AGENT' => user_agent_ie7
+      response.code.should == '302'
+      response.should redirect_to(unsupported_browser_path)
+    end
+  end
+  context "that is supported" do
+    it "should not be redirected" do
+      user_agent_ie7 = "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0)"
+      get '/', {}, 'HTTP_USER_AGENT' => user_agent_ie7
+      response.code.should_not == '302'
+      response.should_not redirect_to(unsupported_browser_path)
+    end
+  end
+end
