@@ -5,6 +5,7 @@ class StatusesController < ApplicationController
   before_filter :authenticate_user!
   before_filter :current_status, :except => [:index, :new, :create, :sort]
   before_filter :new_status, :only => [:index, :new]
+  before_filter :check_browser
 
   before_filter :get_unpublished_statuses, :only => [:new, :index, :create]
   

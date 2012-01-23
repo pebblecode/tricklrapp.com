@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  
+  before_filter :check_browser, :except => :unsupported_browser
   def index
     if current_user.present?
       redirect_to statuses_path
@@ -9,9 +9,10 @@ class PagesController < ApplicationController
   end
 
   def help
-    
   end
 
+  def unsupported_browser
+  end
 end
 
 

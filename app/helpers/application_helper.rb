@@ -8,5 +8,4 @@ module ApplicationHelper
     # to do 
     tweet
   end
-
 end

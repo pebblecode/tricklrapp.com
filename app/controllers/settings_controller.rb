@@ -3,6 +3,7 @@ class SettingsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :current_setting
   before_filter :get_publish_frequency_options
+  before_filter :check_browser
 
   def index
   end
