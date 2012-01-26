@@ -27,6 +27,6 @@ class ApplicationController < ActionController::Base
   end
 
   def user_agent
-    request.env['HTTP_USER_AGENT']
+    request.user_agent
   end
 end
