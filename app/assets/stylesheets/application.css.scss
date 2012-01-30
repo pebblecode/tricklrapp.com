@@ -813,6 +813,7 @@ h2#publish-between{
   text-align: center;
   height: 43px;
   &p{
+    width: 560px;
   	position: absolute;
   	left: 0;
   	font-size: 14px;
@@ -833,9 +834,10 @@ h2#publish-between{
   		padding: 3px 5px 6px 5px;
   	}
   	&.add-chrome{
+  	  display: none;
   	  font-family: kreon;
   	  font-size: 12px;
-  	  padding: 7px 7px 6px 7px;
+  	  padding: 7px;
   	}
   }
 }
