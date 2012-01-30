@@ -10,6 +10,10 @@
 
 @import "compass/reset";
 @import "compass/css3";
+@import "compass/layout.scss";
+
+@include sticky-footer(40px, "#wrap", "#wrap_footer", "#footer");
+
 
 // ------------------------------------------------------------------------
 // Variables
@@ -228,10 +232,14 @@ body{
   width: 600px;
 }
 
+#main-space{
+	height: 100px;
+}
+
 #main-container{
   min-height: 200px;
   width: 600px;
-  margin: 100px 0 20px 0;
+  margin: 0 0 20px 0;
   padding: 10px;
   @include border-radius(10px);
   border: 3px solid $t_blue;
@@ -792,20 +800,21 @@ h2#publish-between{
 }
 
 #footer{
-  color: #111111;
+  border-top: 3px solid $t_blue;
+  @include box-shadow(rgba(0, 0, 0, 0.3) 0 5px 20px 10px);
+  background: url(noise/10p.png) #dadada;
   text-shadow: 1px 1px 0 #444;
   text-align: center;
-  margin-top: 80px;
-  margin-bottom: 40px;
-      }
-
-#footer a{
-  color: #095276;
-  text-shadow: 1px 1px 0 #222;
-}
-
-#footer a:hover{
-  color: $t_blue;
+  height: 37px;
+  &ul{
+  	float: right;
+  	margin: 5px;
+  }
+  &a.button{
+  	margin: 1px;
+  	padding: 5px 5px 2px 5px;
+  	font-family: WebSymbolsRegular;
+  }
 }
 
 .bad-browser{
