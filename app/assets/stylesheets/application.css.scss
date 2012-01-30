@@ -12,7 +12,7 @@
 @import "compass/css3";
 @import "compass/layout.scss";
 
-@include sticky-footer(40px, "#wrap", "#wrap_footer", "#footer");
+@include sticky-footer(46px, "#wrap", "#wrap_footer", "#footer");
 
 
 // ------------------------------------------------------------------------
@@ -803,17 +803,26 @@ h2#publish-between{
   border-top: 3px solid $t_blue;
   @include box-shadow(rgba(0, 0, 0, 0.3) 0 5px 20px 10px);
   background: url(noise/10p.png) #dadada;
-  text-shadow: 1px 1px 0 #444;
   text-align: center;
-  height: 37px;
+  height: 43px;
+  &p{
+  	float: left;
+  	font-size: 14px;
+  	margin: 12px 5px 5px 15px;
+  	@include text-shadow (#fff 1px 1px 0);
+  	color: #898890;
+  }
   &ul{
   	float: right;
   	margin: 5px;
   }
   &a.button{
   	margin: 1px;
-  	padding: 5px 5px 2px 5px;
+  	padding: 5px 5px 4px 5px;
   	font-family: WebSymbolsRegular;
+  	&.tweet{
+  		padding: 3px 5px 6px 5px;
+  	}
   }
 }
 
