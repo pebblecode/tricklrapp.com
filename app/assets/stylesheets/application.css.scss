@@ -813,14 +813,16 @@ h2#publish-between{
   text-align: center;
   height: 43px;
   &p{
-  	float: left;
+  	position: absolute;
+  	left: 0;
   	font-size: 14px;
   	margin: 12px 5px 5px 15px;
   	@include text-shadow (#fff 1px 1px 0);
   	color: #898890;
   }
   &ul{
-  	float: right;
+  	position: absolute;
+  	right: 0;
   	margin: 5px;
   }
   &a.button{
@@ -829,6 +831,11 @@ h2#publish-between{
   	font-family: WebSymbolsRegular;
   	&.tweet{
   		padding: 3px 5px 6px 5px;
+  	}
+  	&.add-chrome{
+  	  font-family: kreon;
+  	  font-size: 12px;
+  	  padding: 7px 7px 6px 7px;
   	}
   }
 }
