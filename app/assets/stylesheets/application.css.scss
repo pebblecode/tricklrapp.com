@@ -10,6 +10,10 @@
 
 @import "compass/reset";
 @import "compass/css3";
+@import "compass/layout.scss";
+
+@include sticky-footer(46px, "#wrap", "#wrap_footer", "#footer");
+
 
 // ------------------------------------------------------------------------
 // Variables
@@ -228,10 +232,14 @@ body{
   width: 600px;
 }
 
+#main-space{
+	height: 100px;
+}
+
 #main-container{
   min-height: 200px;
   width: 600px;
-  margin: 100px 0 20px 0;
+  margin: 0 0 20px 0;
   padding: 10px;
   @include border-radius(10px);
   border: 3px solid $t_blue;
@@ -481,7 +489,6 @@ footer{
 .step-by-step {
   padding: 0;
   margin: 40px 0 0 0;
-  background: transparent image_url('step-by-step.png') no-repeat center 0;
   width: 545px;
 
   li {
@@ -568,6 +575,13 @@ footer{
   height: 51px;
   padding-left: 60px;
   background: url(help-mail.png) no-repeat;
+  margin-bottom: 20px;  
+}
+
+.help-love{
+  height: 51px;
+  padding-left: 60px;
+  background: url(help-love.png) no-repeat;
   margin-bottom: 20px;  
 }
 
@@ -792,20 +806,41 @@ h2#publish-between{
 }
 
 #footer{
-  color: #111111;
-  text-shadow: 1px 1px 0 #444;
+  border-top: 3px solid $t_blue;
+  @include box-shadow(rgba(0, 0, 0, 0.3) 0 5px 20px 10px);
+  background: url(noise/10p.png) #dadada;
   text-align: center;
-  margin-top: 80px;
-  margin-bottom: 40px;
-      }
-
-#footer a{
-  color: #095276;
-  text-shadow: 1px 1px 0 #222;
-}
-
-#footer a:hover{
-  color: $t_blue;
+  height: 43px;
+  &p{
+    width: 560px;
+  	position: absolute;
+  	left: 0;
+  	font-size: 14px;
+  	margin: 12px 5px 5px 15px;
+  	@include text-shadow (#fff 1px 1px 0);
+  	color: #898890;
+  }
+  &ul{
+  	position: absolute;
+  	right: 0;
+  	margin: 5px;
+  }
+  &li{
+    float: left;
+  }
+  &a.button{
+  	margin: 1px;
+  	padding: 5px 5px 4px 5px;
+  	font-family: WebSymbolsRegular;
+  	&.tweet{
+  		padding: 3px 5px 6px 5px;
+  	}
+  	&.add-chrome{
+  	  font-family: kreon;
+  	  font-size: 12px;
+  	  padding: 7px;
+  	}
+  }
 }
 
 .bad-browser{

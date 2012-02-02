@@ -9,6 +9,8 @@
  *= require_tree ./libs
  * Fades flash notices out after they are shown
 */
+
+
 jQuery.fn.flashNotice = function () {
   jQuery(this).hide();
   jQuery(this).fadeIn();
@@ -329,4 +331,10 @@ $(document).ready(function() {
   if($("#setting_publish_frequency").length > 0){
     $("#setting_publish_frequency").selectmenu({style: 'dropdown'});
   };
+
+  if (navigator.userAgent.toLowerCase().indexOf('chrome') == -1){
+    $('a.add-chrome').hide();
+  }
+
 });
+
