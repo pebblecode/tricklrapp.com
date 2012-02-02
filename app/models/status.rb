@@ -122,9 +122,8 @@ class Status < ActiveRecord::Base
 
   def twitter_character_count
     # links are converted to t.co
-    url_regex = /((https?:\/\/|www\.)([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/i
     count = status.length
-    links = status.scan(url_regex).collect{|x| x.first }
+    links = URI.extract(status, ['http','https'])
     if links.any?
       links_length = links.join('').length
       count = (count - links_length) + (links.count * TCO_SIZE)
