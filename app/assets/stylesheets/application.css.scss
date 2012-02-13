@@ -166,10 +166,11 @@ h2{
 h3{
   font-family: kreon;
   font-weight: 700;
-  @include text-shadow (#efefef 1px 1px 0);
+  color: $t_blue;
+  @include text-shadow (#fff 1px 1px 0);
 }
 
-p{
+p, li{
   letter-spacing: 0;
   line-height: 1.4em;
   color: #4e5b64;
@@ -477,7 +478,13 @@ footer{
   padding-right: 200px;
   margin: 0 0 30px 0;
   h2{
-    font-size: 38px;
+    font-size: 32px;
+    line-height: 34px;
+  }
+  h3{
+    font-size: 18px;
+    line-height: 20px;
+    margin: 1.5em 0;
   }
 }
 
@@ -486,31 +493,18 @@ footer{
   margin: 15px 15px  0 0;
 }
 
-.step-by-step {
-  padding: 0;
-  margin: 40px 0 0 0;
-  width: 545px;
-
-  li {
-    width: 145px;
-    margin-right: 63px;
-    margin-top: 10px;
-    line-height: 18px;
-    letter-spacing: 0.06em;
-    float: left;
-    color: #4e5b64;
-    display: block;
-    img{
-      margin-bottom: 10px;
-    }
-    
-    &.last {
-      float: right;
-      margin-right: -17px;
-      border-right: none;
-    }
+.points{
+  list-style: disc;
+  font: 600 1.2em/1.5em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+  
+  text-shadow: 1px 1px 0 #fff;
+  li{
+    margin-top: 0.3em;
+    color: #5a6b77;
   }
-} // .step-by-step
+
+}
+
 .content-box.main-page{
   margin-bottom: 10px;
 }
