@@ -1,19 +1,25 @@
 .secondary-container.content-box.main-page
-  %img{:src => image_path('intro-logo.png'), :alt =>'intro-logo', :class => 'intro-logo'}
   .intro
     %h2
-      Tweet regularly, without Twitter taking over your day
+      Regular tweets, 
+    %h2   
+      fewer distractions
     %h3
-      Tricklr is a super-simple tool that gives you more control over your tweets. Tell Tricklr what to say and it’ll send tweets at intervals you control.
-
-  %ul.points
+      Tell Tricklr what to say and it'll tweet for you at regular intervals - giving you more time for other important tasks.
+      
+  %img{:src => image_path('intro-logo.png'), :alt =>'intro-logo', :class => 'intro-logo'}
+  
+  
+  %ul#points
     %li
-      Stay active on Twitter without staying constantly logged in
+      Stay active on Twitter without watching it constantly
     %li
       Spread tweets out so you don't overwhelm your followers
     %li
       Plan hours, days, weeks or even months ahead
       
-  %p
-    Tricklr is free and easy to use. To get started, just sign in with your Twitter username and password.
+  %p.get-started
+    Tricklr is free and really easy to use. 
+    %a{:href => "/users/auth/twitter"}
+      To get started, just sign in with your Twitter details.
   
