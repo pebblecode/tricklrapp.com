@@ -191,14 +191,19 @@ a{
 a:visited{
   color: $t_blue;
 }
+
+a.text-link{
+  display: inline-block;
+}
+
 a.text-link:visited{
   color: $t_blue;
   &:hover{text-decoration: none;}
 }
 
 a.text-link:hover{
-  padding-bottom: 1px;
   border-bottom: 2px solid $t_blue;
+  margin-bottom: -2px;  
 }
 
 a.button{
@@ -513,6 +518,7 @@ footer{
     letter-spacing: 0;
     margin-top: 10px;
     display: block;
+    width: 416px;
   }
 }
 
@@ -576,6 +582,13 @@ footer{
   margin-bottom: 20px;
 }
 
+.help-code{
+  height: 51px;
+  padding-left: 60px;
+  background: url(help-code.png) no-repeat;
+  margin-bottom: 20px;  
+}
+
 .help-mail{
   height: 51px;
   padding-left: 60px;
@@ -584,10 +597,9 @@ footer{
 }
 
 .help-love{
-  height: 51px;
+  min-height: 51px;
   padding-left: 60px;
   background: url(help-love.png) no-repeat;
-  margin-bottom: 20px;  
 }
 
 /* SETTINGS*/
