@@ -548,36 +548,69 @@ footer{
 
 /* HELP */
 
-#help-logo{
-  float: left;
-  clear: left;
-  margin: 30px 20px 20px 10px;
+.help-hr{
+  border-top: 1px dashed $t_blue;
+  margin: 10px;
+  padding: 0;
 }
 
-.how-to{
+.help-p{
   text-align: center;
-  margin: 10px 0 20px;
 }
 
-.help-img-small{
-  width: 270px;
-  @include border-radius(5px);
-  @include box-shadow(#fff 1px 1px 0);
+.help-add{
+  height: 100px;
+  padding-left: 230px;
+  background: url(help-add.png) no-repeat;
+  margin: 20px 0 10px; 
 }
 
-.help-img-large{
-  @include border-radius(5px);
-  @include box-shadow(#fff 1px 1px 0);
+.help-edit{
+  height: 100px;
+  padding-left: 230px;
+  background: url(help-edit.png) no-repeat;
+  margin: 10px 0 ;
+  p{
+    margin-bottom: 9px;
+    &:first-child{
+      padding-top: 2px;
+    }
+  }
 }
 
-.help-img-left{
-  margin-right: 13px;
+.help-settings{
+  height: 40px;
+  padding-left: 230px;
+  background: url(help-settings.png) no-repeat 140px 0;
+  margin-bottom: 10px; 
+}
+
+.help-post{
+  height: 40px;
+  padding-left: 230px;
+  background: url(help-post.png) no-repeat 70px 0;
+  margin-bottom: 10px; 
+}
+
+.help-slider{
+  height: 50px;
+  padding-left: 230px;
+  background: url(help-slider.png) no-repeat ;
+  margin-bottom: 10px; 
 }
 
 .help-timezone{
-  padding-left: 60px;
-  background: url(help-timezone.png) no-repeat;
-  margin-bottom: 20px;
+  height: 50px;
+  padding-left: 230px;
+  background: url(help-timezone.png) no-repeat 40px 0 ;
+  margin-bottom: 10px; 
+}
+
+.help-save{
+  height: 34px;
+  padding-left: 230px;
+  background: url(help-save.png) no-repeat 160px 0;
+  margin-bottom: 10px; 
 }
 
 .help-code{
