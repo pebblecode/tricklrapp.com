@@ -475,10 +475,6 @@ footer{
   border-top: 3px solid $t_blue;
 }
 
-.slider-grove{
-  
-}
-
 .intro{
   h2{
     font-size: 60px;
@@ -492,27 +488,55 @@ footer{
   }
 }
 
-.intro-logo{
-  float: left;
-  margin: 30px 15px  0 35px;
+#slides{
+  margin: 20px 0 40px;
+  .slides_container{
+    height: 200px;
+    width: 558px;
+  }
+  
+  .pagination{
+    width: 60px;
+    margin-left: 217px;
+  }
+  
+  .pagination li a{
+    float: left;
+    color: transparent;
+    margin: 2px;
+    height: 11px;
+    width: 11px;
+    background: url(pips.png) no-repeat 0px -11px;
+  }
+  .pagination .current a{
+    color: transparent;
+    background: url(pips.png) no-repeat;
+  }
 }
 
-#points{
-  font: 900 1.3em/0.9em kreon;
-  text-shadow: 1px 1px 0 #fff;
-  color: $t-blue;
-  padding: 0;
-  list-style: disc;
-  width: 550px;
+.watch,.spread,.plan{
+  padding: 40px 0 0 200px;
   height: 200px;
-  margin: 0 auto 20px;
-  
-  background: url(intro-bg.png) no-repeat;
-  li{
-    margin: 10px 0 10px 20px ;
-    letter-spacing: 0;
-    line-height: 1.2em;
+  width: 350px;
+  h2{
+    font-size: 35px;
+    line-height: 1.1em;
+    text-align: right;
   }
+}
+
+.watch{
+  background: url(active.png) no-repeat;
+}
+
+.spread{
+  background: url(spread.png) no-repeat;
+}
+
+.plan{
+  background: url(plan.png) no-repeat 0 20px;
+  width: 390px;
+  padding: 60px 0 0 165px;
 }
 
 .get-started{

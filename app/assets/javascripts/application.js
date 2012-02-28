@@ -58,6 +58,18 @@ $.fn.statusCount = function(){
 
 
 $(document).ready(function() {
+
+  /* 
+  * Slideshow using http://slidesjs.com/ 
+  * play = time for each slide
+  */
+  $("#slides").slides({
+    play: 3000,
+  });
+  
+
+
+
   /* 
   * Fade flash notices
   */
