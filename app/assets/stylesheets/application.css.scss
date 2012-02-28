@@ -482,11 +482,11 @@ footer{
 .intro{
   h2{
     font-size: 60px;
-    line-height: 56px;
+    line-height: 52px;
   }
   h3{
-    font-size: 24px;
-    line-height: 28px;
+    font-size: 20px;
+    line-height: 24px;
     color: hsl(204, 13%, 50%);
     margin-top: 15px;
   }
@@ -498,13 +498,18 @@ footer{
 }
 
 #points{
-  margin: 35px 0 30px 220px;
-  list-style: disc;
-  font: 900 1.3em/0.9em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+  font: 900 1.3em/0.9em kreon;
   text-shadow: 1px 1px 0 #fff;
-  color: hsl(204, 13%, 48%);
+  color: $t-blue;
+  padding: 0;
+  list-style: disc;
+  width: 550px;
+  height: 200px;
+  margin: 0 auto 20px;
+  
+  background: url(intro-bg.png) no-repeat;
   li{
-    margin-top: 15px;
+    margin: 10px 0 10px 20px ;
     letter-spacing: 0;
     line-height: 1.2em;
   }
@@ -514,6 +519,7 @@ footer{
   font: 900 1.3em/0.9em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
   text-shadow: 1px 1.5px 0 #fff;
   color: hsl(204, 13%, 48%);
+  clear: both;
   a{
     letter-spacing: 0;
     margin-top: 10px;
@@ -548,14 +554,23 @@ footer{
 
 /* HELP */
 
+.help-container{
+  span{
+    font-weight: bold;
+    color: $t-blue;
+  }
+}
+
 .help-hr{
-  border-top: 1px dashed $t_blue;
-  margin: 10px;
+  border: none;
+  height: 2px;
+  background-image: url(hr-bg.png);
+  margin: 10px 0;
   padding: 0;
 }
 
 .help-p{
-  text-align: center;
+  padding-left: 230px;
 }
 
 .help-add{
@@ -610,7 +625,7 @@ footer{
   height: 34px;
   padding-left: 230px;
   background: url(help-save.png) no-repeat 160px 0;
-  margin-bottom: 10px; 
+  margin-bottom: 40px; 
 }
 
 .help-code{
