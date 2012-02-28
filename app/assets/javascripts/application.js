@@ -64,7 +64,7 @@ $(document).ready(function() {
   * play = time for each slide
   */
   $("#slides").slides({
-    play: 3000,
+    play: 4000,
   });
   
 
