@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120119164923) do
+ActiveRecord::Schema.define(:version => 20120126151538) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -25,11 +25,11 @@ ActiveRecord::Schema.define(:version => 20120119164923) do
 
   create_table "settings", :force => true do |t|
     t.integer  "user_id"
-    t.boolean  "automatic",                                   :default => false
-    t.decimal  "time_digit",    :precision => 6, :scale => 1, :default => 2.0
-    t.string   "time_unit",                                   :default => "hours"
-    t.time     "publish_from",                                :default => '2000-01-01 09:00:00'
-    t.time     "publish_until",                               :default => '2000-01-01 23:00:00'
+    t.boolean  "automatic",     :default => false
+    t.decimal  "time_digit",    :default => 2.0
+    t.string   "time_unit",     :default => "hours"
+    t.datetime "publish_from"
+    t.datetime "publish_until"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "time_zone"
@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(:version => 20120119164923) do
   create_table "users", :force => true do |t|
     t.string   "nickname"
     t.string   "name"
-    t.string   "remember_token"
     t.datetime "remember_created_at"
+    t.string   "remember_token"
     t.integer  "sign_in_count",       :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
