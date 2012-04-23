@@ -43,6 +43,9 @@ gem 'hoptoad_notifier'
 # Performance monitoring with NewRelic
 gem 'newrelic_rpm'
 
+# Send stats to Campfire
+gem 'tinder'
+
 group :test do
   gem 'random_data'
   gem 'capybara'   
