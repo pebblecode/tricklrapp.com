@@ -4,5 +4,5 @@ task "campfire:stats" => :environment do
   statuses = Status.count
   authentications = Authentication.count
   room.speak "OHAI! Stats from Tricklr"
-  room.paste "Accounts: #{authentications}\nStatuses: #{authentications}"
+  room.paste "Accounts: #{authentications}\nStatuses: #{statuses}"
 end
