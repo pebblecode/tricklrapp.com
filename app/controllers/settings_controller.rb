@@ -17,7 +17,8 @@ class SettingsController < ApplicationController
     
     if @setting.update_attributes(params[:setting])
       flash[:notice] = "Your settings were updated"
-      redirect_to statuses_path
+      # Redirect to login, so that the time zone is updated
+      redirect_to user_omniauth_authorize_path(:twitter)
     else 
       render :action => 'index'
     end        

@@ -7,7 +7,7 @@
         %select{ :name => :setting_publish_frequency, :id => "setting_publish_frequency"}
           = options_for_select(@publish_frequencies, @publish_frequencies_default)
     %h2#publish-between
-      Post between 
+      Post between
       - if @setting.publish_from.present? and @setting.publish_until.present?
         #{@setting.publish_from.strftime('%l:%M%P')} and #{@setting.publish_until.strftime('%l:%M%P')}
     %div.publish-from
@@ -17,11 +17,13 @@
       =f.time_select :publish_until, :minute_step => 60, :time_separator => ""
       .background
     .time-zone.field
+      %h2#time-zone Time zone
       %em
         = Time.zone
-        %a{:href=>'https://twitter.com/settings/account', :class => 'text-link'}
-          (change)
+      .help
+        :plain
+          To change, <a href='https://twitter.com/settings/account' class='text-link' target="_blank">update timezone on twitter</a>, then click on the 'Save Setting' button
     .actions.ralign
       =link_to 'Go back', root_url, :class => 'button'
       %button.button.save-button{:type => "submit", :class => 'button'} Save Setting
-    
+
