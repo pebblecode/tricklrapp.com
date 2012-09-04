@@ -14,9 +14,10 @@ gem 'devise'
 # https://github.com/intridea/omniauth
 gem 'omniauth-twitter'
 
+# Not used right now
 # Will paginate for pagination
 # https://github.com/mislav/will_paginate/wiki
-gem 'will_paginate', '~> 3.0.pre2'
+# gem 'will_paginate', '~> 3.0'
 
 # Twitter gem for reading/writing
 # http://github.com/jnunemaker/twitter
