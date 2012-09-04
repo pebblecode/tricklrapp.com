@@ -2,15 +2,14 @@
  * This is a manifest file that'll automatically include all the stylesheets available in this directory
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
- *= require_self
- *= require ./base/html5_boilerplate
- *= require ./base/jquery-ui-1.8.16.custom
- *= require ./base/ui.slider.extras
 */
 
+@import "base/html5_boilerplate";
+@import "base/jquery-ui-1.8.16.custom";
+@import "base/ui.slider.extras";
 @import "compass/reset";
 @import "compass/css3";
-@import "compass/layout.scss";
+@import "compass/layout";
 
 @include sticky-footer(46px, "#wrap", "#wrap_footer", "#footer");
 
@@ -913,7 +912,7 @@ h2#publish-between{
   background: url(noise/10p.png) #dadada;
   text-align: center;
   height: 43px;
-  &p{
+  p{
     width: 560px;
   	position: absolute;
   	left: 0;
@@ -922,15 +921,15 @@ h2#publish-between{
   	@include text-shadow (#fff 1px 1px 0);
   	color: #898890;
   }
-  &ul{
+  ul{
   	position: absolute;
   	right: 0;
   	margin: 5px;
   }
-  &li{
+  li{
     float: left;
   }
-  &a.button{
+  a.button{
   	margin: 1px;
   	padding: 5px 5px 4px 5px;
   	font-family: WebSymbolsRegular;

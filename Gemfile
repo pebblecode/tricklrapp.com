@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.3'
+gem 'rails', '3.2.8'
 
 # Postgres
 # https://bitbucket.org/ged/ruby-pg/wiki/Home
@@ -23,7 +23,7 @@ gem 'will_paginate', '~> 3.0.pre2'
 gem 'twitter'
 
 # Resque for queuing tasks
-gem 'resque'
+gem 'resque', '1.19.0'
 
 # Resque scheduler for scheduled tasks
 # http://github.com/bvandenbos/resque-scheduler
@@ -48,7 +48,7 @@ gem 'tinder'
 
 group :test do
   gem 'random_data'
-  gem 'capybara'   
+  gem 'capybara'
   gem 'launchy'
   gem 'database_cleaner'
   gem 'cucumber-rails'
@@ -76,12 +76,12 @@ end
 group :production do
   gem 'unicorn'
   gem 'thin'
-  gem 'therubyracer' 
-end 
+  gem 'therubyracer'
+end
 
 group :assets do
-  gem 'sass-rails', '~> 3.1.0'
-  gem 'coffee-rails', '~> 3.1.0'
+  gem 'sass-rails'
+  gem 'coffee-rails'
   gem 'uglifier'
-  gem 'compass', '~> 0.12.alpha'
+  gem 'compass-rails'
 end
