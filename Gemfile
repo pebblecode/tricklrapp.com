@@ -24,7 +24,7 @@ gem 'omniauth-twitter'
 gem 'twitter'
 
 # Resque for queuing tasks
-gem 'resque', '1.19.0'
+gem 'resque'
 
 # Resque scheduler for scheduled tasks
 # http://github.com/bvandenbos/resque-scheduler
