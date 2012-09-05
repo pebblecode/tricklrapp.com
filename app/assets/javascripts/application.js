@@ -375,6 +375,10 @@ $(document).ready(function() {
 
 App.timeTillPostTemplate = _.template("posting in <%= App.timeToString(time) %>");
 
+App.tweetsInQueue = function() {
+  return $(".status-list > li").length;
+};
+
 App.timeToString = function(time) {
   var timeString = "",
       mins = App.minutesInTime(time),
@@ -412,13 +416,17 @@ App.executeCountdown = function(elemId) {
   $("#" + elemId).find(".ttp").html(App.timeTillPostTemplate({
     time: App.statusTimeToGo[elemId]
   }));
-  console.log(elemId + " time to go: " + App.statusTimeToGo[elemId]);
 
+  // Countdown if there is more time, otherwise remove element
   if (App.statusTimeToGo[elemId] > 0) {
     _.delay(App.executeCountdown, Config.countdownInterval, elemId);
   } else {
-    // Remove element
-    console.log("remove " + elemId);
-    $("#" + elemId).fadeOut("slow");
+    $("#" + elemId).fadeOut("slow", function() {
+      $(this).remove();
+
+      if (App.tweetsInQueue() <= 0) {
+        $(".container-tweets").remove();
+      }
+    });
   }
 };
