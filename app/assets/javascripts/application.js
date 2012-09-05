@@ -373,10 +373,28 @@ $(document).ready(function() {
   });
 });
 
+App.timeTillPostTemplate = _.template("posting in <%= App.minutesInTime(time) %>:<%= App.secondsInTime(time) %> minutes");
+
+// Get the minutes value of time in milliseconds
+App.minutesInTime = function(time) {
+  return Math.floor(time / 1000 / 60);
+};
+
+// Get the (zero padded) seconds value of time in milliseconds
+App.secondsInTime = function(time) {
+  var mins = App.minutesInTime(time),
+      minsInMilliseconds = (mins * 1000 * 60);
+      secs = Math.floor((time - minsInMilliseconds) / 1000);
+  return (secs < 10 ? '0' : '') + secs;
+};
+
 // Only for repeating the countdown (not for initialisation)
 App.executeCountdown = function(elemId) {
   // Update time
   App.statusTimeToGo[elemId] -= Config.countdownInterval;
+  $("#" + elemId).find(".ttp").html(App.timeTillPostTemplate({
+    time: App.statusTimeToGo[elemId]
+  }));
   console.log(elemId + " time to go: " + App.statusTimeToGo[elemId]);
 
   if (App.statusTimeToGo[elemId] > 0) {
