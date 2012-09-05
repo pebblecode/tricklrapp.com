@@ -11,11 +11,63 @@
 */
 
 var Config = {
-  // Number of milliseconds to wait till countdown starts
-  // countdownStartTime: 15 * 60 * 1000, // 15 minutes
-  countdownStartTime: 35 * 60 * 1000, // 35 minutes
-  // Interval between countdown
-  countdownInterval: 1000
+  countdownRangeIntervals: [
+    // 0-30sec -> 1s interval
+    {
+      min: 0,
+      max: 30 * 1000,
+      interval: 1000
+    },
+
+    // 30-60sec -> 30s interval
+    {
+      min: 30 * 1000,
+      max: 60 * 1000,
+      interval: 30 * 1000
+    },
+
+    // 1min-5min -> 1min interval
+    {
+      min: 60 * 1000,
+      max: 5 * 60 * 1000,
+      interval: 60 * 1000
+    },
+
+    // 5min-10min -> 5min interval
+    {
+      min: 5 * 60 * 1000,
+      max: 10 * 60 * 1000,
+      interval: 5 * 60 * 1000
+    },
+
+    // 10min-30min -> 10min interval
+    {
+      min: 10 * 60 * 1000,
+      max: 30 * 60 * 1000,
+      interval: 10 * 60 * 1000
+    },
+
+    // 30min-1hr -> 30min interval
+    {
+      min: 30 * 60 * 1000,
+      max: 60 * 60 * 1000,
+      interval: 30 * 60 * 1000
+    },
+
+    // 1hr-1day -> 1hr interval
+    {
+      min: 60 * 60 * 1000,
+      max: 24 * 60 * 60 * 1000,
+      interval: 60 * 60 * 1000
+    },
+
+    // 1day-forever -> 1day interval
+    {
+      min: 24 * 60 * 60 * 1000,
+      max: Number.MAX_VALUE,
+      interval: 24 * 60 * 60 * 1000
+    },
+  ]
 };
 
 var App = {};
@@ -368,8 +420,14 @@ $(document).ready(function() {
         timeToGo = (scheduledAtDate.getTime() - timeNowDate.getTime()); // in milliseconds
 
     App.statusTimeToGo[elemId] = timeToGo;
-    var timeBeforeCountdown = timeToGo - Config.countdownStartTime;
-    _.delay(App.executeCountdown, timeBeforeCountdown, elemId);
+    // Set time before countdown
+    var countdownRange = App.countdownRangeForTime(timeToGo),
+        timeTillMinRange = timeToGo - countdownRange.min,
+        timeBeforeCountdown = timeTillMinRange % countdownRange.interval; // remove intervals that can fit in time till min range
+
+    App.updateTimeTillPost(elemId, timeToGo);
+    console.log(elemId + ": " + App.timeToStringDebug(timeToGo) + ", time till countdown: " + App.timeToStringDebug(timeBeforeCountdown));
+    _.delay(App.executeCountdown, timeBeforeCountdown, elemId, timeBeforeCountdown, countdownRange);
   });
 });
 
@@ -377,6 +435,18 @@ App.timeTillPostTemplate = _.template("posting in <%= App.timeToString(time) %>"
 
 App.tweetsInQueue = function() {
   return $(".status-list > li").length;
+};
+
+// Find the first countdown range for the time
+App.countdownRangeForTime = function(time) {
+  var rangeMatch = _.find(Config.countdownRangeIntervals, function(range) {
+    return time <= range.max;
+  });
+  return rangeMatch ? rangeMatch : undefined;
+};
+
+App.timeToStringDebug = function(time) {
+  return App.timeToString(time) + " (" + time + ")";
 };
 
 App.timeToString = function(time) {
@@ -409,17 +479,25 @@ App.secondsInTime = function(time) {
   return secs;
 };
 
-// Only for repeating the countdown (not for initialisation)
-App.executeCountdown = function(elemId) {
-  // Update time
-  App.statusTimeToGo[elemId] -= Config.countdownInterval;
+App.updateTimeTillPost = function(elemId, value) {
   $("#" + elemId).find(".ttp").html(App.timeTillPostTemplate({
-    time: App.statusTimeToGo[elemId]
+    time: value
   }));
+};
+
+App.executeCountdown = function(elemId, countedDown, countdownRange) {
+  var timeToGo = App.statusTimeToGo[elemId] - countedDown;
+  // Update time
+  App.statusTimeToGo[elemId] = timeToGo;
+  App.updateTimeTillPost(elemId, timeToGo);
 
   // Countdown if there is more time, otherwise remove element
-  if (App.statusTimeToGo[elemId] > 0) {
-    _.delay(App.executeCountdown, Config.countdownInterval, elemId);
+  if (timeToGo > 0) {
+    var nextCountdownRange = App.countdownRangeForTime(timeToGo);
+
+    console.log(elemId + ": time till next countdown (" + timeToGo + "): " + App.timeToStringDebug(nextCountdownRange.interval) + " for " + JSON.stringify(nextCountdownRange));
+
+    _.delay(App.executeCountdown, nextCountdownRange.interval, elemId, nextCountdownRange.interval, nextCountdownRange);
   } else {
     $("#" + elemId).fadeOut("slow", function() {
       $(this).remove();
