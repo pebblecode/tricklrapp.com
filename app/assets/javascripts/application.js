@@ -373,7 +373,24 @@ $(document).ready(function() {
   });
 });
 
-App.timeTillPostTemplate = _.template("posting in <%= App.minutesInTime(time) %>:<%= App.secondsInTime(time) %> minutes");
+App.timeTillPostTemplate = _.template("posting in <%= App.timeToString(time) %>");
+
+App.timeToString = function(time) {
+  var timeString = "",
+      mins = App.minutesInTime(time),
+      secs = App.secondsInTime(time);
+
+  if (mins > 0) {
+    var secsToWithZeroPadding = ((secs < 10) ? '0' : '') + secs;
+    timeString = mins + ":" + secsToWithZeroPadding + " minute"
+    timeString += ((mins == 1) ? "" : "s"); // Pluralise;
+  } else {
+    timeString = secs;
+    timeString += " second";
+    timeString += ((secs == 1) ? "" : "s"); // Pluralise
+  }
+  return timeString;
+};
 
 // Get the minutes value of time in milliseconds
 App.minutesInTime = function(time) {
@@ -385,7 +402,7 @@ App.secondsInTime = function(time) {
   var mins = App.minutesInTime(time),
       minsInMilliseconds = (mins * 1000 * 60);
       secs = Math.floor((time - minsInMilliseconds) / 1000);
-  return (secs < 10 ? '0' : '') + secs;
+  return secs;
 };
 
 // Only for repeating the countdown (not for initialisation)
