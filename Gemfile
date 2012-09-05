@@ -55,7 +55,7 @@ group :test do
   gem 'cucumber-rails'
   gem 'rspec-rails'
   gem 'resque_spec'
-  gem 'factory_girl_rails'
+  gem "factory_girl_rails", "~> 4.0"
   gem 'spork', '~> 0.9.0.rc'
   gem 'guard-cucumber'
   gem 'guard-rspec'

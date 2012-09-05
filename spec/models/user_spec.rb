@@ -4,7 +4,7 @@ require 'spec_helper'
 describe User do
 
   before(:each) do
-    @user = Factory(:user)
+    @user = FactoryGirl.create(:user)
   end
 
   it "is valid with valid attributes" do 

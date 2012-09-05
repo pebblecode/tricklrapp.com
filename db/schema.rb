@@ -25,9 +25,9 @@ ActiveRecord::Schema.define(:version => 20120126151538) do
 
   create_table "settings", :force => true do |t|
     t.integer  "user_id"
-    t.boolean  "automatic",     :default => false
-    t.decimal  "time_digit",    :default => 2.0
-    t.string   "time_unit",     :default => "hours"
+    t.boolean  "automatic",                                   :default => false
+    t.decimal  "time_digit",    :precision => 6, :scale => 1, :default => 2.0
+    t.string   "time_unit",                                   :default => "hours"
     t.datetime "publish_from"
     t.datetime "publish_until"
     t.datetime "created_at"

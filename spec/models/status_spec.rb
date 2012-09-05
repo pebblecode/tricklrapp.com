@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Status do
 
   before(:each) do
-    @status = Factory(:status)
+    @status = FactoryGirl.create(:status)
   end
 
   it "is valid with valid attributes" do 

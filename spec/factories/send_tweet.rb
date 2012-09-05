@@ -1,5 +1,7 @@
 
-Factory.define :send_tweet do |f|
-  f.association :status
+FactoryGirl.define do
+  factory :send_tweet do
+    association :status
+  end
 end
 

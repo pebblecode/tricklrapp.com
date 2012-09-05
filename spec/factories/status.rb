@@ -1,5 +1,7 @@
-Factory.define :status do |f|
-  f.association :user
-  f.status "Poopin'"
+FactoryGirl.define do
+  factory :status do
+    association :user
+    status "Poopin'"
+  end
 end
 

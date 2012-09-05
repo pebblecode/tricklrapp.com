@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Authentication do
 
   before(:each) do
-    @authentication = Factory(:authentication)
+    @authentication = FactoryGirl.create(:authentication)
   end
 
   it "is valid with valid attributes" do 
