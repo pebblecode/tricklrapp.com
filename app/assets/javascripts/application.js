@@ -451,22 +451,44 @@ App.timeToStringDebug = function(time) {
 
 App.timeToString = function(time) {
   var timeString = "",
+      days = App.daysInTime(time),
+      hrs = App.hoursInTime(time),
       mins = App.minutesInTime(time),
       secs = App.secondsInTime(time);
 
-  if (mins > 0) {
-    var secsToWithZeroPadding = ((secs < 10) ? '0' : '') + secs;
-    timeString = mins + ":" + secsToWithZeroPadding + " minute"
+  if (days > 0) {
+    timeString += "about ";
+    timeString += days;
+    timeString += " day";
+    timeString += ((days == 1) ? "" : "s"); // Pluralise;
+  } else if (hrs > 0) {
+    timeString += "about ";
+    timeString += hrs;
+    timeString += " hour";
+    timeString += ((hrs == 1) ? "" : "s"); // Pluralise;
+  } else if (mins > 0) {
+    timeString += "about ";
+    timeString += mins + " minute"
     timeString += ((mins == 1) ? "" : "s"); // Pluralise;
   } else {
-    timeString = secs;
+    timeString += secs;
     timeString += " second";
     timeString += ((secs == 1) ? "" : "s"); // Pluralise
   }
   return timeString;
 };
 
-// Get the minutes value of time in milliseconds
+// Get number of days in time in milliseconds
+App.daysInTime = function(time) {
+  return Math.floor(time / 1000 / 60 / 60 / 24);
+};
+
+// Get number of hours in time in milliseconds
+App.hoursInTime = function(time) {
+  return Math.floor(time / 1000 / 60 / 60);
+};
+
+// Get number of minutes in time in milliseconds
 App.minutesInTime = function(time) {
   return Math.floor(time / 1000 / 60);
 };
