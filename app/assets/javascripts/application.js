@@ -10,6 +10,15 @@
  * Fades flash notices out after they are shown
 */
 
+var Config = {
+  // Number of milliseconds to wait till countdown starts
+  // countdownStartTime: 15 * 60 * 1000, // 15 minutes
+  countdownStartTime: 35 * 60 * 1000, // 35 minutes
+  // Interval between countdown
+  countdownInterval: 1000
+};
+
+var App = {};
 
 jQuery.fn.flashNotice = function () {
   jQuery(this).hide();
@@ -346,7 +355,35 @@ $(document).ready(function() {
 
   if (navigator.userAgent.toLowerCase().indexOf('chrome') == -1){
     $('a.add-chrome').hide();
-  }
+  };
 
+  // Time from the server
+  App.statusTimeToGo = {};
+  var timeNow = $("body").attr("data-time-now");
+  var timeNowDate = new Date(timeNow);
+  $(".status-list > li").each(function(index, elem) {
+    var elemId = $(elem).attr("id"),
+        scheduledAt = $(elem).attr("data-scheduled-at"),
+        scheduledAtDate = new Date(scheduledAt),
+        timeToGo = (scheduledAtDate.getTime() - timeNowDate.getTime()); // in milliseconds
+
+    App.statusTimeToGo[elemId] = timeToGo;
+    var timeBeforeCountdown = timeToGo - Config.countdownStartTime;
+    _.delay(App.executeCountdown, timeBeforeCountdown, elemId);
+  });
 });
 
+// Only for repeating the countdown (not for initialisation)
+App.executeCountdown = function(elemId) {
+  // Update time
+  App.statusTimeToGo[elemId] -= Config.countdownInterval;
+  console.log(elemId + " time to go: " + App.statusTimeToGo[elemId]);
+
+  if (App.statusTimeToGo[elemId] > 0) {
+    _.delay(App.executeCountdown, Config.countdownInterval, elemId);
+  } else {
+    // Remove element
+    console.log("remove " + elemId);
+    $("#" + elemId).fadeOut("slow");
+  }
+};
