@@ -446,35 +446,46 @@ App.countdownRangeForTime = function(time) {
 };
 
 App.timeToStringDebug = function(time) {
-  return App.timeToString(time) + " (" + time + ")";
+  return App.timeToString(time, true) + " (" + time + ")";
 };
 
-App.timeToString = function(time) {
+// Parameters:
+//    verbose: if true, displays the complete time. False by default
+App.timeToString = function(time, verbose) {
   var timeString = "",
+      isVerbose = _.isUndefined(verbose) ? false : verbose,
       days = App.daysInTime(time),
       hrs = App.hoursInTime(time),
       mins = App.minutesInTime(time),
       secs = App.secondsInTime(time);
 
-  if (days > 0) {
-    timeString += "about ";
-    timeString += days;
-    timeString += " day";
-    timeString += ((days == 1) ? "" : "s"); // Pluralise;
-  } else if (hrs > 0) {
-    timeString += "about ";
-    timeString += hrs;
-    timeString += " hour";
-    timeString += ((hrs == 1) ? "" : "s"); // Pluralise;
-  } else if (mins > 0) {
-    timeString += "about ";
-    timeString += mins + " minute"
-    timeString += ((mins == 1) ? "" : "s"); // Pluralise;
+  if (isVerbose) {
+    timeString += (days > 0) ? days + " days, " + App.dayHoursInTime(time) : hrs;
+    timeString += ":";
+    timeString += App.hourMinsInTime(time) + ":";
+    timeString += App.hourSecsInTime(time);
   } else {
-    timeString += secs;
-    timeString += " second";
-    timeString += ((secs == 1) ? "" : "s"); // Pluralise
+    if (days > 0) {
+      timeString += "about ";
+      timeString += days;
+      timeString += " day";
+      timeString += ((days == 1) ? "" : "s"); // Pluralise;
+    } else if (hrs > 0) {
+      timeString += "about ";
+      timeString += hrs;
+      timeString += " hour";
+      timeString += ((hrs == 1) ? "" : "s"); // Pluralise;
+    } else if (mins > 0) {
+      timeString += "about ";
+      timeString += mins + " minute"
+      timeString += ((mins == 1) ? "" : "s"); // Pluralise;
+    } else {
+      timeString += secs;
+      timeString += " second";
+      timeString += ((secs == 1) ? "" : "s"); // Pluralise
+    }
   }
+
   return timeString;
 };
 
@@ -483,9 +494,24 @@ App.daysInTime = function(time) {
   return Math.floor(time / 1000 / 60 / 60 / 24);
 };
 
+// Get number of hours in dayly format, of time in milliseconds
+App.dayHoursInTime = function(time) {
+  return Math.floor(time / 1000 / 60 / 60) % 24;
+};
+
 // Get number of hours in time in milliseconds
 App.hoursInTime = function(time) {
   return Math.floor(time / 1000 / 60 / 60);
+};
+
+// Get number of minutes in hourly format, of time in milliseconds
+App.hourMinsInTime = function(time) {
+  return Math.floor(time / 1000 / 60) % 60;
+};
+
+// Get number of seconds in hourly format, of time in milliseconds
+App.hourSecsInTime = function(time) {
+  return Math.floor(time / 1000) % 60;
 };
 
 // Get number of minutes in time in milliseconds
