@@ -521,7 +521,7 @@ var CountdownCoordinator = function(config, debug) {
       var nextCountdownRange = _countdownRangeForTime(timeToGo);
 
       if (debug) {
-        console.log(elemId + ": time till next countdown (" + timeToGo + "): " + timeToStringDebug(nextCountdownRange.interval) + " for " + JSON.stringify(nextCountdownRange));
+        console.log(elemId + ": time till next countdown (" + timeToGo + "): " + _timeToStringDebug(nextCountdownRange.interval) + " for " + JSON.stringify(nextCountdownRange));
       }
 
       _countdownTimeoutIds[elemId] = _.delay(_executeCountdown, nextCountdownRange.interval, elemId, nextCountdownRange.interval, nextCountdownRange);
@@ -540,6 +540,7 @@ var CountdownCoordinator = function(config, debug) {
     return $(".status-list > li").length;
   };
 
+  function _timeToStringDebug(time) {
     return App.timeToString(time, true) + " (" + time + ")";
   };
 
@@ -565,7 +566,7 @@ var CountdownCoordinator = function(config, debug) {
 
       _updateTimeTillPost(elemId, timeToGo);
       if (debug) {
-        console.log(elemId + ": " + timeToStringDebug(timeToGo) + ", time till countdown: " + timeToStringDebug(timeBeforeCountdown));
+        console.log(elemId + ": " + _timeToStringDebug(timeToGo) + ", time till countdown: " + _timeToStringDebug(timeBeforeCountdown));
       }
       _countdownTimeoutIds[elemId] = _.delay(_executeCountdown, timeBeforeCountdown, elemId, timeBeforeCountdown, countdownRange);
     });
