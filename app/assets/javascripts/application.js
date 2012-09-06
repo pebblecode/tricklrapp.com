@@ -129,12 +129,19 @@ $(document).ready(function() {
   $('#queued_statuses').sortable({handle: '.reorder-statuses', update: function() {
     $.post('/statuses/sort', '_method=put&authenticity_token='+ $('meta[name=csrf-token]').attr('content')+'&'+$(this).sortable('serialize'),
     function(data){
-      $.each(data, function(index, status) {
+      var statuses = JSON.parse(data.statuses),
+          serverTime = data.time;
+
+      $.each(statuses, function(index, status) {
         cssIndex = index+1
         timeString = jQuery.timeago(status.scheduled_at).replace(/about/,"").replace(/from now/, "");
+        $("#status_" + status.id).attr("data-scheduled-at", status.scheduled_at);
         $('#queued_statuses li:nth-child('+cssIndex +') div.meta em.ttp').text("posting in about " + timeString).effect("highlight", {}, 1500);
       });
 
+
+      App.countdownCoord.setServerTime(serverTime);
+      App.countdownCoord.reset();
     });
     }
   });
@@ -550,7 +557,7 @@ var CountdownCoordinator = function(config, debug) {
   this.init = function() {
     var thisCC = this;
 
-    var timeNow = $("body").attr("data-time-now");
+    var timeNow = this.getServerTime();
     var timeNowDate = new Date(timeNow);
     $(".status-list > li").each(function(index, elem) {
       var elemId = $(elem).attr("id"),
@@ -570,6 +577,16 @@ var CountdownCoordinator = function(config, debug) {
       }
       _countdownTimeoutIds[elemId] = _.delay(_executeCountdown, timeBeforeCountdown, elemId, timeBeforeCountdown, countdownRange);
     });
+  };
+
+  // Get the server time on the page
+  this.getServerTime = function() {
+    return $("body").attr("data-time-now");
+  };
+
+  // Store the server time on the page
+  this.setServerTime = function(time) {
+    return $("body").attr("data-time-now", time);
   };
 
   // Reset timeouts
