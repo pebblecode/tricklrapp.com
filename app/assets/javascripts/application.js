@@ -571,4 +571,13 @@ var CountdownCoordinator = function(config, debug) {
       _countdownTimeoutIds[elemId] = _.delay(_executeCountdown, timeBeforeCountdown, elemId, timeBeforeCountdown, countdownRange);
     });
   };
+
+  // Reset timeouts
+  this.reset = function() {
+    _.each(_countdownTimeoutIds, function(cid) {
+      clearTimeout(cid);
+    });
+
+    this.init();
+  };
 };
