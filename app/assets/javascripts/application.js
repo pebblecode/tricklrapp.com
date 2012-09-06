@@ -11,46 +11,46 @@
 */
 
 var Config = {
-  countdownRangeIntervals: [
+  countdownIntervals: [
     // 0-60sec -> 1s interval
     {
-      max: 60 * 1000,
+      maxRange: 60 * 1000,
       interval: 1000
     },
 
     // 1min-5min -> 1min interval
     {
-      max: 5 * 60 * 1000,
+      maxRange: 5 * 60 * 1000,
       interval: 60 * 1000
     },
 
     // 5min-10min -> 5min interval
     {
-      max: 10 * 60 * 1000,
+      maxRange: 10 * 60 * 1000,
       interval: 5 * 60 * 1000
     },
 
     // 10min-30min -> 10min interval
     {
-      max: 30 * 60 * 1000,
+      maxRange: 30 * 60 * 1000,
       interval: 10 * 60 * 1000
     },
 
     // 30min-1hr -> 30min interval
     {
-      max: 60 * 60 * 1000,
+      maxRange: 60 * 60 * 1000,
       interval: 30 * 60 * 1000
     },
 
     // 1hr-1day -> 1hr interval
     {
-      max: 24 * 60 * 60 * 1000,
+      maxRange: 24 * 60 * 60 * 1000,
       interval: 60 * 60 * 1000
     },
 
     // 1day-forever -> 1day interval
     {
-      max: Number.MAX_VALUE,
+      maxRange: Number.MAX_VALUE,
       interval: 24 * 60 * 60 * 1000
     },
   ]
@@ -403,7 +403,7 @@ $(document).ready(function() {
   };
 
   // Set up countdowns
-  App.countdownCoord = new CountdownCoordinator(Config.countdownRangeIntervals, true);
+  App.countdownCoord = new CountdownCoordinator(Config.countdownIntervals, true);
   App.countdownCoord.init();
 });
 
@@ -482,7 +482,7 @@ App.secsInTime = function(time) {
   return Math.floor(time / 1000);
 }
 
-var CountdownCoordinator = function(config, debug) {
+var CountdownCoordinator = function(countdownIntervals, debug) {
   var _countdowns = {},
       _countdownTimeoutIds = {},
       _timeTillPostTemplate = _.template("posting in <%= App.timeToString(time) %>");
@@ -496,25 +496,25 @@ var CountdownCoordinator = function(config, debug) {
     }));
   };
 
-  // Find the range minimum ie, the range max of the previous countdown range
-  // Return first index max range can't be found
-  function _countdownRangeMin(countdownRange) {
-    var countdownRangeIndex = _.reduce(Config.countdownRangeIntervals, function(memo, cdRange, index) {
-      return (cdRange.max === countdownRange.max) ? index : memo;
+  // Find the interval min range ie, the max range of the previous countdown interval
+  // Return first index if max range can't be found
+  function _countdownIntervalMinRange(countdownRange) {
+    var cdIntervalIndex = _.reduce(countdownIntervals, function(memo, cdInterval, index) {
+      return (cdInterval.maxRange === countdownRange.maxRange) ? index : memo;
     }, 0);
 
     // Get max of previous index
-    return (countdownRangeIndex === 0) ?
-      _.first(Config.countdownRangeIntervals).max :
-      Config.countdownRangeIntervals[countdownRangeIndex - 1].max;
+    return (cdIntervalIndex === 0) ?
+      _.first(countdownIntervals).maxRange :
+      countdownIntervals[cdIntervalIndex - 1].maxRange;
   };
 
-  // Find the first countdown range for the time
-  function _countdownRangeForTime(time) {
-    var rangeMatch = _.find(Config.countdownRangeIntervals, function(range) {
-      return time <= range.max;
+  // Find the first countdown interval for the time
+  function _countdownIntervalForTime(time) {
+    var intervalMatch = _.find(countdownIntervals, function(range) {
+      return time <= range.maxRange;
     });
-    return rangeMatch ? rangeMatch : undefined;
+    return intervalMatch ? intervalMatch : undefined;
   };
 
   function _executeCountdown(elemId, countedDown, countdownRange) {
@@ -525,13 +525,13 @@ var CountdownCoordinator = function(config, debug) {
 
     // Countdown if there is more time, otherwise remove element
     if (timeToGo > 0) {
-      var nextCountdownRange = _countdownRangeForTime(timeToGo);
+      var nextCountdownInterval = _countdownIntervalForTime(timeToGo);
 
       if (debug) {
-        console.log(elemId + ": time till next countdown (" + timeToGo + "): " + _timeToStringDebug(nextCountdownRange.interval) + " for " + JSON.stringify(nextCountdownRange));
+        console.log(elemId + ": time till next countdown (" + timeToGo + "): " + _timeToStringDebug(nextCountdownInterval.interval) + " for " + JSON.stringify(nextCountdownInterval));
       }
 
-      _countdownTimeoutIds[elemId] = _.delay(_executeCountdown, nextCountdownRange.interval, elemId, nextCountdownRange.interval, nextCountdownRange);
+      _countdownTimeoutIds[elemId] = _.delay(_executeCountdown, nextCountdownInterval.interval, elemId, nextCountdownInterval.interval, nextCountdownInterval);
     } else {
       $("#" + elemId).fadeOut("slow", function() {
         $(this).remove();
@@ -567,15 +567,15 @@ var CountdownCoordinator = function(config, debug) {
 
       _countdowns[elemId] = timeToGo;
       // Set time before countdown
-      var countdownRange = _countdownRangeForTime(timeToGo),
-          timeTillMinRange = timeToGo - _countdownRangeMin(countdownRange),
-          timeBeforeCountdown = timeTillMinRange % countdownRange.interval; // remove intervals that can fit in time till min range
+      var countdownInterval = _countdownIntervalForTime(timeToGo),
+          timeTillMinRange = timeToGo - _countdownIntervalMinRange(countdownInterval),
+          timeBeforeCountdown = timeTillMinRange % countdownInterval.interval; // remove intervals that can fit in time till min range
 
       _updateTimeTillPost(elemId, timeToGo);
       if (debug) {
         console.log(elemId + ": " + _timeToStringDebug(timeToGo) + ", time till countdown: " + _timeToStringDebug(timeBeforeCountdown));
       }
-      _countdownTimeoutIds[elemId] = _.delay(_executeCountdown, timeBeforeCountdown, elemId, timeBeforeCountdown, countdownRange);
+      _countdownTimeoutIds[elemId] = _.delay(_executeCountdown, timeBeforeCountdown, elemId, timeBeforeCountdown, countdownInterval);
     });
   };
 
