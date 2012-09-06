@@ -396,7 +396,7 @@ $(document).ready(function() {
   };
 
   // Set up countdowns
-  var countdownCoord = new CountdownCoordinator(Config.countdownRangeIntervals);
+  var countdownCoord = new CountdownCoordinator(Config.countdownRangeIntervals, true);
   countdownCoord.init();
 });
 
@@ -479,7 +479,7 @@ App.secsInTime = function(time) {
   return Math.floor(time / 1000);
 }
 
-var CountdownCoordinator = function(config) {
+var CountdownCoordinator = function(config, debug) {
   var _countdowns = {},
       _countdownTimeoutIds = {},
       _timeTillPostTemplate = _.template("posting in <%= App.timeToString(time) %>");
@@ -524,7 +524,9 @@ var CountdownCoordinator = function(config) {
     if (timeToGo > 0) {
       var nextCountdownRange = _countdownRangeForTime(timeToGo);
 
-      console.log(elemId + ": time till next countdown (" + timeToGo + "): " + timeToStringDebug(nextCountdownRange.interval) + " for " + JSON.stringify(nextCountdownRange));
+      if (debug) {
+        console.log(elemId + ": time till next countdown (" + timeToGo + "): " + timeToStringDebug(nextCountdownRange.interval) + " for " + JSON.stringify(nextCountdownRange));
+      }
 
       _countdownTimeoutIds[elemId] = _.delay(_executeCountdown, nextCountdownRange.interval, elemId, nextCountdownRange.interval, nextCountdownRange);
     } else {
@@ -563,7 +565,9 @@ var CountdownCoordinator = function(config) {
           timeBeforeCountdown = timeTillMinRange % countdownRange.interval; // remove intervals that can fit in time till min range
 
       _updateTimeTillPost(elemId, timeToGo);
-      console.log(elemId + ": " + timeToStringDebug(timeToGo) + ", time till countdown: " + timeToStringDebug(timeBeforeCountdown));
+      if (debug) {
+        console.log(elemId + ": " + timeToStringDebug(timeToGo) + ", time till countdown: " + timeToStringDebug(timeBeforeCountdown));
+      }
       _countdownTimeoutIds[elemId] = _.delay(_executeCountdown, timeBeforeCountdown, elemId, timeBeforeCountdown, countdownRange);
     });
   };
