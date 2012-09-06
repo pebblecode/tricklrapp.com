@@ -395,57 +395,13 @@ $(document).ready(function() {
     $('a.add-chrome').hide();
   };
 
-  // Time from the server
-  App.statusTimeToGo = {};
-  var timeNow = $("body").attr("data-time-now");
-  var timeNowDate = new Date(timeNow);
-  $(".status-list > li").each(function(index, elem) {
-    var elemId = $(elem).attr("id"),
-        scheduledAt = $(elem).attr("data-scheduled-at"),
-        scheduledAtDate = new Date(scheduledAt),
-        timeToGo = (scheduledAtDate.getTime() - timeNowDate.getTime()); // in milliseconds
-
-    App.statusTimeToGo[elemId] = timeToGo;
-    // Set time before countdown
-    var countdownRange = App.countdownRangeForTime(timeToGo),
-        timeTillMinRange = timeToGo - App.countdownRangeMin(countdownRange),
-        timeBeforeCountdown = timeTillMinRange % countdownRange.interval; // remove intervals that can fit in time till min range
-
-    App.updateTimeTillPost(elemId, timeToGo);
-    // console.log(elemId + ": " + App.timeToStringDebug(timeToGo) + ", time till countdown: " + App.timeToStringDebug(timeBeforeCountdown));
-    _.delay(App.executeCountdown, timeBeforeCountdown, elemId, timeBeforeCountdown, countdownRange);
-  });
+  // Set up countdowns
+  var countdownCoord = new CountdownCoordinator(Config.countdownRangeIntervals);
+  countdownCoord.init();
 });
-
-App.timeTillPostTemplate = _.template("posting in <%= App.timeToString(time) %>");
 
 App.tweetsInQueue = function() {
   return $(".status-list > li").length;
-};
-
-// Find the range minimum ie, the range max of the previous countdown range
-// Return first index max range can't be found
-App.countdownRangeMin = function(countdownRange) {
-  var countdownRangeIndex = _.reduce(Config.countdownRangeIntervals, function(memo, cdRange, index) {
-    return (cdRange.max === countdownRange.max) ? index : memo;
-  }, 0);
-
-  // Get max of previous index
-  return (countdownRangeIndex === 0) ?
-    _.first(Config.countdownRangeIntervals).max :
-    Config.countdownRangeIntervals[countdownRangeIndex - 1].max;
-}
-
-// Find the first countdown range for the time
-App.countdownRangeForTime = function(time) {
-  var rangeMatch = _.find(Config.countdownRangeIntervals, function(range) {
-    return time <= range.max;
-  });
-  return rangeMatch ? rangeMatch : undefined;
-};
-
-App.timeToStringDebug = function(time) {
-  return App.timeToString(time, true) + " (" + time + ")";
 };
 
 // Parameters:
@@ -523,32 +479,91 @@ App.secsInTime = function(time) {
   return Math.floor(time / 1000);
 }
 
-App.updateTimeTillPost = function(elemId, value) {
-  $("#" + elemId).find(".ttp").html(App.timeTillPostTemplate({
-    time: value
-  }));
-};
+var CountdownCoordinator = function(config) {
+  var _statusTimeToGo = {},
+      _timeTillPostTemplate = _.template("posting in <%= App.timeToString(time) %>");
 
-App.executeCountdown = function(elemId, countedDown, countdownRange) {
-  var timeToGo = App.statusTimeToGo[elemId] - countedDown;
-  // Update time
-  App.statusTimeToGo[elemId] = timeToGo;
-  App.updateTimeTillPost(elemId, timeToGo);
+  // ------------------------------------------------------
+  // Private methods
+  // ------------------------------------------------------
+  function _updateTimeTillPost(elemId, value) {
+    $("#" + elemId).find(".ttp").html(_timeTillPostTemplate({
+      time: value
+    }));
+  };
 
-  // Countdown if there is more time, otherwise remove element
-  if (timeToGo > 0) {
-    var nextCountdownRange = App.countdownRangeForTime(timeToGo);
+  // Find the range minimum ie, the range max of the previous countdown range
+  // Return first index max range can't be found
+  function _countdownRangeMin(countdownRange) {
+    var countdownRangeIndex = _.reduce(Config.countdownRangeIntervals, function(memo, cdRange, index) {
+      return (cdRange.max === countdownRange.max) ? index : memo;
+    }, 0);
 
-    // console.log(elemId + ": time till next countdown (" + timeToGo + "): " + App.timeToStringDebug(nextCountdownRange.interval) + " for " + JSON.stringify(nextCountdownRange));
+    // Get max of previous index
+    return (countdownRangeIndex === 0) ?
+      _.first(Config.countdownRangeIntervals).max :
+      Config.countdownRangeIntervals[countdownRangeIndex - 1].max;
+  };
 
-    _.delay(App.executeCountdown, nextCountdownRange.interval, elemId, nextCountdownRange.interval, nextCountdownRange);
-  } else {
-    $("#" + elemId).fadeOut("slow", function() {
-      $(this).remove();
-
-      if (App.tweetsInQueue() <= 0) {
-        $(".container-tweets").remove();
-      }
+  // Find the first countdown range for the time
+  function _countdownRangeForTime(time) {
+    var rangeMatch = _.find(Config.countdownRangeIntervals, function(range) {
+      return time <= range.max;
     });
+    return rangeMatch ? rangeMatch : undefined;
+  };
+
+  function _executeCountdown(elemId, countedDown, countdownRange) {
+    var timeToGo = _statusTimeToGo[elemId] - countedDown;
+    // Update time
+    _statusTimeToGo[elemId] = timeToGo;
+    _updateTimeTillPost(elemId, timeToGo);
+
+    // Countdown if there is more time, otherwise remove element
+    if (timeToGo > 0) {
+      var nextCountdownRange = _countdownRangeForTime(timeToGo);
+
+      console.log(elemId + ": time till next countdown (" + timeToGo + "): " + timeToStringDebug(nextCountdownRange.interval) + " for " + JSON.stringify(nextCountdownRange));
+
+      _.delay(_executeCountdown, nextCountdownRange.interval, elemId, nextCountdownRange.interval, nextCountdownRange);
+    } else {
+      $("#" + elemId).fadeOut("slow", function() {
+        $(this).remove();
+
+        if (App.tweetsInQueue() <= 0) {
+          $(".container-tweets").remove();
+        }
+      });
+    }
+  };
+
+  function timeToStringDebug(time) {
+    return App.timeToString(time, true) + " (" + time + ")";
   }
+
+  // ------------------------------------------------------
+  // Public methods
+  // ------------------------------------------------------
+  this.init = function() {
+    var thisCC = this;
+
+    var timeNow = $("body").attr("data-time-now");
+    var timeNowDate = new Date(timeNow);
+    $(".status-list > li").each(function(index, elem) {
+      var elemId = $(elem).attr("id"),
+          scheduledAt = $(elem).attr("data-scheduled-at"),
+          scheduledAtDate = new Date(scheduledAt),
+          timeToGo = (scheduledAtDate.getTime() - timeNowDate.getTime()); // in milliseconds
+
+      _statusTimeToGo[elemId] = timeToGo;
+      // Set time before countdown
+      var countdownRange = _countdownRangeForTime(timeToGo),
+          timeTillMinRange = timeToGo - _countdownRangeMin(countdownRange),
+          timeBeforeCountdown = timeTillMinRange % countdownRange.interval; // remove intervals that can fit in time till min range
+
+      _updateTimeTillPost(elemId, timeToGo);
+      console.log(elemId + ": " + timeToStringDebug(timeToGo) + ", time till countdown: " + timeToStringDebug(timeBeforeCountdown));
+      _.delay(_executeCountdown, timeBeforeCountdown, elemId, timeBeforeCountdown, countdownRange);
+    });
+  };
 };
