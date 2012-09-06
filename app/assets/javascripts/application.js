@@ -412,7 +412,7 @@ $(document).ready(function() {
         timeBeforeCountdown = timeTillMinRange % countdownRange.interval; // remove intervals that can fit in time till min range
 
     App.updateTimeTillPost(elemId, timeToGo);
-    console.log(elemId + ": " + App.timeToStringDebug(timeToGo) + ", time till countdown: " + App.timeToStringDebug(timeBeforeCountdown));
+    // console.log(elemId + ": " + App.timeToStringDebug(timeToGo) + ", time till countdown: " + App.timeToStringDebug(timeBeforeCountdown));
     _.delay(App.executeCountdown, timeBeforeCountdown, elemId, timeBeforeCountdown, countdownRange);
   });
 });
@@ -429,10 +429,6 @@ App.countdownRangeMin = function(countdownRange) {
   var countdownRangeIndex = _.reduce(Config.countdownRangeIntervals, function(memo, cdRange, index) {
     return (cdRange.max === countdownRange.max) ? index : memo;
   }, 0);
-  console.log(JSON.stringify(countdownRange));
-  if (countdownRangeIndex !== 0) {
-    console.log(JSON.stringify(Config.countdownRangeIntervals[countdownRangeIndex - 1]));
-  }
 
   // Get max of previous index
   return (countdownRangeIndex === 0) ?
@@ -543,7 +539,7 @@ App.executeCountdown = function(elemId, countedDown, countdownRange) {
   if (timeToGo > 0) {
     var nextCountdownRange = App.countdownRangeForTime(timeToGo);
 
-    console.log(elemId + ": time till next countdown (" + timeToGo + "): " + App.timeToStringDebug(nextCountdownRange.interval) + " for " + JSON.stringify(nextCountdownRange));
+    // console.log(elemId + ": time till next countdown (" + timeToGo + "): " + App.timeToStringDebug(nextCountdownRange.interval) + " for " + JSON.stringify(nextCountdownRange));
 
     _.delay(App.executeCountdown, nextCountdownRange.interval, elemId, nextCountdownRange.interval, nextCountdownRange);
   } else {
