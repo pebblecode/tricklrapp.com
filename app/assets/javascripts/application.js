@@ -14,56 +14,48 @@ var Config = {
   countdownRangeIntervals: [
     // 0-30sec -> 1s interval
     {
-      min: 0,
       max: 30 * 1000,
       interval: 1000
     },
 
     // 30-60sec -> 30s interval
     {
-      min: 30 * 1000,
       max: 60 * 1000,
       interval: 30 * 1000
     },
 
     // 1min-5min -> 1min interval
     {
-      min: 60 * 1000,
       max: 5 * 60 * 1000,
       interval: 60 * 1000
     },
 
     // 5min-10min -> 5min interval
     {
-      min: 5 * 60 * 1000,
       max: 10 * 60 * 1000,
       interval: 5 * 60 * 1000
     },
 
     // 10min-30min -> 10min interval
     {
-      min: 10 * 60 * 1000,
       max: 30 * 60 * 1000,
       interval: 10 * 60 * 1000
     },
 
     // 30min-1hr -> 30min interval
     {
-      min: 30 * 60 * 1000,
       max: 60 * 60 * 1000,
       interval: 30 * 60 * 1000
     },
 
     // 1hr-1day -> 1hr interval
     {
-      min: 60 * 60 * 1000,
       max: 24 * 60 * 60 * 1000,
       interval: 60 * 60 * 1000
     },
 
     // 1day-forever -> 1day interval
     {
-      min: 24 * 60 * 60 * 1000,
       max: Number.MAX_VALUE,
       interval: 24 * 60 * 60 * 1000
     },
@@ -422,7 +414,7 @@ $(document).ready(function() {
     App.statusTimeToGo[elemId] = timeToGo;
     // Set time before countdown
     var countdownRange = App.countdownRangeForTime(timeToGo),
-        timeTillMinRange = timeToGo - countdownRange.min,
+        timeTillMinRange = timeToGo - App.countdownRangeMin(countdownRange),
         timeBeforeCountdown = timeTillMinRange % countdownRange.interval; // remove intervals that can fit in time till min range
 
     App.updateTimeTillPost(elemId, timeToGo);
@@ -436,6 +428,23 @@ App.timeTillPostTemplate = _.template("posting in <%= App.timeToString(time) %>"
 App.tweetsInQueue = function() {
   return $(".status-list > li").length;
 };
+
+// Find the range minimum ie, the range max of the previous countdown range
+// Return first index max range can't be found
+App.countdownRangeMin = function(countdownRange) {
+  var countdownRangeIndex = _.reduce(Config.countdownRangeIntervals, function(memo, cdRange, index) {
+    return (cdRange.max === countdownRange.max) ? index : memo;
+  }, 0);
+  console.log(JSON.stringify(countdownRange));
+  if (countdownRangeIndex !== 0) {
+    console.log(JSON.stringify(Config.countdownRangeIntervals[countdownRangeIndex - 1]));
+  }
+
+  // Get max of previous index
+  return (countdownRangeIndex === 0) ?
+    _.first(Config.countdownRangeIntervals).max :
+    Config.countdownRangeIntervals[countdownRangeIndex - 1].max;
+}
 
 // Find the first countdown range for the time
 App.countdownRangeForTime = function(time) {
