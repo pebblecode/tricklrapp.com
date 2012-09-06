@@ -12,16 +12,10 @@
 
 var Config = {
   countdownRangeIntervals: [
-    // 0-30sec -> 1s interval
-    {
-      max: 30 * 1000,
-      interval: 1000
-    },
-
-    // 30-60sec -> 30s interval
+    // 0-60sec -> 1s interval
     {
       max: 60 * 1000,
-      interval: 30 * 1000
+      interval: 1000
     },
 
     // 1min-5min -> 1min interval
