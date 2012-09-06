@@ -457,13 +457,13 @@ App.timeToString = function(time, verbose) {
       days = App.daysInTime(time),
       hrs = App.hoursInTime(time),
       mins = App.minutesInTime(time),
-      secs = App.secondsInTime(time);
+      secs = App.minSecsInTime(time);
 
   if (isVerbose) {
     timeString += (days > 0) ? days + " days, " + App.dayHoursInTime(time) : hrs;
     timeString += ":";
     timeString += App.hourMinsInTime(time) + ":";
-    timeString += App.hourSecsInTime(time);
+    timeString += App.minSecsInTime(time);
   } else {
     if (days > 0) {
       timeString += "about ";
@@ -491,41 +491,38 @@ App.timeToString = function(time, verbose) {
 
 // Get number of days in time in milliseconds
 App.daysInTime = function(time) {
-  return Math.floor(time / 1000 / 60 / 60 / 24);
+  return Math.floor(App.hoursInTime(time) / 24);
 };
 
 // Get number of hours in dayly format, of time in milliseconds
 App.dayHoursInTime = function(time) {
-  return Math.floor(time / 1000 / 60 / 60) % 24;
+  return App.hoursInTime(time) % 24;
 };
 
-// Get number of hours in time in milliseconds
+// Get number of hours, in time in milliseconds
 App.hoursInTime = function(time) {
-  return Math.floor(time / 1000 / 60 / 60);
+  return Math.floor(App.minutesInTime(time) / 60);
 };
 
 // Get number of minutes in hourly format, of time in milliseconds
 App.hourMinsInTime = function(time) {
-  return Math.floor(time / 1000 / 60) % 60;
+  return App.minutesInTime(time) % 60;
 };
 
 // Get number of seconds in hourly format, of time in milliseconds
-App.hourSecsInTime = function(time) {
-  return Math.floor(time / 1000) % 60;
+App.minSecsInTime = function(time) {
+  return App.secsInTime(time) % 60;
 };
 
-// Get number of minutes in time in milliseconds
+// Get number of minutes, in time in milliseconds
 App.minutesInTime = function(time) {
-  return Math.floor(time / 1000 / 60);
+  return Math.floor(App.secsInTime(time) / 60);
 };
 
-// Get the (zero padded) seconds value of time in milliseconds
-App.secondsInTime = function(time) {
-  var mins = App.minutesInTime(time),
-      minsInMilliseconds = (mins * 1000 * 60);
-      secs = Math.floor((time - minsInMilliseconds) / 1000);
-  return secs;
-};
+// Get number of seconds, in time in milliseconds
+App.secsInTime = function(time) {
+  return Math.floor(time / 1000);
+}
 
 App.updateTimeTillPost = function(elemId, value) {
   $("#" + elemId).find(".ttp").html(App.timeTillPostTemplate({
