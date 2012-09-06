@@ -481,6 +481,7 @@ App.secsInTime = function(time) {
 
 var CountdownCoordinator = function(config) {
   var _countdowns = {},
+      _countdownTimeoutIds = {},
       _timeTillPostTemplate = _.template("posting in <%= App.timeToString(time) %>");
 
   // ------------------------------------------------------
@@ -525,7 +526,7 @@ var CountdownCoordinator = function(config) {
 
       console.log(elemId + ": time till next countdown (" + timeToGo + "): " + timeToStringDebug(nextCountdownRange.interval) + " for " + JSON.stringify(nextCountdownRange));
 
-      _.delay(_executeCountdown, nextCountdownRange.interval, elemId, nextCountdownRange.interval, nextCountdownRange);
+      _countdownTimeoutIds[elemId] = _.delay(_executeCountdown, nextCountdownRange.interval, elemId, nextCountdownRange.interval, nextCountdownRange);
     } else {
       $("#" + elemId).fadeOut("slow", function() {
         $(this).remove();
@@ -563,7 +564,7 @@ var CountdownCoordinator = function(config) {
 
       _updateTimeTillPost(elemId, timeToGo);
       console.log(elemId + ": " + timeToStringDebug(timeToGo) + ", time till countdown: " + timeToStringDebug(timeBeforeCountdown));
-      _.delay(_executeCountdown, timeBeforeCountdown, elemId, timeBeforeCountdown, countdownRange);
+      _countdownTimeoutIds[elemId] = _.delay(_executeCountdown, timeBeforeCountdown, elemId, timeBeforeCountdown, countdownRange);
     });
   };
 };
