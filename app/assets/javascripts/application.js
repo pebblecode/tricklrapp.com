@@ -400,10 +400,6 @@ $(document).ready(function() {
   countdownCoord.init();
 });
 
-App.tweetsInQueue = function() {
-  return $(".status-list > li").length;
-};
-
 // Parameters:
 //    verbose: if true, displays the complete time. False by default
 App.timeToString = function(time, verbose) {
@@ -533,14 +529,17 @@ var CountdownCoordinator = function(config, debug) {
       $("#" + elemId).fadeOut("slow", function() {
         $(this).remove();
 
-        if (App.tweetsInQueue() <= 0) {
+        if (_tweetsInQueue() <= 0) {
           $(".container-tweets").remove();
         }
       });
     }
   };
 
-  function timeToStringDebug(time) {
+  function _tweetsInQueue() {
+    return $(".status-list > li").length;
+  };
+
     return App.timeToString(time, true) + " (" + time + ")";
   };
 
