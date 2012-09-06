@@ -1,8 +1,9 @@
 # This will pre-compile the Rails 3 Asset Pipeline
 # load 'deploy/assets'
 server "apu.pebbleit.com", :app, :web, :db, :primary => true
-set :deploy_to, "/var/www/vhosts/tricklrapp.com/httpdocs" 
+set :deploy_to, "/srv/http/pebblecode.net/subdomains/tricklrapp"
 set :branch, "master"
+set :user, "tricklr"
 # set :rvm_ruby_string, '1.9.2@tricklr'
 
 namespace :deploy do
