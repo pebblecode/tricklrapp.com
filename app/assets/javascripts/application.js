@@ -539,7 +539,7 @@ var CountdownCoordinator = function(config) {
 
   function timeToStringDebug(time) {
     return App.timeToString(time, true) + " (" + time + ")";
-  }
+  };
 
   // ------------------------------------------------------
   // Public methods
