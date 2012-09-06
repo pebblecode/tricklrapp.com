@@ -480,7 +480,7 @@ App.secsInTime = function(time) {
 }
 
 var CountdownCoordinator = function(config) {
-  var _statusTimeToGo = {},
+  var _countdowns = {},
       _timeTillPostTemplate = _.template("posting in <%= App.timeToString(time) %>");
 
   // ------------------------------------------------------
@@ -514,9 +514,9 @@ var CountdownCoordinator = function(config) {
   };
 
   function _executeCountdown(elemId, countedDown, countdownRange) {
-    var timeToGo = _statusTimeToGo[elemId] - countedDown;
+    var timeToGo = _countdowns[elemId] - countedDown;
     // Update time
-    _statusTimeToGo[elemId] = timeToGo;
+    _countdowns[elemId] = timeToGo;
     _updateTimeTillPost(elemId, timeToGo);
 
     // Countdown if there is more time, otherwise remove element
@@ -555,7 +555,7 @@ var CountdownCoordinator = function(config) {
           scheduledAtDate = new Date(scheduledAt),
           timeToGo = (scheduledAtDate.getTime() - timeNowDate.getTime()); // in milliseconds
 
-      _statusTimeToGo[elemId] = timeToGo;
+      _countdowns[elemId] = timeToGo;
       // Set time before countdown
       var countdownRange = _countdownRangeForTime(timeToGo),
           timeTillMinRange = timeToGo - _countdownRangeMin(countdownRange),
