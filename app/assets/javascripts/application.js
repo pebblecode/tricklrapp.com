@@ -396,8 +396,8 @@ $(document).ready(function() {
   };
 
   // Set up countdowns
-  var countdownCoord = new CountdownCoordinator(Config.countdownRangeIntervals, true);
-  countdownCoord.init();
+  App.countdownCoord = new CountdownCoordinator(Config.countdownRangeIntervals, true);
+  App.countdownCoord.init();
 });
 
 // Parameters:
