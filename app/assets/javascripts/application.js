@@ -133,12 +133,11 @@ $(document).ready(function() {
           serverTime = data.time;
 
       $.each(statuses, function(index, status) {
-        cssIndex = index+1
-        timeString = jQuery.timeago(status.scheduled_at).replace(/about/,"").replace(/from now/, "");
+        // cssIndex = index + 1;
+        // timeString = jQuery.timeago(status.scheduled_at).replace(/about/,"").replace(/from now/, "");
         $("#status_" + status.id).attr("data-scheduled-at", status.scheduled_at);
-        $('#queued_statuses li:nth-child('+cssIndex +') div.meta em.ttp').text("posting in about " + timeString).effect("highlight", {}, 1500);
+        // $('#queued_statuses li:nth-child(' + cssIndex + ') div.meta em.ttp').text("posting in about " + timeString).effect("highlight", {}, 1500);
       });
-
 
       App.countdownCoord.setServerTime(serverTime);
       App.countdownCoord.reset();
@@ -485,15 +484,27 @@ App.secsInTime = function(time) {
 var CountdownCoordinator = function(countdownIntervals, debug) {
   var _countdowns = {},
       _countdownTimeoutIds = {},
-      _timeTillPostTemplate = _.template("posting in <%= App.timeToString(time) %>");
+      _timeTillPostTemplate = _.template("posting in <%= timeString %>");
 
   // ------------------------------------------------------
   // Private methods
   // ------------------------------------------------------
-  function _updateTimeTillPost(elemId, value) {
-    $("#" + elemId).find(".ttp").html(_timeTillPostTemplate({
-      time: value
+  function _updateTimeTillPost(elemId, time, highlight) {
+    var timeString = "";
+    if (App.secsInTime(time) < 60) { // For quick countdown
+      timeString = App.timeToString(time);
+    } else { // For time in words
+      var timeVal = $("#" + elemId).attr("data-scheduled-at");
+      timeString = jQuery.timeago(timeVal);
+    }
+
+    var elem = $("#" + elemId).find(".ttp").html(_timeTillPostTemplate({
+      timeString: timeString
     }));
+
+    if (highlight) {
+      $(elem).effect("highlight", {}, 1500);
+    }
   };
 
   // Find the interval min range ie, the max range of the previous countdown interval
@@ -571,7 +582,7 @@ var CountdownCoordinator = function(countdownIntervals, debug) {
           timeTillMinRange = timeToGo - _countdownIntervalMinRange(countdownInterval),
           timeBeforeCountdown = timeTillMinRange % countdownInterval.interval; // remove intervals that can fit in time till min range
 
-      _updateTimeTillPost(elemId, timeToGo);
+      _updateTimeTillPost(elemId, timeBeforeCountdown, true);
       if (debug) {
         console.log(elemId + ": " + _timeToStringDebug(timeToGo) + ", time till countdown: " + _timeToStringDebug(timeBeforeCountdown));
       }
