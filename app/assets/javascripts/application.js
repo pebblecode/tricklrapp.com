@@ -403,9 +403,18 @@ $(document).ready(function() {
   };
 
   // Set up countdowns
-  App.countdownCoord = new CountdownCoordinator(Config.countdownIntervals, true);
+  App.countdownCoord = new CountdownCoordinator(Config.countdownIntervals, App.getUrlVars()["debug"]);
   App.countdownCoord.init();
 });
+
+App.getUrlVars = function() {
+  var vars = {};
+  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+    vars[key] = value;
+  });
+  return vars;
+}
+
 
 // Parameters:
 //    verbose: if true, displays the complete time. False by default
@@ -526,7 +535,6 @@ var CountdownCoordinator = function(countdownIntervals, debug) {
     // Countdown if there is more time, otherwise remove element
     if (timeToGo > 0) {
       var nextCountdownInterval = _countdownIntervalForTime(timeToGo);
-
       if (debug) {
         console.log(elemId + ": time till next countdown (" + timeToGo + "): " + _timeToStringDebug(nextCountdownInterval.interval) + " for " + JSON.stringify(nextCountdownInterval));
       }
@@ -556,7 +564,6 @@ var CountdownCoordinator = function(countdownIntervals, debug) {
   // ------------------------------------------------------
   this.init = function() {
     var thisCC = this;
-
     var timeNow = this.getServerTime();
     var timeNowDate = new Date(timeNow);
     $(".status-list > li").each(function(index, elem) {
