@@ -76,7 +76,13 @@ To run tests manually:
   # In another terminal, run the tests
   bundle exec rspec . --drb
   bundle exec rspec ./spec/controllers/statuses_controller_spec.rb --drb     # to run individual tests
-  
+
+## Staging
+
+To edit the start/stop script:
+
+  nano /etc/init.d/tricklr
+
 ## Deploying to production
 
 Currently staging is also production.
