@@ -83,6 +83,10 @@ To edit the start/stop script:
 
   nano /etc/init.d/tricklr
 
+Usage:
+
+  /etc/init.d/tricklr <start|stop|restart|upgrade|force-stop|reopen-logs>
+
 ## Deploying to production
 
 Currently staging is also production.
