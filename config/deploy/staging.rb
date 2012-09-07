@@ -1,5 +1,5 @@
 # This will pre-compile the Rails 3 Asset Pipeline
-# load 'deploy/assets'
+load 'deploy/assets'
 server "apu.pebbleit.com", :app, :web, :db, :primary => true
 set :deploy_to, "/srv/http/pebblecode.net/subdomains/tricklrapp"
 set :branch, "master"
@@ -28,5 +28,5 @@ namespace :deploy do
   end
 end
 
-after "deploy:update_code", "deploy:link_config_files"
+after "deploy:update_code", "deploy:assets:precompile", "deploy:link_config_files"
 
