@@ -9,3 +9,4 @@ public/assets
 log
 vendor/bundle
 public/stylesheets
+.sass-cache
