@@ -4,22 +4,24 @@ server "apu.pebbleit.com", :app, :web, :db, :primary => true
 set :deploy_to, "/srv/http/pebblecode.net/subdomains/tricklrapp"
 set :branch, "master"
 set :user, "tricklr"
-# set :rvm_ruby_string, '1.9.2@tricklr'
+set :default_environment, {
+  'PATH' => "/home/tricklr/.rbenv/shims:/home/tricklr/.rbenv/bin:$PATH"
+}
 
 namespace :deploy do
   task :start do
-    run "/usr/sbin/monit -g tricklr start all"
-    run "/etc/init.d/tricklr start"
+    sudo "/usr/sbin/monit -g tricklr start all"
+    sudo "/etc/init.d/tricklr start"
   end
 
   task :stop do
-    run "/usr/sbin/monit -g tricklr stop all"
-    run "/etc/init.d/tricklr stop"
+    sudo "/usr/sbin/monit -g tricklr stop all"
+    sudo "/etc/init.d/tricklr stop"
   end
 
   task :restart do
-    run "/usr/sbin/monit -g tricklr restart all"
-    run "/etc/init.d/tricklr restart"
+    sudo "/usr/sbin/monit -g tricklr restart all"
+    sudo "/etc/init.d/tricklr restart"
   end
 
   task :link_config_files do
