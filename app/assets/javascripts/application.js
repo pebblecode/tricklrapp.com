@@ -541,13 +541,15 @@ var CountdownCoordinator = function(countdownIntervals, debug) {
 
       _countdownTimeoutIds[elemId] = _.delay(_executeCountdown, nextCountdownInterval.interval, elemId, nextCountdownInterval.interval, nextCountdownInterval);
     } else {
-      $("#" + elemId).fadeOut("slow", function() {
-        $(this).remove();
+      if (!debug) { // Don't remove tweet if debugging
+        $("#" + elemId).fadeOut("slow", function() {
+          $(this).remove();
 
-        if (_tweetsInQueue() <= 0) {
-          $(".container-tweets").remove();
-        }
-      });
+          if (_tweetsInQueue() <= 0) {
+            $(".container-tweets").remove();
+          }
+        });
+      }
     }
   };
 
