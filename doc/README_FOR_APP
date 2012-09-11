@@ -101,6 +101,10 @@ Monit script to start the processes on the server is in: `/etc/monit/conf.d/tric
 
 The monit script starts the scripts in `/home/tricklr/bin/`. Also copied in this project at `/config/deploy/monit/scripts`.
 
+#### Resque
+
+To check on the resque workers go to: `http://tricklrapp.pebblecode.net/resque` (user/pass in `/config/initializers/resque.rb`).
+
 ### Production
 
   bundle exec cap production deploy
@@ -111,3 +115,7 @@ To manually start up the monit workers, run the following on production (as tric
 
  cd /var/www/vhosts/tricklrapp.com/httpdocs/current; RAILS_ENV=production bundle exec nohup rake environment resque:scheduler& > log/resque_scheduler.log && echo $! > tmp/pids/resque_scheduler.pid
  cd /var/www/vhosts/tricklrapp.com/httpdocs/current; RAILS_ENV=production QUEUE=* VERBOSE=1 bundle exec nohup rake environment resque:work& > log/resque_worker.log && echo $! > tmp/pids/resque_worker.pid
+
+ #### Resque
+
+To check on the resque workers go to: `http://tricklrapp.com/resque` (user/pass in `/config/initializers/resque.rb`).
