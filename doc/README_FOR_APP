@@ -87,12 +87,20 @@ Usage:
 
   /etc/init.d/tricklr <start|stop|restart|upgrade|force-stop|reopen-logs>
 
-## Deploying to production
+## Deployment
 
-Currently staging is also production.
+### Staging
 
-  cap production deploy
-  
+Merge master to staging and ship it to staging server:
+
+  bundle exec rake shipit[staging]
+
+### Production
+
+  bundle exec cap production deploy
+
+[TODO] Fix up rake task
+
 To manually start up the monit workers, run the following on production (as tricklr user):
 
  cd /var/www/vhosts/tricklrapp.com/httpdocs/current; RAILS_ENV=production bundle exec nohup rake environment resque:scheduler& > log/resque_scheduler.log && echo $! > tmp/pids/resque_scheduler.pid
