@@ -1,6 +1,6 @@
 # Tricklr
 
-Tricklr is a simple to use web app for marketing teams and high volume tweeters. Tricklr helps you effectively manage your Twitter feed by trickling out tweets at regular intervals. 
+Tricklr is a simple to use web app for marketing teams and high volume tweeters. Tricklr helps you effectively manage your Twitter feed by trickling out tweets at regular intervals.
 
 ## Running the site
 
@@ -8,39 +8,39 @@ For initial installation (should only need to be done once)
 
   gem install bundle
   bundle install
-  
+
   # Set up the database
   # Copy config/database.yml.example to config/database.yml, and change the relevant values
   bundle exec rake db:create
   bundle exec rake db:migrate
-  
+
 
 Run the site
 
   # If the Gemfile has changed, you will need to run 'bundle install' first
   bundle exec rails s
 
-  
+
 To start the resque workers
-  
+
   bundle exec foreman start
-  
+
 To precompile assets
 
   bundle exec rake assets:precompile
-  
+
 ### Running the site on Virtual Box
 
 Add this to the hosts file (C:\WINDOWS\system32\drivers\etc):
 
   10.0.2.2        tricklr.local
-  
+
 To access the site, go to:
 
   http://tricklr.local:3000/
-  
+
 **Note: you need the http://, and 3000 should be the port number the server is run on
-  
+
 ## Testing
 
 For testing, the following is used:
@@ -50,7 +50,7 @@ For testing, the following is used:
 * [Spork](https://github.com/timcharper/spork) - preloads rails env to run tests faster
 * [Guard](https://github.com/guard/guard) - automatically runs tests
 
-See [railscast spork](http://railscasts.com/episodes/285-spork) on how to initially set it up spork and guard. 
+See [railscast spork](http://railscasts.com/episodes/285-spork) on how to initially set it up spork and guard.
 **Note: All the necessary files should already be set up in the git repo.**
 
 To set up the test environment:
@@ -69,10 +69,10 @@ To focus guard tests to just run a particular test, use the :focus tag in specs 
   end
 
 To run tests manually:
-  
+
   # Run the spork server:
   bundle exec spork
-  
+
   # In another terminal, run the tests
   bundle exec rspec . --drb
   bundle exec rspec ./spec/controllers/statuses_controller_spec.rb --drb     # to run individual tests
@@ -94,6 +94,12 @@ Usage:
 Merge master to staging and ship it to staging server:
 
   bundle exec rake shipit[staging]
+
+#### Monit
+
+Monit script to start the processes on the server is in: `/etc/monit/conf.d/tricklr.pebblecode.net.monitrc`. Also copied in this project at `/config/deploy/monit/tricklr.pebblecode.net.monitrc`.
+
+The monit script starts the scripts in `/home/tricklr/bin/`. Also copied in this project at `/config/deploy/monit/scripts`.
 
 ### Production
 

@@ -1,0 +1,18 @@
+# Monitor the Resque Queue
+ check process tricklr_resque_worker
+  with pidfile /srv/http/pebblecode.net/subdomains/tricklrapp/current/tmp/pids/resque_worker.pid
+  # start program = "/usr/bin/env PATH=/home/tricklr/.rbenv/bin:/home/tricklr/.rbenv/shims:${PATH} RAILS_ENV=production /bin/sh -c 'echo $PATH'" as uid tricklr and gid tricklr
+  # start program = "/usr/bin/env PATH=/home/tricklr/.rbenv/bin:/home/tricklr/.rbenv/shims:/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin RAILS_ENV=production /bin/sh -c '/srv/http/pebblecode.net/subdomains/tricklrapp/current/bin/rake environment resque:work& > /srv/http/pebblecode.net/subdomains/tricklrapp/current/log/resque_worker.log && echo $! > /srv/http/pebblecode.net/subdomains/tricklrapp/current/tmp/pids/resque_worker.pid'" as uid tricklr and gid tricklr
+  start program = "/bin/sh -c '/home/tricklr/bin/start_resque_worker.sh'" as uid tricklr and gid tricklr
+  stop program = "/bin/sh -c 'cd /srv/http/pebblecode.net/subdomains/tricklrapp/current && kill -s quit `cat tmp/pids/resque_worker.pid` && rm -f tmp/pids/resque_worker.pid; exit 0;'"
+  if totalmem is greater than 300 mb for 10 cycles then restart  # eating up memory?
+  group tricklr
+
+check process tricklr_resque_scheduler
+  with pidfile /srv/http/pebblecode.net/subdomains/tricklrapp/current/tmp/pids/resque_scheduler.pid
+  start program = "/bin/sh -c '/home/tricklr/bin/start_resque_scheduler.sh'" as uid tricklr and gid tricklr
+  stop program = "/bin/sh -c 'cd /srv/http/pebblecode.net/subdomains/tricklrapp/current && kill -s quit `cat tmp/pids/resque_scheduler.pid` && rm -f tmp/pids/resque_scheduler.pid; exit 0;'"
+  if totalmem is greater than 300 mb for 10 cycles then restart  # eating up memory?
+  group tricklr
+
+r
