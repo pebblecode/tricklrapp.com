@@ -77,6 +77,14 @@ To run tests manually:
   bundle exec rspec . --drb
   bundle exec rspec ./spec/controllers/statuses_controller_spec.rb --drb     # to run individual tests
 
+### Javascript tests
+
+Javascript tests use the [mocha](http://visionmedia.github.com/mocha/) framework and uses the [mocha_rails](https://github.com/quartzmo/mocha_rails) gem.
+
+To view javascript tests, go to `http://tricklr.local:3000/mocha`.
+
+Tests are stored in `/spec/javascripts/*`.
+
 ## Staging
 
 To edit the start/stop script:

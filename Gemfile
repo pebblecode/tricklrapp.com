@@ -47,6 +47,11 @@ gem 'newrelic_rpm'
 # Send stats to Campfire
 gem 'tinder'
 
+group :development, :test do
+  gem 'ruby-debug19'
+  gem 'mocha_rails'
+end
+
 group :test do
   gem 'random_data'
   gem 'capybara'
@@ -60,7 +65,6 @@ group :test do
   gem 'guard-cucumber'
   gem 'guard-rspec'
   gem 'guard-spork'
-  gem 'ruby-debug19'
 end
 
 group :development do
@@ -73,7 +77,6 @@ group :development do
   gem 'rb-fsevent'
   gem 'growl'
   gem 'foreman'
-  gem 'ruby-debug19'
 end
 
 group :production do
