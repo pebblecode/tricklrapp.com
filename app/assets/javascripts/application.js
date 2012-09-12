@@ -440,8 +440,9 @@ App.timeToString = function(time, verbose) {
       timeString += " day";
       timeString += ((days == 1) ? "" : "s"); // Pluralise;
     } else if (hrs > 0) {
+      var hoursInSec = 60 * 60 * 1000;
       timeString += "about ";
-      timeString += hrs;
+      timeString += (time % hoursInSec) < (0.5 * hoursInSec) ? hrs : hrs + 1;
       timeString += " hour";
       timeString += ((hrs == 1) ? "" : "s"); // Pluralise;
     } else if (mins > 0) {
