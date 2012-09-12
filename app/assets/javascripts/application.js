@@ -448,9 +448,11 @@ App.timeToString = function(time, verbose) {
       timeString += " hour";
       timeString += ((roundedHours == 1) ? "" : "s"); // Pluralise;
     } else if (mins > 0) {
+      var minsInSec = 60 * 1000,
+          roundedMins = (time % minsInSec) < (0.5 * minsInSec) ? mins : mins + 1;
       timeString += "about ";
-      timeString += mins + " minute"
-      timeString += ((mins == 1) ? "" : "s"); // Pluralise;
+      timeString += roundedMins + " minute"
+      timeString += ((roundedMins == 1) ? "" : "s"); // Pluralise;
     } else {
       timeString += secs;
       timeString += " second";

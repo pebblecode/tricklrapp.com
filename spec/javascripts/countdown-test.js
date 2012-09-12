@@ -97,12 +97,30 @@ describe('Countdown helper functions', function(){
     })
 
     describe('minutes', function() {
-      it('should return about 1 minute', function() {
-        App.timeToString(60 * 1000).should.equal('about 1 minute')
+      var oneMinute = 60 * 1000;
+
+      it("should return 'about 1 minute' for exactly 1 minute", function() {
+        App.timeToString(oneMinute).should.equal('about 1 minute')
       })
 
-      it('should return about 15 minutes', function() {
-        App.timeToString(15 * 60 * 1000).should.equal('about 15 minutes')
+      it("should return 'about 7 minutes' for exactly 7 minutes", function() {
+        App.timeToString(7 * oneMinute).should.equal('about 7 minutes')
+      })
+
+      it("should return 'about 7 minutes' for 6.5 minutes", function() {
+        App.timeToString(6.5 * oneMinute).should.equal('about 7 minutes')
+      })
+
+      it("should not return 'about 7 minutes' for < 6.5 minutes", function() {
+        App.timeToString(6.5 * oneMinute - 1).should.not.equal('about 7 minutes')
+      })
+
+      it("should return 'about 7 minutes' for upto 7.5 minutes", function() {
+        App.timeToString(7.5 * oneMinute - 1).should.equal('about 7 minutes')
+      })
+
+      it("should not return 'about 7 minutes' for > 8.5 minutes", function() {
+        App.timeToString(8.5 * oneMinute).should.not.equal('about 7 minutes')
       })
     })
 
