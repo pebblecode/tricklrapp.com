@@ -434,8 +434,9 @@ App.timeToString = function(time, verbose) {
     timeString += App.minSecsInTime(time);
   } else {
     if (days > 0) {
+      var daysInSec = 24 * 60 * 60 * 1000;
       timeString += "about ";
-      timeString += days;
+      timeString += (time % daysInSec) < (0.5 * daysInSec) ? days : days + 1;
       timeString += " day";
       timeString += ((days == 1) ? "" : "s"); // Pluralise;
     } else if (hrs > 0) {

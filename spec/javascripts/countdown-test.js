@@ -32,13 +32,31 @@ describe('Countdown helper functions', function(){
   })
 
   describe('App.timeToString', function() {
+    var oneDay = 24 * 60 * 60 * 1000;
+
     describe('days', function() {
-      it('should return about 1 day', function() {
-        App.timeToString(24 * 60 * 60 * 1000).should.equal('about 1 day')
+      it("should return 'about 1 day' for exactly 1 day", function() {
+        App.timeToString(oneDay).should.equal('about 1 day')
       })
 
-      it('should return about 15 days', function() {
-        App.timeToString(15 * 24 * 60 * 60 * 1000).should.equal('about 15 days')
+      it("should return 'about 15 days' for exactly 15 days", function() {
+        App.timeToString(15 * oneDay).should.equal('about 15 days')
+      })
+
+      it("should return 'about 15 days' for 14.5 days", function() {
+        App.timeToString(14.5 * oneDay).should.equal('about 15 days')
+      })
+
+      it("should not return 'about 15 days' for < 14.5 days", function() {
+        App.timeToString(14.5 * oneDay - 1).should.not.equal('about 15 days')
+      })
+
+      it("should return 'about 15 days' for upto 15.5 days", function() {
+        App.timeToString(15.5 * oneDay - 1).should.equal('about 15 days')
+      })
+
+      it("should not return 'about 15 days' for > 15.5 days", function() {
+        App.timeToString(15.5 * oneDay).should.not.equal('about 15 days')
       })
     })
 
