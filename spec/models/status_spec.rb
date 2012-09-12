@@ -55,7 +55,7 @@ describe Status do
     status.scheduled_at.should eql(Time.now.utc)
   end
 
-  describe "set_scheduled_at pre create hook", :focus do
+  describe "set_scheduled_at pre create hook" do
     before do
       @user = FactoryGirl.create(:user)
     end

@@ -40,7 +40,11 @@ class Status < ActiveRecord::Base
   # If not use the default setting from Time.now
   def set_scheduled_at
     first_unpublished_status = self.user.unpublished_statuses.first
-    start_time = first_unpublished_status.present? ? first_unpublished_status.scheduled_at : Time.now
+    start_time = if first_unpublished_status.present? and first_unpublished_status.scheduled_at > Time.now
+                   first_unpublished_status.scheduled_at
+                 else
+                   Time.now
+                 end
 
     self.scheduled_at = start_time + self.user.setting.interval
     check_scheduled_range
