@@ -434,17 +434,19 @@ App.timeToString = function(time, verbose) {
     timeString += App.minSecsInTime(time);
   } else {
     if (days > 0) {
-      var daysInSec = 24 * 60 * 60 * 1000;
+      var daysInSec = 24 * 60 * 60 * 1000,
+          roundedDays = (time % daysInSec) < (0.5 * daysInSec) ? days : days + 1;
       timeString += "about ";
-      timeString += (time % daysInSec) < (0.5 * daysInSec) ? days : days + 1;
+      timeString += roundedDays;
       timeString += " day";
-      timeString += ((days == 1) ? "" : "s"); // Pluralise;
+      timeString += ((roundedDays == 1) ? "" : "s"); // Pluralise;
     } else if (hrs > 0) {
-      var hoursInSec = 60 * 60 * 1000;
+      var hoursInSec = 60 * 60 * 1000,
+          roundedHours = (time % hoursInSec) < (0.5 * hoursInSec) ? hrs : hrs + 1;
       timeString += "about ";
-      timeString += (time % hoursInSec) < (0.5 * hoursInSec) ? hrs : hrs + 1;
+      timeString += roundedHours;
       timeString += " hour";
-      timeString += ((hrs == 1) ? "" : "s"); // Pluralise;
+      timeString += ((roundedHours == 1) ? "" : "s"); // Pluralise;
     } else if (mins > 0) {
       timeString += "about ";
       timeString += mins + " minute"

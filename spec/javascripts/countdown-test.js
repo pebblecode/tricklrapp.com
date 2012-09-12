@@ -39,6 +39,10 @@ describe('Countdown helper functions', function(){
         App.timeToString(oneDay).should.equal('about 1 day')
       })
 
+      it("should return 'about 2 days' for 1.5 days", function() {
+        App.timeToString(1.5 * oneDay).should.equal('about 2 days')
+      })
+
       it("should return 'about 15 days' for exactly 15 days", function() {
         App.timeToString(15 * oneDay).should.equal('about 15 days')
       })
@@ -65,6 +69,10 @@ describe('Countdown helper functions', function(){
 
       it("should return 'about 1 hour' for exactly 1 hour", function() {
         App.timeToString(oneHour).should.equal('about 1 hour')
+      })
+
+      it("should return 'about 2 hours' for 1.5 hours", function() {
+        App.timeToString(1.5 * oneHour).should.equal('about 2 hours')
       })
 
       it("should return 'about 7 hours' for exactly 7 hours", function() {
