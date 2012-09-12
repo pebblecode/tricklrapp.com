@@ -13,7 +13,7 @@ class Status < ActiveRecord::Base
   before_update :check_scheduled_at
   after_create :queue
   before_destroy :dequeue
-  
+
   attr_accessor :publish
   #-------------------------------------
   # Validations
@@ -39,11 +39,14 @@ class Status < ActiveRecord::Base
   # If we have unpublished statuses schedule it after the last one
   # If not use the default setting from Time.now
   def set_scheduled_at
-    self.scheduled_at = (self.user.unpublished_statuses.first.present? ? self.user.unpublished_statuses.first.scheduled_at : Time.now) + self.user.setting.interval
+    first_unpublished_status = self.user.unpublished_statuses.first
+    start_time = first_unpublished_status.present? ? first_unpublished_status.scheduled_at : Time.now
+
+    self.scheduled_at = start_time + self.user.setting.interval
     check_scheduled_range
   end
 
-  # Check the current scheduled at range 
+  # Check the current scheduled at range
   # If the scheduled_at time is not in range then
   # advance it to the scheduled from time
   # TODO - add support for when publish_until is before publish_after
@@ -71,7 +74,7 @@ class Status < ActiveRecord::Base
   def minutes_to_advance(from, to)
     (Time.parse(from.strftime("%H:%M")) - Time.parse(to.strftime("%H:%M"))) / 60
   end
-  
+
   # Remove from the queue and requeue it for "now", jumping the queue.
   def publish!
     self.dequeue
@@ -92,7 +95,7 @@ class Status < ActiveRecord::Base
   def queue
     self.schedule(self.scheduled_at)
   end
-  
+
   # Take a tweet off the queue
   # As there is no way to edit something that's been added
   # we need to use this too for the edit process
@@ -101,8 +104,8 @@ class Status < ActiveRecord::Base
   end
 
   # If the scheduled_at time of a tweet is updated
-  # then we need to requeue it. resque_scheduler doesn't 
-  # provide a way to do this so we need to dequeue it 
+  # then we need to requeue it. resque_scheduler doesn't
+  # provide a way to do this so we need to dequeue it
   # then requeue it
   def requeue
     self.dequeue; self.queue
