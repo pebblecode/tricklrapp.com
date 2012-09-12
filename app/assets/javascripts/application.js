@@ -98,7 +98,7 @@ $.fn.statusCount = function(){
     }else{
       countBox.removeClass('negative');
     };
-    
+
   });
 };
 
@@ -106,26 +106,26 @@ $.fn.statusCount = function(){
 
 $(document).ready(function() {
 
-  /* 
-  * Slideshow using http://slidesjs.com/ 
+  /*
+  * Slideshow using http://slidesjs.com/
   * play = time for each slide
   */
   $("#slides").slides({
     play: 5500,
   });
-  
 
 
 
-  /* 
+
+  /*
   * Fade flash notices
   */
-  $(".flash-notice").flashNotice();  
+  $(".flash-notice").flashNotice();
 
   /*
   * Makes queued statues sortable
   * See http://docs.jquery.com/UI/Sortable
-  */ 
+  */
   $('#queued_statuses').sortable({handle: '.reorder-statuses', update: function() {
     $.post('/statuses/sort', '_method=put&authenticity_token='+ $('meta[name=csrf-token]').attr('content')+'&'+$(this).sortable('serialize'),
     function(data){
@@ -146,7 +146,7 @@ $(document).ready(function() {
     }
   });
 
-  /* 
+  /*
   * Pretty delete messages
   */
   $('.delete-status').bind('click', function() {
@@ -180,8 +180,8 @@ $(document).ready(function() {
   if($('#status_status').length > 0){
     $('#status_status').statusCount();
   }
-  
-  
+
+
   /*
    * Show and hide status lists
   */
@@ -307,7 +307,7 @@ $(document).ready(function() {
   $('ul#queued_statuses').ready(function() {
     $('ul#queued_statuses li .actions').prepend('<li class="move"><a href="#" class="icon move reorder-statuses" title="Move">Reorder</a></li>');
   });
-  
+
   // qTips - link tooltips
   $("ul.actions li a[title], ul.actions li form div input[title]").qtip({
     position: {
@@ -316,7 +316,7 @@ $(document).ready(function() {
         tooltip: 'topMiddle'
       }
     },
-    style: { 
+    style: {
       padding: 5,
       background: '#29abe2',
       color: 'white',
@@ -372,7 +372,7 @@ $(document).ready(function() {
           }else{
             from = from + ":00am";
           };
-          
+
           if (Number(until) > 12) {
             until = Number(until) - 12;
             until = until + ":00pm";
@@ -387,7 +387,7 @@ $(document).ready(function() {
     $('#setting_publish_from_5i').hide();
     $('#setting_publish_until_5i').hide();
   };
-  
+
   // Fade out alert messages after 4 seconds
   if ($('.alert-message').length > 0) {
     setTimeout("$('.alert-message').fadeOut(1000)", 4000);
@@ -403,6 +403,7 @@ $(document).ready(function() {
   };
 
   // Set up countdowns
+  // Show debugging info if there is the url parameter 'debug=true'
   App.countdownCoord = new CountdownCoordinator(Config.countdownIntervals, App.getUrlVars()["debug"]);
   App.countdownCoord.init();
 });
