@@ -92,6 +92,10 @@ describe Status do
   end
 
   describe "check_scheduled_range" do
+    before do
+      @status = FactoryGirl.create(:status)
+    end
+
     describe "settings not present" do
       before do
         @default_scheduled_at = @status.scheduled_at
@@ -110,6 +114,8 @@ describe Status do
 
         @status.scheduled_at.should eq(@default_scheduled_at)
       end
+
+      pending "should test grunt of check_scheduled_range"
     end
   end
 end
