@@ -12,46 +12,52 @@
 
 var Config = {
   countdownIntervals: [
-    // 0-60sec -> 1s interval
+    // 0-10sec -> 1s interval
     {
-      maxRange: 60 * 1000,
+      maxRange: 10 * 1000,
       interval: 1000
     },
 
-    // 1min-5min -> 1min interval
+    // 10sec-30sec -> 20sec interval
     {
-      maxRange: 5 * 60 * 1000,
+      maxRange: 30 * 1000,
+      interval: 20 * 1000
+    },
+
+    // 30sec-1min -> 30sec interval
+    {
+      maxRange: 60 * 1000,
+      interval: 30 * 1000
+    },
+
+    // 1min-2min -> 1min interval
+    {
+      maxRange: 2 * 60 * 1000,
       interval: 60 * 1000
     },
 
-    // 5min-10min -> 5min interval
+    // 2min-10min -> 2min interval
     {
       maxRange: 10 * 60 * 1000,
+      interval: 2 * 60 * 1000
+    },
+
+    // 10min-30min -> 5min interval
+    {
+      maxRange: 30 * 60 * 1000,
       interval: 5 * 60 * 1000
     },
 
-    // 10min-30min -> 10min interval
-    {
-      maxRange: 30 * 60 * 1000,
-      interval: 10 * 60 * 1000
-    },
-
-    // 30min-1hr -> 30min interval
+    // 30min-1hr -> 15min interval
     {
       maxRange: 60 * 60 * 1000,
-      interval: 30 * 60 * 1000
+      interval: 15 * 60 * 1000
     },
 
-    // 1hr-1day -> 1hr interval
-    {
-      maxRange: 24 * 60 * 60 * 1000,
-      interval: 60 * 60 * 1000
-    },
-
-    // 1day-forever -> 1day interval
+    // 1hr-forever -> 1hr interval
     {
       maxRange: Number.MAX_VALUE,
-      interval: 24 * 60 * 60 * 1000
+      interval: 60 * 60 * 1000
     },
   ]
 };
