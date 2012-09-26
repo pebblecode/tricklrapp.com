@@ -33,10 +33,10 @@ DEPLOY_ONLY_BRANCHES = []
 module Deploy
   def self.command(branch)
     # For capitrano - Assume that capistrano task is the same name as the branch
-    # "bundle exec cap #{branch} deploy"
+    "bundle exec cap #{branch} deploy"
 
     # For heroku - Assume local branch is set up with remote heroku branch
-    "git push #{branch} #{branch}:master"
+    # "git push #{branch} #{branch}:master"
   end
 
   def self.branch!(branch)
