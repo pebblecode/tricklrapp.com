@@ -79,7 +79,7 @@ To run tests manually:
 
 ### Javascript tests
 
-Javascript tests use the [mocha](http://visionmedia.github.com/mocha/) framework and uses the [mocha_rails](https://github.com/quartzmo/mocha_rails) gem.
+Javascript tests use the [mocha](http://visionmedia.github.com/mocha/) framework and the [mocha_rails](https://github.com/quartzmo/mocha_rails) gem.
 
 To view javascript tests, go to `http://tricklr.local:3000/mocha`.
 
