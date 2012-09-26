@@ -14,17 +14,17 @@ class SettingsController < ApplicationController
       @setting.time_digit = PublishFrequencies.time_from_str(publish_frequency)
       @setting.time_unit = PublishFrequencies.time_unit_from_str(publish_frequency)
     end
-    
+
     if @setting.update_attributes(params[:setting])
       flash[:notice] = "Your settings were updated"
       # Redirect to login, so that the time zone is updated
       redirect_to user_omniauth_authorize_path(:twitter)
-    else 
+    else
       render :action => 'index'
     end        
   end
 
-  private 
+  private
 
   def current_setting
     @setting = current_user.setting
@@ -34,5 +34,5 @@ class SettingsController < ApplicationController
     @publish_frequencies = PublishFrequencies.frequencies
     @publish_frequencies_default = PublishFrequencies.frequency_default_from_setting(@setting)
   end
-  
+
 end
