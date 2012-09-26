@@ -26,7 +26,7 @@ class SettingsController < ApplicationController
   # For updating the flash message outside this controller
   # eg, when redirecting from omniauth
   def self.update_flash_msg
-    "Your settings and user timezone have been updated"
+    "Your settings and timezone have been updated"
   end
 
   private
