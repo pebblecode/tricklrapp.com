@@ -4,7 +4,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = User.find_for_twitter_oauth(env['omniauth.auth'], current_user)
 
     if @user.persisted?
-      flash[:notice] = I18n.t 'devise.omniauth_callbacks.success', kind: 'Twitter'
+      flash[:notice] = if settings_url == request.env['omniauth.origin']
+          SettingsController.update_flash_msg
+        else
+          I18n.t 'devise.omniauth_callbacks.success', kind: 'Twitter'
+        end
       @user.remember_me = true
       sign_in_and_redirect @user, event: :authentication
     else
