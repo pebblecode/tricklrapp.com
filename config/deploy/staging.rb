@@ -1,9 +1,9 @@
 # This will pre-compile the Rails 3 Asset Pipeline
 load 'deploy/assets'
-server "apu.pebbleit.com", :app, :web, :db, :primary => true
+server "apu.pebblecode.net", :app, :web, :db, :primary => true
 set :deploy_to, "/srv/http/pebblecode.net/subdomains/tricklrapp"
 set :branch, "master"
-set :user, "tricklr"
+set :user, "webapps"
 set :default_environment, {
   'PATH' => "/home/tricklr/.rbenv/shims:/home/tricklr/.rbenv/bin:$PATH"
 }
