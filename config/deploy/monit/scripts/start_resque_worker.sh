@@ -3,7 +3,7 @@
 # -------------------------------- #
 # Variables
 # -------------------------------- #
-USER=tricklr
+USER=webapps
 APP_PATH=/srv/http/pebblecode.net/subdomains/tricklrapp/current
 PATH=/home/$USER/.rbenv/bin:/home/$USER/.rbenv/shims:$PATH
 RAILS_ENV=production
