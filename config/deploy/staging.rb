@@ -8,20 +8,22 @@ set :default_environment, {
   'PATH' => "/home/webapps/.rbenv/shims:/home/webapps/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 }
 
+set :pid, "#{deploy_to}/shared/pids/unicorn.pid"
+set :start_command, "cd #{current_path} && bundle exec unicorn -D -E production -c #{current_path}/config/unicorn.rb"
+
+
 namespace :deploy do
   task :start do
-    sudo "/usr/sbin/monit -g tricklr start all"
-    sudo "/etc/init.d/tricklr start"
+    run start_command
   end
 
   task :stop do
-    sudo "/usr/sbin/monit -g tricklr stop all"
-    sudo "/etc/init.d/tricklr stop"
+    run "test -f #{pid} && kill `cat #{pid}`"
   end
 
   task :restart do
-    sudo "/usr/sbin/monit -g tricklr restart all"
-    sudo "/etc/init.d/tricklr restart"
+    run "test -f #{pid} && kill `cat #{pid}`"
+    run start_command
   end
 
   task :link_config_files do
