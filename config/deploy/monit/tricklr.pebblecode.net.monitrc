@@ -14,5 +14,3 @@ check process tricklr_resque_scheduler
   stop program = "/bin/sh -c 'cd /srv/http/pebblecode.net/subdomains/tricklrapp/current && kill -s quit `cat tmp/pids/resque_scheduler.pid` && rm -f tmp/pids/resque_scheduler.pid; exit 0;'"
   if totalmem is greater than 300 mb for 10 cycles then restart  # eating up memory?
   group tricklr
-
-r
