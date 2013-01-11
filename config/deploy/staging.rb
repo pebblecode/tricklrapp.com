@@ -5,7 +5,7 @@ set :deploy_to, "/srv/http/pebblecode.net/subdomains/tricklrapp"
 set :branch, "master"
 set :user, "webapps"
 set :default_environment, {
-  'PATH' => "/home/tricklr/.rbenv/shims:/home/tricklr/.rbenv/bin:$PATH"
+  'PATH' => "/home/webapps/.rbenv/shims:/home/webapps/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 }
 
 namespace :deploy do
