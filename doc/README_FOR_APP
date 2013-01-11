@@ -6,38 +6,38 @@ Tricklr is a simple to use web app for marketing teams and high volume tweeters.
 
 For initial installation (should only need to be done once)
 
-  gem install bundle
-  bundle install
+    gem install bundle
+    bundle install
 
-  # Set up the database
-  # Copy config/database.yml.example to config/database.yml, and change the relevant values
-  bundle exec rake db:create
-  bundle exec rake db:migrate
+    # Set up the database
+    # Copy config/database.yml.example to config/database.yml, and change the relevant values
+    bundle exec rake db:create
+    bundle exec rake db:migrate
 
 
 Run the site
 
-  # If the Gemfile has changed, you will need to run 'bundle install' first
-  bundle exec rails s
+    # If the Gemfile has changed, you will need to run 'bundle install' first
+    bundle exec rails s
 
 
 To start the resque workers
 
-  bundle exec foreman start
+    bundle exec foreman start
 
 To precompile assets
 
-  bundle exec rake assets:precompile
+    bundle exec rake assets:precompile
 
 ### Running the site on Virtual Box
 
 Add this to the hosts file (C:\WINDOWS\system32\drivers\etc):
 
-  10.0.2.2        tricklr.local
+    10.0.2.2        tricklr.local
 
 To access the site, go to:
 
-  http://tricklr.local:3000/
+    http://tricklr.local:3000/
 
 **Note: you need the http://, and 3000 should be the port number the server is run on
 
@@ -55,27 +55,27 @@ See [railscast spork](http://railscasts.com/episodes/285-spork) on how to initia
 
 To set up the test environment:
 
-  rake db:create RAILS_ENV=test
-  rake db:migrate RAILS_ENV=test
+    rake db:create RAILS_ENV=test
+    rake db:migrate RAILS_ENV=test
 
 To automate tests running in the background:
 
-  bundle exec guard
+    bundle exec guard
 
 To focus guard tests to just run a particular test, use the :focus tag in specs eg,
 
-  it 'renders the index template', :focus do
-    response.should render_template("index")
-  end
+    it 'renders the index template', :focus do
+      response.should render_template("index")
+    end
 
 To run tests manually:
 
-  # Run the spork server:
-  bundle exec spork
+    # Run the spork server:
+    bundle exec spork
 
-  # In another terminal, run the tests
-  bundle exec rspec . --drb
-  bundle exec rspec ./spec/controllers/statuses_controller_spec.rb --drb     # to run individual tests
+    # In another terminal, run the tests
+    bundle exec rspec . --drb
+    bundle exec rspec ./spec/controllers/statuses_controller_spec.rb --drb     # to run individual tests
 
 ### Javascript tests
 
@@ -89,11 +89,11 @@ Tests are stored in `/spec/javascripts/*`.
 
 To edit the start/stop script:
 
-  nano /etc/init.d/tricklr
+    nano /etc/init.d/tricklr
 
 Usage:
 
-  /etc/init.d/tricklr <start|stop|restart|upgrade|force-stop|reopen-logs>
+    /etc/init.d/tricklr <start|stop|restart|upgrade|force-stop|reopen-logs>
 
 ## Deployment
 
@@ -101,13 +101,13 @@ Usage:
 
 Merge master to staging and ship it to staging server:
 
-  bundle exec rake shipit[staging]
+    bundle exec rake shipit[staging]
 
 #### Monit
 
-Monit script to start the processes on the server is in: `/etc/monit/conf.d/tricklr.pebblecode.net.monitrc`. Also copied in this project at `/config/deploy/monit/tricklr.pebblecode.net.monitrc`.
+Monit script to start the processes on the server is in: `/etc/monit/conf.d/tricklrapp.pebblecode.net.monitrc`. Also copied in this project at `/config/deploy/monit/tricklr.pebblecode.net.monitrc`.
 
-The monit script starts the scripts in `/home/tricklr/bin/`. Also copied in this project at `/config/deploy/monit/scripts`.
+The monit script starts the scripts in `/home/webapps/bin/tricklr` on the server. Also copied in this project repository at `/config/deploy/monit/scripts`.
 
 #### Resque
 
@@ -115,7 +115,7 @@ To check on the resque workers go to: `http://tricklrapp.pebblecode.net/resque` 
 
 ### Production
 
-  bundle exec cap production deploy
+    bundle exec cap production deploy
 
 [TODO] Fix up rake task
 
