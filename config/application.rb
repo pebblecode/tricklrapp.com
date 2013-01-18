@@ -48,5 +48,9 @@ module Tricklr
     config.assets.version = '1.0'
     config.assets.precompile << /(^[^_]|\/[^_])[^\/]*/
     config.assets.paths << "#{Rails.root}/app/assets/fonts"
+
+    # Disable XML parsing because of security vulnerability
+    # See https://groups.google.com/forum/#!topic/rubyonrails-security/61bkgvnSGTQ/discussion
+    ActionDispatch::ParamsParser::DEFAULT_PARSERS.delete(Mime::XML)
   end
 end
