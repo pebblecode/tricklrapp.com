@@ -47,8 +47,7 @@ class User < ActiveRecord::Base
 
     if authentication && authentication.user
       user = authentication.user
-      user.update_timezone(omniauth['extra']['raw_info']['time_zone'])
-      user.update_omniauth_login(authentication, omniauth)
+      user.update_with_omniauth(authentication, omniauth)
 
       user
     else
@@ -68,10 +67,15 @@ class User < ActiveRecord::Base
   # Creates settings for a new user
   #-------------------------------------
 
-  def update_omniauth_login(authentication, omniauth)
+  def update_with_omniauth(authentication, omniauth)
     authentication.token = omniauth['credentials']['token']
     authentication.secret = omniauth['credentials']['secret']
+
+    self.update_timezone(omniauth['extra']['raw_info']['time_zone'])
     authentication.save
+
+    self.nickname = omniauth['info']['nickname']
+    self.save
   end
 
   def time_zone
