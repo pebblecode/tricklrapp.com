@@ -44,9 +44,11 @@ class User < ActiveRecord::Base
   def self.find_for_twitter_oauth(omniauth, signed_in_resource=nil)
     logger.info(omniauth.to_yaml)
     authentication = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
+
     if authentication && authentication.user
       user = authentication.user
       user.update_timezone(omniauth['extra']['raw_info']['time_zone'])
+      user.update_omniauth_login(authentication, omniauth)
 
       user
     else
@@ -65,6 +67,12 @@ class User < ActiveRecord::Base
   #-------------------------------------
   # Creates settings for a new user
   #-------------------------------------
+
+  def update_omniauth_login(authentication, omniauth)
+    authentication.token = omniauth['credentials']['token']
+    authentication.secret = omniauth['credentials']['secret']
+    authentication.save
+  end
 
   def time_zone
     setting.time_zone || Rails.configuration.time_zone
