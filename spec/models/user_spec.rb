@@ -53,35 +53,34 @@ describe User do
       @user.setting.time_zone.should equal( time_zone )
     end
 
-    it 'should update the timezone if it changes in the twitter hash' do
-      time_zone = @user.setting.time_zone
-      oauth = OmniAuth.config.mock_auth[:twitter]
-      oauth['extra']['raw_info']['time_zone'] = 'Tokyo'
-      # If we use the same class method now to find the user, it should update the time_zone
-      @user = User.find_for_twitter_oauth(oauth)
-      @user.setting.time_zone.should_not equal(time_zone)
-      @user.setting.time_zone.should == 'Tokyo'
-    end
-
-    context 'should update omniauth login credentials if twitter hash changes' do
+    context "when twitter hash changes" do
       before(:each) do
         @new_token = 'some_new_token'
         @new_secret = 'some_new_secret'
+        @new_time_zone = 'Tokyo'
 
         oauth = OmniAuth.config.mock_auth[:twitter]
         oauth['credentials']['token'] = @new_token
         oauth['credentials']['secret'] = @new_secret
+        oauth['extra']['raw_info']['time_zone'] = @new_time_zone
 
         @looked_up_user = User.find_for_twitter_oauth(oauth)
       end
 
-      it 'for token' do
-        @looked_up_user.authentications.first.token.should == @new_token
+      it 'should update the timezone' do
+        @looked_up_user.setting.time_zone.should == @new_time_zone
       end
 
-      it 'for secret' do
-        @looked_up_user.authentications.first.secret.should == @new_secret
+      context 'for omniauth login credentials' do
+        it 'should update for token' do
+          @looked_up_user.authentications.first.token.should == @new_token
+        end
+
+        it 'should update for secret' do
+          @looked_up_user.authentications.first.secret.should == @new_secret
+        end
       end
+
     end
   end
 end
