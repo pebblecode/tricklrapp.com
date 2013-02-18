@@ -86,7 +86,7 @@ describe Status do
       status_in_past.reload
 
       new_status = FactoryGirl.create(:status, :status => "new status", :user => @user)
-      puts "Time now: #{Time.now}, unpub: #{status_in_past.scheduled_at}, new: #{new_status.scheduled_at}"
+      # puts "Time now: #{Time.now}, unpub: #{status_in_past.scheduled_at}, new: #{new_status.scheduled_at}"
       new_status.scheduled_at.should be > Time.now
     end
   end
