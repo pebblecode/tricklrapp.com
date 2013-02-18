@@ -48,7 +48,7 @@ gem 'newrelic_rpm'
 gem 'tinder'
 
 group :development, :test do
-  gem 'ruby-debug19'
+  gem 'debugger'
   gem 'mocha_rails'
 end
 
