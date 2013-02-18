@@ -56,12 +56,14 @@ describe User do
     context "when twitter hash changes" do
       before(:each) do
         @new_nickname = 'hobobobo'
+        @new_name = 'Hobo Steve'
         @new_token = 'some_new_token'
         @new_secret = 'some_new_secret'
         @new_time_zone = 'Tokyo'
 
         oauth = OmniAuth.config.mock_auth[:twitter]
         oauth['info']['nickname'] = @new_nickname
+        oauth['info']['name'] = @new_name
         oauth['credentials']['token'] = @new_token
         oauth['credentials']['secret'] = @new_secret
         oauth['extra']['raw_info']['time_zone'] = @new_time_zone
@@ -71,6 +73,10 @@ describe User do
 
       it 'should update the nickname' do
         @looked_up_user.nickname.should == @new_nickname
+      end
+
+      it 'should update the name' do
+        @looked_up_user.name.should == @new_name
       end
 
       it 'should update the timezone' do

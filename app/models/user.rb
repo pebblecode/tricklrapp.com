@@ -75,6 +75,7 @@ class User < ActiveRecord::Base
     authentication.save
 
     self.nickname = omniauth['info']['nickname']
+    self.nickname = omniauth['info']['name']
     self.save
   end
 
