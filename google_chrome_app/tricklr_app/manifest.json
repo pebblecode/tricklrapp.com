@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+
+  "name": "Tricklr",
+  "description": "Trickle out your tweets at scheduled intervals",
+  "version": "1.1.0",
+  "app": {
+    "urls": [
+      "http://tricklrapp.com/"
+    ],
+    "launch": {
+      "web_url": "http://tricklrapp.com/"
+    }
+  },
+  "icons": {
+    "128": "icon.png"
+  }
+}

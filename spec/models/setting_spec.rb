@@ -4,7 +4,7 @@ require 'spec_helper'
 describe Setting do
 
   before(:each) do
-    @setting = Factory(:setting)
+    @setting = FactoryGirl.create(:setting)
   end
 
   it "is valid with valid attributes" do 
@@ -71,7 +71,7 @@ describe Setting do
     
     describe '.frequency_default_from_setting' do
       def frequency_time_and_unit_default_equals_output(frequency_time, frequency_unit, output)
-        setting = Factory(:setting, :time_digit => frequency_time, :time_unit => frequency_unit)
+        setting = FactoryGirl.create(:setting, :time_digit => frequency_time, :time_unit => frequency_unit)
         PublishFrequencies.frequency_default_from_setting(setting).should == output
       end
       

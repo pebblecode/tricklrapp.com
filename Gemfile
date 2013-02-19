@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.3'
+gem 'rails', '3.2.12'
 
 # Postgres
 # https://bitbucket.org/ged/ruby-pg/wiki/Home
@@ -14,9 +14,10 @@ gem 'devise'
 # https://github.com/intridea/omniauth
 gem 'omniauth-twitter'
 
+# Not used right now
 # Will paginate for pagination
 # https://github.com/mislav/will_paginate/wiki
-gem 'will_paginate', '~> 3.0.pre2'
+# gem 'will_paginate', '~> 3.0'
 
 # Twitter gem for reading/writing
 # http://github.com/jnunemaker/twitter
@@ -46,15 +47,20 @@ gem 'newrelic_rpm'
 # Send stats to Campfire
 gem 'tinder'
 
+group :development, :test do
+  gem 'debugger'
+  gem 'mocha_rails'
+end
+
 group :test do
   gem 'random_data'
-  gem 'capybara'   
+  gem 'capybara'
   gem 'launchy'
   gem 'database_cleaner'
   gem 'cucumber-rails'
   gem 'rspec-rails'
   gem 'resque_spec'
-  gem 'factory_girl_rails'
+  gem "factory_girl_rails", "~> 4.0"
   gem 'spork', '~> 0.9.0.rc'
   gem 'guard-cucumber'
   gem 'guard-rspec'
@@ -76,12 +82,12 @@ end
 group :production do
   gem 'unicorn'
   gem 'thin'
-  gem 'therubyracer' 
-end 
+  gem 'therubyracer'
+end
 
 group :assets do
-  gem 'sass-rails', '~> 3.1.0'
-  gem 'coffee-rails', '~> 3.1.0'
+  gem 'sass-rails'
+  gem 'coffee-rails'
   gem 'uglifier'
-  gem 'compass', '~> 0.12.alpha'
+  gem 'compass-rails'
 end

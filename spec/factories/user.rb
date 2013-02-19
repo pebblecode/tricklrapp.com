@@ -1,4 +1,6 @@
-Factory.define :user do |f|
-  f.nickname "tricklr"
-  f.name "Tricklr"
+FactoryGirl.define do
+  factory :user do
+    nickname "tricklr"
+    name "Tricklr"
+  end
 end

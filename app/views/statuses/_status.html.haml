@@ -1,10 +1,10 @@
 - if status
-  %li{:id => "status_#{status.id}", :class => 'secondary-container'}
+  %li{:id => "status_#{status.id}", :class => 'secondary-container', :"data-scheduled-at" => status.scheduled_at}
     %p
       =status.status
     .meta.clearfix
       %em.ttp
-        = "posting in #{distance_of_time_in_words(Time.now, status.scheduled_at)}" if status.scheduled_at
+        = "posting in #{distance_of_time_in_words_to_now(status.scheduled_at)}" if status.scheduled_at
       -if !status.published_at
         %ul.actions
           %li.edit

@@ -19,7 +19,7 @@ describe StatusesController do
     context 'when logged in' do
 
       before(:each) do 
-        @user = Factory.create(:user)
+        @user = FactoryGirl.create(:user)
         sign_in @user
         get :index
       end
@@ -56,7 +56,7 @@ describe StatusesController do
 
       before(:each) do 
         ResqueSpec.reset!
-        @user = Factory.create(:user)
+        @user = FactoryGirl.create(:user)
         sign_in @user
         Status.stub(:new).and_return(status)
       end
@@ -114,8 +114,8 @@ describe StatusesController do
 
       before(:each) do
         ResqueSpec.reset!
-        @user = Factory.create(:user)
-        @status = Factory.create(:status, :user => @user)
+        @user = FactoryGirl.create(:user)
+        @status = FactoryGirl.create(:status, :user => @user)
       end
       it 'redirects to the sign in page' do
         put :publish, :id => @status.id
@@ -125,9 +125,9 @@ describe StatusesController do
     context 'when logged in' do
       before(:each) do 
         ResqueSpec.reset!
-        @user = Factory.create(:user)
+        @user = FactoryGirl.create(:user)
         sign_in @user
-        @status = Factory.create(:status, :user => @user)
+        @status = FactoryGirl.create(:status, :user => @user)
       end
       it 'reschedules the status' do
         put :publish, :id => @status.id

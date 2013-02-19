@@ -49,8 +49,8 @@ describe "Login specs" do
   end
 
   it "should not create a new authentication if the user logged before" do
-    other_user = Factory(:user, :name => "Somebodoy", :nickname => "some")
-    auth = Factory(:authentication)
+    other_user = FactoryGirl.create(:user, :name => "Somebodoy", :nickname => "some")
+    auth = FactoryGirl.create(:authentication)
     visit root_path
     click_link('Sign in with Twitter')
     Authentication.count.should eql 1

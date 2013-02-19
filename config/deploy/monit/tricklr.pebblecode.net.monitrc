@@ -1,0 +1,14 @@
+# Monitor the Resque Queue
+check process tricklr_resque_worker
+  with pidfile /srv/http/pebblecode.net/subdomains/tricklrapp/current/tmp/pids/resque_worker.pid
+  start program = "/bin/sh -c '/home/webapps/bin/tricklr/start_resque_worker.sh'" as uid tricklr and gid tricklr
+  stop program = "/bin/sh -c 'cd /srv/http/pebblecode.net/subdomains/tricklrapp/current && kill -s quit `cat tmp/pids/resque_worker.pid` && rm -f tmp/pids/resque_worker.pid; exit 0;'"
+  if totalmem is greater than 300 mb for 10 cycles then restart  # eating up memory?
+  group tricklr
+
+check process tricklr_resque_scheduler
+  with pidfile /srv/http/pebblecode.net/subdomains/tricklrapp/current/tmp/pids/resque_scheduler.pid
+  start program = "/bin/sh -c '/home/webapps/bin/tricklr/start_resque_scheduler.sh'" as uid tricklr and gid tricklr
+  stop program = "/bin/sh -c 'cd /srv/http/pebblecode.net/subdomains/tricklrapp/current && kill -s quit `cat tmp/pids/resque_scheduler.pid` && rm -f tmp/pids/resque_scheduler.pid; exit 0;'"
+  if totalmem is greater than 300 mb for 10 cycles then restart  # eating up memory?
+  group tricklr

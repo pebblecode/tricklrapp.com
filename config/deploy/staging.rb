@@ -1,24 +1,29 @@
 # This will pre-compile the Rails 3 Asset Pipeline
-# load 'deploy/assets'
-server "apu.pebbleit.com", :app, :web, :db, :primary => true
-set :deploy_to, "/var/www/vhosts/tricklrapp.com/httpdocs" 
+load 'deploy/assets'
+server "apu.pebblecode.net", :app, :web, :db, :primary => true
+set :deploy_to, "/srv/http/pebblecode.net/subdomains/tricklrapp"
 set :branch, "master"
-# set :rvm_ruby_string, '1.9.2@tricklr'
+set :user, "webapps"
+set :default_environment, {
+  'PATH' => "/home/webapps/.rbenv/shims:/home/webapps/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+}
+
+set :pid, "#{deploy_to}/shared/pids/unicorn.pid"
+set :start_command, "cd #{current_path} && bundle exec unicorn -D -E production -c #{current_path}/config/unicorn.rb"
+
 
 namespace :deploy do
   task :start do
-    run "/usr/sbin/monit -g tricklr start all"
-    run "/etc/init.d/tricklr start"
+    run start_command
   end
 
   task :stop do
-    run "/usr/sbin/monit -g tricklr stop all"
-    run "/etc/init.d/tricklr stop"
+    run "test -f #{pid} && kill `cat #{pid}`"
   end
 
   task :restart do
-    run "/usr/sbin/monit -g tricklr restart all"
-    run "/etc/init.d/tricklr restart"
+    run "test -f #{pid} && kill `cat #{pid}`"
+    run start_command
   end
 
   task :link_config_files do
@@ -27,5 +32,5 @@ namespace :deploy do
   end
 end
 
-after "deploy:update_code", "deploy:link_config_files"
+before "deploy:assets:precompile", "deploy:link_config_files"
 

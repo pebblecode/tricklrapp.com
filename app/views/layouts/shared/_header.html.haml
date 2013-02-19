@@ -17,7 +17,7 @@
               = link_to "Settings", settings_path, :class => "button settings #{'active' if controller.class.name == "SettingsController"}"
       - else
         / not logged in
-        %a{ :class => 'button sign-in', :href => "/users/auth/twitter"}
+        %a{ :class => 'button sign-in', :href => user_omniauth_authorize_path(:twitter) }
           %span{:class => 'symbol'}
             t
           Sign in with Twitter
