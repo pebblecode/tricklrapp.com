@@ -9,6 +9,5 @@ task "campfire:stats" => :environment do
   statuses_in_last_day = Status.where("published_at > ?", yesterday).count
 
   room.speak "OHAI! Stats from Tricklr"
-  room.paste "Accounts: #{authentications}\nStatuses: #{statuses}
-  nLogins in last 24hrs: #{logins_in_last_day}\nStatuses in last 24hrs: #{statuses_in_last_day}"
+  room.paste "Accounts: #{authentications}\nStatuses: #{statuses}\nLogins in last 24hrs: #{logins_in_last_day}\nStatuses in last 24hrs: #{statuses_in_last_day}"
 end
