@@ -121,8 +121,14 @@ To check on the resque workers go to: `http://tricklrapp.pebblecode.net/resque` 
 
 To manually start up the monit workers, run the following on production (as tricklr user):
 
- cd /var/www/vhosts/tricklrapp.com/httpdocs/current; RAILS_ENV=production bundle exec nohup rake environment resque:scheduler& > log/resque_scheduler.log && echo $! > tmp/pids/resque_scheduler.pid
- cd /var/www/vhosts/tricklrapp.com/httpdocs/current; RAILS_ENV=production QUEUE=* VERBOSE=1 bundle exec nohup rake environment resque:work& > log/resque_worker.log && echo $! > tmp/pids/resque_worker.pid
+    cd /srv/tricklrapp.com/current; RAILS_ENV=production bundle exec nohup rake environment resque:scheduler& > log/resque_scheduler.log && echo $! > tmp/pids/resque_scheduler.pid
+    cd /srv/tricklrapp.com/current;  RAILS_ENV=production QUEUE=* VERBOSE=1 bundle exec nohup rake environment resque:work& > log/resque_worker.log && echo $! > tmp/pids/resque_worker.pid
+
+To troubleshoot in rails console in production, run
+
+    cd /srv/tricklrapp.com/current
+    RAILS_ENV=production bundle exec rails c
+
 
 #### Resque
 
@@ -133,8 +139,8 @@ To check on the resque workers go to: `http://tricklrapp.com/resque` (user/pass 
 Create an ssh tunnel to port `63333`
 
     ssh -L 63333:localhost:5432 starling.tricklrapp.com
-    
-Connect using a postgres app with 
+
+Connect using a postgres app with
 
 * host: localhost
 * port: 63333

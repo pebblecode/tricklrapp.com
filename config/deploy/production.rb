@@ -12,17 +12,17 @@ set :default_environment, {
 
 namespace :deploy do
   task :start do
-    run "/usr/sbin/monit -g tricklr start all"
+    sudo "/usr/sbin/monit -g tricklr start all"
     run "/etc/init.d/tricklr start"
   end
 
   task :stop do
-    run "/usr/sbin/monit -g tricklr stop all"
+    sudo "/usr/sbin/monit -g tricklr stop all"
     run "/etc/init.d/tricklr stop"
   end
 
   task :restart do
-    run "/usr/sbin/monit -g tricklr restart all"
+    sudo "/usr/sbin/monit -g tricklr restart all"
     run "/etc/init.d/tricklr upgrade"
   end
 
