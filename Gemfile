@@ -12,7 +12,7 @@ gem 'devise', '2.1.2'
 
 # Omniauth for easy authentication against third parties
 # https://github.com/intridea/omniauth
-gem 'omniauth-twitter', '0.0.13'
+gem 'omniauth-twitter', '0.0.17'
 
 # Not used right now
 # Will paginate for pagination
