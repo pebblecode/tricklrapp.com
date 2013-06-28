@@ -21,7 +21,7 @@ gem 'omniauth-twitter', '0.0.17'
 
 # Twitter gem for reading/writing
 # http://github.com/jnunemaker/twitter
-gem 'twitter', '3.7.0'
+gem "twitter", "~> 4.8.1"
 
 # Resque for queuing tasks
 gem 'resque', '1.22.0'
@@ -45,7 +45,7 @@ gem 'hoptoad_notifier', '2.4.11'
 gem 'newrelic_rpm', '3.4.1'
 
 # Send stats to Campfire
-gem 'tinder', '1.9.0'
+gem 'tinder', '1.9.2'
 
 group :development, :test do
   gem 'debugger', '1.3.1'
