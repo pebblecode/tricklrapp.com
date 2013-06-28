@@ -115,7 +115,8 @@ To check on the resque workers go to: `http://tricklrapp.pebblecode.net/resque` 
 
 ### Production
 
-    bundle exec cap production deploy
+1. Merge `master` branch into `production`
+2. `bundle exec cap production deploy`
 
 [TODO] Fix up rake task
 
