@@ -29,6 +29,14 @@ To precompile assets
 
     bundle exec rake assets:precompile
 
+### Sending tweets
+
+To send tweets manually
+
+1. Create a tweet through the interface
+2. Find the status id in the database
+3. In the rails console (`rails c`), run the command: `SendTweet.perform(id)` where id is the status id
+
 ### Running the site on Virtual Box
 
 Add this to the hosts file (C:\WINDOWS\system32\drivers\etc):
