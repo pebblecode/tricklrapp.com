@@ -8,17 +8,14 @@ class SendTweet
     @tweet = Status.find(tweet_id)
     credentials = @tweet.user.authentications.first
 
-    # Construct OAuth request
-    Twitter.configure do |config|
+    client = Twitter::REST::Client.new do |config|
       config.consumer_key = TWITTER_CONSUMER_KEY
       config.consumer_secret = TWITTER_CONSUMER_SECRET
-      config.oauth_token = credentials.token
-      config.oauth_token_secret = credentials.secret
+      config.access_token = credentials.token
+      config.access_token_secret = credentials.secret
     end
 
-    client = Twitter::Client.new
-
-    # NOTE for more on error codes see 
+    # NOTE for more on error codes see
     # https://dev.twitter.com/docs/error-codes-responses
     begin
       response = client.update(@tweet.status)
@@ -55,7 +52,7 @@ class SendTweet
     # rescue Errno::ENOENT
     # Raised when there is a timeout
     # rescue Errno::ETIMEDOUT
-    # Raised when the connection is reset 
+    # Raised when the connection is reset
     # rescue Errno::ECONNRESET
     # Raised when there is a standard error
     # rescue
