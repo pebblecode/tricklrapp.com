@@ -74,7 +74,9 @@ describe Status do
     it "should be based on time now if there are no unpublished statuses" do
       time_now = Time.now
       status = FactoryGirl.create(:status, :user => @user)
-      scheduled_time_with_interval = (time_now + @user.setting.interval).to_s
+      scheduled_time_with_interval = (time_now + @user.setting.interval)
+        .in_time_zone('London')
+        .to_s
 
       status.scheduled_at.to_s.should eq(scheduled_time_with_interval)
     end
