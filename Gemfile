@@ -72,7 +72,7 @@ group :development do
   gem 'mysql2', '~> 0.3.11'
   gem 'thin', '~> 1.4.1'
   gem 'unicorn', '~> 4.3.1'
-  gem 'capistrano', '~> 2.15'
+  gem 'capistrano', '~> 3.1.0'
   gem 'capistrano-ext', '~> 1.2.1'
   gem 'rb-fsevent', '~> 0.9.1'
   gem 'growl', '~> 1.0.3'
